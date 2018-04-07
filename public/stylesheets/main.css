@@ -1,6 +1,7 @@
 html, body, #fullheight {
     min-height: 100% !important;
     height: 100%;
+ }
 
 .theBody {
   margin: 0px 0px 0px 0px;
