@@ -5,3 +5,19 @@
 .mainContainer {
   position: absolute; display:table; width: 100%; height: 100%; margin: 0px 0px 0px 0px; background-color: #3399cc;
 }
+
+.expandedContainer {
+  display: table-cell; vertical-align: middle; width: 100%; height: 100%; text-align: center;
+}
+
+.mainContainer {
+  margin-left: auto; margin-right: auto;
+}
+
+.textContainer {
+  margin-left: auto; margin-right: auto;
+}
+
+.headerParagraph {
+  font-size: 3vmax; font-family: 'Open Sans', sans-serif; color: #FFFFFF;
+}
