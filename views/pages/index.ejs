@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <title>Messenger Sell - Improved online sales and customer care</title>
   <% include ../partials/header.ejs %>
   <style type="text/css">
     html, body, #fullheight {
@@ -11,14 +12,14 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> 
 </head>
 
-<body style="margin: 0px 0px 0px 0px;">
+<body id="theBody">
 
-  <div style="position: absolute; display:table; width: 100%; height: 100%; margin: 0px 0px 0px 0px; background-color: #3399cc;">
-    <div style="display: table-cell; vertical-align: middle; width: 100%; height: 100%; text-align: center;">
-      <div style="margin-left: auto; margin-right: auto;">
+  <div id="mainContainer" style="position: absolute; display:table; width: 100%; height: 100%; margin: 0px 0px 0px 0px; background-color: #3399cc;">
+    <div id="expandedContainer" style="display: table-cell; vertical-align: middle; width: 100%; height: 100%; text-align: center;">
+      <div id="mainImageContainer" style="margin-left: auto; margin-right: auto;">
         <img src="images/messengersell_web.png" style="height: 30vmax" />
       </div>
-      <div style="margin-left: auto; margin-right: auto;">
+      <div id="textContainer" style="margin-left: auto; margin-right: auto;">
         <p style="font-size: 3vmax; font-family: 'Open Sans', sans-serif; color: #FFFFFF">Helping to improve sales and customer care...</p>
         <!-- Load Facebook SDK for JavaScript -->
         <div id="fb-root"></div>
