@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style type="text/css">
+  	html, body, #fullheight {
+    min-height: 100% !important;
+    height: 100%;
+	}
+  </style>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> 
+</head>
+
+<body style="margin: 0px 0px 0px 0px;">
+
+	<div style="position: absolute; display:table; width: 100%; height: 100%; margin: 0px 0px 0px 0px; background-color: #3399cc;">
+		<div style="display: table-cell; vertical-align: middle; width: 100%; height: 100%; text-align: center;">
+			<div style="margin-left: auto; margin-right: auto;">
+				<img src="messengersell_web.png" style="height: 30vmax" />
+			</div>
+			<div style="margin-left: auto; margin-right: auto;">
+				<p style="font-size: 3vmax; font-family: 'Open Sans', sans-serif; color: #FFFFFF">Helping to improve sales and customer care...</p>
+				<!-- Load Facebook SDK for JavaScript -->
+				<div id="fb-root"></div>
+				<script>(function(d, s, id) {
+				  var js, fjs = d.getElementsByTagName(s)[0];
+				  if (d.getElementById(id)) return;
+				  js = d.createElement(s); js.id = id;
+				  js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.12&autoLogAppEvents=1';
+				  fjs.parentNode.insertBefore(js, fjs);
+				}(document, 'script', 'facebook-jssdk'));</script>
+
+				<!-- Your customer chat code -->
+				<div class="fb-customerchat"
+				  page_id="178191642990959"
+				  theme_color="#3399cc">
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>
