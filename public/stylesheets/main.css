@@ -26,3 +26,7 @@ html, body, #fullheight {
 .headerParagraph {
   font-size: 3vmax; font-family: 'Open Sans', sans-serif; color: #FFFFFF;
 }
+
+.underHeaderParagraph {
+  font-size: 1.5vmax; font-family: 'Open Sans', sans-serif; color: #7BBAD8;
+}
