@@ -30,3 +30,8 @@ html, body, #fullheight {
 .underHeaderParagraph {
   font-size: 1.8vmax; font-family: 'Open Sans', sans-serif; color: #7BBAD8;
 }
+
+.textParagraphMobile {
+  font-size: 1.0vmax; font-family: 'Open Sans', sans-serif;
+}
+}
