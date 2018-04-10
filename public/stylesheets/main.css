@@ -34,4 +34,7 @@ html, body, #fullheight {
 .textParagraphMobile {
   font-size: 1.0vmax; font-family: 'Open Sans', sans-serif;
 }
+
+.headerParagraphMobile {
+  font-size: 1.4vmax; font-family: 'Open Sans', sans-serif; font-weight: bold;
 }
