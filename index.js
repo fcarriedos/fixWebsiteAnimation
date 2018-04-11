@@ -26,13 +26,27 @@ webapp.post('/instant-online-shop', (req, res) => {
 	console.log("Request received: " + JSON.stringify(req.body, null, 4));
 	
 	if (req.body.attachments) {
-		console.log("Image received: " + req.body.attachments[0].contentUrl);
+		console.log("Image received: " + req.body.attachments[0].contentUrl + " from user " + req.body.from.id);
+		processImage(req);
 	} else {
 		console.log("NOT image received");
 	}
 
 	res.sendStatus(200);
 });
+
+
+function processImage(req) {
+	imageURL = req.body.attachments[0].contentUrl;
+	userId = req.body.from.id;
+	fs.appendFile(userId, imageURL, function(err) {
+		if(err) {
+			console.log('Could not save the URL ' + imageURL + ' to file ' + userId);
+			throw err;
+		}
+		console.log('Saved URL ' + imageURL + ' to file ' + userId);
+	});
+}
 
 
 // Webhook verification
