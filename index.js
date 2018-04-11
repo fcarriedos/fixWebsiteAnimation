@@ -26,7 +26,7 @@ webapp.post('/instant-online-shop', (req, res) => {
 	console.log("Request received: " + JSON.stringify(req.body, null, 4));
 	
 	if (req.body.attachments) {
-		console.log("Image received: " + req.attachments[0].contentUrl);
+		console.log("Image received: " + req.body.attachments[0].contentUrl);
 	} else {
 		console.log("NOT image received");
 	}
