@@ -40,7 +40,7 @@ webapp.post('/instant-online-shop', (req, res) => {
 function processImage(req) {
 	imageURL = req.body.attachments[0].contentUrl;
 	userId = req.body.from.id;
-	fs.appendFile(userId, imageURL, function(err) {
+	fs.appendFile(userId, imageURL + '\n', function(err) {
 		if(err) {
 			console.log('Could not save the URL ' + imageURL + ' to file ' + userId);
 			throw err;
