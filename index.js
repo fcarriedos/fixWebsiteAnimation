@@ -3,6 +3,7 @@
 const express = require('express')
 const path = require('path')
 const bodyParser = require('body-parser')
+const fs = require('fs')
 const PORT = process.env.PORT || 5000
 
 var webapp = express();
@@ -23,6 +24,13 @@ webapp
 webapp.post('/instant-online-shop', (req, res) => {
 	// res.render('pages/index');
 	console.log("Request received: " + JSON.stringify(req.body, null, 4));
+	
+	if (req.attachments) {
+		console.log("Image received: " + req.attachments[0].contentUrl);
+	} else {
+		console.log("NOT image received");
+	}
+
 	res.sendStatus(200);
 });
 
