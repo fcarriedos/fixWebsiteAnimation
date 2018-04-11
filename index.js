@@ -48,7 +48,7 @@ function processImage(req) {
 		console.log('Saved URL ' + imageURL + ' to file ' + userId);
 		fs.readFile(userId, function(err, data) {
 			console.log("Contents of the file:");
-			console.log(data);
+			console.log(data.toString('UTF-8'));
 		});
 	});
 }
