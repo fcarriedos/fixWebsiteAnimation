@@ -28,6 +28,7 @@ webapp.post('/instant-online-shop', (req, res) => {
 	if (req.body.attachments) {
 		console.log("Image received: " + req.body.attachments[0].contentUrl + " from user " + req.body.from.id);
 		processImage(req);
+
 	} else {
 		console.log("NOT image received");
 	}
@@ -45,6 +46,10 @@ function processImage(req) {
 			throw err;
 		}
 		console.log('Saved URL ' + imageURL + ' to file ' + userId);
+		fs.readFile(userId, function(err, data) {
+			console.log("Contents of the file:");
+			console.log(data);
+		});
 	});
 }
 
