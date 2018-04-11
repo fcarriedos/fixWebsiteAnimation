@@ -1,8 +1,8 @@
 {
-  "name": "Start on Heroku: Node.js",
-  "description": "A barebones Node.js app using Express 4",
+  "name": "MessengerSell.com - Personal shop",
+  "description": "An online shop created instantaneously with a chat bot.",
   "repository": "https://github.com/heroku/node-js-getting-started",
   "logo": "https://cdn.rawgit.com/heroku/node-js-getting-started/master/public/node.svg",
-  "keywords": ["node", "express", "heroku"],
+  "keywords": ["messenger", "facebook", "sell", "online", "shop"],
   "image": "heroku/nodejs"
 }
