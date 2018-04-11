@@ -11,6 +11,22 @@ webapp.use(bodyParser.json());
 webapp.use(bodyParser.urlencoded({ extended: true }));
 
 
+// Web pages
+webapp
+  .use(express.static(path.join(__dirname, 'public')))
+  .set('views', path.join(__dirname, 'views'))
+  .set('view engine', 'ejs')
+  .get('/', (req, res) => res.render('pages/index'));
+
+
+// Bot endpoints
+webapp.post('/instant-online-shop', (req, res) => {
+	// res.render('pages/index');
+	console.log("Request received: " + JSON.stringify(req.body, null, 4));
+	res.sendStatus(200);
+});
+
+
 // Webhook verification
 webapp.get('/webhook', (req, res) => {
 
@@ -37,20 +53,6 @@ webapp.get('/webhook', (req, res) => {
       res.sendStatus(403);      
     }
   }
-});
-
-// Web pages
-webapp
-  .use(express.static(path.join(__dirname, 'public')))
-  .set('views', path.join(__dirname, 'views'))
-  .set('view engine', 'ejs')
-  .get('/', (req, res) => res.render('pages/index'));
-
-// Bot endpoints
-webapp.post('/instant-online-shop', (req, res) => {
-	// res.render('pages/index');
-	console.log("Request received: " + JSON.stringify(req.body));
-	res.sendStatus(200);
 });
 
 // And starting!
