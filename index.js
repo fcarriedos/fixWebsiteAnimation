@@ -57,6 +57,7 @@ webapp.get('/waitinglist', (req, res) => {
 	emailTransporter.sendMail(mailOptions, function(err, info) {
 		if (err) {
 			console.log("Error sending mail " + req.query.waitingListEmail + " to the waiting list");
+			console.log(err);
 		} else {
 			console.log("Email " + req.query.waitingListEmail + " successfully sent to the waiting list");
 		}
