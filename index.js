@@ -4,9 +4,24 @@ const express = require('express')
 const path = require('path')
 const bodyParser = require('body-parser')
 const fs = require('fs')
+const nodemailer = require('nodemailer')
 const PORT = process.env.PORT || 5000
 
 var webapp = express();
+var emailTransporter = nodemailer.createTransport({
+	service: 'gmail',
+	auth: {
+		user: 'francisco@messengersell.com',
+		pass: 'SCHERBREMM2016.'
+	}
+});
+
+var mailOptions = {
+	from: 'francisco@messengersell.com',
+	to: 'francisco@messengersell.com',
+	subject: 'WAITING LIST',
+	text: ''
+};
 
 webapp.use(bodyParser.json());
 webapp.use(bodyParser.urlencoded({ extended: true }));
@@ -22,7 +37,6 @@ webapp
 
 // Bot endpoints
 webapp.post('/instant-online-shop', (req, res) => {
-	// res.render('pages/index');
 	console.log("Request received: " + JSON.stringify(req.body, null, 4));
 	
 	if (req.body.attachments) {
@@ -32,10 +46,23 @@ webapp.post('/instant-online-shop', (req, res) => {
 	} else {
 		console.log("NOT image received");
 	}
-
 	res.sendStatus(200);
 });
 
+
+// Send email to waiting list
+webapp.get('/waitinglist', (req, res) => {
+	mailOptions.text = req.query.email;
+	console.log("Sending " + req.query.email + " to waiting list.");
+	emailTransporter.sendMail(mailOptions, function(error, info) {
+		if (err) {
+			console.log("Error sending mail " + req.query.email + " to the waiting list");
+		} else {
+			console.log("Email " + req.query.email + " successfully sent to the waiting list");
+		}
+	});
+	res.sendStatus(200);
+});
 
 function processImage(req) {
 	imageURL = req.body.attachments[0].contentUrl;
