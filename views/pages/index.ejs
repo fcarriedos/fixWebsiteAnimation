@@ -43,7 +43,7 @@
   </div>
 <script type="text/javascript">
 function mailToWaitingList() {
-  $.get("/waitinglist?waitingListEmail=" + $("waitingListEmail").text, function(data) {
+  $.get("/waitinglist?waitingListEmail=" + document.getElementById('waitingListEmail').value, function(data) {
     alert(JSON.stringify(data));
   });
 }
