@@ -8,7 +8,7 @@ const nodemailer = require('nodemailer')
 const PORT = process.env.PORT || 5000
 
 var webapp = express();
-var emailTransporter = nodemailer.createTransport({
+var emailTransporter = nodemailer.createTransport("SMTP", {
 	service: 'gmail',
 	auth: {
 		user: 'wellidontwanttogivemyaddress@gmail.com',
