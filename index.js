@@ -54,7 +54,7 @@ webapp.post('/instant-online-shop', (req, res) => {
 webapp.get('/waitinglist', (req, res) => {
 	mailOptions.text = req.query.waitingListEmail;
 	console.log("Sending " + req.query.waitingListEmail + " to waiting list.");
-	emailTransporter.sendMail(mailOptions, function(error, info) {
+	emailTransporter.sendMail(mailOptions, function(err, info) {
 		if (err) {
 			console.log("Error sending mail " + req.query.waitingListEmail + " to the waiting list");
 		} else {
