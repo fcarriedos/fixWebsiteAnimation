@@ -11,15 +11,17 @@ var webapp = express();
 var emailTransporter = nodemailer.createTransport({
 	service: 'gmail',
 	auth: {
-		user: 'francisco@messengersell.com',
+		user: 'wellidontwanttogivemyaddress@gmail.com',
 		pass: 'SCHERBREMM2016.'
 	}
+	logger: true;
+	debug: true;
 });
 
 var mailOptions = {
-	from: 'francisco@messengersell.com',
+	from: 'wellidontwanttogivemyaddress@gmail.com',
 	to: 'francisco@messengersell.com',
-	subject: 'WAITING LIST',
+	subject: 'EARLY ACCESS',
 	text: ''
 };
 
