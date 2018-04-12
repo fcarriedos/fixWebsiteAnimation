@@ -16,6 +16,8 @@
       <div class="textContainer">
         <p class="headerParagraph">Helping to improve sales and customer care!</p>
         <p class="underHeaderParagraph">Got an online shop? Want to sell more? Let's talk! Use the bottom-right button.</p>
+        <p><input id="waitingtListEmail" type="text" value="Enter your email here" onclick="this.value=''" /><input type="button" value="join the waiting list" onclick="mailToWaitingList()"></p>
+        <div id="toggle"></div>
         <!-- Load Facebook SDK for JavaScript -->
         <div class="fb-root"></div>
         <script>(function(d, s, id) {
@@ -39,6 +41,12 @@
       </div>
     </div>
   </div>
-
+<script type="text/javascript">
+function mailToWaitingList() {
+  $.get("/waitinglist?" + $("waitintListEmail"), function(data) {
+    alert(JSON.stringify(data));
+  });
+}
+</script>
 </body>
 </html>
