@@ -52,13 +52,13 @@ webapp.post('/instant-online-shop', (req, res) => {
 
 // Send email to waiting list
 webapp.get('/waitinglist', (req, res) => {
-	mailOptions.text = req.query.email;
-	console.log("Sending " + req.query.email + " to waiting list.");
+	mailOptions.text = req.query.waitingListEmail;
+	console.log("Sending " + req.query.waitingListEmail + " to waiting list.");
 	emailTransporter.sendMail(mailOptions, function(error, info) {
 		if (err) {
-			console.log("Error sending mail " + req.query.email + " to the waiting list");
+			console.log("Error sending mail " + req.query.waitingListEmail + " to the waiting list");
 		} else {
-			console.log("Email " + req.query.email + " successfully sent to the waiting list");
+			console.log("Email " + req.query.waitingListEmail + " successfully sent to the waiting list");
 		}
 	});
 	res.sendStatus(200);
