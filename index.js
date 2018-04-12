@@ -14,8 +14,6 @@ var emailTransporter = nodemailer.createTransport({
 		user: 'wellidontwanttogivemyaddress@gmail.com',
 		pass: 'SCHERBREMM2016.'
 	}
-	logger: true;
-	debug: true;
 });
 
 var mailOptions = {
