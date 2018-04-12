@@ -12,7 +12,7 @@ var emailTransporter = nodemailer.createTransport({
 	service: 'yahoo',
 	auth: {
 		user: 'cosasmuygordas@yahoo.es',
-		pass: 'SCHERBREMM2016.'
+		pass: '***********'
 	}
 });
 
