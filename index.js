@@ -65,6 +65,11 @@ webapp.get('/waitinglist', (req, res) => {
 	res.sendStatus(200);
 });
 
+webapp.get('cookietest', (req, res) => {
+	console.log('Received headers: ' + req.headers);
+	res.sendStatus(200);
+});
+
 function processImage(req) {
 	imageURL = req.body.attachments[0].contentUrl;
 	userId = req.body.from.id;
