@@ -66,7 +66,7 @@ webapp.get('/waitinglist', (req, res) => {
 });
 
 webapp.get('/cookietest', (req, res) => {
-	console.log('Received headers: ' + req.headers);
+	console.log('Received headers: ' + JSON.stringify(req.headers, null, 2));
 	res.sendStatus(200);
 });
 
