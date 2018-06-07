@@ -4,24 +4,10 @@ const express = require('express')
 const path = require('path')
 const bodyParser = require('body-parser')
 const fs = require('fs')
-const nodemailer = require('nodemailer')
+const email = require('./email.js')
 const PORT = process.env.PORT || 5000
 
 var webapp = express();
-var emailTransporter = nodemailer.createTransport({
-	service: 'yahoo',
-	auth: {
-		user: 'cosasmuygordas@yahoo.es',
-		pass: '***********'
-	}
-});
-
-var mailOptions = {
-	from: 'cosasmuygordas@yahoo.es',
-	to: 'francisco@messengersell.com',
-	subject: 'EARLY ACCESS',
-	text: ''
-};
 
 webapp.use(bodyParser.json());
 webapp.use(bodyParser.urlencoded({ extended: true }));
@@ -52,23 +38,16 @@ webapp.post('/instant-online-shop', (req, res) => {
 
 // Send email to waiting list
 webapp.get('/waitinglist', (req, res) => {
-	mailOptions.text = JSON.stringify(req.query.waitingListEmail, null, 4);
-	console.log("Sending " + req.query.waitingListEmail + " to waiting list.");
-	emailTransporter.sendMail(mailOptions, function(err, info) {
-		if (err) {
-			console.log("Error sending mail " + req.query.waitingListEmail + " to the waiting list");
-			console.log(err);
-		} else {
-			console.log("Email " + req.query.waitingListEmail + " successfully sent to the waiting list");
-		}
-	});
+	email.sendEmail(req.query.waitingListEmail);
 	res.sendStatus(200);
 });
 
+
 webapp.get('/cookietest', (req, res) => {
 	console.log('Received headers: ' + JSON.stringify(req.headers, null, 2));
-	res.sendStatus(200);
+	email.sendEmail(req.query.waitingListEmail, res);
 });
+
 
 function processImage(req) {
 	imageURL = req.body.attachments[0].contentUrl;
@@ -114,6 +93,7 @@ webapp.get('/webhook', (req, res) => {
     }
   }
 });
+
 
 // And starting!
 webapp.listen(PORT, () => console.log(`Listening on ${ PORT }`));
