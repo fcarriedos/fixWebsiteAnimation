@@ -4,7 +4,8 @@ const express = require('express')
 const path = require('path')
 const bodyParser = require('body-parser')
 const fs = require('fs')
-const email = require('./email.js')
+const nodemailerEmail = require('./nodemailerEmail.js')
+const sendgridMailer = require('./sendgridMailer.js')
 const PORT = process.env.PORT || 5000
 
 var webapp = express();
@@ -23,7 +24,7 @@ webapp
 
 // Send email to waiting list
 webapp.get('/waitinglist', (req, res) => {
-	email.sendWaitingListEmail(req.query.waitingListEmail);
+	sendgridMailer.sendWaitingListEmail(req.query.waitingListEmail);
 	res.sendStatus(200);
 });
 
