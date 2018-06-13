@@ -31,15 +31,21 @@ exports.confirmEmail = function confirmEmail(emailToConfirm, res) {
         var dbo = db.db(CONSTANTS.DATABASE_NAME);
         
         dbo.collection(CONSTANTS.SENT_EMAILS_TABLE).findOneAndUpdate(
-            { email: emailToConfirm },
+            { email: emailToConfirm, "email_confirmed": false },
             { $set: { email_confirmed: true }}, function(updateError, oldVersion) {
+                console.log('sendgridMailer.confirmEmail(): previous object ' + JSON.stringify(oldVersion));
                 var responseToSend = null;
                 if(updateError) {
                     console.log('sendgridMailer.confirmEmail(): error confirming email ' + updateError);
                     responseToSend = CONSTANTS.EMAIL_ACTIVATION_ERROR_HTML_BODY;
                 } else {
-                    console.log('sendgridMailer.confirmEmail(): successfully confirmed email ' + emailToConfirm);
-                    responseToSend = CONSTANTS.EMAIL_ACTIVATION_SUCCESS_HTML_BODY;
+                    if (oldVersion.value == null) {
+                        console.log('sendgridMailer.confirmEmail(): email was tried to be confirmed again ' + emailToConfirm);
+                        responseToSend = CONSTANTS.EMAIL_ACTIVATION_ALREADY_HTML_BODY;
+                    } else {
+                        console.log('sendgridMailer.confirmEmail(): successfully confirmed email ' + emailToConfirm);
+                        responseToSend = CONSTANTS.EMAIL_ACTIVATION_SUCCESS_HTML_BODY;
+                    }
                 }
                 return res.send(responseToSend);
             });
