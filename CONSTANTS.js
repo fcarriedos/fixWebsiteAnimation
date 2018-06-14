@@ -1,6 +1,7 @@
 var exports = module.exports = {};
 
-exports.WEBSITE_URL_ENDPOINT = WEBSITE_URL_ENDPOINT = 'http://9ad20535.ngrok.io'; 
+// exports.WEBSITE_URL_ENDPOINT = WEBSITE_URL_ENDPOINT = 'http://9ad20535.ngrok.io'; 
+exports.WEBSITE_URL_ENDPOINT = WEBSITE_URL_ENDPOINT = 'http://www.messengersell.com'; 
 
 // Email
 exports.EMAIL_FROM_ADDRESS = EMAIL_FROM_ADDRESS = 'no-reply@messengersell.com';
