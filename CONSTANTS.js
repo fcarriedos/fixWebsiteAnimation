@@ -27,10 +27,13 @@ exports.EMAIL_ACTIVATION_SUCCESS_HTML_BODY = EMAIL_ACTIVATION_SUCCESS_HTML_BODY 
 exports.EMAIL_ACTIVATION_ALREADY_HTML_BODY = EMAIL_ACTIVATION_ALREADY_HTML_BODY = '<h2>This email was already confirmed!</h2>But thanks for letting us know again! 👍';
 exports.EMAIL_ACTIVATION_ERROR_HTML_BODY = EMAIL_ACTIVATION_ERROR_HTML_BODY = '<h2>Sorry! 🤦</h2> An error happened and we could not activate your email. Could you please try again later? 🙏 Thanks a lot for your understanding! 🙇';
 
-
 // Database
 exports.MONGODB_URL = MONGODB_URL = "mongodb://localhost:27017/";
 exports.DATABASE_NAME = DATABASE_NAME = "website";
 exports.SENT_EMAILS_TABLE = SENT_EMAILS_TABLE = "sentemails";
+
+// Encryption
+exports.ENCRYPTION_KEY = ENCRYPTION_KEY = JSON.parse(process.env.ENC_KEY);
+exports.ENCRIPTION_AES_COUNTER = ENCRIPTION_AES_COUNTER = 5;
 
 return module.exports;

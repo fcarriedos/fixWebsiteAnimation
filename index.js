@@ -11,6 +11,8 @@ const { matchedData, sanitize } = require('express-validator/filter');
 const dbclient = require('mongodb').MongoClient;
 const PORT = process.env.PORT || 3000
 
+console.log(JSON.stringify(JSON.parse(process.env.ENC_KEY)));
+
 var webapp = express();
 
 webapp.use(bodyParser.json());
@@ -24,6 +26,9 @@ webapp
   .set('view engine', 'ejs')
   .get('/', (req, res) => res.render('pages/index'));
 
+webapp.get('/test', (req, res) => {
+	console.log('Cipher-decipher ' + encryptionUtility.decypher(encryptionUtility.cypher(req.query.r)));
+});
 
 // Process referrals
 webapp.get('/r', (req, res) => {

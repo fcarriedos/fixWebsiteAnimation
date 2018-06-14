@@ -4,7 +4,8 @@ const CONSTANTS = require('./CONSTANTS.js');
 const aesjs = require('aes-js');
 
 // An example 128-bit key (16 bytes * 8 bits/byte = 128 bits)
-var key = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 ];
+
+var key = CONSTANTS.ENCRYPTION_KEY;
 
 var cipher = exports.cypher = function cypher(text) {
     if ((!text) || (text == null)) {
@@ -15,7 +16,7 @@ var cipher = exports.cypher = function cypher(text) {
     var textBytes = aesjs.utils.utf8.toBytes(text);
      
     // The counter is optional, and if omitted will begin at 1
-    var aesCtr = new aesjs.ModeOfOperation.ctr(key, new aesjs.Counter(5));
+    var aesCtr = new aesjs.ModeOfOperation.ctr(key, new aesjs.Counter(CONSTANTS.ENCRYPTION_AES_COUNTER));
     var encryptedBytes = aesCtr.encrypt(textBytes);
      
     // To print or store the binary data, you may convert it to hex
@@ -37,7 +38,7 @@ var decipher = exports.decypher = function decypher(encryptedHex) {
      
     // The counter mode of operation maintains internal state, so to
     // decrypt a new instance must be instantiated.
-    var aesCtr = new aesjs.ModeOfOperation.ctr(key, new aesjs.Counter(5));
+    var aesCtr = new aesjs.ModeOfOperation.ctr(key, new aesjs.Counter(CONSTANTS.ENCRYPTION_AES_COUNTER));
     var decryptedBytes = aesCtr.decrypt(encryptedBytes);
      
     // Convert our bytes back into text
