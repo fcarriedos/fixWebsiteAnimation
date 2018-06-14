@@ -30,7 +30,7 @@ exports.EMAIL_ACTIVATION_ERROR_HTML_BODY = EMAIL_ACTIVATION_ERROR_HTML_BODY = '<
 
 // Database
 // exports.MONGODB_URL = MONGODB_URL = "mongodb://localhost:27017/";
-exports.MONGODB_URL = MONGODB_URL = process.env.MONGODB_URI || "mongodb://localhost:27017/";
+exports.MONGODB_URL = MONGODB_URL = process.env.MONGODB_URI;//|| "mongodb://localhost:27017/";
 //"mongodb://heroku_vhf8lww8:qdat1khaevi73ltfatniio4208@ds259250.mlab.com:59250/heroku_vhf8lww8";
 exports.DATABASE_NAME = DATABASE_NAME = "website";
 exports.SENT_EMAILS_TABLE = SENT_EMAILS_TABLE = "sentemails";
