@@ -1,7 +1,7 @@
 var exports = module.exports = {};
 
-exports.WEBSITE_URL_ENDPOINT = WEBSITE_URL_ENDPOINT = 'http://9ad20535.ngrok.io'; 
-// exports.WEBSITE_URL_ENDPOINT = WEBSITE_URL_ENDPOINT = 'http://www.messengersell.com'; 
+// exports.WEBSITE_URL_ENDPOINT = WEBSITE_URL_ENDPOINT = 'http://9ad20535.ngrok.io'; 
+exports.WEBSITE_URL_ENDPOINT = WEBSITE_URL_ENDPOINT = 'http://messengersell.com'; 
 
 // Email
 exports.EMAIL_FROM_ADDRESS = EMAIL_FROM_ADDRESS = 'no-reply@messengersell.com';
@@ -30,13 +30,13 @@ exports.EMAIL_ACTIVATION_ERROR_HTML_BODY = EMAIL_ACTIVATION_ERROR_HTML_BODY = '<
 
 // Database
 // Local
-exports.MONGODB_URL = MONGODB_URL = "mongodb://localhost:27017/website";
-exports.DATABASE_NAME = DATABASE_NAME = "website"; 
+// exports.MONGODB_URL = MONGODB_URL = "mongodb://localhost:27017/website";
+// exports.DATABASE_NAME = DATABASE_NAME = "website"; 
 
 // Heroku
 // "mongodb://heroku_vhf8lww8:qdat1khaevi73ltfatniio4208@ds259250.mlab.com:59250/heroku_vhf8lww8";
-// exports.MONGODB_URL = MONGODB_URL = process.env.MONGODB_URI;
-// exports.DATABASE_NAME = DATABASE_NAME = "heroku_vhf8lww8"; 
+exports.MONGODB_URL = MONGODB_URL = process.env.MONGODB_URI;
+exports.DATABASE_NAME = DATABASE_NAME = "heroku_vhf8lww8"; 
 
 exports.SENT_EMAILS_TABLE = SENT_EMAILS_TABLE = "sentemails";
 
