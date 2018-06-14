@@ -67,7 +67,7 @@ webapp.post('/api/lead',
 			// DB checking
 			dbclient.connect(CONSTANTS.MONGODB_URL + CONSTANTS.DATABASE_NAME, function(dbConnectionErr, db) {
 		        if (dbConnectionErr) { // Crash connecting to the database 
-		        	console.log('index.post(/api/lead): could not connect to the database to validate ' + email);
+		        	console.log('index.post(/api/lead): could not connect to the database to validate ' + email + ' due to ' + dbConnectionErr);
 		        	throw new Error('index.post(/api/lead): internal server error.');
 		        } else {
 			        var dbo = db.db(CONSTANTS.DATABASE_NAME);
