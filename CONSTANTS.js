@@ -1,7 +1,7 @@
 var exports = module.exports = {};
 
-// exports.WEBSITE_URL_ENDPOINT = WEBSITE_URL_ENDPOINT = 'http://9ad20535.ngrok.io'; 
-exports.WEBSITE_URL_ENDPOINT = WEBSITE_URL_ENDPOINT = 'http://www.messengersell.com'; 
+exports.WEBSITE_URL_ENDPOINT = WEBSITE_URL_ENDPOINT = 'http://9ad20535.ngrok.io'; 
+// exports.WEBSITE_URL_ENDPOINT = WEBSITE_URL_ENDPOINT = 'http://www.messengersell.com'; 
 
 // Email
 exports.EMAIL_FROM_ADDRESS = EMAIL_FROM_ADDRESS = 'no-reply@messengersell.com';
@@ -21,7 +21,7 @@ exports.EMAIL_ACTIVATION_PLACEHOLDER = EMAIL_ACTIVATION_PLACEHOLDER = 'EMAILPLAC
 exports.EMAIL_ACTIVATION_REFERRAL_PLACEHOLDER = EMAIL_ACTIVATION_REFERRAL_PLACEHOLDER = 'EMAILREFERRALPLACEHOLDER';
 exports.EMAIL_WAITINGLIST_TYPE = EMAIL_WAITINGLIST_TYPE = 'waitinglist';
 exports.EMAIL_WAITINGLIST_SUBJECT = EMAIL_WAITINGLIST_SUBJECT = '💳 MessengerSell account ready!';
-exports.EMAIL_ACTIVATION_LINK = EMAIL_ACTIVATION_LINK = '<a href="' + WEBSITE_URL_ENDPOINT + '/api/lead/confirm?email=' + EMAIL_ACTIVATION_PLACEHOLDER + '" target="blank">activate now!</a>';
+exports.EMAIL_ACTIVATION_LINK = EMAIL_ACTIVATION_LINK = '<a href="' + WEBSITE_URL_ENDPOINT + '/api/lead/confirm?token=' + EMAIL_ACTIVATION_PLACEHOLDER + '" target="blank">activate now!</a>';
 exports.EMAIL_WAITINGLIST_TEXT_BODY = EMAIL_WAITINGLIST_TEXT_BODY = 'Please, open the link in your browser to confirm you email: ' + EMAIL_ACTIVATION_LINK;
 exports.EMAIL_WAITINGLIST_HTML_BODY = EMAIL_WAITINGLIST_HTML_BODY = 'Please, click the link to confirm your email: ' + EMAIL_ACTIVATION_LINK;
 exports.EMAIL_ACTIVATION_SUCCESS_HTML_BODY = EMAIL_ACTIVATION_SUCCESS_HTML_BODY = '<h2>Done! 🙌</h2> You have confirmed your email address and will be included in the early access group. Thanks a lot for giving us a try! 🙇. Get free credit  <a href="' + WEBSITE_URL_ENDPOINT + '/r?r=' + EMAIL_ACTIVATION_REFERRAL_PLACEHOLDER + '">referring us</a>';
@@ -29,10 +29,15 @@ exports.EMAIL_ACTIVATION_ALREADY_HTML_BODY = EMAIL_ACTIVATION_ALREADY_HTML_BODY 
 exports.EMAIL_ACTIVATION_ERROR_HTML_BODY = EMAIL_ACTIVATION_ERROR_HTML_BODY = '<h2>Sorry! 🤦</h2> An error happened and we could not activate your email. Could you please try again later? 🙏 Thanks a lot for your understanding! 🙇';
 
 // Database
-// exports.MONGODB_URL = MONGODB_URL = "mongodb://localhost:27017/";
-exports.MONGODB_URL = MONGODB_URL = process.env.MONGODB_URI || "mongodb://localhost:27017/website";
-//"mongodb://heroku_vhf8lww8:qdat1khaevi73ltfatniio4208@ds259250.mlab.com:59250/heroku_vhf8lww8";
-exports.DATABASE_NAME = DATABASE_NAME = "heroku_vhf8lww8"; // website
+// Local
+exports.MONGODB_URL = MONGODB_URL = "mongodb://localhost:27017/website";
+exports.DATABASE_NAME = DATABASE_NAME = "website"; 
+
+// Heroku
+// "mongodb://heroku_vhf8lww8:qdat1khaevi73ltfatniio4208@ds259250.mlab.com:59250/heroku_vhf8lww8";
+// exports.MONGODB_URL = MONGODB_URL = process.env.MONGODB_URI;
+// exports.DATABASE_NAME = DATABASE_NAME = "heroku_vhf8lww8"; 
+
 exports.SENT_EMAILS_TABLE = SENT_EMAILS_TABLE = "sentemails";
 
 // Encryption

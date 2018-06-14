@@ -3,6 +3,7 @@ var exports = module.exports = {};
 const CONSTANTS = require('./CONSTANTS.js');
 const sgMail = require('@sendgrid/mail');
 const encryptionUtility = require('./encryptionUtility.js');
+const crc = require('crc');
 const dbclient = require('mongodb').MongoClient;
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
@@ -20,18 +21,19 @@ const message = {
 
 const outgoingEmailTemplate = {
     type: null,
+    confirmationHash: null,
     message: message
 };
 
 
-exports.confirmEmail = function confirmEmail(email, name, res) {
-    console.log('sendgridMailer.confirmEmail(): confirming email ' + email + ' and name ' + name);
+exports.confirmEmail = function confirmEmail(email, res) {
+    console.log('sendgridMailer.confirmEmail(): confirming email ' + email);
     dbclient.connect(CONSTANTS.MONGODB_URL, function(dbConnectionErr, db) {
     if (dbConnectionErr) console.log('sendgridMailer.confirmEmail(): could not connect to the database while confirming ' + email);
         
         var dbo = db.db(CONSTANTS.DATABASE_NAME);
 
-        var updateProjection = (name) ? ({ $set: { email_confirmed: true, name: name }}) : ({ $set: { email_confirmed: true }}); 
+        var updateProjection = ({ $set: { email_confirmed: true }}); 
         
         dbo.collection(CONSTANTS.SENT_EMAILS_TABLE).findOneAndUpdate(
             { email: email, "email_confirmed": false },
@@ -49,8 +51,8 @@ exports.confirmEmail = function confirmEmail(email, name, res) {
                     } else {
                         console.log('sendgridMailer.confirmEmail(): successfully confirmed email ' + email);
                         var userId = oldVersion.value['_id'];
-                        var userDatastructure = getUserDatastructure(userId);
-                        responseToSend = CONSTANTS.EMAIL_ACTIVATION_SUCCESS_HTML_BODY.replace(CONSTANTS.EMAIL_ACTIVATION_REFERRAL_PLACEHOLDER, encryptionUtility.cypher(userDatastructure));
+                        // var userDatastructure = getUserDatastructure(userId);
+                        responseToSend = CONSTANTS.EMAIL_ACTIVATION_SUCCESS_HTML_BODY.replace(CONSTANTS.EMAIL_ACTIVATION_REFERRAL_PLACEHOLDER, getReferralToken(email));
                     }
                 }
                 return res.send(responseToSend);
@@ -62,13 +64,17 @@ exports.confirmEmail = function confirmEmail(email, name, res) {
 
 exports.sendWaitingListEmail = function sendWaitingListEmail(name, to, refererId, res) {
     console.log("sendgridMailer.sendWaitingListEmail(): Sending " + CONSTANTS.EMAIL_WAITINGLIST_TYPE + " to " + to);
-    var outgoingEmailTemplate = getOutgoingEmailTemplate(to, CONSTANTS.EMAIL_WAITINGLIST_TYPE);
-    sendEmail(outgoingEmailTemplate, name, res, refererId);
+    var outgoingEmail = getOutgoingEmailTemplate(to, CONSTANTS.EMAIL_WAITINGLIST_TYPE);
+    sendEmail(outgoingEmail, name, res, refererId);
 }
 
 
 var getOutgoingEmailTemplate = function getOutgoingEmailTemplate(to, type, refererName, refererEmail) {
+
     var outgoingEmail = JSON.parse(JSON.stringify(outgoingEmailTemplate));
+    var confirmationHash = getConfirmationHash(to); // Get string as HEX
+    outgoingEmail.confirmationHash = confirmationHash;
+
     var outgoingMessage = JSON.parse(JSON.stringify(message));
     outgoingMessage.to = to;
     outgoingMessage.from = CONSTANTS.EMAIL_FROM_ADDRESS;
@@ -78,8 +84,8 @@ var getOutgoingEmailTemplate = function getOutgoingEmailTemplate(to, type, refer
         case CONSTANTS.EMAIL_WAITINGLIST_TYPE: 
             outgoingEmail.type = CONSTANTS.EMAIL_WAITINGLIST_TYPE;
             outgoingMessage.subject = CONSTANTS.EMAIL_WAITINGLIST_SUBJECT;
-            outgoingMessage.text = CONSTANTS.EMAIL_WAITINGLIST_TEXT_BODY.replace(CONSTANTS.EMAIL_ACTIVATION_PLACEHOLDER, to);
-            outgoingMessage.html = CONSTANTS.EMAIL_WAITINGLIST_HTML_BODY.replace(CONSTANTS.EMAIL_ACTIVATION_PLACEHOLDER, to);
+            outgoingMessage.text = CONSTANTS.EMAIL_WAITINGLIST_TEXT_BODY.replace(CONSTANTS.EMAIL_ACTIVATION_PLACEHOLDER, confirmationHash);
+            outgoingMessage.html = CONSTANTS.EMAIL_WAITINGLIST_HTML_BODY.replace(CONSTANTS.EMAIL_ACTIVATION_PLACEHOLDER, confirmationHash);
             break;
 
         default: console.log('sendgridMailer.getEmailTemplate()[ERROR]: un-recognized email type ' + type);
@@ -101,12 +107,12 @@ var sendEmail = function sendEmail(outgoingEmail, name, res, refererId) {
         } else {
             console.log("sendgridMailer.sendEmail(): Email " + outgoingEmail.message.to + " successfully sent to the waiting list");
         }
-        recordSentEmailResult(name, outgoingEmail.message.to, outgoingEmail.type, sendingResult, res, refererId);
+        recordSentEmailResult(name, outgoingEmail.message.to, outgoingEmail.type, outgoingEmail.confirmationHash , sendingResult, res, refererId);
     });
 }
 
 
-var recordSentEmailResult = function recordSentEmailResult(name, to, emailType, result, res, refererId) {
+var recordSentEmailResult = function recordSentEmailResult(name, to, emailType, confirmationHash, result, res, refererId) {
     console.log('sendgridMailer.recordSentEmailResult(): recording email ' + emailType + ' to ' + to + '(' + result + ')');
     dbclient.connect(CONSTANTS.MONGODB_URL, function(dbConnectionErr, db) {
     
@@ -120,6 +126,8 @@ var recordSentEmailResult = function recordSentEmailResult(name, to, emailType, 
             emailType: emailType,
             sendingResult: result,
             email_confirmed: false,
+            confirmation_hash: confirmationHash,
+            referral_hash: getReferralToken(to),
             referral_id: refererId
         };
 
@@ -127,13 +135,12 @@ var recordSentEmailResult = function recordSentEmailResult(name, to, emailType, 
 
         dbo.collection(CONSTANTS.SENT_EMAILS_TABLE).insertOne(newEmailRecord, function(insertErr, emailRecordingResult) {
             var userId = emailRecordingResult.ops[0]['_id'];
-            var referralToken = encryptionUtility.cypher(JSON.stringify(getUserDatastructure(userId)));
             if (insertErr) {
                 console.log('sendgridMailer.recordSentEmailResult()[ERROR]: could not record ' + emailType + ' to ' + to);
                 sendResultResponse(500, 500, ['could not record email']);
             } else {
                 console.log('sendgridMailer.recordSentEmailResult(): email ' + emailType + ' to ' + to + ' inserted.');
-                sendResultResponse(200, 200, ['ok'], referralToken, res); 
+                sendResultResponse(200, 200, ['ok'], newEmailRecord.referral_hash, res); 
             }
         });
 
@@ -149,12 +156,23 @@ var sendResultResponse = function sendResultResponse(httpStatus, code, messages,
     }
 }
 
-var getUserDatastructure = function getUserDatastructure(userId) {
+
+var getUserDatastructure = exports.getUserDatastructure = function getUserDatastructure(userId) {
     var userDatastructure = { id: userId };
     if (userId) userDatastructure.id = userId;
     var stringVersion = JSON.stringify(userDatastructure);
     console.log('sendgridMailer.getUserDatastructure():  returning datastructure: ' + stringVersion);
     return stringVersion;
+}
+
+
+var getConfirmationHash = function getConfirmationHash(userEmail) {
+    return getReferralToken(userEmail + Date.now());
+}
+
+
+var getReferralToken = function getReferralToken(userEmail) {
+    return crc.crc32(userEmail).toString(16);
 }
 
 
