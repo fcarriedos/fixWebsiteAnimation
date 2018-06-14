@@ -26,7 +26,7 @@ const outgoingEmailTemplate = {
 
 exports.confirmEmail = function confirmEmail(email, name, res) {
     console.log('sendgridMailer.confirmEmail(): confirming email ' + email + ' and name ' + name);
-    dbclient.connect(CONSTANTS.MONGODB_URL /*+ CONSTANTS.DATABASE_NAME */, function(dbConnectionErr, db) {
+    dbclient.connect(CONSTANTS.MONGODB_URL, function(dbConnectionErr, db) {
     if (dbConnectionErr) console.log('sendgridMailer.confirmEmail(): could not connect to the database while confirming ' + email);
         
         var dbo = db.db(CONSTANTS.DATABASE_NAME);
@@ -108,7 +108,7 @@ var sendEmail = function sendEmail(outgoingEmail, name, res, refererId) {
 
 var recordSentEmailResult = function recordSentEmailResult(name, to, emailType, result, res, refererId) {
     console.log('sendgridMailer.recordSentEmailResult(): recording email ' + emailType + ' to ' + to + '(' + result + ')');
-    dbclient.connect(CONSTANTS.MONGODB_URL /*+ CONSTANTS.DATABASE_NAME */, function(dbConnectionErr, db) {
+    dbclient.connect(CONSTANTS.MONGODB_URL, function(dbConnectionErr, db) {
     
         if (dbConnectionErr) console.log('sendgridMailer.recordSentEmailResult(): could not connect to the database while recording email sending ' + emailType + ' to ' + to);
         
