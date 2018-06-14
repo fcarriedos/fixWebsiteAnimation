@@ -65,7 +65,7 @@ webapp.post('/api/lead',
 			var refererId = (refererDatastructure == null) ? null : JSON.parse(refererDatastructure).id;
 			console.log('index.post(/api/lead): lead refered by user ' + refererId);
 			// DB checking
-			dbclient.connect(CONSTANTS.MONGODB_URL + CONSTANTS.DATABASE_NAME, function(dbConnectionErr, db) {
+			dbclient.connect(CONSTANTS.MONGODB_URL /*+ CONSTANTS.DATABASE_NAME */, function(dbConnectionErr, db) {
 		        if (dbConnectionErr) { // Crash connecting to the database 
 		        	console.log('index.post(/api/lead): could not connect to the database to validate ' + email + ' due to ' + dbConnectionErr);
 		        	throw new Error('index.post(/api/lead): internal server error.');
