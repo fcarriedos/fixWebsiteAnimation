@@ -31,7 +31,7 @@ exports.confirmEmail = function confirmEmail(email, res) {
     dbclient.connect(CONSTANTS.MONGODB_URL, function(dbConnectionErr, db) {
     if (dbConnectionErr) console.log('sendgridMailer.confirmEmail(): could not connect to the database while confirming ' + email);
         
-        var dbo = db.db(CONSTANTS.DATABASE_NAME);
+        var dbo = db.db(CONSTANTS.WEBSITE_DATABASE_NAME);
 
         var updateProjection = ({ $set: { email_confirmed: true }}); 
         
@@ -118,7 +118,7 @@ var recordSentEmailResult = function recordSentEmailResult(name, to, emailType, 
     
         if (dbConnectionErr) console.log('sendgridMailer.recordSentEmailResult(): could not connect to the database while recording email sending ' + emailType + ' to ' + to);
         
-        var dbo = db.db(CONSTANTS.DATABASE_NAME);
+        var dbo = db.db(CONSTANTS.WEBSITE_DATABASE_NAME);
         var newEmailRecord = {
             // Id and timestamp coming from MongoDb 'ObjectId' object.
             name: name,
@@ -152,7 +152,7 @@ var recordSentEmailResult = function recordSentEmailResult(name, to, emailType, 
 
 var sendResultResponse = function sendResultResponse(httpStatus, code, messages, referralToken, res) {
     if (res) { // response could be sent somewhere else
-        return res.status(httpStatus).json({ code: code, messages: messages, referral: CONSTANTS.WEBSITE_URL_ENDPOINT + '/r?r=' + referralToken });
+        return res.status(httpStatus).json({ code: code, messages: messages, referral: CONSTANTS.EMAIL_REFERRAL_URL.replace(CONSTANTS.EMAIL_ACTIVATION_REFERRAL_PLACEHOLDER, referralToken) });
     }
 }
 

@@ -11,8 +11,6 @@ const { matchedData, sanitize } = require('express-validator/filter');
 const dbclient = require('mongodb').MongoClient;
 const PORT = process.env.PORT || 3000
 
-console.log(JSON.stringify(JSON.parse(process.env.ENC_KEY)));
-
 var webapp = express();
 
 webapp.use(bodyParser.json());
@@ -33,16 +31,16 @@ webapp.get('/test', (req, res) => {
 
 
 // Process referrals
-webapp.get('/r', (req, res) => {
-	console.log('index.get(/r): servicing referral request from user with token ' + req.query.r);
+webapp.get('/r/:token', (req, res) => {
+	console.log('index.get(/r): servicing referral request from user with token ' + req.params.token);
 
 	dbclient.connect(CONSTANTS.MONGODB_URL, function(dbConnectionErr, db) {
         if (dbConnectionErr) { // Crash connecting to the database 
-        	console.log('index.get(/r): could not connect to the database to service referral with token ' + req.query.r + ' due to ' + dbConnectionErr);
+        	console.log('index.get(/r): could not connect to the database to service referral with token ' + req.params.token + ' due to ' + dbConnectionErr);
         	throw new Error('index.get(/r): internal server error.');
         } else {
-	        var dbo = db.db(CONSTANTS.DATABASE_NAME);
-	        dbo.collection(CONSTANTS.SENT_EMAILS_TABLE).findOne({ referral_hash: req.query.r }, function(err, result) {
+	        var dbo = db.db(CONSTANTS.WEBSITE_DATABASE_NAME);
+	        dbo.collection(CONSTANTS.SENT_EMAILS_TABLE).findOne({ referral_hash: req.params.token }, function(err, result) {
 	        	if (err) { // Crash finding the email in the database
 	        		console.log('index.get(/r): error finding email ' + email);
 	        		throw err;
@@ -95,7 +93,7 @@ webapp.post('/api/lead',
 		        	console.log('index.post(/api/lead): could not connect to the database to validate ' + email + ' due to ' + dbConnectionErr);
 		        	throw new Error('index.post(/api/lead): internal server error.');
 		        } else {
-			        var dbo = db.db(CONSTANTS.DATABASE_NAME);
+			        var dbo = db.db(CONSTANTS.WEBSITE_DATABASE_NAME);
 			        dbo.collection(CONSTANTS.SENT_EMAILS_TABLE).findOne({ email: email }, function(err, result) {
 			        	if (err) { // Crash finding the email in the database
 			        		console.log('index.post(/api/lead): error finding email ' + email);
@@ -130,7 +128,7 @@ webapp.get('/api/lead/confirm',
         	console.log('index.get(/api/lead/confirm): could not connect to the database to confirm with token ' + token + ' due to ' + dbConnectionErr);
         	throw new Error('index.get(/api/lead/confirm): internal server error.');
         } else {
-	        var dbo = db.db(CONSTANTS.DATABASE_NAME);
+	        var dbo = db.db(CONSTANTS.WEBSITE_DATABASE_NAME);
 	        dbo.collection(CONSTANTS.SENT_EMAILS_TABLE).findOne({ confirmation_hash: req.query.token }, function(err, result) {
 	        	if (err) { // Crash finding the email in the database
 	        		console.log('index.get(/api/lead/confirm): error finding email ' + email);
