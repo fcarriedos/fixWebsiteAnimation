@@ -148,6 +148,32 @@ webapp.get('/api/lead/confirm',
 });
 
 
+webapp.post('/api/contact', 
+	// Validators
+	[
+
+	check('contactemail').isEmail().withMessage('Is not a valid email.'),
+	check('name').exists().custom((value) => value.length > 0).withMessage('The name is empty'),
+	check('message').escape()
+
+	],
+	// Request processing
+	(req, res) => {
+
+		errors = validationResult(req);
+		if (!errors.isEmpty()) {
+			return res.status(422).json({ code: 422, messages: errors.mapped() });
+		} else {
+			var contactemail = req.body.contactemail;
+			var name = req.body.name;
+			var message = req.body.message;
+			console.log('index.post(/api/contact): servicing contact request with name ' + name + ' (' + contactemail + '), saying: ' + message);
+			sendgridMailer.sendContactEmail(name, contactemail, message, res);
+		}
+	}
+);
+
+
 // Creates the endpoint for our webhook 
 webapp.post('/webhook', (req, res) => {  
  
