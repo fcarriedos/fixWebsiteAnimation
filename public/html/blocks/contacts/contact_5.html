@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" >
+		<title>Startup Framework 2.0</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="icon" href="../../i/favicon.ico" type="image/x-icon">
+		<link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700,800,900|Nunito+Sans:200,300,400,600,700,800,900" rel="stylesheet">
+		<link href="../../css/style.css" rel="stylesheet" />
+		<script src="../../js/jquery.min.js"></script>
+		<script src="../../js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyDP6Ex5S03nvKZJZSvGXsEAi3X_tFkua4U"></script>
+	</head> 
+	<body>
+<!-- Contact 5 -->
+
+<section class="contact_5 bg_white padding_top115 padding_bottom115">
+	<div class="container nopadding dark_blue">
+		<div class="left100 inner">
+			<h2 class="font42 font_second light">We'd Love to Hear from You</h2>
+			<div class="top30 max_width670 font22 light text">
+				Please submit your information and a Designmodo representative <br>will get in touch with you
+			</div>
+			<a href="tel:+15554443322" class="top30 link dark_blue font_second font18 semibold"><i class="fa fa-phone blue right15"></i>Call sales at +1 555 444 33 22</a>
+			<div class="clearfix"></div>
+			<form action="form-handler.php" method="post" class="top40 width770 float_left">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="relative">
+							<i class="fa fa-user line_height50 absolute left20"></i>
+							<input type="text" name="name" placeholder="Full name" class="bottom30 input width_full size50 border border_light_gray focus_blue radius6 padding_left40 padding_right20" />
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="relative">
+							<i class="fa fa-envelope line_height50 absolute left20"></i>
+							<input type="email" name="email" placeholder="Your email" class="bottom30 input width_full size50 border border_light_gray focus_blue radius6 padding_left40 padding_right20" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-5">
+						<div class="relative">
+							<i class="fa fa-phone line_height50 absolute left20"></i>
+							<input type="text" name="phone" placeholder="Your phone" class="bottom30 input width_full size50 border border_light_gray focus_blue radius6 padding_left40 padding_right20" />
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="relative">
+							<i class="fa fa-dollar line_height50 absolute left20"></i>
+							<select name="budget" class="bottom30 input size50 border border_light_gray focus_blue radius6 width_full padding_left40 padding_right20">
+								<option selected disabled>Budget</option>
+								<option>$1 000</option>
+								<option>$5 000</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="relative">
+							<i class="fa fa-users line_height50 absolute left20"></i>
+							<select name="company_size" class="bottom30 input size50 border border_light_gray focus_blue radius6 width_full padding_left40 padding_right20">
+								<option selected disabled>Company Size</option>
+								<option>1-5 people</option>
+								<option>5-15 people</option>
+								<option>more than 15 people</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<textarea name="message" placeholder="Let us know how we can help" class="bottom30 height170 input border border_light_gray focus_blue radius6 width_full padding_sides20 padding_top15 padding_bottom15"></textarea>				
+				<button class="float_right min_width200 btn size60 blue padding_sides25">Send a Message</button>
+				<div class="clearfix"></div>
+			</form>
+			<div class="top40 float_right max_width240 block_right">
+				<div class="font18 font_second semibold">Help</div>
+				<div class="top10 light">
+					Need help? Don't hestiate to ask us somethnig. Email us directly <a href="mailto:info@designmodo.com" class="link dark_blue semibold">info@designmodo.com</a> or call us at <a href="tel:+15554443322" class="link dark_blue semibold">1-555-444-33-22</a>. You can checkout our <a href="#" class="link dark_blue semibold">F.A.Q.</a> and <a href="#" class="link dark_blue semibold">Help</a> page to get more information about our products.
+				</div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+</section>
+<!-- forms alerts -->
+<div class="alert alert-success alert-dismissible alert-form-success" role="alert">
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	Thanks for your message!
+</div>
+<div class="alert alert-warning alert-dismissible alert-form-check-fields" role="alert">
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	Please, fill in required fields.
+</div>
+<div class="alert alert-danger alert-dismissible alert-form-error" role="alert">
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	An error occurred while sending data :(
+</div>
+<!-- popup with video -->
+<div class="overlay"></div>
+
+<div class="video_popup">
+	<a class="close">
+		<img srcset="i/close_white.png 1x, i/close_white_2x.png 2x" src="i/close_white.png" alt="" />
+	</a>
+	<div class="flex align_center justify_center width_full height_full iframe_container"></div>
+</div>
+
+	<script src="../../js/slick.min.js"></script>
+	<script src="../../js/aos.min.js"></script>
+	<script src="../../js/jquery.maskedinput.min.js"></script>
+	<script src="../../js/script.js"></script>
+
+	</body>
+</html>

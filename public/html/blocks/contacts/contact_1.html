@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" >
+		<title>Startup Framework 2.0</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="icon" href="../../i/favicon.ico" type="image/x-icon">
+		<link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700,800,900|Nunito+Sans:200,300,400,600,700,800,900" rel="stylesheet">
+		<link href="../../css/style.css" rel="stylesheet" />
+		<script src="../../js/jquery.min.js"></script>
+		<script src="../../js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyDP6Ex5S03nvKZJZSvGXsEAi3X_tFkua4U"></script>
+	</head> 
+	<body>
+<!-- Contact 1 -->
+
+<section class="contact_1 padding_top140 padding_bottom130">
+	<div class="container nopadding white text-center">
+		<h2 class="font42 font_second light">Let's Talk</h2>
+		<form action="form-handler.php" method="post" class="max_width770 margin_auto top55">
+			<div class="row">
+				<div class="col-md-6">
+					<input type="text" name="name" placeholder="Your full name" class="bottom30 input size60 border border_transparent_white focus_white radius6 width_full padding_sides20" />
+				</div>
+				<div class="col-md-6">
+					<input type="email" name="email" placeholder="Your e-mail" class="bottom30 input size60 border border_transparent_white focus_white radius6 width_full padding_sides20" />
+				</div>
+			</div>
+			<textarea name="message" placeholder="Your message" class="bottom20 input size60 border border_transparent_white focus_white radius6 width_full padding_sides20"></textarea>
+			<div class="row justify-content-between align-items-center">
+				<div class="col-md-6 text-md-left text-center">
+					<input type="checkbox" name="send_copy" class="hidden" id="contact_1_checkbox" checked />
+					<label for="contact_1_checkbox" class="checkbox check_green border_light_gray white radius4">Send me a copy</label>
+				</div>
+				<div class="col-md-6 text-md-right text-center padding_top10">
+					<button class="btn size50 red font16 radius6 padding_sides25">Send a Message</button>
+				</div>
+			</div>
+			<div class="top60 font14 uppercase spacing20 separate">or call us</div>
+			<a href="tel:+15555055050" class="top30 white link font42 light">+1 555 505 5050</a>
+		</form>
+	</div>
+</section>
+<!-- forms alerts -->
+<div class="alert alert-success alert-dismissible alert-form-success" role="alert">
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	Thanks for your message!
+</div>
+<div class="alert alert-warning alert-dismissible alert-form-check-fields" role="alert">
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	Please, fill in required fields.
+</div>
+<div class="alert alert-danger alert-dismissible alert-form-error" role="alert">
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	An error occurred while sending data :(
+</div>
+<!-- popup with video -->
+<div class="overlay"></div>
+
+<div class="video_popup">
+	<a class="close">
+		<img srcset="i/close_white.png 1x, i/close_white_2x.png 2x" src="i/close_white.png" alt="" />
+	</a>
+	<div class="flex align_center justify_center width_full height_full iframe_container"></div>
+</div>
+
+	<script src="../../js/slick.min.js"></script>
+	<script src="../../js/aos.min.js"></script>
+	<script src="../../js/jquery.maskedinput.min.js"></script>
+	<script src="../../js/script.js"></script>
+
+	</body>
+</html>
