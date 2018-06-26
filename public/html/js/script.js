@@ -67,19 +67,53 @@ $("form").submit(function(event){
 		var posting = $.post(url, term);
 		posting
 		.done(function(data){
-			if(data.messages[0] == "ok"){
-				$(".alert-form-success").fadeIn(200).delay(5000).fadeOut(200);
-			}else{
-				$(".alert-form-error").fadeIn(200).delay(5000).fadeOut(200);
-			}
+			var messageToDisplay = getMessageFromResponse(data);
+			$(".alert-form-success").html(messageToDisplay);
+			setupReferralCopyPaste('referralLink');
+			$(".alert-form-success").fadeIn(200); //.delay(5000).fadeOut(200);
 		})
-		.fail(function(){
+		.fail(function(error){
+			var messageToDisplay = getMessageFromResponse(error.responseJSON);
+			$(".alert-form-error").html(messageToDisplay);
 			$(".alert-form-error").fadeIn(200).delay(5000).fadeOut(200);
 		});
 	}else{
 		$(".alert-form-check-fields").fadeIn(200).delay(5000).fadeOut(200);
 	}
 });
+
+function getMessageFromResponse(data) {
+	switch(data.code) {
+		case 200: return '👍 You are in! Get credit spreading the word: <span id="referralLink" style="font-weight: bold">' + data.referral + ' 👈 (click to copy)</span>';
+			break;
+		case 409: return '😲 This email is already in the wait list.';
+			break;
+		case 404: 
+		case 500: return '😰 Is not you, is us... An error happened on our end.';
+			break;
+	}
+}
+
+function setupReferralCopyPaste(elementId) {
+
+	// Element to copy inner text from
+	var link = document.querySelector('#' + elementId);
+
+	// Attach event
+	link.onclick = function() {
+		document.execCommand('copy');
+	}
+
+	// Customize event
+	link.addEventListener('copy', function(event) {
+		event.preventDefault();
+		if(event.clipboardData) {
+			event.clipboardData.setData('text/plain', link.innerText);
+			console.log(event.clipboardData.getData('text'));
+			link.innerText = link.innerText.replace(' 👈 (click to copy)', ' 👌 Copied!');
+		}
+	});
+}
 
 // Function to add style to form, when user clicks to input inside it
 
