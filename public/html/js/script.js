@@ -139,9 +139,9 @@ function getReferralLinkFromURL() {
 
 function redirectToThankyou(data) {
 	switch($('#emailingPage').val()) {
-		case 'contact': window.location.replace('http://localhost:3000/html/thankyouContact.html');
+		case 'contact': window.location.replace(CONSTANTS.WEBSITE_URL_ENDPOINT + '/html/thankyouContact.html');
 			break;
-		default: window.location.replace('http://localhost:3000/html/thankyou.html?referral=' + encodeURIComponent(data.referral));
+		default: window.location.replace(CONSTANTS.WEBSITE_URL_ENDPOINT + '/html/thankyou.html?referral=' + encodeURIComponent(data.referral));
 	}
 }
 
