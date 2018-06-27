@@ -1,6 +1,6 @@
 // Scroll.js
 
-const CONSTANTS = require('../../../CONSTANTS.js');
+const WEBSITE_URL_ENDPOINT = 'http://messengersell.com/';
 
 $(window).on('popstate',function(e){
 	e.preventDefault();
