@@ -10,6 +10,7 @@
 		<link href="css/style.css" rel="stylesheet" />
 		<script src="js/jquery.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
+		<script src="js/script.js"></script>
 	</head> 
 	<body>
 
@@ -73,7 +74,9 @@
 					<div class="top20 max_width470 block_left">
 						<h2 class="font42 font_second light dark_gray">Don't keep it a secret!</h2>
 						<div class="top30 bottom70 font18 light dark_blue text">
-							Share Messengersell with your friends! This is your personal referral URL, just copy, paste, and share it!
+							Share Messengersell with your friends! This is your personal referral URL:
+							<h4 id="referralLink"><script>document.write(getReferralLinkFromURL());</script>📋</h4>
+							Just click to copy and share it!
 						</div>
 						<div class="max_width370 bottom55 block">
 							<div class="font22 light title"><i class="fa fa-check blue right15"></i>2 friends sign up</div>
@@ -146,7 +149,13 @@
 	<script src="js/slick.min.js"></script>
 	<script src="js/aos.min.js"></script>
 	<script src="js/jquery.maskedinput.min.js"></script>
-	<script src="js/script.js"></script>
+
+
+	<script type="text/javascript">
+		$( document ).ready(function() {
+		   setupReferralCopyPaste('referralLink');
+		});
+	</script>
 
 	</body>
 </html>

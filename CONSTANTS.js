@@ -1,6 +1,6 @@
 var exports = module.exports = {};
 
-exports.WEBSITE_URL_ENDPOINT = WEBSITE_URL_ENDPOINT = process.env.WEBSITE_URL_ENDPOINT;; 
+exports.WEBSITE_URL_ENDPOINT = WEBSITE_URL_ENDPOINT = process.env.WEBSITE_URL_ENDPOINT || 'http://cb3094d2.ngrok.io'; 
 
 // Email constants
 exports.NAME_PLACEHOLDER = NAME_PLACEHOLDER = 'NAME_PLACEHOLDER';

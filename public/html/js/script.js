@@ -69,8 +69,9 @@ $("form").submit(function(event){
 		.done(function(data){
 			var messageToDisplay = getMessageFromResponse(data);
 			$(".alert-form-success").html(messageToDisplay);
-			setupReferralCopyPaste('referralLink');
+			// setupReferralCopyPaste('referralLink');
 			$(".alert-form-success").fadeIn(200); //.delay(5000).fadeOut(200);
+			window.location.replace('http://localhost:3000/html/thankyou.html?referral=' + encodeURIComponent(data.referral));
 		})
 		.fail(function(error){
 			var messageToDisplay = getMessageFromResponse(error.responseJSON);
@@ -84,7 +85,7 @@ $("form").submit(function(event){
 
 function getMessageFromResponse(data) {
 	switch(data.code) {
-		case 200: return '👍 You are in! Get credit spreading the word: <span id="referralLink" style="font-weight: bold">' + data.referral + ' 👈 (click to copy)</span>';
+		case 200: return '👍 Email sent!';
 			break;
 		case 409: return '😲 This email is already in the wait list.';
 			break;
@@ -108,11 +109,24 @@ function setupReferralCopyPaste(elementId) {
 	link.addEventListener('copy', function(event) {
 		event.preventDefault();
 		if(event.clipboardData) {
-			event.clipboardData.setData('text/plain', link.innerText);
+			event.clipboardData.setData('text/plain', link.innerText.replace('📋', ''));
 			console.log(event.clipboardData.getData('text'));
-			link.innerText = link.innerText.replace(' 👈 (click to copy)', ' 👌 Copied!');
+			link.innerText = link.innerText.replace('📋', ' 👍');
 		}
 	});
+}
+
+function scrollToBottom() {
+	$("html, body").animate({ scrollTop: $(document).height() - $(window).height() });
+}
+
+function getReferralLinkFromURL() {
+	var url_string = window.location.href; //window.location.href
+	console.log('The URL string: ' + url_string);
+	var url = new URL(url_string);
+	var referralURL = url.searchParams.get("referral");
+	console.log(referralURL);
+	return referralURL;
 }
 
 // Function to add style to form, when user clicks to input inside it
