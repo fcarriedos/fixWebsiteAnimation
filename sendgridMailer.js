@@ -23,6 +23,7 @@ const outgoingEmailTemplate = {
     type: null,
     contactEmail: null,
     confirmationHash: null,
+    originalText: null,
     message: message
 };
 
@@ -95,7 +96,8 @@ var getOutgoingEmailTemplate = function getOutgoingEmailTemplate(to, type, refer
             outgoingMessage.html = CONSTANTS.EMAIL_WAITINGLIST_HTML_BODY.replace(CONSTANTS.EMAIL_ACTIVATION_PLACEHOLDER, confirmationHash);
             break;
 
-        case CONSTANTS.EMAIL_CONTACT_TYPE: 
+        case CONSTANTS.EMAIL_CONTACT_TYPE:
+            outgoingEmail.originalText = messageText;
             outgoingEmail.type = CONSTANTS.EMAIL_CONTACT_TYPE;
             outgoingEmail.contactEmail = contactEmail;
             outgoingMessage.subject = CONSTANTS.EMAIL_CONTACT_SUBJECT;
@@ -104,6 +106,7 @@ var getOutgoingEmailTemplate = function getOutgoingEmailTemplate(to, type, refer
                                     .replace(CONSTANTS.EMAIL_PLACEHOLDER, contactEmail)
                                     .replace(CONSTANTS.MESSAGE_PLACEHOLDER, messageText);
             outgoingMessage.html = outgoingMessage.text;
+
             break;
 
         default: console.log('sendgridMailer.getEmailTemplate()[ERROR]: un-recognized email type ' + type);
@@ -113,6 +116,7 @@ var getOutgoingEmailTemplate = function getOutgoingEmailTemplate(to, type, refer
     }
 
     outgoingEmail.message = outgoingMessage;
+    console.log('Just composed template: ' + JSON.stringify(outgoingEmail, null, 2));
     return outgoingEmail;
 }
 
@@ -140,7 +144,7 @@ var sendEmail = function sendEmail(outgoingEmail, name, res, refererId) {
                 break;
             case CONSTANTS.EMAIL_CONTACT_TYPE:
                 console.log('sendgridMailer.sendEmail(): registering ' + CONSTANTS.EMAIL_CONTACT_TYPE + ' email');
-                recordContactEmailResult(name, outgoingEmail.contactEmail, outgoingEmail.message.to, outgoingEmail.type, outgoingEmail.message.message, sendingResult, res);
+                recordContactEmailResult(name, outgoingEmail.contactEmail, outgoingEmail.message.to, outgoingEmail.type, outgoingEmail.originalText, sendingResult, res);
                 break;
             default: 
                 console.log('sendgridMailer.sendEmail()[ERROR]: SHOULD NOT HAPPEN, undefined email type made it to register.');

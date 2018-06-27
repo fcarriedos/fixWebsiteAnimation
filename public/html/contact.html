@@ -56,7 +56,7 @@
 			<h1 class="font_second light font62 text-center bottom50">Contact</h1>
 			
 			<div class='margin_auto'>
-				<form action="form-handler.php" method="post" class="max_width470 bg_white padding_sides50 padding_top55 padding_bottom35 radius10 dark_blue boxshadow" style="margin:auto">
+				<form action="/api/contact" method="post" class="max_width470 bg_white padding_sides50 padding_top55 padding_bottom35 radius10 dark_blue boxshadow" style="margin:auto">
 					<div class="row">
 						<div class="col-sm-12">
 							<div class="bottom35 input_block">
@@ -66,13 +66,13 @@
 						</div>
 					</div>
 					<div class="bottom10 font14 semibold uppercase spacing15">Your email</div>
-					<input type="email" name="email" placeholder="name@mail.com" class="bottom35 input width_full size50 border border_light_gray focus_green radius6 padding_sides20" />
+					<input type="email" name="contactemail" placeholder="name@mail.com" class="bottom35 input width_full size50 border border_light_gray focus_green radius6 padding_sides20" />
 					<div class="bottom10 font14 semibold uppercase spacing15">Your Message</div>
 					<textarea name="message" class="bottom30 height110 input border border_light_gray focus_green radius6 width_full padding_sides20"></textarea>				
 					<div class="row">
 						<div class="col-sm-7">
-							<input type="checkbox" name="send_copy" class="hidden" id="contact_4_checkbox" />
-							<label for="contact_4_checkbox" class="top15 bottom30 checkbox check_green border_light_gray radius4 font14">Send me a copy</label>
+							<!--<input type="checkbox" name="send_copy" class="hidden" id="contact_4_checkbox" />
+							<label for="contact_4_checkbox" class="top15 bottom30 checkbox check_green border_light_gray radius4 font14">Send me a copy</label>-->
 						</div>
 						<div class="col-sm-5">
 							<button class="btn size50 blue radius6 width_full padding_sides25">Send<i class="fa fa-angle-right left10"></i></button>
@@ -89,7 +89,7 @@
 
 	<section class="form_12 bg_blue padding_top100 padding_bottom100">
 		<div class="container nopadding text-center white">
-			<form action="form-handler.php" method="post">
+			<form action="/api/lead" method="post">
 				<div class="margin_auto top50 inner">
 					<div class="row">
 						<div class="col-sm-3">
@@ -150,6 +150,8 @@
 		<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 		An error occurred while sending data :(
 	</div>
+
+	<input type="hidden" id="emailingPage" value="contact">
 
 	<script src="js/slick.min.js"></script>
 	<script src="js/aos.min.js"></script>

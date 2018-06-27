@@ -71,7 +71,7 @@ $("form").submit(function(event){
 			$(".alert-form-success").html(messageToDisplay);
 			// setupReferralCopyPaste('referralLink');
 			$(".alert-form-success").fadeIn(200); //.delay(5000).fadeOut(200);
-			window.location.replace('http://localhost:3000/html/thankyou.html?referral=' + encodeURIComponent(data.referral));
+			redirectToThankyou();
 		})
 		.fail(function(error){
 			var messageToDisplay = getMessageFromResponse(error.responseJSON);
@@ -84,10 +84,18 @@ $("form").submit(function(event){
 });
 
 function getMessageFromResponse(data) {
+	console.log(JSON.stringify(data, null, 2));
 	switch(data.code) {
 		case 200: return '👍 Email sent!';
 			break;
 		case 409: return '😲 This email is already in the wait list.';
+			break;
+		case 422: 
+			var messageToReturn = '😲 ';
+			for (error in data.messages) {
+				messageToReturn += data.messages[error].msg + ' ';
+			}
+			return messageToReturn;
 			break;
 		case 404: 
 		case 500: return '😰 Is not you, is us... An error happened on our end.';
@@ -127,6 +135,14 @@ function getReferralLinkFromURL() {
 	var referralURL = url.searchParams.get("referral");
 	console.log(referralURL);
 	return referralURL;
+}
+
+function redirectToThankyou() {
+	switch($('#emailingPage').val()) {
+		case 'contact': window.location.replace('http://localhost:3000/html/thankyouContact.html');
+			break;
+		default: window.location.replace('http://localhost:3000/html/thankyou.html?referral=' + encodeURIComponent(data.referral));
+	}
 }
 
 // Function to add style to form, when user clicks to input inside it

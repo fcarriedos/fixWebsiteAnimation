@@ -153,7 +153,7 @@ webapp.post('/api/contact',
 	[
 
 	check('contactemail').isEmail().withMessage('Is not a valid email.'),
-	check('name').exists().custom((value) => value.length > 0).withMessage('The name is empty'),
+	check('name').exists().custom((value) => value.length > 0).withMessage('The name is empty.'),
 	check('message').escape()
 
 	],
