@@ -1,5 +1,7 @@
 // Scroll.js
 
+const CONSTANTS = require('../../../CONSTANTS.js');
+
 $(window).on('popstate',function(e){
 	e.preventDefault();
 	var target = window.location.href.split("#")[1];
