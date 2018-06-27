@@ -71,7 +71,7 @@ $("form").submit(function(event){
 			$(".alert-form-success").html(messageToDisplay);
 			// setupReferralCopyPaste('referralLink');
 			$(".alert-form-success").fadeIn(200); //.delay(5000).fadeOut(200);
-			redirectToThankyou();
+			redirectToThankyou(data);
 		})
 		.fail(function(error){
 			var messageToDisplay = getMessageFromResponse(error.responseJSON);
@@ -137,7 +137,7 @@ function getReferralLinkFromURL() {
 	return referralURL;
 }
 
-function redirectToThankyou() {
+function redirectToThankyou(data) {
 	switch($('#emailingPage').val()) {
 		case 'contact': window.location.replace('http://localhost:3000/html/thankyouContact.html');
 			break;
