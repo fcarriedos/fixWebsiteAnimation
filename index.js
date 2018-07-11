@@ -81,7 +81,7 @@ webapp.post('/api/lead',
 			console.log('Received referer token: ' + req.body.referer_token);
 			var refererDatastructure = (encryptionUtility.decypher(req.body.referer_token));
 			console.log('Referer datastructure: ' + refererDatastructure);
-			var parsedDatastructure = JSON.parse(refererDatastructure);
+			//var parsedDatastructure = JSON.parse(refererDatastructure);
 			console.log('Parsed: ' + parsedDatastructure.id);
 			var refererId = (refererDatastructure == null) ? null : JSON.parse(refererDatastructure).id;
 			console.log('index.post(/api/lead): lead refered by user ' + refererId);
