@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" >
+		<title>Startup Framework 2.0</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="icon" href="../../i/favicon.ico" type="image/x-icon">
+		<link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700,800,900|Nunito+Sans:200,300,400,600,700,800,900" rel="stylesheet">
+		<link href="../../css/style.css" rel="stylesheet" />
+		<script src="../../js/jquery.min.js"></script>
+		<script src="../../js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyDP6Ex5S03nvKZJZSvGXsEAi3X_tFkua4U"></script>
+	</head> 
+	<body>
+<!-- Form 13 -->
+
+<section class="form_13 bg_white padding_top90 padding_bottom100">
+	<div class="container nopadding max_width970">
+		<h2 class="font42 font_second light dark_gray text-center">Choose Your Payment Method</h2>
+		<form action="form-handler.php" method="post" class="top60">
+			<div class="bottom30 padding_sides60 padding_top30 padding_bottom45 radius10 relative form_block form_block1 disabled">
+				<div class="absolute font42 icons">
+					<i class="fa fa-cc-paypal"></i>
+				</div>
+				<input type="radio" name="method" class="hidden" id="form_7_radio_not_checked" value="form_block1" />
+				<label for="form_7_radio_not_checked" class="radio check_blue border_light_gray radius_full font18 line_height24 semibold dark_gray">PayPal</label>
+				<div class="left40 font18 light dark_blue text">
+					Safe payment online. Credit card needed. PayPal account is not necessary.
+				</div>
+				<div class="left40 inner">
+					<input type="email" name="email" placeholder="Your e-mail address" disabled class="top30 input size50 border border_light_gray focus_green radius6 width370 padding_sides20" />
+				</div>
+			</div>
+			<div class="bottom30 padding_sides60 padding_top30 padding_bottom30 radius10 relative form_block form_block2">
+				<div class="absolute font42 icons">
+					<i class="fa fa-cc-visa right10"></i>
+					<i class="fa fa-cc-mastercard right10"></i>
+					<i class="fa fa-cc-discover right10"></i>
+					<i class="fa fa-cc-amex"></i>
+				</div>
+				<input type="radio" name="method" class="hidden" id="form_7_radio_checked" value="form_block2" checked />
+				<label for="form_7_radio_checked" class="radio check_blue border_light_gray radius_full font18 line_height24 semibold dark_gray">Credit Card</label>
+				<div class="left40 font18 light dark_blue text">
+					Safe money transfer using your bank account.
+				</div>
+				<div class="left40 top30 max_width800 inner">
+					<div class="width370 float_left right30 bottom35 block">
+						<div class="bottom10 font12 dark_blue semibold uppercase spacing20">Credit Card Number</div>
+						<div class="relative" id="form_13_card_holder">
+							<i class="absolute font24 line_height50 light_gray fa fa-cc-mastercard"></i>
+							<input type="text" name="card" id="form_13_card" class="input size50 border border_light_gray focus_green radius6 width_full padding_left20 padding_right70" onfocus="focusForm('form_13_card_holder');" onblur="focusForm('form_13_card_holder');"/>
+						</div>
+					</div>
+					<div class="width170 float_left bottom35 block">
+						<div class="bottom10 font12 dark_blue semibold uppercase spacing20">Expiration</div>
+						<input type="text" name="exp" id="form_13_expiration" placeholder="MM / YYYY" class="input size50 border border_light_gray focus_green radius6 width_full padding_sides20" />
+					</div>
+					<div class="clearfix"></div>
+					<div class="width370 float_left right30 bottom35 block">
+						<div class="bottom10 font12 dark_blue semibold uppercase spacing20">Cardholder Name</div>
+						<input type="text" name="name" class="input size50 border border_light_gray focus_green radius6 width_full padding_sides20" />
+					</div>
+					<div class="width170 float_left bottom35 block">
+						<div class="bottom10 font12 dark_blue semibold uppercase spacing20">CVV Code</div>
+						<input type="text" name="cvv" class="input size50 border border_light_gray focus_green radius6 width70 padding_sides20" />
+					</div>
+					<div class="width140 float_left left90 block block_last">
+						<button class="top30 btn size50 green font16 radius6 width_full">Checkout <i class="fa fa-angle-right font18 left10"></i></button>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+			</div>
+		</form>
+	</div>
+</section>
+<!-- forms alerts -->
+<div class="alert alert-success alert-dismissible alert-form-success" role="alert">
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	Thanks for your message!
+</div>
+<div class="alert alert-warning alert-dismissible alert-form-check-fields" role="alert">
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	Please, fill in required fields.
+</div>
+<div class="alert alert-danger alert-dismissible alert-form-error" role="alert">
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	An error occurred while sending data :(
+</div>
+<!-- popup with video -->
+<div class="overlay"></div>
+
+<div class="video_popup">
+	<a class="close">
+		<img srcset="i/close_white.png 1x, i/close_white_2x.png 2x" src="i/close_white.png" alt="" />
+	</a>
+	<div class="flex align_center justify_center width_full height_full iframe_container"></div>
+</div>
+
+	<script src="../../js/slick.min.js"></script>
+	<script src="../../js/aos.min.js"></script>
+	<script src="../../js/jquery.maskedinput.min.js"></script>
+	<script src="../../js/script.js"></script>
+
+	</body>
+</html>

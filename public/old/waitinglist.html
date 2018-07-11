@@ -1,0 +1,49 @@
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
+</head>
+<body>
+<form id="theForm" name="theForm" action="/api/lead" method="POST">
+<h2>Get into the waiting list here:</h2><br>
+Name: <input type="text" id="name" name="name" value="" />
+Email: <input type="text" id="email" name="email" value="" />
+<input type="hidden" id="referer_token" name="referer_token" value="" />
+<input type="submit" value="Send" />
+</form>
+<script type="text/javascript">
+
+	var getUrlParameter = function getUrlParameter(sParam) {
+	    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+	        sURLVariables = sPageURL.split('&'),
+	        sParameterName,
+	        i;
+
+	    for (i = 0; i < sURLVariables.length; i++) {
+	        sParameterName = sURLVariables[i].split('=');
+
+	        if (sParameterName[0] === sParam) {
+	            return sParameterName[1] === undefined ? true : sParameterName[1];
+	        }
+	    }
+	};
+
+	$( document ).ready(function() {
+
+		var email = getUrlParameter('email');
+		var referer_token = getUrlParameter('referer_token');
+		if (email != undefined) {
+			$('#email').val(email);	
+			$('#email').prop('readonly', true);
+			$('#theForm').prop('action', '/api/lead/confirmreferral');
+		} else if (referer_token != undefined) {
+			$('#referer_token').val(referer_token);	
+		}
+
+
+	
+		console.log('Form updated');
+
+	});
+</script>
+</body>
+</html>

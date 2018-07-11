@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" >
+		<title>Startup Framework 2.0</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="icon" href="../../i/favicon.ico" type="image/x-icon">
+		<link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700,800,900|Nunito+Sans:200,300,400,600,700,800,900" rel="stylesheet">
+		<link href="../../css/style.css" rel="stylesheet" />
+		<script src="../../js/jquery.min.js"></script>
+		<script src="../../js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyDP6Ex5S03nvKZJZSvGXsEAi3X_tFkua4U"></script>
+	</head> 
+	<body>
+<!-- Form 3 -->
+
+<section class="form_3 bg_white padding_top140 padding_bottom140">
+	<div class="container nopadding max_width970">
+		<img srcset="../../i/form_3_img.png 1x, ../../i/form_3_img_2x.png 2x" src="../../i/form_3_img.png" class="top85 float_left max_width370 img" alt="" />	
+		<form action="form-handler.php" method="post" class="left500">
+			<h2 class="font42 font_second dark_gray">Create an Account</h2>
+			<div class="top10 bottom50 medium_gray text">By signing up, you agree to the <a href="#" class="blue link underline">Terms of Service</a>.</div>
+			<div class="bottom10 font14 semibold dark_blue uppercase spacing20">E-mail</div>
+			<input type="email" name="email" placeholder="Your e-mail" class="bottom35 input size60 border border_light_gray focus_green radius6 width_full padding_sides20" />
+			<div class="row">
+				<div class="col-md-6 half">
+					<div class="bottom10 font14 semibold dark_blue uppercase spacing20">Password</div>
+					<input type="password" name="password" placeholder="Create password" class="bottom25 input size60 border border_light_gray focus_green radius6 width_full padding_sides20" />
+				</div>
+				<div class="col-md-6 half">
+					<div class="bottom10 font14 semibold dark_blue uppercase spacing20">Confirm</div>
+					<input type="password" name="password2" placeholder="Retype password" class="bottom25 input size60 border border_light_gray focus_green radius6 width_full padding_sides20" />
+				</div>
+			</div>
+			<div class="top30 buttons">
+				<button class="btn size50 green font16 radius6 padding_sides30">Sign Up</button>
+				<span class="inline_block font12 medium_gray uppercase line_height50 sides25 smalltext">or</span>
+				<a href="#" class="link light_gray font22 line_height50 right20"><i class="fa fa-facebook-square"></i></a>
+				<a href="#" class="link light_gray font22 line_height50 right20"><i class="fa fa-twitter"></i></a>
+				<a href="#" class="link light_gray font22 line_height50"><i class="fa fa-google-plus"></i></a>
+			</div>
+		</form>
+	</div>
+</section>
+<!-- forms alerts -->
+<div class="alert alert-success alert-dismissible alert-form-success" role="alert">
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	Thanks for your message!
+</div>
+<div class="alert alert-warning alert-dismissible alert-form-check-fields" role="alert">
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	Please, fill in required fields.
+</div>
+<div class="alert alert-danger alert-dismissible alert-form-error" role="alert">
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	An error occurred while sending data :(
+</div>
+<!-- popup with video -->
+<div class="overlay"></div>
+
+<div class="video_popup">
+	<a class="close">
+		<img srcset="i/close_white.png 1x, i/close_white_2x.png 2x" src="i/close_white.png" alt="" />
+	</a>
+	<div class="flex align_center justify_center width_full height_full iframe_container"></div>
+</div>
+
+	<script src="../../js/slick.min.js"></script>
+	<script src="../../js/aos.min.js"></script>
+	<script src="../../js/jquery.maskedinput.min.js"></script>
+	<script src="../../js/script.js"></script>
+
+	</body>
+</html>

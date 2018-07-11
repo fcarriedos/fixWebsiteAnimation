@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" >
+		<title>Startup Framework 2.0</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="icon" href="../../i/favicon.ico" type="image/x-icon">
+		<link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700,800,900|Nunito+Sans:200,300,400,600,700,800,900" rel="stylesheet">
+		<link href="../../css/style.css" rel="stylesheet" />
+		<script src="../../js/jquery.min.js"></script>
+		<script src="../../js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyDP6Ex5S03nvKZJZSvGXsEAi3X_tFkua4U"></script>
+	</head> 
+	<body>
+<!-- Form 6 -->
+
+<section class="form_6 padding_top100 padding_bottom100">
+	<div class="container nopadding">
+		<form action="form-handler.php" method="post" class="bg_white margin_auto max_width570 radius10 padding_sides100 padding_bottom25 text-center">
+			<h2 class="bottom55 font42 font_second light dark_gray padding_top65">Sign In</h2>
+			<div class="bottom30 relative input_holder">
+				<i class="fa fa-envelope line_height50 dark_blue absolute left20"></i>
+				<input type="email" name="email" placeholder="Email" class="input size50 border border_light_gray focus_blue radius6 width_full padding_left40 padding_right20" />
+			</div>
+			<div class="bottom20 relative input_holder">
+				<i class="fa fa-lock line_height50 dark_blue absolute left20"></i>
+				<input type="password" name="password" placeholder="Password" class="input size50 border border_light_gray focus_blue radius6 width_full padding_left40 padding_right20" />
+			</div>
+			<div class="text-right text">
+				<a href="#" class="link blue underline">Forgot Password?</a>
+			</div>
+			<button class="top30 btn size60 red min_width230">Sign In</button>
+			<div class="top60 hr light_gray width_full height1"></div>
+			<div class="top20 medium_gray text">Don't have an account? <a href="#" class="link blue underline">Sign Up</a></div>
+		</form>
+	</div>
+</section>
+<!-- forms alerts -->
+<div class="alert alert-success alert-dismissible alert-form-success" role="alert">
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	Thanks for your message!
+</div>
+<div class="alert alert-warning alert-dismissible alert-form-check-fields" role="alert">
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	Please, fill in required fields.
+</div>
+<div class="alert alert-danger alert-dismissible alert-form-error" role="alert">
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	An error occurred while sending data :(
+</div>
+<!-- popup with video -->
+<div class="overlay"></div>
+
+<div class="video_popup">
+	<a class="close">
+		<img srcset="i/close_white.png 1x, i/close_white_2x.png 2x" src="i/close_white.png" alt="" />
+	</a>
+	<div class="flex align_center justify_center width_full height_full iframe_container"></div>
+</div>
+
+	<script src="../../js/slick.min.js"></script>
+	<script src="../../js/aos.min.js"></script>
+	<script src="../../js/jquery.maskedinput.min.js"></script>
+	<script src="../../js/script.js"></script>
+
+	</body>
+</html>

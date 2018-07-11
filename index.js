@@ -20,14 +20,9 @@ webapp.use(bodyParser.urlencoded({ extended: true }));
 // Web pages
 webapp
   .use(express.static(path.join(__dirname, 'public')))
-  .set('views', path.join(__dirname, 'views'))
-  .set('view engine', 'ejs')
-  .get('/', (req, res) => res.render('pages/index'));
-
-
-webapp.get('/test', (req, res) => {
-	console.log('Cipher-decipher ' + encryptionUtility.decypher(encryptionUtility.cypher(req.query.r)));
-});
+  .set('views', path.join(__dirname, 'views'));
+  // .set('view engine', 'ejs');
+  // .get('/', (req, res) => res.render('pages/index'));
 
 
 // Process referrals
