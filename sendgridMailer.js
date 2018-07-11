@@ -66,7 +66,7 @@ exports.confirmEmail = function confirmEmail(email, res) {
 
 exports.sendWaitingListEmail = function sendWaitingListEmail(name, to, refererId, res) {
     console.log("sendgridMailer.sendWaitingListEmail(): Sending " + CONSTANTS.EMAIL_WAITINGLIST_TYPE + " to " + to);
-    var outgoingEmail = getOutgoingEmailTemplate(to, CONSTANTS.EMAIL_WAITINGLIST_TYPE);
+    var outgoingEmail = getOutgoingEmailTemplate(to, CONSTANTS.EMAIL_WAITINGLIST_TYPE, null, null, name);
     sendEmail(outgoingEmail, name, res, refererId);
 }
 
@@ -125,7 +125,7 @@ var getOutgoingEmailTemplate = function getOutgoingEmailTemplate(to, type, refer
 
 
 var sendEmail = function sendEmail(outgoingEmail, name, res, refererId) {
-    console.log('sendgridMailer.sendEmail(): ' + JSON.stringify(outgoingEmail, null, 2));
+    // console.log('sendgridMailer.sendEmail(): ' + JSON.stringify(outgoingEmail, null, 2));
     if (outgoingEmail.type == null) {
         console.log('sendgridMailer.sendEmail(): undefined email type to ' + outgoingMessage.to);
         sendResultResponse(404, 404, ['undefined message type'], null, res);
