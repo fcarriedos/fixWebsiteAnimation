@@ -143,6 +143,7 @@ function redirectToThankyou(data) {
 	switch($('#emailingPage').val()) {
 		case 'contact': window.location.replace(WEBSITE_URL_ENDPOINT + 'thankyouContact.html');
 			break;
+		case 'waitList': window.location.replace(WEBSITE_URL_ENDPOINT + 'thankyouContact.html');
 		default: window.location.replace(WEBSITE_URL_ENDPOINT + 'thankyou.html?referral=' + encodeURIComponent(data.referral));
 	}
 }
