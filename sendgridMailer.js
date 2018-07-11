@@ -92,8 +92,9 @@ var getOutgoingEmailTemplate = function getOutgoingEmailTemplate(to, type, refer
             outgoingEmail.confirmationHash = confirmationHash;
             outgoingEmail.type = CONSTANTS.EMAIL_WAITINGLIST_TYPE;
             outgoingMessage.subject = CONSTANTS.EMAIL_WAITINGLIST_SUBJECT;
-            outgoingMessage.text = CONSTANTS.EMAIL_WAITINGLIST_TEXT_BODY.replace(CONSTANTS.EMAIL_ACTIVATION_PLACEHOLDER, confirmationHash);
-            outgoingMessage.html = CONSTANTS.EMAIL_WAITINGLIST_HTML_BODY.replace(CONSTANTS.EMAIL_ACTIVATION_PLACEHOLDER, confirmationHash);
+            outgoingMessage.text = CONSTANTS.EMAIL_WAITINGLIST_TEXT_BODY.replace(CONSTANTS.EMAIL_ACTIVATION_TOKEN_PLACEHOLDER, confirmationHash);
+            outgoingMessage.html = CONSTANTS.EMAIL_WAITINGLIST_HTML_BODY.replace(CONSTANTS.EMAIL_ACTIVATION_TOKEN_PLACEHOLDER, confirmationHash)
+                                                                        .replace(CONSTANTS.NAME_PLACEHOLDER, name);
             break;
 
         case CONSTANTS.EMAIL_CONTACT_TYPE:

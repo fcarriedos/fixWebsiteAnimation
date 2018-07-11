@@ -1,5 +1,7 @@
 var exports = module.exports = {};
 
+const fs = require('fs');
+
 exports.WEBSITE_URL_ENDPOINT = WEBSITE_URL_ENDPOINT = process.env.WEBSITE_URL_ENDPOINT || 'http://cb3094d2.ngrok.io'; 
 
 // Email constants
@@ -10,15 +12,17 @@ exports.MESSAGE_PLACEHOLDER = MESSAGE_PLACEHOLDER = 'MESSAGE_PLACEHOLDER';
 // Lead email
 exports.EMAIL_CONTACT_ADDRESS = EMAIL_CONTACT_ADDRESS = 'contact@messengersell.com';
 exports.EMAIL_FROM_ADDRESS = EMAIL_FROM_ADDRESS = 'no-reply@messengersell.com';
-exports.EMAIL_ACTIVATION_PLACEHOLDER = EMAIL_ACTIVATION_PLACEHOLDER = 'EMAILPLACEHOLDER';
+exports.EMAIL_ACTIVATION_TOKEN_PLACEHOLDER = EMAIL_ACTIVATION_TOKEN_PLACEHOLDER = 'EMAILACTIVACTIONTOKENPLACEHOLDER';
 exports.EMAIL_ACTIVATION_REFERRAL_PLACEHOLDER = EMAIL_ACTIVATION_REFERRAL_PLACEHOLDER = 'EMAILREFERRALPLACEHOLDER';
+exports.WEBSITE_URL_ENDPOINT_PLACEHOLDER = WEBSITE_URL_ENDPOINT_PLACEHOLDER = 'WEBSITEURLENDPOINTPLACEHOLDER';
 exports.EMAIL_WAITINGLIST_TYPE = EMAIL_WAITINGLIST_TYPE = 'waitinglist';
 exports.EMAIL_WAITINGLIST_SUBJECT = EMAIL_WAITINGLIST_SUBJECT = '💳 MessengerSell account ready!';
-exports.EMAIL_ACTIVATION_LINK = EMAIL_ACTIVATION_LINK = '<a href="' + WEBSITE_URL_ENDPOINT + '/api/lead/confirm?token=' + EMAIL_ACTIVATION_PLACEHOLDER + '" target="blank">activate now!</a>';
+exports.EMAIL_ACTIVATION_LINK = EMAIL_ACTIVATION_LINK = '<a href="' + WEBSITE_URL_ENDPOINT + '/api/lead/confirm?token=' + EMAIL_ACTIVATION_TOKEN_PLACEHOLDER + '" target="blank">activate now!</a>';
 exports.EMAIL_REFERRAL_URL = EMAIL_REFERRAL_URL = WEBSITE_URL_ENDPOINT + '/r/' + EMAIL_ACTIVATION_REFERRAL_PLACEHOLDER;
 exports.EMAIL_REFERRAL_LINK = EMAIL_REFERRAL_LINK = '<a href="' + EMAIL_REFERRAL_URL + '">refer us</a>';
-exports.EMAIL_WAITINGLIST_TEXT_BODY = EMAIL_WAITINGLIST_TEXT_BODY = 'Please, open the link in your browser to confirm you email: ' + EMAIL_ACTIVATION_LINK;
-exports.EMAIL_WAITINGLIST_HTML_BODY = EMAIL_WAITINGLIST_HTML_BODY = 'Please, click the link to confirm your email: ' + EMAIL_ACTIVATION_LINK;
+exports.EMAIL_WAITINGLIST_TEXT_BODY = EMAIL_WAITINGLIST_TEXT_BODY = 'From MessengerSell.com, please open the link in your browser to confirm you email: ' + EMAIL_ACTIVATION_LINK;
+// exports.EMAIL_WAITINGLIST_HTML_BODY = EMAIL_WAITINGLIST_HTML_BODY = 'Please, click the link to confirm your email: ' + EMAIL_ACTIVATION_LINK;
+exports.EMAIL_WAITINGLIST_HTML_BODY = EMAIL_WAITINGLIST_HTML_BODY = fs.readFileSync(__dirname + '/private/email/index.html').toString();
 exports.EMAIL_ACTIVATION_SUCCESS_HTML_BODY = EMAIL_ACTIVATION_SUCCESS_HTML_BODY = '<h2>Done! 🙌</h2> You have confirmed your email address and will be included in the early access group. Thanks a lot for giving us a try! 🙇. Get free credit, ' + EMAIL_REFERRAL_LINK;
 exports.EMAIL_ACTIVATION_ALREADY_HTML_BODY = EMAIL_ACTIVATION_ALREADY_HTML_BODY = '<h2>This email was already confirmed!</h2>But thanks for letting us know again! 👍';
 exports.EMAIL_ACTIVATION_ERROR_HTML_BODY = EMAIL_ACTIVATION_ERROR_HTML_BODY = '<h2>Sorry! 🤦</h2> An error happened and we could not activate your email. Could you please try again later? 🙏 Thanks a lot for your understanding! 🙇';
