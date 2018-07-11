@@ -83,7 +83,7 @@ webapp.post('/api/lead',
 			console.log('Referer datastructure: ' + refererDatastructure);
 			//var parsedDatastructure = JSON.parse(refererDatastructure);
 			// console.log('Parsed: ' + parsedDatastructure.id);
-			var refererId = (refererDatastructure == null) ? null : JSON.parse(refererDatastructure.replace(/"/g,'')).id;
+			var refererId = (refererDatastructure == null) ? null : JSON.parse(refererDatastructure.replace(/\"/g,'')).id;
 			console.log('index.post(/api/lead): lead refered by user ' + refererId);
 			// DB checking
 			dbclient.connect(CONSTANTS.MONGODB_URL, function(dbConnectionErr, db) {
