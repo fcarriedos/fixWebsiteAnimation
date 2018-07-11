@@ -80,6 +80,8 @@ exports.sendContactEmail = function sendContactEmail(name, email, message, res) 
 
 var getOutgoingEmailTemplate = function getOutgoingEmailTemplate(to, type, refererName, refererEmail, name, contactEmail, messageText) {
 
+    console.log('Invoked with: ' + to + ' ' + type + ' ' + refererName + ' ' + refererEmail + ' ' + name + ' ' + contactEmail + ' ' + messageText);
+
     var outgoingEmail = JSON.parse(JSON.stringify(outgoingEmailTemplate));
     var outgoingMessage = JSON.parse(JSON.stringify(message));
     outgoingMessage.to = to;
