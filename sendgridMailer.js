@@ -54,7 +54,7 @@ exports.confirmEmail = function confirmEmail(email, res) {
                         console.log('sendgridMailer.confirmEmail(): successfully confirmed email ' + email);
                         var userId = oldVersion.value['_id'];
                         // var userDatastructure = getUserDatastructure(userId);
-                        responseToSend = CONSTANTS.EMAIL_ACTIVATION_SUCCESS_HTML_BODY.replace(/EMAILREFERRALPLACEHOLDER/g, EMAIL_REFERRAL_URL.replace('EMAIL_ACTIVATION_REFERRAL_PLACEHOLDER', getReferralToken(email)));
+                        responseToSend = CONSTANTS.EMAIL_ACTIVATION_SUCCESS_HTML_BODY.replace(/EMAIL_REFERRAL_URL/g, EMAIL_REFERRAL_URL.replace('EMAIL_ACTIVATION_REFERRAL_PLACEHOLDER', getReferralToken(email)));
                     }
                 }
                 return res.send(responseToSend);
