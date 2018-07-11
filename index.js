@@ -79,11 +79,11 @@ webapp.post('/api/lead',
 			var email = req.body.email;
 			var name = req.body.name;
 			console.log('Received referer token: ' + req.body.referer_token);
-			var refererDatastructure = (encryptionUtility.decypher(req.body.referer_token));
+			var refererDatastructure = JSON.parse(JSON.parse((encryptionUtility.decypher(req.body.referer_token))));
 			console.log('Referer datastructure: ' + refererDatastructure);
 			//var parsedDatastructure = JSON.parse(refererDatastructure);
 			// console.log('Parsed: ' + parsedDatastructure.id);
-			var refererId = (refererDatastructure == null) ? null : JSON.parse(refererDatastructure.replace(/\\/g,'')).id;
+			var refererId = (refererDatastructure == null) ? null : JSON.parse(refererDatastructure.replace).id;
 			console.log('index.post(/api/lead): lead refered by user ' + refererId);
 			// DB checking
 			dbclient.connect(CONSTANTS.MONGODB_URL, function(dbConnectionErr, db) {
