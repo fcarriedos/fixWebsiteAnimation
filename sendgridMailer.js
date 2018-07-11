@@ -96,7 +96,7 @@ var getOutgoingEmailTemplate = function getOutgoingEmailTemplate(to, type, refer
             outgoingMessage.subject = CONSTANTS.EMAIL_WAITINGLIST_SUBJECT;
             outgoingMessage.text = CONSTANTS.EMAIL_WAITINGLIST_TEXT_BODY.replace(CONSTANTS.EMAIL_ACTIVATION_TOKEN_PLACEHOLDER, confirmationHash);
             outgoingMessage.html = CONSTANTS.EMAIL_WAITINGLIST_HTML_BODY.replace(CONSTANTS.EMAIL_ACTIVATION_TOKEN_PLACEHOLDER, confirmationHash)
-                                                                        .replace(CONSTANTS.NAME_PLACEHOLDER, name);
+                                                                        .replace(CONSTANTS.NAME_PLACEHOLDER, getFirstNameIfPossible(name));
             break;
 
         case CONSTANTS.EMAIL_CONTACT_TYPE:
@@ -119,7 +119,7 @@ var getOutgoingEmailTemplate = function getOutgoingEmailTemplate(to, type, refer
     }
 
     outgoingEmail.message = outgoingMessage;
-    console.log('Just composed template: ' + JSON.stringify(outgoingEmail, null, 2));
+    // console.log('Just composed template: ' + JSON.stringify(outgoingEmail, null, 2));
     return outgoingEmail;
 }
 
@@ -257,6 +257,14 @@ var getConfirmationHash = function getConfirmationHash(userEmail) {
 
 var getReferralToken = function getReferralToken(userEmail) {
     return crc.crc32(userEmail).toString(16);
+}
+
+
+var getFirstNameIfPossible = function getFirstNameIfPossible(name) {
+    if(name.includes(' ')) {
+        return name.split(' ')[0];
+    }
+    return name;
 }
 
 
