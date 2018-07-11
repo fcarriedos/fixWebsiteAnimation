@@ -25,12 +25,6 @@ webapp
   // .get('/', (req, res) => res.render('pages/index'));
 
 
-webapp.post('/test', (req, res) => {
-	console.log('decyphered: ' + encryptionUtility.decypher(req.body.referer_token));
-	res.send();
-});
-
-
 // Process referrals
 webapp.get('/r/:token', (req, res) => {
 	console.log('index.get(/r): servicing referral request from user with token ' + req.params.token);
@@ -87,7 +81,8 @@ webapp.post('/api/lead',
 			console.log('Received referer token: ' + req.body.referer_token);
 			var refererDatastructure = (encryptionUtility.decypher(req.body.referer_token));
 			console.log('Referer datastructure: ' + refererDatastructure);
-			console.log('Parsed: ' + JSON.stringify(JSON.parse(refererDatastructure)));
+			var parsedDatastructure = JSON.parse(refererDatastructure);
+			console.log('Parsed: ' + parsedDatastructure.id);
 			var refererId = (refererDatastructure == null) ? null : JSON.parse(refererDatastructure).id;
 			console.log('index.post(/api/lead): lead refered by user ' + refererId);
 			// DB checking
