@@ -123,10 +123,10 @@ webapp.post('/api/lead/bot',
 	],
 	// Request processing
 	(req, res) => {
+		res.setHeader('botresponsetype', true); // To provide Chatfuel bot formated response 
 		console.log(JSON.stringify(req.body, null, 2));
 		errors = validationResult(req);
-		res.setHeader('botresponsetype', true);
-		console.log(res.getHeaders()['botresponsetype']);
+
 		if (!errors.isEmpty()) {
 			// Treat errors pointing to blocks.
 			console.log('index.post(/api/lead/bot): errors validating input parameters ' + errors.mapped());

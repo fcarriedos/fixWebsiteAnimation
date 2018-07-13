@@ -232,11 +232,15 @@ var recordSentEmailResult = function recordSentEmailResult(name, to, emailType, 
 
 var sendResultResponse = function sendResultResponse(httpStatus, code, messages, referralToken, res) {
     if (res) { // response could be sent somewhere else
-        var response = { code: code, messages: messages };
-        if (referralToken) {
-            response.referral = CONSTANTS.EMAIL_REFERRAL_URL.replace(CONSTANTS.EMAIL_ACTIVATION_REFERRAL_PLACEHOLDER, referralToken);
+        if (res.getHeaders()['botresponsetype']) { // Chatfuel bot format responses
+            res.status(httpStatus).json({"redirect_to_blocks": ["Lead recorded"]});
+        } else { // Web format responses
+            var response = { code: code, messages: messages };
+            if (referralToken) {
+                response.referral = CONSTANTS.EMAIL_REFERRAL_URL.replace(CONSTANTS.EMAIL_ACTIVATION_REFERRAL_PLACEHOLDER, referralToken);
+            }
+            return res.status(httpStatus).json(response);
         }
-        return res.status(httpStatus).json(response);
     }
 }
 
