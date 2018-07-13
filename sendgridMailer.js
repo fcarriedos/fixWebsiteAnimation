@@ -25,6 +25,8 @@ const outgoingEmailTemplate = {
     contactEmail: null,
     confirmationHash: null,
     originalText: null,
+    cfid: null,
+    psid: null,
     message: message
 };
 
@@ -65,21 +67,21 @@ exports.confirmEmail = function confirmEmail(email, res) {
 }
 
 
-exports.sendWaitingListEmail = function sendWaitingListEmail(name, to, refererId, res) {
+exports.sendWaitingListEmail = function sendWaitingListEmail(name, to, refererId, cfid, psid, res) {
     console.log("sendgridMailer.sendWaitingListEmail(): Sending " + CONSTANTS.EMAIL_WAITINGLIST_TYPE + " to " + to);
-    var outgoingEmail = getOutgoingEmailTemplate(to, CONSTANTS.EMAIL_WAITINGLIST_TYPE, null, null, name);
+    var outgoingEmail = getOutgoingEmailTemplate(to, CONSTANTS.EMAIL_WAITINGLIST_TYPE, null, null, name, cfid, psid);
     sendEmail(outgoingEmail, name, res, refererId);
 }
 
 
 exports.sendContactEmail = function sendContactEmail(name, email, message, res) {
     console.log("sendgridMailer.sendContactEmail(): Sending " + CONSTANTS.EMAIL_CONTACT_TYPE);
-    var outgoingEmail = getOutgoingEmailTemplate(CONSTANTS.EMAIL_CONTACT_ADDRESS, CONSTANTS.EMAIL_CONTACT_TYPE, null, null, name, email, message);
+    var outgoingEmail = getOutgoingEmailTemplate(CONSTANTS.EMAIL_CONTACT_ADDRESS, CONSTANTS.EMAIL_CONTACT_TYPE, null, null, name, null, null, email, message);
     sendEmail(outgoingEmail, name, res, null);
 }
 
 
-var getOutgoingEmailTemplate = function getOutgoingEmailTemplate(to, type, refererName, refererEmail, name, contactEmail, messageText) {
+var getOutgoingEmailTemplate = function getOutgoingEmailTemplate(to, type, refererName, refererEmail, name, cfid, psid, contactEmail, messageText) {
 
     console.log('Invoked with: ' + to + ' ' + type + ' ' + refererName + ' ' + refererEmail + ' ' + name + ' ' + contactEmail + ' ' + messageText);
 
@@ -88,16 +90,19 @@ var getOutgoingEmailTemplate = function getOutgoingEmailTemplate(to, type, refer
     outgoingMessage.to = to;
     outgoingMessage.from = CONSTANTS.EMAIL_FROM_ADDRESS;
 
+
     switch(type) {
 
         case CONSTANTS.EMAIL_WAITINGLIST_TYPE: 
             var confirmationHash = getConfirmationHash(to); // Get string as HEX
             outgoingEmail.confirmationHash = confirmationHash;
             outgoingEmail.type = CONSTANTS.EMAIL_WAITINGLIST_TYPE;
+            outgoingEmail.cfid = cfid;
+            outgoingEmail.psid = psid;
             outgoingMessage.subject = CONSTANTS.EMAIL_WAITINGLIST_SUBJECT;
             outgoingMessage.text = CONSTANTS.EMAIL_WAITINGLIST_TEXT_BODY.replace(CONSTANTS.EMAIL_ACTIVATION_TOKEN_PLACEHOLDER, confirmationHash);
             outgoingMessage.html = CONSTANTS.EMAIL_WAITINGLIST_HTML_BODY.replace(CONSTANTS.EMAIL_ACTIVATION_TOKEN_PLACEHOLDER, confirmationHash)
-                                                                        .replace(CONSTANTS.NAME_PLACEHOLDER, getFirstNameIfPossible(name));
+                                                                        .replace(CONSTANTS.NAME_PLACEHOLDER, getFirstNameIfPossible(name));                                                                        
             break;
 
         case CONSTANTS.EMAIL_CONTACT_TYPE:
@@ -144,7 +149,7 @@ var sendEmail = function sendEmail(outgoingEmail, name, res, refererId) {
         switch(outgoingEmail.type) {
             case CONSTANTS.EMAIL_WAITINGLIST_TYPE:
                 console.log('sendgridMailer.sendEmail(): registering ' + CONSTANTS.EMAIL_WAITINGLIST_TYPE + ' email');
-                recordSentEmailResult(name, outgoingEmail.message.to, outgoingEmail.type, outgoingEmail.confirmationHash , sendingResult, res, refererId);
+                recordSentEmailResult(name, outgoingEmail.message.to, outgoingEmail.type, outgoingEmail.confirmationHash, outgoingEmail.cfid, outgoingEmail.psid, sendingResult, res, refererId);
                 break;
             case CONSTANTS.EMAIL_CONTACT_TYPE:
                 console.log('sendgridMailer.sendEmail(): registering ' + CONSTANTS.EMAIL_CONTACT_TYPE + ' email');
@@ -193,7 +198,7 @@ var recordContactEmailResult = function recordContactEmailResult(name, contactEm
 }
 
 
-var recordSentEmailResult = function recordSentEmailResult(name, to, emailType, confirmationHash, result, res, refererId) {
+var recordSentEmailResult = function recordSentEmailResult(name, to, emailType, confirmationHash, cfid, psid, result, res, refererId) {
     console.log('sendgridMailer.recordSentEmailResult(): recording email ' + emailType + ' to ' + to + '(' + result + ')');
     dbclient.connect(CONSTANTS.MONGODB_URL, function(dbConnectionErr, db) {
     
@@ -209,6 +214,8 @@ var recordSentEmailResult = function recordSentEmailResult(name, to, emailType, 
             email_confirmed: false,
             confirmation_hash: confirmationHash,
             referral_hash: getReferralToken(to),
+            cfid: cfid,
+            psid: psid,
             referral_id: refererId
         };
 

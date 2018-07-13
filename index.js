@@ -101,7 +101,7 @@ webapp.post('/api/lead',
 				        	if (result != null) {
 				        		return res.status(409).json({ code: 409, messages: ['email already exists'] });
 				        	} else {
-				        		sendgridMailer.sendWaitingListEmail(name, email, refererId, res);
+				        		sendgridMailer.sendWaitingListEmail(name, email, refererId, null, null, res);
 				        	}
 				        }
 			        	db.close();
@@ -138,6 +138,8 @@ webapp.post('/api/lead/bot',
 
 			var email = req.body['user email'];
 			var name = req.body['first name'] + ' ' + req.body['last name'];
+			var cfid = req.body['chatfuel user id'];
+			var psid = req.body['messenger user id'];
 			
 			// DB checking
 			var dbo = CONSTANTS.DB.db(CONSTANTS.DATABASE_NAME);
@@ -146,11 +148,11 @@ webapp.post('/api/lead/bot',
 	        .then(findUserResult => {	       
 	        	if (findUserResult != null) {
 	        		console.log('index.post(/api/lead/bot): user ' + email + ' already exits');
-	        		var errorMessage = { "user email" : { msg: "The email already exists" } };
+	        		var errorMessage = { "user email" : { msg: "The email already exists" } }; // For Chatfuel this is the format for messages
 	        		responseUtils.sendResultResponse(409, 409, errorMessage, null, res); //return res.status(409).json({ code: 409, messages: ['email already exists'] });
 	        	} else {
 	        		console.log('index.post(/api/lead/bot): including user ' + email + ' (' + name + ') in the wait list.');
-	        		sendgridMailer.sendWaitingListEmail(name, email, null, res);
+	        		sendgridMailer.sendWaitingListEmail(name, email, null, cfid, psid, res);
 	        	}
 	        })
 	        .catch(findUserError => {
