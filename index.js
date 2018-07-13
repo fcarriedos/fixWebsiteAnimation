@@ -125,6 +125,8 @@ webapp.post('/api/lead/bot',
 	(req, res) => {
 		console.log(JSON.stringify(req.body, null, 2));
 		errors = validationResult(req);
+		res.setHeader('BotResponseType', true);
+		console.log(res.getHeaders());
 		if (!errors.isEmpty()) {
 			// Treat errors pointing to blocks.
 			console.log('index.post(/api/lead/bot): errors validating input parameters ' + errors.mapped());
