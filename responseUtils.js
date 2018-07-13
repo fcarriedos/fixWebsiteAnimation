@@ -22,7 +22,7 @@ var sendChatfuelBotResponse = exports.sendChatfuelBotResponse = function sendCha
 		case 422: // Input could not be validated
 		case 409: // User already exists
 		case 500: // Something went wrong
-				  res.status(CONSTANTS.CHATFUEL_HTTP_STATUS_CODE).json({"redirect_to_blocks": ["Error happened"]});
+				  res.status(CONSTANTS.CHATFUEL_HTTP_STATUS_CODE).json({"set_attributes":{"errors": formatErrorMessagesForBot(messages)}, "redirect_to_blocks": ["Error happened"]});
 			break;
 	}
 
