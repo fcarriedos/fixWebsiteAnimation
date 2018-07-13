@@ -233,7 +233,7 @@ var recordSentEmailResult = function recordSentEmailResult(name, to, emailType, 
 var sendResultResponse = function sendResultResponse(httpStatus, code, messages, referralToken, res) {
     if (res) { // response could be sent somewhere else
         if (res.getHeaders()['botresponsetype']) { // Chatfuel bot format responses
-            var referralLink = Constants.EMAIL_REFERRAL_URL.replace(CONSTANTS.EMAIL_ACTIVATION_REFERRAL_PLACEHOLDER, referralToken);
+            var referralLink = CONSTANTS.EMAIL_REFERRAL_URL.replace(CONSTANTS.EMAIL_ACTIVATION_REFERRAL_PLACEHOLDER, referralToken);
             res.status(httpStatus).json({"set_attributes":{"referral_link": referralLink}, "redirect_to_blocks": ["Lead recorded"]});
         } else { // Web format responses
             var response = { code: code, messages: messages };
