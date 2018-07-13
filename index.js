@@ -144,8 +144,8 @@ webapp.post('/api/lead/bot',
 	        		return res.status(409).json({ code: 409, messages: ['email already exists'] });
 	        		// send to block
 	        	} else {
-	        		console.log('index.post(/api/lead/bot): including user ' + email + '(' + name + ') in the wait list.');
-	        		sendgridMailer.sendWaitingListEmail(name, email, refererId, res);
+	        		console.log('index.post(/api/lead/bot): including user ' + email + ' (' + name + ') in the wait list.');
+	        		sendgridMailer.sendWaitingListEmail(name, email, null, res);
 	        	}
 	        })
 	        .catch(findUserError => {
