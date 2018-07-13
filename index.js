@@ -1,8 +1,9 @@
 // var restify = require('restify');
 const CONSTANTS = require('./CONSTANTS.js');
-const express = require('express')
-const path = require('path')
-const bodyParser = require('body-parser')
+const responseUtils = require('./responseUtils.js');
+const express = require('express');
+const path = require('path');
+const bodyParser = require('body-parser');
 const fs = require('fs');
 const encryptionUtility = require('./encryptionUtility.js');
 const sendgridMailer = require('./sendgridMailer.js');
@@ -116,24 +117,26 @@ webapp.post('/api/lead/bot',
 	// Validators
 	[
 
-	check('email_by_user').isEmail().withMessage('Is not a valid email.'),
+	check('user email').isEmail().withMessage('Email is invalid'),
 	check('first name').exists().custom((value) => value.length > 0).withMessage('The first name is empty'),
-	check('last name').exists().custom((value) => value.length > 0).withMessage('The last name is empty')
+	check('last name').exists().custom((value) => value.length > 0).withMessage('The last name is empty'),
+	check('chatfuel user id').exists().custom((value) => value.length > 0).withMessage('Chatfuel id cannot be empty'),
+	check('messenger user id').exists().custom((value) => value.length > 0).withMessage('Messenger id cannot be empty')
 
 	],
 	// Request processing
 	(req, res) => {
 		res.setHeader('botresponsetype', true); // To provide Chatfuel bot formated response 
-		console.log(JSON.stringify(req.body, null, 2));
+		// console.log(JSON.stringify(req.body, null, 2));
 		errors = validationResult(req);
 
 		if (!errors.isEmpty()) {
 			// Treat errors pointing to blocks.
-			console.log('index.post(/api/lead/bot): errors validating input parameters ' + errors.mapped());
-			return res.status(422).json({ code: 422, messages: errors.mapped() });
+			console.log('index.post(/api/lead/bot): errors validating input parameters ' + JSON.stringify(errors.mapped(), null, 2));
+			responseUtils.sendResultResponse(422, 422, errors.mapped(), null, res);// res.status(422).json({ code: 422, messages: errors.mapped() });
 		} else {
 
-			var email = req.body['email_by_user'];
+			var email = req.body['user email'];
 			var name = req.body['first name'] + ' ' + req.body['last name'];
 			
 			// DB checking
@@ -143,8 +146,7 @@ webapp.post('/api/lead/bot',
 	        .then(findUserResult => {	       
 	        	if (findUserResult != null) {
 	        		console.log('index.post(/api/lead/bot): user ' + email + ' already exits');
-	        		return res.status(409).json({ code: 409, messages: ['email already exists'] });
-	        		// send to block
+	        		responseUtils.sendResultResponse(409, 409, ['the email already exists'], null, res); //return res.status(409).json({ code: 409, messages: ['email already exists'] });
 	        	} else {
 	        		console.log('index.post(/api/lead/bot): including user ' + email + ' (' + name + ') in the wait list.');
 	        		sendgridMailer.sendWaitingListEmail(name, email, null, res);

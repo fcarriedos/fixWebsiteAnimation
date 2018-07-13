@@ -3,6 +3,7 @@ var exports = module.exports = {};
 const CONSTANTS = require('./CONSTANTS.js');
 const sgMail = require('@sendgrid/mail');
 const encryptionUtility = require('./encryptionUtility.js');
+const responseUtils = require('./responseUtils.js');
 const crc = require('crc');
 const dbclient = require('mongodb').MongoClient;
 
@@ -128,7 +129,7 @@ var sendEmail = function sendEmail(outgoingEmail, name, res, refererId) {
     // console.log('sendgridMailer.sendEmail(): ' + JSON.stringify(outgoingEmail, null, 2));
     if (outgoingEmail.type == null) {
         console.log('sendgridMailer.sendEmail(): undefined email type to ' + outgoingMessage.to);
-        sendResultResponse(404, 404, ['undefined message type'], null, res);
+        responseUtils.sendResultResponse(500, 500, ['undefined message type'], null, res);
     }
     sgMail.send(outgoingEmail.message,function(err, info) {
         var sendingResult = ((err) ? false : true);
@@ -179,10 +180,10 @@ var recordContactEmailResult = function recordContactEmailResult(name, contactEm
         dbo.collection(CONSTANTS.CONTACTS_TABLE).insertOne(newEmailRecord, function(insertErr, emailRecordingResult) {
             if (insertErr) {
                 console.log('sendgridMailer.recordContactEmailResult()[ERROR]: could not record ' + emailType + ' to ' + to);
-                sendResultResponse(500, 500, ['could not record email']);
+                responseUtils.sendResultResponse(500, 500, ['could not record email']);
             } else {
                 console.log('sendgridMailer.recordContactEmailResult(): email ' + emailType + ' to ' + to + ' inserted.');
-                sendResultResponse(200, 200, ['ok'], null, res); 
+                responseUtils.sendResultResponse(200, 200, ['ok'], null, res); 
             }
         });
 
@@ -217,32 +218,16 @@ var recordSentEmailResult = function recordSentEmailResult(name, to, emailType, 
             var userId = emailRecordingResult.ops[0]['_id'];
             if (insertErr) {
                 console.log('sendgridMailer.recordSentEmailResult()[ERROR]: could not record ' + emailType + ' to ' + to);
-                sendResultResponse(500, 500, ['could not record email']);
+                responseUtils.sendResultResponse(500, 500, ['could not record email']);
             } else {
                 console.log('sendgridMailer.recordSentEmailResult(): email ' + emailType + ' to ' + to + ' inserted.');
-                sendResultResponse(200, 200, ['ok'], newEmailRecord.referral_hash, res); 
+                responseUtils.sendResultResponse(200, 200, ['ok'], newEmailRecord.referral_hash, res); 
             }
         });
 
         db.close();
 
     });
-}
-
-
-var sendResultResponse = function sendResultResponse(httpStatus, code, messages, referralToken, res) {
-    if (res) { // response could be sent somewhere else
-        if (res.getHeaders()['botresponsetype']) { // Chatfuel bot format responses
-            var referralLink = CONSTANTS.EMAIL_REFERRAL_URL.replace(CONSTANTS.EMAIL_ACTIVATION_REFERRAL_PLACEHOLDER, referralToken);
-            res.status(httpStatus).json({"set_attributes":{"referral_link": referralLink}, "redirect_to_blocks": ["Lead recorded"]});
-        } else { // Web format responses
-            var response = { code: code, messages: messages };
-            if (referralToken) {
-                response.referral = CONSTANTS.EMAIL_REFERRAL_URL.replace(CONSTANTS.EMAIL_ACTIVATION_REFERRAL_PLACEHOLDER, referralToken);
-            }
-            return res.status(httpStatus).json(response);
-        }
-    }
 }
 
 
