@@ -6,7 +6,7 @@ const CONSTANTS = require('./CONSTANTS.js');
 var sendResultResponse = exports.sendResultResponse = function sendResultResponse(httpStatus, errorCode, messages, referralToken, res) {
     if (res) { // response could be sent somewhere else
         if (isBotResponse(res)) { // Chatfuel bot format responses
-            sendChatfuelBotResponse(errorCode, referralToken, messages);
+            sendChatfuelBotResponse(errorCode, referralToken, messages, res);
         } else { // Web format responses
 			sendWebResponse(httpStatus, errorCode, messages, referralToken, res);           
         }
@@ -14,7 +14,7 @@ var sendResultResponse = exports.sendResultResponse = function sendResultRespons
 }
 
 
-var sendChatfuelBotResponse = exports.sendChatfuelBotResponse = function sendChatfuelBotResponse(errorCode, referralToken, messages) {
+var sendChatfuelBotResponse = exports.sendChatfuelBotResponse = function sendChatfuelBotResponse(errorCode, referralToken, messages, res) {
 	switch(errorCode) {
 		case 200: var referralLink = CONSTANTS.EMAIL_REFERRAL_URL.replace(CONSTANTS.EMAIL_ACTIVATION_REFERRAL_PLACEHOLDER, referralToken);
     			  res.status(CONSTANTS.CHATFUEL_HTTP_STATUS_CODE).json({"set_attributes":{"referral_link": referralLink}, "redirect_to_blocks": ["Lead recorded"]});
@@ -22,7 +22,7 @@ var sendChatfuelBotResponse = exports.sendChatfuelBotResponse = function sendCha
 		case 422: // Input could not be validated
 		case 409: // User already exists
 		case 500: // Something went wrong
-				  res.status(CONSTANTS.CHATFUEL_HTTP_STATUS_CODE).json({"redirect_to_blocks": ["Lead recorded"]});
+				  res.status(CONSTANTS.CHATFUEL_HTTP_STATUS_CODE).json({"redirect_to_blocks": ["Error happened"]});
 			break;
 	}
 
