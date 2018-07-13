@@ -37,6 +37,7 @@ exports.EMAIL_CONTACT_TEXT_BODY = EMAIL_CONTACT_TEXT_BODY = 'Message from ' + NA
 // Heroku Mongo URL: "mongodb://heroku_vhf8lww8:qdat1khaevi73ltfatniio4208@ds259250.mlab.com:59250/heroku_vhf8lww8";
 exports.MONGODB_URL = MONGODB_URL = process.env.MONGODB_URI || 'mongodb://localhost:27017/website';
 exports.WEBSITE_DATABASE_NAME = WEBSITE_DATABASE_NAME = MONGODB_URL.split('/')[3];
+exports.DB = DB = null;
 
 exports.SENT_EMAILS_TABLE = SENT_EMAILS_TABLE = "leademails";
 exports.CONTACTS_TABLE = CONTACTS_TABLE = "contactemails";
