@@ -118,21 +118,21 @@ webapp.post('/api/lead/bot',
 	[
 
 	check('user email').isEmail().withMessage('Email is invalid'),
-	check('first name').exists().custom((value) => value.length > 0).withMessage('The first name is empty'),
-	check('last name').exists().custom((value) => value.length > 0).withMessage('The last name is empty'),
-	check('chatfuel user id').exists().custom((value) => value.length > 0).withMessage('Chatfuel id cannot be empty'),
-	check('messenger user id').exists().custom((value) => value.length > 0).withMessage('Messenger id cannot be empty')
+	check('first name').exists().custom((value) => (value != null) && (value.length > 0)).withMessage('The first name is empty'),
+	check('last name').exists().custom((value) => (value != null) && (value.length > 0)).withMessage('The last name is empty'),
+	check('chatfuel user id').exists().custom((value) => (value != null) && (value.length > 0)).withMessage('Chatfuel id cannot be empty'),
+	check('messenger user id').exists().custom((value) => (value != null) && (value.length > 0)).withMessage('Messenger id cannot be empty')
 
 	],
 	// Request processing
 	(req, res) => {
 		res.setHeader('botresponsetype', true); // To provide Chatfuel bot formated response 
-		// console.log(JSON.stringify(req.body, null, 2));
+		console.log(JSON.stringify(req.body, null, 2));
 		errors = validationResult(req);
 
 		if (!errors.isEmpty()) {
 			// Treat errors pointing to blocks.
-			console.log('index.post(/api/lead/bot): errors validating input parameters ' + JSON.stringify(errors.mapped(), null, 2));
+			console.log('index.post(/api/lead/bot): errors validating input parameters ' + JSON.stringify(errors, null, 2));
 			responseUtils.sendResultResponse(422, 422, errors.mapped(), null, res);// res.status(422).json({ code: 422, messages: errors.mapped() });
 		} else {
 
@@ -146,7 +146,8 @@ webapp.post('/api/lead/bot',
 	        .then(findUserResult => {	       
 	        	if (findUserResult != null) {
 	        		console.log('index.post(/api/lead/bot): user ' + email + ' already exits');
-	        		responseUtils.sendResultResponse(409, 409, ['the email already exists'], null, res); //return res.status(409).json({ code: 409, messages: ['email already exists'] });
+	        		var errorMessage = { "user email" : { msg: "The email already exists" } };
+	        		responseUtils.sendResultResponse(409, 409, errorMessage, null, res); //return res.status(409).json({ code: 409, messages: ['email already exists'] });
 	        	} else {
 	        		console.log('index.post(/api/lead/bot): including user ' + email + ' (' + name + ') in the wait list.');
 	        		sendgridMailer.sendWaitingListEmail(name, email, null, res);
