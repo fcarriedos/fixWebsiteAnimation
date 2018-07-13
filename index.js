@@ -117,8 +117,8 @@ webapp.post('/api/lead/bot',
 	[
 
 	check('email_by_user').isEmail().withMessage('Is not a valid email.'),
-	check('first_name').exists().custom((value) => value.length > 0).withMessage('The first name is empty'),
-	check('last_name').exists().custom((value) => value.length > 0).withMessage('The last name is empty')
+	check('first name').exists().custom((value) => value.length > 0).withMessage('The first name is empty'),
+	check('last name').exists().custom((value) => value.length > 0).withMessage('The last name is empty')
 
 	],
 	// Request processing
@@ -132,7 +132,7 @@ webapp.post('/api/lead/bot',
 		} else {
 
 			var email = req.body.email;
-			var name = req.body['first_name'] + ' ' + req.body['last_name'];
+			var name = req.body['first name'] + ' ' + req.body['last name'];
 			
 			// DB checking
 			var dbo = CONSTANTS.DB.db(CONSTANTS.DATABASE_NAME);
