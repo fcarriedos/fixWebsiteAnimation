@@ -127,6 +127,7 @@ webapp.post('/api/lead/bot',
 		errors = validationResult(req);
 		if (!errors.isEmpty()) {
 			// Treat errors pointing to blocks.
+			console.log('index.post(/api/lead/bot): errors validating input parameters ' + JSON.stringify(errors, null, 2));
 			return res.status(422).json({ code: 422, messages: errors.mapped() });
 		} else {
 
@@ -139,9 +140,11 @@ webapp.post('/api/lead/bot',
 	        dbo.collection(CONSTANTS.SENT_EMAILS_TABLE).findOne({ email: email })
 	        .then(findUserResult => {	       
 	        	if (findUserResult != null) {
+	        		console.log('index.post(/api/lead/bot): user ' + email + ' already exits');
 	        		return res.status(409).json({ code: 409, messages: ['email already exists'] });
 	        		// send to block
 	        	} else {
+	        		console.log('index.post(/api/lead/bot): including user ' + email + '(' + name + ') in the wait list.');
 	        		sendgridMailer.sendWaitingListEmail(name, email, refererId, res);
 	        	}
 	        })
