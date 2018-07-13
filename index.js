@@ -131,7 +131,7 @@ webapp.post('/api/lead/bot',
 			return res.status(422).json({ code: 422, messages: errors.mapped() });
 		} else {
 
-			var email = req.body.email;
+			var email = req.body['email_by_user'];
 			var name = req.body['first name'] + ' ' + req.body['last name'];
 			
 			// DB checking
