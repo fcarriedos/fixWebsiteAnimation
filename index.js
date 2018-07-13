@@ -123,11 +123,11 @@ webapp.post('/api/lead/bot',
 	],
 	// Request processing
 	(req, res) => {
-
+		console.log(JSON.stringify(req.body, null, 2));
 		errors = validationResult(req);
 		if (!errors.isEmpty()) {
 			// Treat errors pointing to blocks.
-			console.log('index.post(/api/lead/bot): errors validating input parameters ' + JSON.stringify(errors, null, 2));
+			console.log('index.post(/api/lead/bot): errors validating input parameters ' + errors.mapped());
 			return res.status(422).json({ code: 422, messages: errors.mapped() });
 		} else {
 
