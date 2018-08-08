@@ -291,5 +291,11 @@ function getDBPool() {
 }
 
 
+webapp.get('/.well-known/acme-challenge/', (req, res) => {
+    res.status(200).send('0Id8plDhrmh07gtFjvGE1jyqn2B6GBm1BSlR2cKUY9Q');
+});
+
+
+
 // And starting!
 webapp.listen(PORT, () => console.log(`Listening on ${ PORT }`));
