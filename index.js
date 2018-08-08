@@ -291,8 +291,16 @@ function getDBPool() {
 }
 
 
-webapp.get('/.well-known/acme-challenge/4AnwyeXXeNcMgLFzh43g6L_nGEhfQR_BWhn5Xuiuno4', (req, res) => {
-    res.status(200).send('4AnwyeXXeNcMgLFzh43g6L_nGEhfQR_BWhn5Xuiuno4');
+webapp.get('/.well-known/acme-challenge/QaFQvY2oakMh3-bhP1F3XOL1-iNy1oCwR8VULWFclcQ', (req, res) => {
+	var contents = 'QaFQvY2oakMh3-bhP1F3XOL1-iNy1oCwR8VULWFclcQ.M_wNT8lKySZW-DN9uhVuijy2OZZ36FQNlqvgPoN_M3I';
+    res.status(200)
+    .setHeader('Content-Type', 'text/plain')
+    .setHeader('Content-Disposition', 'attachment; filename=challenge.txt')
+    .setHeader('Content-Length', contents.length)
+  //   'Content-Type': 'text/plain',
+  // 'Content-Disposition': 'attachment; filename=some_file.pdf',
+  // 'Content-Length': data.length
+    .send(contents);
 });
 
 
