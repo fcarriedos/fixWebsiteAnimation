@@ -293,14 +293,14 @@ function getDBPool() {
 
 webapp.get('/.well-known/acme-challenge/QaFQvY2oakMh3-bhP1F3XOL1-iNy1oCwR8VULWFclcQ', (req, res) => {
 	var contents = 'QaFQvY2oakMh3-bhP1F3XOL1-iNy1oCwR8VULWFclcQ.M_wNT8lKySZW-DN9uhVuijy2OZZ36FQNlqvgPoN_M3I';
-    res.status(200)
-    .setHeader('Content-Type', 'text/plain')
-    .setHeader('Content-Disposition', 'attachment; filename=challenge.txt')
-    .setHeader('Content-Length', contents.length)
+    res.status(200);
+    res.setHeader('Content-Type', 'text/plain');
+    res.setHeader('Content-Disposition', 'attachment; filename=challenge.txt');
+    res.setHeader('Content-Length', contents.length);
   //   'Content-Type': 'text/plain',
   // 'Content-Disposition': 'attachment; filename=some_file.pdf',
   // 'Content-Length': data.length
-    .send(contents);
+    res.send(contents);
 });
 
 
