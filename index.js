@@ -291,7 +291,7 @@ function getDBPool() {
 }
 
 
-webapp.get('/.well-known/acme-challenge/', (req, res) => {
+webapp.get('/.well-known/acme-challenge/0Id8plDhrmh07gtFjvGE1jyqn2B6GBm1BSlR2cKUY9Q', (req, res) => {
     res.status(200).send('0Id8plDhrmh07gtFjvGE1jyqn2B6GBm1BSlR2cKUY9Q');
 });
 
