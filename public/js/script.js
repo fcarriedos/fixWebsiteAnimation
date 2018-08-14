@@ -1,6 +1,6 @@
 // Scroll.js
 
-const WEBSITE_URL_ENDPOINT = 'http://messengersell.com/';
+const WEBSITE_URL_ENDPOINT = 'https://www.messengersell.com/';
 
 $(window).on('popstate',function(e){
 	e.preventDefault();

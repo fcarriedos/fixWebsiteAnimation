@@ -6,9 +6,9 @@ const CONSTANTS = require('./CONSTANTS.js');
 var sendResultResponse = exports.sendResultResponse = function sendResultResponse(httpStatus, errorCode, messages, referralToken, res) {
     if (res) { // response could be sent somewhere else
         if (isBotResponse(res)) { // Chatfuel bot format responses
-            sendChatfuelBotResponse(errorCode, referralToken, messages, res);
+          sendChatfuelBotResponse(errorCode, referralToken, messages, res);
         } else { // Web format responses
-			sendWebResponse(httpStatus, errorCode, messages, referralToken, res);           
+          sendWebResponse(httpStatus, errorCode, messages, referralToken, res);           
         }
     }
 }
