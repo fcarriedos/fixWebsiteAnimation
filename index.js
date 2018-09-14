@@ -15,9 +15,11 @@ const PORT = process.env.PORT || 3000
 getDBPool();
 
 var webapp = express();
+var forceSSL = require('express-force-ssl');
 
 webapp.use(bodyParser.json());
 webapp.use(bodyParser.urlencoded({ extended: true }));
+webapp.use(forceSSL);
 
 
 // Web pages
