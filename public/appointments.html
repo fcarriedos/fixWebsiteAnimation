@@ -3,7 +3,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8" >
-		<title>MessengerSell &mdash; Wait list</title>
+		<title>MessengerSell &mdash; About</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="icon" href="i/favicon.ico" type="image/x-icon">
 		<link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700,800,900|Nunito+Sans:200,300,400,600,700,800,900" rel="stylesheet">
@@ -29,9 +29,9 @@
 		<!-- End Facebook Pixel Code -->
 	</head> 
 	<body>
-<script>
-  fbq('track', 'Search');
-</script>
+	<script>
+	  fbq('track', 'Search');
+	</script>
 <script>
   fbq('track', 'ViewContent');
 </script>
@@ -54,7 +54,7 @@
   logged_out_greeting="Hi! 👋 Want to talk with someone?">
 </div>
 
-	<!-- Navigation Mobile type 3 -->
+<!-- Navigation Mobile type 3 -->
 
 	<a class="open_menu white"><i class="fa fa-bars"></i></a>
 	<div class="navigation_mobile type3">
@@ -69,7 +69,8 @@
 		</div>
 	</div>
 
-	<nav class="navigation_15 bg_white padding_top60 padding_bottom30">
+	<!-- Navigation 15 -->
+	<nav class="transparent padding_top30 padding_bottom30 top30">
 		<div class="container nopadding line_height40">
 			<div class="row justify-content-between">
 				<div class="col-lg-4 col-md-5 col-sm-6 left_block">
@@ -90,41 +91,43 @@
 		</div>
 	</nav>
 
-	<!-- Contact 4 -->
+	<!-- Content 11 -->
 
-	<section class="padding_top80 padding_bottom145 bg_white">
+	<section class="content_11 bg_grey padding_top80 padding_bottom50">
 		<div class="container nopadding max_width970">
+			<div class="dark_blue light font18 text">
+				<h1 class="font_second light font62 text-center bottom50">Appointment scheduling 🗓️</h1>
+				<img src="i/fv/francisco.jpg" class="radius8 max_width_full width_full bottom50 image" alt="" />
 
-			<h1 class="font_second light font62 text-center bottom50">Wait list 📋</h1>
-			
-			<div class='margin_auto'>
-				<form action="/api/lead" method="post" class="max_width470 bg_white padding_sides50 padding_top55 padding_bottom35 radius10 dark_blue boxshadow" style="margin:auto">
-					<div class="row">
-						<div class="col-sm-12">
-							<div class="bottom35 input_block">
-								<div class="bottom10 font14 semibold uppercase spacing15">Your Name</div>
-								<input required type="text" id="name" name="name" placeholder="Name" class="input width_full size50 border border_light_gray focus_green radius6 padding_sides20" />
-							</div>
-						</div>
-					</div>
-					<div class="bottom10 font14 semibold uppercase spacing15">Email</div>
-					<input required type="email" name="email" placeholder="name@mail.com" class="bottom35 input width_full size50 border border_light_gray focus_green radius6 padding_sides20" />					
-					<div class="row">
-						<div class="col-sm-7">
-							<!--<input type="checkbox" name="send_copy" class="hidden" id="contact_4_checkbox" />
-							<label for="contact_4_checkbox" class="top15 bottom30 checkbox check_green border_light_gray radius4 font14">Send me a copy</label>-->
-						</div>
-						<div class="col-sm-5">
-							<button class="btn size50 blue radius6 width_full padding_sides25">Send<i class="fa fa-angle-right left10"></i></button>
-						</div>
-					</div>
-					<input type="hidden" id="referer_token" name="referer_token" value="" />
-				</form>
+				<h2 class="font_second light font42 bottom50 text-center">Reduce no-shows and nurture your customers.</h2>
 
+				<div class='max_width600 margin_auto'>
+					<h3>Dentist? Coach? Tour guide? You name it!</h3>
+					<p class='bottom30'>
+						Appointment based business face the challenge of scheduling and suffer the a nowadays disease: no-shows. 
+					</p>
+					<p class='bottom30'>
+						Booking does not turn into attending, which means time waste and revenue loss. 
+					</p>
+					<p class='bottom30'>
+						MessengerSell helps with that, by smoothly blending the booking and the the payment moment 🗓️ + 💸
+					</p>
+					<p class='bottom30'>
+						With MessengerSell you can require an amount you decide &mdash; from a little booking fee or the full service in advance &mdash;
+					</p>
+					<p class='bottom30'>
+						Follow up with automatically with your paying customers and generate upsell. 
+					</p>
+					<p class='bottom30'>
+						Begin using it now in your Facebook ads and Facebook Messenger bots.
+					</p>
+					<p class='bottom30'>
+						As easy as pasting a link!
+					</p>
+				</div>
 			</div>
 		</div>
 	</section>
-
 
 	<!-- Form 12 -->
 
@@ -149,7 +152,6 @@
 			</form>
 		</div>
 	</section>
-
 
 	<!-- Footer 8 -->
 
@@ -181,7 +183,7 @@
 	<!-- forms alerts -->
 	<div class="alert alert-success alert-dismissible alert-form-success" role="alert">
 		<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-		You are in the waiting list!
+		Thanks for your message!
 	</div>
 	<div class="alert alert-warning alert-dismissible alert-form-check-fields" role="alert">
 		<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -192,48 +194,10 @@
 		An error occurred while sending data :(
 	</div>
 
-	<input type="hidden" id="emailingPage" value="waitList">
-
 	<script src="js/slick.min.js"></script>
 	<script src="js/aos.min.js"></script>
 	<script src="js/jquery.maskedinput.min.js"></script>
 	<script src="js/script.js"></script>
-	<script type="text/javascript">
-
-        var getUrlParameter = function getUrlParameter(sParam) {
-            var sPageURL = decodeURIComponent(window.location.search.substring(1)),
-                sURLVariables = sPageURL.split('&'),
-                sParameterName,
-                i;
-
-            for (i = 0; i < sURLVariables.length; i++) {
-                sParameterName = sURLVariables[i].split('=');
-
-                if (sParameterName[0] === sParam) {
-                    return sParameterName[1] === undefined ? true : sParameterName[1];
-                }
-            }
-        };
-
-        $( document ).ready(function() {
-
-                var email = getUrlParameter('email');
-                var referer_token = getUrlParameter('referer_token');
-                if (email != undefined) {
-                        $('#email').val(email); 
-                        $('#email').prop('readonly', true);
-                        $('#theForm').prop('action', '/api/lead/confirmreferral');
-                } else if (referer_token != undefined) {
-                        $('#referer_token').val(referer_token); 
-                }
-
-
-        
-                console.log('Form updated');
-
-        });
-	</script>
-
 
 	</body>
 </html>
