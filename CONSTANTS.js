@@ -43,7 +43,7 @@ exports.SENT_EMAILS_TABLE = SENT_EMAILS_TABLE = "leademails";
 exports.CONTACTS_TABLE = CONTACTS_TABLE = "contactemails";
 
 // Encryption
-exports.ENCRYPTION_KEY = ENCRYPTION_KEY = JSON.parse(process.env.ENC_KEY);
+exports.ENCRYPTION_KEY = ENCRYPTION_KEY = '1234567812345678123456' || JSON.parse(process.env.ENC_KEY);
 exports.ENCRIPTION_AES_COUNTER = ENCRIPTION_AES_COUNTER = 5;
 
 // Chatfuel constants

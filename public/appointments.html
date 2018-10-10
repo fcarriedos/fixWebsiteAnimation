@@ -6,9 +6,13 @@
 		<title>MessengerSell &mdash; About</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="icon" href="i/favicon.ico" type="image/x-icon">
+
 		<link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700,800,900|Nunito+Sans:200,300,400,600,700,800,900" rel="stylesheet">
 		<link href="css/style.css" rel="stylesheet" />
 		<script src="js/jquery.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="/libs/slick-1.8.1/slick/slick.css"/>	
+		<link rel="stylesheet" type="text/css" href="/libs/slick-1.8.1/slick/slick-theme.css"/>	
+		<script type="text/javascript" src="/libs/slick-1.8.1/slick/slick.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
 		<!-- Facebook Pixel Code -->
 		<script>
@@ -27,8 +31,19 @@
 		  src="https://www.facebook.com/tr?id=192280034776852&ev=PageView&noscript=1"
 		/></noscript>
 		<!-- End Facebook Pixel Code -->
+		<script type="text/javascript">
+		function adaptVideoLayer() {
+			var letfOffsetVideoWrapper = document.getElementById('video-wrapper-layer').offsetWidth / 2;
+ 			$('#video-wrapper-layer').css('left', 'calc(50% - ' + letfOffsetVideoWrapper + 'px)');
+		}
+		</script>
+		<style type="text/css">
+			.slick-arrow {
+				color: red;
+			}
+		</style>
 	</head> 
-	<body>
+	<body onresize="adaptVideoLayer()">
 	<script>
 	  fbq('track', 'Search');
 	</script>
@@ -92,19 +107,27 @@
 	</nav>
 
 	<!-- Content 11 -->
-
 	<section class="content_11 bg_grey padding_top80 padding_bottom50">
 		<div class="container nopadding max_width970">
 			<div class="dark_blue light font18 text">
 				<h1 class="font_second light font62 text-center bottom50">Appointment scheduling 🗓️</h1>
-				<img src="i/fv/francisco.jpg" class="radius8 max_width_full width_full bottom50 image" alt="" />
+				
+					<div id="video-wrapper-layer" style="width: 100%; position: relative;">
+						<div style="text-align: center; position: relative;">
+							<div class="single-item">
+							  <div style="height: 400px; text-align: center"><iframe width="800" height="400" src="https://www.youtube.com/embed/9y-Q7-1wBjI?list=PLi-OrruqVuCFF7UjG9he6pePNImcmsO84" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+							  <div style="height: 400px; text-align: center"><iframe width="800" height="400" src="https://www.youtube.com/embed/LDALXsiHQW0?list=PLi-OrruqVuCGC77h2uihMq0v4eWQ3cy82" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+							  <div style="height: 400px; text-align: center"><iframe width="800" height="400" src="https://www.youtube.com/embed/nKGPZQrdi8c?list=PLi-OrruqVuCGDs_tdZD-X6Tpwt5f9Bmbu" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+							</div>
+						</div>
+					</div>
 
-				<h2 class="font_second light font42 bottom50 text-center">Reduce no-shows and nurture your customers.</h2>
+				<h2 class="font_second light font42 bottom50 text-center" style="padding-top: 10px">Reduce no-shows and nurture your customers.</h2>
 
 				<div class='max_width600 margin_auto'>
-					<h3>Dentist? Coach? Tour guide? You name it!</h3>
+					<h3>Dentist? Hair styler? Coach? Tour guide? You name it!</h3>
 					<p class='bottom30'>
-						Appointment based business face the challenge of scheduling and suffer the a nowadays disease: no-shows. 
+						Appointment based businesses face the challenge of scheduling and suffer the a nowadays disease: no-shows. 
 					</p>
 					<p class='bottom30'>
 						Booking does not turn into attending, which means time waste and revenue loss. 
@@ -113,7 +136,7 @@
 						MessengerSell helps with that, by smoothly blending the booking and the the payment moment 🗓️ + 💸
 					</p>
 					<p class='bottom30'>
-						With MessengerSell you can require an amount you decide &mdash; from a little booking fee or the full service in advance &mdash;
+						With MessengerSell you can require an amount you decide &mdash; from a little booking fee or the full service in advance &mdash;.
 					</p>
 					<p class='bottom30'>
 						Follow up with automatically with your paying customers and generate upsell. 
@@ -122,7 +145,7 @@
 						Begin using it now in your Facebook ads and Facebook Messenger bots.
 					</p>
 					<p class='bottom30'>
-						As easy as pasting a link!
+						As easy as pasting a link, <a href="#" onclick="scrollToBottom()">click to request your demo now!</a>
 					</p>
 				</div>
 			</div>
@@ -194,10 +217,28 @@
 		An error occurred while sending data :(
 	</div>
 
-	<script src="js/slick.min.js"></script>
 	<script src="js/aos.min.js"></script>
 	<script src="js/jquery.maskedinput.min.js"></script>
 	<script src="js/script.js"></script>
+
+	<script type="text/javascript">
+		
+		$(document).ready(function(){
+		  $('.single-item').slick({
+		  	dots: true,
+		    autoplay: false,
+		    autoplaySpeed: 4000,
+			infinite: true,
+			slidesToShow: 1,
+			slidesToScroll: 1,
+			prevArrow: '<button type="button" class="slick-prev" style="color: red;">Previous</button>',
+		  });
+
+		var letfOffsetVideoWrapper = document.getElementById('video-wrapper-layer').offsetWidth / 2;
+ 		$('#video-wrapper-layer').css('left', 'calc(50% - ' + letfOffsetVideoWrapper + 'px)');
+
+		});
+	</script>
 
 	</body>
 </html>
