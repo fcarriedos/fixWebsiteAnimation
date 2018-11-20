@@ -121,7 +121,7 @@ function setupReferralCopyPaste(elementId) {
 		if(event.clipboardData) {
 			event.clipboardData.setData('text/plain', link.innerText.replace('📋', ''));
 			console.log(event.clipboardData.getData('text'));
-			link.innerText = link.innerText.replace('📋', ' 👍');
+			link.innerText = link.innerText.replace('📋', '');
 		}
 	});
 }
