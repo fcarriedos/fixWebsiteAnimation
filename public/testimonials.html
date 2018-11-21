@@ -106,6 +106,10 @@
 					top: 30px;
 				}
 
+				#testimonialBubbleBenito {
+					height: auto;
+				}
+
 			}
 
 			@media screen and (max-width: 500px) {
@@ -138,6 +142,10 @@
 				#testimonialCenteredRightSandy {
 					top: 20px;
 					margin-left: 20px;
+				}
+
+				#testimonialBubbleBenito {
+					height: 190px
 				}
 			}
 
@@ -177,10 +185,12 @@
 		<div class="padding_sides40 padding_top60 padding_bottom60 inner">
 			
 			<div><a href="/" class="font18 link white bottom15">Home</a></div>
+			<div><a href="/appointments.html" class="font18 link white bottom15">Appointments flows</a></div>
+			<div><a href="/products.html" class="font18 link white bottom15">Product flows</a></div>
+			<!-- <div><a href="/products.html" class="font18 link white bottom15">Livesell flows</a></div> -->
+			<div><a href="/labs.html" class="font18 link white bottom15">Labs</a></div>
 			<div><a href="/about.html" class="font18 link white bottom15">About</a></div>
 			<div><a href="/contact.html" class="font18 link white bottom15">Contact</a></div>
-			<div><a href="/terms.html" class="font18 link white bottom15">Terms of use</a></div>
-			<div><a href="/privacy.html" class="font18 link white bottom15">Privacy policy</a></div>
 		</div>
 	</div>
 
@@ -193,8 +203,8 @@
 						<a href="#" class="link" id="navigation_15_dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-bars"></i></a>
 						<div class="bg_dark_gray dropdown-menu" aria-labelledby="navigation_15_dropdown">
 								<div><a href="/" class="link white">Home</a></div>
-								<div><a href="/products.html" class="link white">Product flows</a></div>
 								<div><a href="/appointments.html" class="link white">Appointment flows</a></div>
+								<div><a href="/products.html" class="link white">Product flows</a></div>
 								<!-- <div><a href="/livesell.html" class="link white">Live sell flows</a></div> -->
 								<div><a href="/labs.html" class="link white">Labs</a></div>
 								<div><a href="/about.html" class="link white">About</a></div>
@@ -253,7 +263,7 @@
 					<div class='max_width600 margin_auto' style="margin-top: 20px;">
 						<div class="testimonialContainer">
 							<img id="testimonialBubbleSalome" class="testimonialBubble" src="i/testimonials/chat/blue_bubble_custom.png">
-							<div class="testimonialCenteredLeft">I just want to sell my coaching within Messenger, that simple. MessengerSell enables that in a couple of clicks! <img src="i/testimonials/chat/fineHand.png" style="max-width: 24px; width: auto; position: relative;"></div>
+							<div class="testimonialCenteredLeft">I just want to sell my coaching within Messenger, that simple. MessengerSell enabled that in a couple of clicks! <img src="i/testimonials/chat/fineHand.png" style="max-width: 24px; width: auto; position: relative;"></div>
 						</div>
 						<div style="padding-top: 10px; text-align: right;">
 							<div style="float: left; width: 50%"><a href="https://www.facebook.com/Salome.Hacquard.English.Business.Coach/&si=7000000002135963&pi=e6f4cde3-323c-4bd3-b31b-29eb33c24dbc" target="_blank"><img src="i/testimonials/people/Salome.jpg" style="border-radius: 50%; height: 160px"></a></div>
@@ -281,13 +291,28 @@
 						</div>
 					</div>
 
+					<!-- Benito BRTrials -->
+					<div class='max_width600 margin_auto' style="margin-top: 20px;">
+						<div class="testimonialContainer">
+							<img id="testimonialBubbleBenito" class="testimonialBubble" src="i/testimonials/chat/blue_bubble_custom.png">
+							<div class="testimonialCenteredLeft">My customers like to contact me through Messenger, I missed a way to close deals as we chat, live. MessengerSell enabled me to do that! <img src="i/testimonials/chat/raisingHands.png" style="max-width: 24px; width: auto; position: relative;"></div>
+						</div>
+						<div style="padding-top: 10px; text-align: right;">
+							<div style="float: left; width: 50%"><a href="https://www.facebook.com/brtrials" target="_blank"><img src="i/testimonials/people/Benito.jpg" style="border-radius: 50%; height: 160px"></a></div>
+							<div style="float: right; width: 50%; height: 200px">
+								<div style="text-align: left; padding: 15px; top: 50px; position: relative;">
+									<a href="https://www.facebook.com/brtrials" target="_blank">Benito Ros - Biketrial parts dealer</a>
+								</div>
+							</div>
+						</div>
+					</div>
+
 				</div>
 			</div>
 		</div>
 	</section>
 
 	<!-- Form 12 -->
-
 	<section class="form_12 bg_blue padding_top100 padding_bottom100">
 		<div class="container nopadding text-center white">
 			<form action="/api/lead" method="post">
