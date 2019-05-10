@@ -90,7 +90,7 @@ function getMessageFromResponse(data) {
 	switch(data.code) {
 		case 200: return '👍 Email sent!';
 			break;
-		case 409: return '😲 This email is already in the wait list.';
+		case 409: return '😲 This email is already registered!';
 			break;
 		case 422: 
 			var messageToReturn = '😲 ';
