@@ -51,7 +51,7 @@ webapp.get('/r/:token', (req, res) => {
 		        		console.log('index.get(/r): redirecting referral with user id ' + result['_id']);
 		        		var userDatastructure = JSON.stringify(sendgridMailer.getUserDatastructure(result['_id']));
 		        		res.writeHead(302, {
-					      'Location': '/waitinglist.html?referer_token=' + encryptionUtility.cypher(userDatastructure)
+					      'Location': '/referral.html?referer_token=' + encryptionUtility.cypher(userDatastructure)
 					      //add other headers here...
 					    });
 					    res.end();
