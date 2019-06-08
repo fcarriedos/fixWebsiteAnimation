@@ -6251,3 +6251,17 @@ b, strong {
     line-height: 32px;
   }
 }
+
+
+.embedded_emoji_image {
+  max-width: 24px; 
+  position: relative; 
+  top: -5px;
+}
+
+.embedded_emoji_image_highlighted {
+  max-width: 48px; 
+  position: relative; 
+  top: -5px;
+}
+
