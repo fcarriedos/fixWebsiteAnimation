@@ -312,13 +312,13 @@ b, strong {
 
 /* Header 12 */
 .header_12 {
-  background: #0f0f10 url(../i/fv/2.jpg) 50% 50%;
+  background: #0f0f10 url(../i/fv/girl_phone_bus_lower.jpg) 50% 50%;
   background-size: cover;
 }
 
 @media (-webkit-min-device-pixel-ratio: 1.25), (-o-min-device-pixel-ratio: 5/4), (min-resolution: 120dpi) {
   .header_12 {
-    background-image: url(../i/fv/2.jpg);
+    background-image: url(../i/fv/girl_phone_bus_lower.jpg);
   }
 }
 
@@ -326,6 +326,10 @@ b, strong {
   position: absolute;
   top: 0px;
   right: 0px;
+}
+
+.small_animation {
+  display: none;
 }
 
 /* Header 13 */
@@ -2903,6 +2907,19 @@ b, strong {
     margin-left: 0;
     margin-right: 30px;
   }
+  .big_animation {
+    display: none !important;
+  }
+  .small_animation {
+    display: block !important;
+    max-width: 400px;
+  }
+  .small_animation_container {
+    text-align: right; 
+    text-align: -webkit-right; 
+    padding-right: 50px; 
+    padding-top: 50px;
+  }
 }
 
 /* 1024px and smaller */
@@ -3931,6 +3948,10 @@ b, strong {
   .footer_13 .block_right a {
     margin: 0 15px;
   }
+  .small_animation {
+    display: block !important;
+    max-width: 300px;
+  }
 }
 
 /* Smaller than 830px */
@@ -4712,7 +4733,18 @@ b, strong {
     padding-top: 80px;
     padding-bottom: 30px;
   }
+  .small_animation {
+    display: block !important;
+    max-width: 250px;
+  }
+  .small_animation_container {
+    text-align: right; 
+    text-align: -webkit-right; 
+    padding-right: 50px; 
+    padding-top: 25px;
+  }
 }
+
 
 /* Smaller than 640px */
 @media (max-width: 639.99px) {
@@ -4859,6 +4891,17 @@ b, strong {
 
 /* Smaller than 600px */
 @media (max-width: 599.99px) {
+
+  .small_animation_container {
+    text-align: right; 
+    text-align: -webkit-right; 
+    padding-right: 10px; 
+    padding-top: 10px;
+  }
+
+  .small_animation {
+    display: block;
+  }
   .header_12 .bg {
     max-height: 400px;
   }
@@ -5454,6 +5497,16 @@ b, strong {
 
 /* Smaller than 500px */
 @media (max-width: 499.99px) {
+  .small_animation {
+    display: block !important;
+    max-width: 250px;
+  }
+  .small_animation_container {
+    text-align: right; 
+    text-align: -webkit-right; 
+    padding-right: 0px; 
+    padding-top: 80px;
+  }
   .header_9 form input {
     width: 100%;
     float: none;
@@ -5581,6 +5634,16 @@ b, strong {
 
 /* Smaller than 480px */
 @media (max-width: 479.99px) {
+  .small_animation {
+    display: block !important;
+    max-width: 200px;
+  }
+  .small_animation_container {
+    text-align: right; 
+    text-align: -webkit-right; 
+    padding-right: 0px; 
+    padding-top: 40px;
+  }
   .header_2 .header_2_link a {
     display: block;
   }
