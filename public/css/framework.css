@@ -9478,10 +9478,10 @@
   background: #d7d7d7; }
 
 .bg_medium_gray {
-  background: #95a5a6; }
+  background: rgba(0, 0, 0, 0.35); }
 
 .bg_dark_gray {
-  background: #141414; }
+  background: rgba(0, 0, 0, 0.35); }
 
 .bg_green {
   background: #18c967; }

@@ -10,7 +10,7 @@ const sendgridMailer = require('./sendgridMailer.js');
 const { check, validationResult } = require('express-validator/check');
 const { matchedData, sanitize } = require('express-validator/filter');
 const dbclient = require('mongodb').MongoClient;
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8000;
 
 getDBPool();
 
