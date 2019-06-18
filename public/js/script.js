@@ -1,6 +1,8 @@
 // Scroll.js
 
 const WEBSITE_URL_ENDPOINT = 'https://www.messengersell.com/';
+const TESTIMONIAL_BLINK_INTERVAL = 5000;
+const FADE_TIME = 800;
 
 $(window).on('popstate',function(e){
 	e.preventDefault();
@@ -779,3 +781,49 @@ if($(".pricing_table_6 .slider").length>0){
 	});
 }
 
+
+// Randomize slides in the Slick carousel
+$.fn.randomize = function (selector) {
+    var $elems = selector ? $(this).find(selector) : $(this).children(),
+        $parents = $elems.parent();
+
+    $parents.each(function () {
+        $(this).children(selector).sort(function (childA, childB) {
+            // * Prevent last slide from being reordered
+            if($(childB).index() !== $(this).children(selector).length - 1) {
+                return Math.round(Math.random()) - 0.5;
+            }
+        }.bind(this)).detach().appendTo(this);
+    });
+
+    return this;
+};
+
+
+function startupTestimonials() {
+
+	var i = 0;
+
+	var testimonialDivs = $('#testimonialContainer > div').toArray();
+
+	for (j = 0;  j < testimonialDivs.length; j++) {
+		if (j == 0) continue;
+		console.log('startupTestimonials(): hiding testimonial ' + testimonialDivs[j].style.display);
+		testimonialDivs[j].style.display = 'none';
+	}
+
+	setInterval(() => {
+		// Hide the shown one
+		var currentTestimonial = testimonialDivs[i];
+		if (i >= 0) {
+			$(currentTestimonial).hide();				
+		}
+		i = ((i + 1) % testimonialDivs.length); 
+		var nextTestimonial = testimonialDivs[i];
+		console.log('startupTestimonials(): showing ' + i + ' testimonial');
+		$(currentTestimonial).fadeOut(FADE_TIME, () => {
+			$(nextTestimonial).fadeIn();
+		});
+	}, TESTIMONIAL_BLINK_INTERVAL);
+
+}

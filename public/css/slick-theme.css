@@ -91,7 +91,7 @@
     .slick-dots li button {
       -webkit-box-sizing: border-box;
       box-sizing: border-box;
-      border: 2px solid #ffffff;
+      border: 2px solid #999999;
       border-radius: 50%;
       background: transparent;
       display: block;
@@ -108,7 +108,7 @@
         outline: none;
         opacity: 0.8; }
     .slick-dots li.slick-active button {
-      background: #ffffff;
+      background: blue;
       opacity: 1; }
       .slick-dots li.slick-active button:hover {
         opacity: 1; }

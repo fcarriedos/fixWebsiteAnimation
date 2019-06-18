@@ -6257,11 +6257,131 @@ b, strong {
   max-width: 24px; 
   position: relative; 
   top: -5px;
+  display: inline-block !important;
+  display: -webkit-inline-box !important;
 }
+
 
 .embedded_emoji_image_highlighted {
   max-width: 48px; 
   position: relative; 
   top: -5px;
+  display: inline-block !important;
+  display: -webkit-inline-box !important;
 }
 
+
+/* Testimonial styles */
+
+.testimonialContainer {
+          position: relative;
+      }
+
+      .testimonialCenteredLeft {
+          position: absolute;
+          left: 0;
+          top: 18%;
+          width: 90%;
+          text-align: left;
+          /*font-size: 1.3vmax;*/
+          color: white;
+          font-family: Nunito;
+          margin-left: 20px;
+          font-style: italic;
+
+      }
+
+      .testimonialCenteredRight {
+          position: absolute;
+          left: 0;
+          top: 18%;
+          width: 90%;
+          text-align: left;
+          /*font-size: 1.3vmax;*/
+          color: black;
+          font-family: Nunito;
+          margin-left: 32px;
+          font-style: italic;
+
+      }
+
+      .testimonialBubble { 
+          width: 100%;
+          height: auto;
+      })
+
+      @media screen and (min-width: 600px) {
+        .testimonialCenteredLeft {
+          /*font-size: 36px;*/
+          top: 18%;
+        }
+        
+        #testimonialBubbleFabio {
+          height: auto;
+        }
+
+        #testimonialBubbleSalome {
+          height: auto;
+        }
+
+        #testimonialBubbleVerolina {
+          height: auto;
+        }
+
+        #testimonialBubbleSandy {
+          height: auto;
+          margin-left: 32px;
+          top: 10px;
+        }
+
+        #testimonialCenteredRightVerolina {
+          margin-left: 32px;
+          top: 15%;
+        }
+
+        #testimonialCenteredRightSandy {
+          top: 30px;
+        }
+
+        #testimonialBubbleBenito {
+          height: auto;
+        }
+
+      }
+
+      @media screen and (max-width: 500px) {
+        .testimonialCenteredLeft {
+          font-size: 18px;
+          top: 8%;
+        }
+
+        #testimonialBubbleFabio {
+          height: 150px
+        }
+
+        #testimonialBubbleSalome {
+          height: 150px
+        }
+
+        #testimonialBubbleVerolina {
+          height: 200px
+        }
+
+        #testimonialCenteredRightVerolina {
+          margin-left: 20px;
+          top: 10px;
+        }
+
+        #testimonialBubbleSandy {
+          height: 160px;    
+        }
+
+        #testimonialCenteredRightSandy {
+          top: 20px;
+          margin-left: 20px;
+        }
+
+        #testimonialBubbleBenito {
+          height: 190px
+        }
+      }
