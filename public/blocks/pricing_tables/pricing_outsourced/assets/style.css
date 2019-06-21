@@ -1,0 +1,640 @@
+*{}
+
+/* Fonts Start Here */
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Nunito', sans-serif;
+}
+p, span, a, li {
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+/* Fonts End Here */
+
+.pricing_bnr {
+    background: #2b48e7;
+    color: #fff;
+    padding-top: 80px;
+    border-radius: 0;
+}
+
+.pricing_bnr h1 {
+    font-size: 48px;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
+    margin: 0;
+    padding-bottom: 20px;
+}
+
+.pricing_bnr p {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.paymentplan {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 30%;
+    margin: 0 auto;
+}
+
+.btn-onoff input:checked ~ span::before, .btn-onoff input ~ span:before {
+    color: transparent !important;
+}
+
+/* Banner Button Style Start Here */
+
+/*Start | On-Off Button Design*/
+.btn-onoff{
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+}
+.btn-onoff input{
+  display: block;
+  position: absolute;
+  opacity:0
+}
+.btn-onoff span{
+	position: relative;
+	display: block;
+	width: 50px;
+	height: 30px;
+	border-radius: 40px;
+	background: #ccc;
+	border: 1px solid #ccc;
+	-webkit-transition: 400ms;
+	-moz-transition: 400ms;
+	-ms-transition: 400ms;
+	transition: 400ms
+}
+.btn-onoff input:checked ~ span{
+  border: 1px solid #4CAF50;
+  background: #13ce66
+}
+.btn-onoff input ~ span:before{
+	content: 'Off';
+	display: block;
+	width: 34px;
+	height: 34px;
+	position: absolute;
+	right: 0px;
+	font-size: 14px;
+	font-family: "Arial";
+	font-weight: bold;
+	line-height: 34px;
+	color: #444;
+	padding: 0px 8px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	-webkit-transition: 500ms;
+	-moz-transition: 500ms;
+	-ms-transition: 500ms;
+	transition: 500ms
+}
+.btn-onoff input:checked ~ span:before{
+	content: 'On';
+	right: 15px;
+	color: #fff
+}
+.btn-onoff input ~ span:after{
+	content: '';
+	position: absolute;
+	width: 28px;
+	height: 28px;
+	top: 0;
+	left: 0;
+	background: #fff;
+	border-radius: 50%;
+	-webkit-transition: 400ms;
+	-moz-transition: 400ms;
+	-ms-transition: 400ms;
+	transition: 400ms
+}
+.btn-onoff:hover input ~ span:after{
+	-webkit-transform:scale(0.9);
+	-moz-transform:scale(0.9);
+	-ms-transform:scale(0.9);
+	transform:scale(0.9)
+}
+.btn-onoff input:checked ~ span:after{
+	content: '';
+	left: 20px;
+}
+/*End | On-Off Button Design*/
+
+
+/********** Banner Button Style End Here **********/
+
+/********** Pricing Section Style Start **********/
+
+.pricing .card {
+    border: none;
+    border-radius: 6px;
+    transition: all 0.2s;
+    box-shadow: 0 5px 30px rgba(0,0,0,0.1);
+    background: #fff;
+    height: 550px;
+}
+
+.pricing hr {
+  margin: 1.5rem 0;
+}
+
+.pricing .card-title {
+    font-weight: 600;
+    font-size: 22px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    text-transform: capitalize !important;
+    color: rgb(70, 82, 94) !important;
+    padding-bottom: 20px;
+}
+
+.pricing .card-price {
+    font-size: 48px;
+    margin: 0 0 15px;
+    color: #2b48e7;
+    position: relative;
+    padding-top: 40px;
+}
+
+span.period {
+    display: block;
+}
+
+.pricing .card-price .period {
+    font-size: 14px;
+}
+
+.pricing ul li {
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: rgb(115, 126, 134);
+}
+
+.pricing .btn {
+  font-size: 80%;
+  border-radius: 5rem;
+  letter-spacing: .1rem;
+  font-weight: bold;
+  padding: 1rem;
+  opacity: 0.7;
+  transition: all 0.2s;
+}
+
+span.dlr {
+    font-size: 14px;
+    position: absolute;
+    top: 8px;
+    left: 33%;
+}
+
+ul.fa-ul {
+    padding-top: 20px;
+    padding-bottom: 60px;
+}
+
+a.btn.btn-block {
+    padding: 10px;
+    background: #2b48e7;
+    box-shadow: 0px 2px 10px rgba(146, 146, 146, 0.5);
+    color: #fff;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 400;
+    width: 70%;
+    cursor: pointer;
+    margin: 0 auto;
+    transition: box-shadow 0.2s ease-in-out;
+    opacity: 1;
+    text-transform: capitalize !important;
+}
+
+.card-body {
+    padding: 20px 20px 50px;
+}
+
+span.fa-li i {
+    color: #13ce66;
+}
+
+.premium h3 {
+    background: #0066cc;
+    color: #fff;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 8px;
+    width: 100%;
+    margin-bottom: 30px;
+    text-align: center;
+    border-radius: 6px 6px 0 0;
+    margin: 0;
+}
+
+.premium {
+    background: #1C91F2 !important;
+    margin-top: -30px;
+    height: 580px !important;
+}
+
+.pricing .premium h5.card-title, .pricing .premium .card-price, .pricing .premium ul li {
+    color: #fff !important;
+}
+
+.premium a.btn.btn-block {
+    background: #ffffff;
+    color: #2576b7;
+    box-shadow: 0px 2px 10px rgba(146, 146, 146, 0.5);
+    border: 1px solid #fff;
+}
+
+.text_row {
+    padding-top: 100px;
+}
+
+.hinweise {
+    width: 100%;
+}
+
+.hinweise p {
+    font-size: 15px;
+    margin: 0 0 5px;
+    color: #9a9a9a;
+}
+
+a.btn.btn-block {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.premium i.fa.fa-check-circle {
+    color: #fff;
+}
+
+/********** Pricing Section Style End **********/
+
+/********** Save Money Section Style Start **********/
+
+.img_box {
+    text-align: right;
+}
+
+.con_box h3 {
+    font-size: 30px;
+    padding: 0 0 20px;
+}
+
+.con_box p {
+    color: rgb(44, 62, 80);
+    font-size: 18px;
+    font-weight: 300;
+}
+
+/********** Save Money Section Style End **********/
+
+/********** Working Section Style Start **********/
+ 
+section#work .img_box {
+    text-align: left;
+}
+
+/********** Working Section Style End **********/
+
+
+
+
+.toggle,
+.toggler {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 5px;
+}
+.toggler {
+    color: #fff;
+    transition: 0.2s;
+    opacity: 0.6;
+	cursor: pointer;
+}
+.toggler--is-active {
+    color: #ffffff;
+	opacity: 1;
+}
+h6.card-price sup {
+    font-size: 15px;
+    top: -20px;
+}
+.b {
+  display: block;
+}
+.toggle {
+    position: relative;
+    width: 50px;
+    height: 1.9em;
+    border-radius: 100px;
+    background-color: #fff;
+    overflow: hidden;
+    box-shadow: inset 0 0 2px 1px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+}
+.check {
+  position: absolute;
+  display: block;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  z-index: 6;
+}
+.check:checked ~ .switch {
+    right: 2px;
+    left: 40%;
+    transition: 0.25s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    transition-property: left, right;
+    transition-delay: 0.08s, 0s;
+}
+.switch {
+    position: absolute;
+    left: 2px;
+    top: 1px;
+    bottom: 2px;
+    right: 57.5%;
+    background-color: #fff;
+    border-radius: 36px;
+    z-index: 1;
+    transition: 0.25s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    transition-property: left, right;
+    transition-delay: 0s, 0.08s;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.33);
+    width: 1.75em;
+    height: 1.75em;
+}
+.pricing-section {
+  padding: 110px 0 150px 0;
+  float: left;
+  width: 100%;
+  text-align: center;
+}
+.pricing-columns .wrapper-full {
+  position: relative;
+  width: 1170px;
+  margin: 0 auto;
+}
+.pricing-columns #pricing-chart,
+.pricing-columns-both #pricing-chart {
+  margin-top: 100px;
+  float: left;
+  position: relative;
+}
+.pricing-columns #pricing-chart #smaller-plans,
+.pricing-columns-both #pricing-chart #smaller-plans {
+  display: block;
+}
+.pricing-columns #pricing-chart .plan,
+.pricing-columns-both #pricing-chart .plan {
+  float: left;
+  background-color: #fafafa;
+  position: relative;
+  color: #454545;
+  padding: 14px;
+  border-right: 1px solid #e1e1e1;
+  border-bottom: 1px solid #e1e1e1;
+  width: 207px;
+}
+.pricing-columns #pricing-chart .plan:first-child,
+.pricing-columns-both #pricing-chart .plan:first-child {
+  border-left: 1px solid #e1e1e1;
+}
+.pricing-columns #pricing-chart .plan:before,
+.pricing-columns-both #pricing-chart .plan:before {
+  content: "";
+  position: absolute;
+  height: 5px;
+  left: -1px;
+  top: 0;
+  background-color: #233E48;
+  width: 207px;
+}
+.pricing-columns #pricing-chart .plan .price,
+.pricing-columns-both #pricing-chart .plan .price {
+  font-size: 26px;
+  float: left;
+  width: 100%;
+  margin-bottom: 35px;
+  margin-top: 17px;
+}
+.pricing-columns #pricing-chart .plan .price .dollar,
+.pricing-columns-both #pricing-chart .plan .price .dollar {
+  top: -10px;
+  letter-spacing: -1px;
+  left: 3px;
+}
+.pricing-columns #pricing-chart .plan .price .amount,
+.pricing-columns-both #pricing-chart .plan .price .amount {
+  font-size: 30px;
+  font-weight: 600;
+}
+.pricing-columns #pricing-chart .plan .price .slash,
+.pricing-columns-both #pricing-chart .plan .price .slash {
+  font-weight: 600;
+  left: -2px;
+}
+.pricing-columns #pricing-chart .plan .price .month,
+.pricing-columns-both #pricing-chart .plan .price .month {
+  font-weight: 600;
+  left: -7px;
+}
+.pricing-columns #pricing-chart .plan ul,
+.pricing-columns-both #pricing-chart .plan ul {
+  padding: 0 18px;
+  margin-bottom: 40px;
+}
+.pricing-columns #pricing-chart .plan ul li,
+.pricing-columns-both #pricing-chart .plan ul li {
+  font-weight: 600;
+  font-size: 15px;
+  text-align: left;
+  margin-bottom: 20px;
+}
+.pricing-columns #pricing-chart .plan ul li span,
+.pricing-columns-both #pricing-chart .plan ul li span {
+  color: #9e9e9e;
+  display: inline-block;
+  margin-left: 7px;
+  font-weight: 400;
+  font-size: 14px;
+}
+.pricing-columns #pricing-chart .plan a.sign-up,
+.pricing-columns-both #pricing-chart .plan a.sign-up {
+  width: 100%;
+  padding: 13px;
+  background-color: white;
+  border: 1px solid #e1e1e1;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #9e9e9e;
+  display: block;
+  margin-bottom: 5px;
+  font-size: 15px;
+  clear: left;
+  letter-spacing: 1.5px;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+.pricing-section .sign-up {
+  padding: 17px 50px;
+  text-transform: uppercase;
+  background-color: #93cc76;
+  color: white;
+  letter-spacing: 0.1em;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-block;
+  white-space: pre;
+  padding-left: 100px;
+  padding-right: 100px;
+  margin-top: 30px;
+}
+.pricing-columns #pricing-chart .popular,
+.pricing-columns-both #pricing-chart .popular {
+  width: 274px;
+  position: relative;
+  top: -30px;
+  background-color: white;
+  margin-left: -2px;
+  right: 0;
+  border-left: 1px solid #e1e1e1;
+  border-right: 1px solid #e1e1e1;
+}
+.pricing-columns #pricing-chart .popular:before,
+.pricing-columns-both #pricing-chart .popular:before {
+  width: 274px;
+  background-color: #9D1726;
+  height: 7px;
+}
+.pricing-columns #pricing-chart .popular a.sign-up,
+.pricing-columns-both #pricing-chart .popular a.sign-up {
+  background-color: #9D1726;
+  border: none;
+  color: #ffffff;
+}
+.pricing-columns #pricing-chart .popular .price .amount,
+.pricing-columns-both #pricing-chart .popular .price .amount {
+  font-size: 60px;
+}
+.bandwidth {
+  display: block;
+  color: #9e9e9e;
+  font-size: 16px;
+  position: absolute;
+  right: 0;
+  bottom: -90px;
+}
+.pricing-columns #pricing-chart .popular p.pop-plan,
+.pricing-columns-both #pricing-chart .popular p.pop-plan {
+  color: #454545;
+  font-size: 16px;
+  margin-bottom: 45px;
+}
+.pricing-columns #pricing-chart .popular .price,
+.pricing-columns-both #pricing-chart .popular .price {
+  margin-bottom: 0px;
+}
+.pricing-columns #pricing-chart .plan a.sign-up:hover,
+.pricing-columns-both #pricing-chart .plan a.sign-up:hover {
+  border: 0;
+  color: #fff;
+  opacity: 0.8;
+}
+.hide {
+  display: none;
+}
+
+p.remove {
+    margin: 0;
+    color: #2b48e7;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.premium p.remove {
+    color: #fff;
+}
+
+
+
+
+/******************* Responsive Style Start Here *******************/
+
+@media only screen and (max-width: 768px) {
+	
+.paymentplan {
+    flex-flow: column;
+    width: 100%;
+}
+
+.onoff_toggle {
+    padding: 15px 0;
+}
+
+.btn-onoff {
+    margin: 0;
+}
+
+.text_row {
+    padding: 20px;
+}
+
+section#save {
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+.img_box img {
+    padding: 20px;
+    width: 100%;
+}
+
+section#work .con_box {
+    padding-top: 20px;
+}
+
+span.dlr {
+    left: 38%;
+}
+
+.premium {
+    margin-top: 0;
+}
+
+.toggler {
+    width: 100%;
+}
+	
+}
+
+/******************* Responsive Style End Here *******************/
