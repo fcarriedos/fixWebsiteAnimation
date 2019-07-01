@@ -7,10 +7,51 @@
 		<link rel="icon" href="../../i/favicon.ico" type="image/x-icon">
 		<link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700,800,900|Nunito+Sans:200,300,400,600,700,800,900" rel="stylesheet">
 		<link href="../../css/style.css" rel="stylesheet" />
+		<script src="https://js.stripe.com/v3/"></script>
 		<script src="../../js/jquery.min.js"></script>
 		<script src="../../js/bootstrap.min.js"></script>
 	</head> 
 	<body>
+
+<!-- Payment options modal -->
+<!-- http://jsfiddle.net/daverogers/mu5mvba0/ -->
+	<div class="modal fade">
+		  <div class="modal-dialog" style="max-width: 800px">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		      	 <h4 class="modal-title">Payment options</h4>
+		        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+	      </div>
+	      <div class="modal-body">
+	        <div id="paymentMethodCaroussel" style="width: 100%; height: 400px;">
+	        	<div>
+	        		<h2>Credit card</h2>
+	        		<form action="/charge" method="post" id="payment-form" style="width: 100%; height: 100%">
+					  <div class="form-row">
+					    <label for="card-element">
+					      Credit or debit card
+					    </label>
+					    <div id="card-element">
+					      <!-- A Stripe Element will be inserted here. -->
+					    </div>
+
+					    <!-- Used to display Element errors. -->
+					    <div id="card-errors" role="alert"></div>
+					  </div>
+
+					  <button>Submit Payment</button>
+					</form>
+	        	</div>
+				<div>Paypal</div>
+	        </div>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	      </div>
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+
 
 <!-- Navigation Mobile type 3 -->
 
@@ -95,7 +136,7 @@
 						<div class="top40 padding_sides45 inner">
 							<div class="font28 light dark_gray title"><span class="font_second">Toolkit</span> <span class="float_right">$29</span></div>
 							<div class="top15 text" style="height: 300px">
-								Social Commerce to go on business: 
+								Social Commerce to go on business:
 								<ul style="margin-top: 10px">
 									<li><a href="#">Optimized checkout flow [+]</a>.</li>
 									<li><a href="#">Social notifications [+]</a>.</li>
@@ -108,7 +149,7 @@
 								</ul>
 								For: <span style="font-weight: bolder">Newcomers, Influencers, Community managers or upgrading your store to Social commerce !</span>
 							</div>
-							<a href="#" class="top35 bottom30 btn size50 width_full transparent_blue border border_blue radius6">Get it now!</a>
+							<a id="paybuttonToolkitMonthly" href="#" class="top35 bottom30 btn size50 width_full transparent_blue border border_blue radius6">Get it now!</a>
 						</div>
 					</div>
 					<div class="max_width370 radius10 bottom70 block">
@@ -126,7 +167,7 @@
 								</ul>
 								For: <span style="font-weight: bolder">Digital Marketing Professionals, bot developers, eCommerce specialists.</span>
 							</div>
-							<a href="#" class="top35 bottom30 btn size50 width_full transparent_blue border border_blue radius6">Get it now!</a>
+							<a id="paybuttonPlatformMonthly"  href="#" class="top35 bottom30 btn size50 width_full transparent_blue border border_blue radius6">Get it now!</a>
 						</div>
 					</div>
 					<div class="max_width370 radius10 bottom70 block">
@@ -173,7 +214,7 @@
 								</ul>
 								For: <span style="font-weight: bolder">Newcomers, Influencers, Community managers or upgrading your store to Social commerce !</span>
 							</div>
-							<a href="#" class="top35 bottom30 btn size50 width_full transparent_blue border border_blue radius6">Get it now!</a>
+							<a id="paybuttonToolkitYearly"  href="#" class="top35 bottom30 btn size50 width_full transparent_blue border border_blue radius6">Get it now!</a>
 						</div>
 					</div>
 					<div class="max_width370 radius10 bottom70 block">
@@ -191,7 +232,7 @@
 								</ul>
 								For: <span style="font-weight: bolder">Digital Marketing Professionals, bot developers, eCommerce specialists.</span>
 							</div>
-							<a href="#" class="top35 bottom30 btn size50 width_full transparent_blue border border_blue radius6">Get it now!</a>
+							<a id="paybuttonPlatformYearly"  href="#" class="top35 bottom30 btn size50 width_full transparent_blue border border_blue radius6">Get it now!</a>
 						</div>
 					</div>
 					<div class="max_width370 radius10 bottom70 block">
@@ -243,6 +284,89 @@
 	</a>
 	<div class="flex align_center justify_center width_full height_full iframe_container"></div>
 </div>
+
+<input id="showModalButton" type="button" value="Show">
+
+	<script type="text/javascript">
+
+		var allPayButtons = $('[id^="paybutton"]');
+		for (payButton of allPayButtons) {
+			console.log('The id is ' + payButton.id);
+			$('#' + payButton.id).click(function() {
+			    $('.modal')
+			        .prop('class', 'modal fade') // revert to default
+			        .addClass( $(this).data('direction') );
+			    $('.modal').modal('show');
+			});
+		}
+
+		$(document).ready(function() {
+				$('#paymentMethodCaroussel').slick({
+					
+				});
+		});
+
+		var stripe = Stripe('pk_test_5R4XXBNNuTbbxbhAVEDMJEvs');
+		var elements = stripe.elements();
+
+		// Custom styling can be passed to options when creating an Element.
+		var style = {
+		  base: {
+		    // Add your base input styles here. For example:
+		    fontSize: '16px',
+		    color: "#32325d",
+		  }
+		};
+
+		// Create an instance of the card Element.
+		var card = elements.create('card', {style: style});
+
+		// Add an instance of the card Element into the `card-element` <div>.
+		card.mount('#card-element');
+
+		card.addEventListener('change', function(event) {
+		  var displayError = document.getElementById('card-errors');
+		  if (event.error) {
+		    displayError.textContent = event.error.message;
+		  } else {
+		    displayError.textContent = '';
+		  }
+		});
+
+		// Create a token or display an error when the form is submitted.
+		var form = document.getElementById('payment-form');
+		form.addEventListener('submit', function(event) {
+		  event.preventDefault();
+
+		  stripe.createToken(card).then(function(result) {
+		    if (result.error) {
+		      // Inform the customer that there was an error.
+		      var errorElement = document.getElementById('card-errors');
+		      errorElement.textContent = result.error.message;
+		    } else {
+		      // Send the token to your server.
+		      stripeTokenHandler(result.token);
+		    }
+		  });
+		});
+
+		function stripeTokenHandler(token) {
+		  // Insert the token ID into the form so it gets submitted to the server
+		  var form = document.getElementById('payment-form');
+		  var hiddenInput = document.createElement('input');
+		  hiddenInput.setAttribute('type', 'hidden');
+		  hiddenInput.setAttribute('name', 'stripeToken');
+		  hiddenInput.setAttribute('value', token.id);
+		  form.appendChild(hiddenInput);
+
+		  // Submit the form
+		  // form.submit();
+
+		  console.log('Habemus token!!! ' + JSON.stringify(token, null, 2));
+
+		}
+		
+	</script>
 
 	<script src="../../js/slick.min.js"></script>
 	<script src="../../js/aos.min.js"></script>

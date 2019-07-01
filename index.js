@@ -1,6 +1,7 @@
 // var restify = require('restify');
 const CONSTANTS = require('./CONSTANTS.js');
 const responseUtils = require('./responseUtils.js');
+const subscriptions = require('./subscriptions.js');
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
@@ -303,6 +304,27 @@ webapp.get('/.well-known/acme-challenge/QaFQvY2oakMh3-bhP1F3XOL1-iNy1oCwR8VULWFc
   // 'Content-Disposition': 'attachment; filename=some_file.pdf',
   // 'Content-Length': data.length
     res.send(contents);
+});
+
+
+webapp.post('/subscribe/', (req, res) => {
+	
+	if (req.body.action == 'subscribe') {
+		subscriptions.subscribe();
+		res.send();
+		return;
+	}
+
+	if (req.body.action == 'unsubscribe') {
+		subscriptions.unsubscribe();
+		res.send();
+		return;
+	}
+
+	// Respond with an error
+	res.send();
+	return;
+
 });
 
 
