@@ -1,0 +1,131 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <title data-tid="elements_examples.meta.title">Stripe Elements: Build beautiful, smart checkout flows</title>
+  <meta data-tid="elements_examples.meta.description" name="description" content="Build beautiful, smart checkout flows.">
+
+  <link rel="shortcut icon" href="img/favicon.ico">
+  <link rel="apple-touch-icon-precomposed" href="img/apple-touch-icon/180x180.png">
+  <link rel="icon" href="img/apple-touch-icon/180x180.png">
+
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700,800,900|Nunito+Sans:200,300,400,600,700,800,900" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" href="css/base.css" data-rel-css="" />
+
+  <!-- CSS for each example: -->
+  <link rel="stylesheet" type="text/css" href="css/example5.css" data-rel-css="" />
+</head>
+<body>
+
+  <script src="https://www.paypal.com/sdk/js?client-id=AV0Q2Kcp_Ix1YZblCTVg7TAQJjdVTGqok0AVQaxMdo1ensH5xiVqqAJtYydUPDSjVzfMav9f_By_aKum&vault=true"></script>
+
+  <div class="globalContent">
+    <main>
+    <section class="container-lg" style="padding: 0px">
+
+      <!--Example 5-->
+      <div class="cell example example5" id="example-5" style="padding: 10px; overflow: hidden;">
+        <form>
+          <div>
+            <div id="example5-paymentRequest" style="max-width: 300px; position: relative; left: calc(50% - 150px)">
+              <!--Stripe paymentRequestButton Element inserted here-->
+            </div>
+          </div>
+          <fieldset style="margin: 20px;">
+            <legend class="card-only" data-tid="elements_examples.form.pay_with_card">Pay with Paypal</legend>
+<!--             <legend class="payment-request-available" data-tid="elements_examples.form.enter_card_manually">Or enter card details</legend> -->
+            <div class="row">
+              <div class="field">
+                <label for="subscriberName" data-tid="elements_examples.form.name_label" style="font-family: Nunito">Name</label>
+                <input id="subscriberName" data-tid="elements_examples.form.name_placeholder" class="input" type="text" placeholder="Jane Merchant" required="" autocomplete="name" style="font-family: Nunito">
+              </div>
+            </div>
+            <div class="row">
+              <div class="field">
+                <label for="subscriberEmail" data-tid="elements_examples.form.email_label" style="font-family: Nunito">Email</label>
+                <input id="subscriberEmail" data-tid="elements_examples.form.email_placeholder" class="input" type="text" placeholder="jane.merchant@mysupershop.com" required="" autocomplete="email" style="font-family: Nunito">
+              </div>
+            </div>
+            <div class="row">
+              <div class="field">
+                <label for="subscriberPhone" data-tid="elements_examples.form.phone_label" style="font-family: Nunito">Mobile phone (SMS, WhatsApp...)</label>
+                <input id="subscriberPhone" data-tid="elements_examples.form.phone_placeholder" class="input" type="text" placeholder="(941) 555-0123" required="" autocomplete="tel" style="font-family: Nunito">
+              </div>
+            </div>
+            <div class="row">
+            	<div class="field">
+
+            		<div id="paypal-button-container"></div>
+
+					  <script>
+
+					  	var buttonEnabled = false;
+
+					    paypal.Buttons({
+
+					      onInit: function(data, actions) {
+					      	// Disable the buttons
+						      actions.disable();
+
+						      // Listen for changes to the checkbox
+						      document.querySelector('#subscriberName')
+						        .addEventListener('change', function(event) {
+
+						          // Enable or disable the button when it is checked or unchecked
+						          if (event.target.value.length > 0) {
+						            actions.enable();
+						            buttonEnabled = true;
+						          } else {
+						            actions.disable();
+						            buttonEnabled = false;
+						          }
+						        });
+					      },
+
+					      onClick: function(data, actions) {
+					      	if (!buttonEnabled) {
+					      		alert('The form is incomplete!');
+					      		return;
+					      	}
+					      },
+
+						  createSubscription: function(data, actions) {
+
+						    return actions.subscription.create({
+
+						      'plan_id': 'P-9RY47778LJ029032ELUPDCNA'
+
+						    });
+
+						  },
+
+
+						  onApprove: function(data, actions) {
+
+						    alert('You have successfully created subscription ' + JSON.stringify(data) + ' and actions ' + JSON.stringify(actions));
+
+						  }
+
+
+						}).render('#paypal-button-container');
+
+					  </script>
+				</div>
+            </div>
+          </div>
+          </fieldset>
+        </form>
+      </div>
+    </section>
+    </main>
+  </div>
+
+</body>
+</html>
