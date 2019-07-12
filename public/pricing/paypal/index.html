@@ -12,6 +12,8 @@
   <link rel="apple-touch-icon-precomposed" href="img/apple-touch-icon/180x180.png">
   <link rel="icon" href="img/apple-touch-icon/180x180.png">
 
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="/libs/IntlInputTel/css/intlTelInput.css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700,800,900|Nunito+Sans:200,300,400,600,700,800,900" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
@@ -21,6 +23,13 @@
 
   <!-- CSS for each example: -->
   <link rel="stylesheet" type="text/css" href="css/example5.css" data-rel-css="" />
+
+  <script src="https://d2tzi4yayp7s6t.cloudfront.net/beta/static/js/superagent.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="../../js/bootstrap.min.js"></script>
+  <script src="/libs/validation/pwstrength-bootstrap.min.js"></script>
+
 </head>
 <body>
 
@@ -32,7 +41,7 @@
 
       <!--Example 5-->
       <div class="cell example example5" id="example-5" style="padding: 10px; overflow: hidden;">
-        <form>
+        <form id="paypalForm">
           <div>
             <div id="example5-paymentRequest" style="max-width: 300px; position: relative; left: calc(50% - 150px)">
               <!--Stripe paymentRequestButton Element inserted here-->
@@ -44,29 +53,38 @@
             <div class="row">
               <div class="field">
                 <label for="subscriberName" data-tid="elements_examples.form.name_label" style="font-family: Nunito">Name</label>
-                <input id="subscriberName" data-tid="elements_examples.form.name_placeholder" class="input" type="text" placeholder="Jane Merchant" required="" autocomplete="name" style="font-family: Nunito">
+                <input id="subscriberName" data-tid="elements_examples.form.name_placeholder" class="input" type="text" placeholder="Jane Merchant" required="true" autocomplete="name" style="font-family: Nunito">
               </div>
             </div>
             <div class="row">
               <div class="field">
                 <label for="subscriberEmail" data-tid="elements_examples.form.email_label" style="font-family: Nunito">Email</label>
-                <input id="subscriberEmail" data-tid="elements_examples.form.email_placeholder" class="input" type="text" placeholder="jane.merchant@mysupershop.com" required="" autocomplete="email" style="font-family: Nunito">
+                <input id="subscriberEmail" data-tid="elements_examples.form.email_placeholder" class="input" type="email" placeholder="jane.merchant@mysupershop.com" required="true" autocomplete="email" style="font-family: Nunito">
+              </div>
+            </div>
+            <div class="row">
+              <div id="subscriberPhoneContainer" class="field">
+                <label for="subscriberPhone" data-tid="elements_examples.form.phone_label" style="font-family: Nunito">Mobile phone (SMS, WhatsApp...)</label>
+                <input id="subscriberPhone" data-tid="elements_examples.form.phone_placeholder" class="input" type="tel" placeholder="(941) 555-0123" required="true" autocomplete="tel" style="font-family: Nunito;">
               </div>
             </div>
             <div class="row">
               <div class="field">
-                <label for="subscriberPhone" data-tid="elements_examples.form.phone_label" style="font-family: Nunito">Mobile phone (SMS, WhatsApp...)</label>
-                <input id="subscriberPhone" data-tid="elements_examples.form.phone_placeholder" class="input" type="text" placeholder="(941) 555-0123" required="" autocomplete="tel" style="font-family: Nunito">
+                <label for="subscriberPassword" data-tid="elements_examples.form.password_label" style="font-family: Nunito">Choose a password for your account</label>
+                <input id="subscriberPassword" data-tid="elements_examples.form.password_placeholder" class="input" type="password" placeholder="" required="true" autocomplete="password">
               </div>
             </div>
             <div class="row">
-            	<div class="field">
+            <div class="field">
 
-            		<div id="paypal-button-container"></div>
+            <div id="paypal-button-container"></div>
+
+            <script src="/libs/validation/pricingFormValidation.js"></script>
 
 					  <script>
 
 					  	var buttonEnabled = false;
+              var passwordStrongEnough = false;
 
 					    paypal.Buttons({
 
@@ -75,12 +93,13 @@
 						      actions.disable();
 
 						      // Listen for changes to the checkbox
-						      document.querySelector('#subscriberName')
+						      document.querySelector('#paypalForm')
 						        .addEventListener('change', function(event) {
 
 						          // Enable or disable the button when it is checked or unchecked
-						          if (event.target.value.length > 0) {
+						          if (formIsValid()) {
 						            actions.enable();
+                        console.log('All fields valid!');
 						            buttonEnabled = true;
 						          } else {
 						            actions.disable();
@@ -90,31 +109,47 @@
 					      },
 
 					      onClick: function(data, actions) {
-					      	if (!buttonEnabled) {
-					      		alert('The form is incomplete!');
+					      	if (!formIsValid()) {
+					      		// alert('The form is incomplete!');
 					      		return;
 					      	}
 					      },
 
-						  createSubscription: function(data, actions) {
+  						  createSubscription: function(data, actions) {
 
-						    return actions.subscription.create({
+  						    return actions.subscription.create({
 
-						      'plan_id': 'P-9RY47778LJ029032ELUPDCNA'
+  						      'plan_id': 'P-9RY47778LJ029032ELUPDCNA'
 
-						    });
+  						    });
 
-						  },
+  						  },
 
+  						  onApprove: function(data, actions) {
 
-						  onApprove: function(data, actions) {
+  						    // alert('You have successfully created subscription ' + JSON.stringify(data) + ' and actions ' + JSON.stringify(actions));
 
-						    alert('You have successfully created subscription ' + JSON.stringify(data) + ' and actions ' + JSON.stringify(actions));
+                  // 1) Inform user about the success.
+                  // 2) Trigger account creation (DNS?) on the dashboard.
+                  // 3) Redirection to the newly created account.
+                  // 4) Alert saying that the email needs to be verified.
 
-						  }
-
+  						  }
 
 						}).render('#paypal-button-container');
+
+            $('#subscriberPassword').pwstrength({
+                ui: { 
+                  showVerdictsInsideProgressBar: true,
+                },
+                common: {
+                  onScore: function (options, word, totalScoreCalculated) {
+                    // console.log('Now options ' + options + ' with word ' + word + ' and total score ' + totalScoreCalculated);
+                    passwordStrongEnough = (totalScoreCalculated >= 40);
+                    return totalScoreCalculated;
+                  }
+                }
+            });
 
 					  </script>
 				</div>
@@ -126,6 +161,13 @@
     </section>
     </main>
   </div>
+
+  <script src="/libs/IntlInputTel/js/intlTelInput.js"></script>
+  <script>
+    // var input = document.querySelector("#subscriberPhone");
+    // window.intlTelInput(input);
+    initializeTelInputField();
+  </script>
 
 </body>
 </html>

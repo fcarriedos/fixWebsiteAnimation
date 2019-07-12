@@ -2,32 +2,31 @@
 <html>
 <head>
 	<title>Redirect test</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<script src="https://js.stripe.com/v3/"></script>
+  <link href="test.css" rel="stylesheet" id="test-css">
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="../../js/bootstrap.min.js"></script>
+  <script src="/libs/validation/pwstrength-bootstrap.min.js"></script>
 </head>
 <body>
 
-<form action="/charge" method="post" id="payment-form">
-  <div class="form-row">
-    <label for="card-element">
-      Credit or debit card
-    </label>
-    <div id="card-element">
-      <!-- A Stripe Element will be inserted here. -->
-    </div>
+  <input type="password" class="form-control input-lg" id="password" placeholder="Password" required="" />       
 
-    <!-- Used to display form errors. -->
-    <div id="card-errors" role="alert"></div>
-  </div>
+  <script type="text/javascript">
 
-  <button>Submit Payment</button>
-</form>
+  				$('#password').pwstrength({
+              ui: { 
+                showVerdictsInsideProgressBar: true,
+              },
+              common: {
+                onScore: function (options, word, totalScoreCalculated) {
+                  console.log('Now options ' + options + ' with word ' + word + ' and total score ' + totalScoreCalculated);
+                  return totalScoreCalculated;
+                }
+              }
+          });
 
-<script type="text/javascript">
-
-				
-
-</script>
+  </script>
 
 </body>
 </html>
