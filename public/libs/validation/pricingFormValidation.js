@@ -1,10 +1,8 @@
 'use strict';
 
-const form = document.getElementById('paypalForm');
-
-var phoneInstance = null;
-var phoneInput = null;
+var phoneInstanceFields = {};
 var phoneInstanceUtils = null;
+var passwordValidityVeredicts = {}
 const request = window.superagent;
 
 
@@ -18,9 +16,10 @@ function showErrorAlert(title, message) {
 }
 
 
-function triggerBrowserValidation() {
+function triggerBrowserValidation(paymentProviderPrefix) {
 	// The only way to trigger HTML5 form validation UI is to fake a user submit
 	// event.
+    var form = document.getElementById(paymentProviderPrefix + 'Form');
 	var submit = document.createElement('input');
 	submit.type = 'submit';
 	submit.style.display = 'none';
@@ -31,9 +30,10 @@ function triggerBrowserValidation() {
 }
 
 
-function formIsFilled() {
+function formIsFilled(paymentProviderPrefix) {
 	// Trigger HTML5 validation UI on the form if any of the inputs fail
     // validation.
+    var form = document.getElementById(paymentProviderPrefix + 'Form');
     var plainInputsValid = true;
     Array.prototype.forEach.call(form.querySelectorAll('input'), function(input) {
       if (input.checkValidity && !input.checkValidity()) {
@@ -43,8 +43,8 @@ function formIsFilled() {
     });
     
     if (!plainInputsValid) {
-      triggerBrowserValidation();
-      console.log('Hay campos invalidos');
+      triggerBrowserValidation(paymentProviderPrefix);
+      console.log('formIsFilled(): there are missing fields!');
       return false;
     }
     return plainInputsValid;
@@ -57,10 +57,10 @@ function isEmailValid(email) {
 }
 
 
-function fieldsAreValid() {
+function fieldsAreValid(paymentProviderPrefix) {
 
-	var subscriberName = document.getElementById('subscriberName').value;
-	var subscriberEmail = document.getElementById('subscriberEmail').value;
+	var subscriberName = document.getElementById(paymentProviderPrefix + 'SubscriberName').value;
+	var subscriberEmail = document.getElementById(paymentProviderPrefix + 'SubscriberEmail').value;
 
 	var validName = (subscriberName && (subscriberName.length > 0));
 	var validEmail = isEmailValid(subscriberEmail);
@@ -75,12 +75,12 @@ function fieldsAreValid() {
 		return false;
 	}
 
-	if (!phoneInstance.isValidNumber()) {
+	if (!phoneInstanceFields[paymentProviderPrefix + 'SubscriberPhone'].isValidNumber()) {
 		showErrorAlert('Invalid phone', 'Please double check your phone, perhaps missing trailing 0 or wrong country?');
 		return false;
 	}
 
-    if (!passwordStrongEnough) {
+    if (!passwordValidityVeredicts[paymentProviderPrefix]) {
         return false;
     }
 
@@ -90,9 +90,9 @@ function fieldsAreValid() {
 
 
 // Listen on the form's 'submit' handler...
-function formIsValid() {
+function formIsValid(paymentProviderPrefix) {
 
-	if(!formIsFilled() || !fieldsAreValid()) {
+	if(!formIsFilled(paymentProviderPrefix) || !fieldsAreValid(paymentProviderPrefix)) {
 		return false;
 	}
 
@@ -122,9 +122,10 @@ function formIsValid() {
 };
 
 
-function initializeTelInputField() {
-    phoneInput = document.getElementById('subscriberPhone');
-    phoneInstance = window.intlTelInput(phoneInput, {
+function initializeTelInputField(paymentProviderPrefix) {
+    var phoneInputFieldName = paymentProviderPrefix + 'SubscriberPhone';
+    var phoneInput = document.getElementById(phoneInputFieldName);
+    phoneInstanceFields[phoneInputFieldName] = window.intlTelInput(phoneInput, {
         separateDialCode: true,
         initialCountry: "auto",
         geoIpLookup: function(callback) {
@@ -140,14 +141,17 @@ function initializeTelInputField() {
         preferredCountries: [ "us", "ca", "gb" ],
         utilsScript: 'https://d2tzi4yayp7s6t.cloudfront.net/beta/static/shippingForm/js/intlTelInput-utils.js'
     });
+
     phoneInstanceUtils = window.intlTelInputGlobals.loadUtils("https://d2tzi4yayp7s6t.cloudfront.net/beta/static/shippingForm/js/intlTelInput-utils.js");
 
-	phoneInstance.promise.then(() => { 
+	phoneInstanceFields[phoneInputFieldName].promise.then(() => { 
 
-		var wrappedPhoneInput = document.getElementsByClassName('iti iti--allow-dropdown iti--separate-dial-code')[0];
-		wrappedPhoneInput.style.width = '100%';
-		wrappedPhoneInput.style.zIndex = '101';
-		document.getElementById('subscriberPhone').style.paddingLeft = '55px';
+		var wrappedPhoneInputs = document.getElementsByClassName('iti iti--allow-dropdown iti--separate-dial-code');
+        for (var wrappedPhoneInput of wrappedPhoneInputs) {
+            wrappedPhoneInput.style.width = '100%';
+            wrappedPhoneInput.style.zIndex = '101';
+            document.getElementById(paymentProviderPrefix + 'SubscriberPhone').style.paddingLeft = '55px';
+        }
 
 	});
 

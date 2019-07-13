@@ -48,30 +48,29 @@
             </div>
           </div>
           <fieldset style="margin: 20px;">
-            <legend class="card-only" data-tid="elements_examples.form.pay_with_card">Pay with Paypal</legend>
-<!--             <legend class="payment-request-available" data-tid="elements_examples.form.enter_card_manually">Or enter card details</legend> -->
+           <!--  <legend class="card-only" data-tid="elements_examples.form.pay_with_card">Pay with Paypal</legend> -->
             <div class="row">
               <div class="field">
-                <label for="subscriberName" data-tid="elements_examples.form.name_label" style="font-family: Nunito">Name</label>
-                <input id="subscriberName" data-tid="elements_examples.form.name_placeholder" class="input" type="text" placeholder="Jane Merchant" required="true" autocomplete="name" style="font-family: Nunito">
+                <label for="paypalSubscriberName" data-tid="elements_examples.form.name_label" style="font-family: Nunito">Full name</label>
+                <input id="paypalSubscriberName" data-tid="elements_examples.form.name_placeholder" class="input" type="text" placeholder="Jane Merchant" required="true" autocomplete="name" style="font-family: Nunito">
               </div>
             </div>
             <div class="row">
               <div class="field">
-                <label for="subscriberEmail" data-tid="elements_examples.form.email_label" style="font-family: Nunito">Email</label>
-                <input id="subscriberEmail" data-tid="elements_examples.form.email_placeholder" class="input" type="email" placeholder="jane.merchant@mysupershop.com" required="true" autocomplete="email" style="font-family: Nunito">
+                <label for="paypalSubscriberEmail" data-tid="elements_examples.form.email_label" style="font-family: Nunito">Email</label>
+                <input id="paypalSubscriberEmail" data-tid="elements_examples.form.email_placeholder" class="input" type="email" placeholder="jane.merchant@mysupershop.com" required="true" autocomplete="email" style="font-family: Nunito">
               </div>
             </div>
             <div class="row">
-              <div id="subscriberPhoneContainer" class="field">
-                <label for="subscriberPhone" data-tid="elements_examples.form.phone_label" style="font-family: Nunito">Mobile phone (SMS, WhatsApp...)</label>
-                <input id="subscriberPhone" data-tid="elements_examples.form.phone_placeholder" class="input" type="tel" placeholder="(941) 555-0123" required="true" autocomplete="tel" style="font-family: Nunito;">
+              <div id="paypalSubscriberPhoneContainer" class="field">
+                <label for="paypalSubscriberPhone" data-tid="elements_examples.form.phone_label" style="font-family: Nunito">Mobile phone (SMS, WhatsApp...)</label>
+                <input id="paypalSubscriberPhone" data-tid="elements_examples.form.phone_placeholder" class="input" type="tel" placeholder="(941) 555-0123" required="true" autocomplete="tel" style="font-family: Nunito;">
               </div>
             </div>
             <div class="row">
               <div class="field">
-                <label for="subscriberPassword" data-tid="elements_examples.form.password_label" style="font-family: Nunito">Choose a password for your account</label>
-                <input id="subscriberPassword" data-tid="elements_examples.form.password_placeholder" class="input" type="password" placeholder="" required="true" autocomplete="password">
+                <label for="paypalSubscriberPassword" data-tid="elements_examples.form.password_label" style="font-family: Nunito">Choose a password for your account</label>
+                <input id="paypalSubscriberPassword" data-tid="elements_examples.form.password_placeholder" class="input" type="password" placeholder="" required="true" autocomplete="password">
               </div>
             </div>
             <div class="row">
@@ -84,7 +83,6 @@
 					  <script>
 
 					  	var buttonEnabled = false;
-              var passwordStrongEnough = false;
 
 					    paypal.Buttons({
 
@@ -97,7 +95,7 @@
 						        .addEventListener('change', function(event) {
 
 						          // Enable or disable the button when it is checked or unchecked
-						          if (formIsValid()) {
+						          if (formIsValid('paypal')) {
 						            actions.enable();
                         console.log('All fields valid!');
 						            buttonEnabled = true;
@@ -109,7 +107,7 @@
 					      },
 
 					      onClick: function(data, actions) {
-					      	if (!formIsValid()) {
+					      	if (!formIsValid('paypal')) {
 					      		// alert('The form is incomplete!');
 					      		return;
 					      	}
@@ -138,14 +136,16 @@
 
 						}).render('#paypal-button-container');
 
-            $('#subscriberPassword').pwstrength({
+            $('#paypalSubscriberPassword').pwstrength({
                 ui: { 
                   showVerdictsInsideProgressBar: true,
                 },
                 common: {
                   onScore: function (options, word, totalScoreCalculated) {
+                    // >= 40, Strong
+                    // >= 50, Very strong
                     // console.log('Now options ' + options + ' with word ' + word + ' and total score ' + totalScoreCalculated);
-                    passwordStrongEnough = (totalScoreCalculated >= 40);
+                    passwordValidityVeredicts['paypal'] = (totalScoreCalculated >= 40);
                     return totalScoreCalculated;
                   }
                 }
@@ -164,9 +164,9 @@
 
   <script src="/libs/IntlInputTel/js/intlTelInput.js"></script>
   <script>
-    // var input = document.querySelector("#subscriberPhone");
+    // var input = document.querySelector("#paypalSubscriberPhone");
     // window.intlTelInput(input);
-    initializeTelInputField();
+    initializeTelInputField('paypal');
   </script>
 
 </body>
