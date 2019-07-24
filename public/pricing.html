@@ -2,8 +2,14 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8" >
-		<title>MessengerSell &mdash; Pricing</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>MessengerSell &mdash; Pricing</title>
+		<meta property="og:url"           content="https://8bcf5976.ngrok.io" />
+		<meta property="og:type"          content="website" />
+		<meta property="og:title"         content="MessengerSell - The Shopify for the social media era!" />
+		<meta property="og:description"   content="Instant Social Commerce platform." />
+		<meta property="og:image"         content="https://8bcf5976.ngrok.io" />
+		
 		<link rel="icon" href="../../i/favicon.ico" type="image/x-icon">
 		<link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700,800,900|Nunito+Sans:200,300,400,600,700,800,900" rel="stylesheet">
 		<link href="../../css/style.css" rel="stylesheet" />
@@ -12,6 +18,8 @@
 		<script src="https://js.stripe.com/v3/"></script>
 		<script src="../../js/jquery.min.js"></script>
 		<script src="../../js/bootstrap.min.js"></script>
+		<script src="https://d2tzi4yayp7s6t.cloudfront.net/beta/static/js/superagent.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 		<style type="text/css">
 
 			@media screen and (min-width: 750px) {
@@ -34,30 +42,57 @@
 	</head> 
 	<body>
 
+	<div id="fb-root"></div>
+	  <script>(function(d, s, id) {
+	    var js, fjs = d.getElementsByTagName(s)[0];
+	    if (d.getElementById(id)) return;
+	    js = d.createElement(s); js.id = id;
+	    js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+	    fjs.parentNode.insertBefore(js, fjs);
+	  }(document, 'script', 'facebook-jssdk'));</script>
+
+
 <!-- Payment options modal -->
 <!-- http://jsfiddle.net/daverogers/mu5mvba0/ -->
 	<div class="modal fade">
 		  <div class="modal-dialog" style="max-width: 800px">
 		    <div class="modal-content">
 		      	<div class="modal-header">
-			      	<h4 class="modal-title">Payment options</h4>
+			      	<h4 id="modalTitle" class="modal-title">Payment options</h4>
 			        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
 	      	   	</div>
-		      	<div class="modal-body">
-		      	<div id="paymentMethodSelector" style="width: 100%; height: 60px;">
-					<div style="width: 120px; height: 60px; margin: auto; text-align: center;">
-						<img src="/i/pricing/stripe.png" style="max-width: 50px; padding: 5px" onclick="slideToStripe()">
-						<img src="/i/pricing/paypal.png" style="max-width: 50px; padding: 5px" onclick="slideToPaypal()">
+		      	<div id="paymentMethodContainer" class="modal-body">
+			      	<div id="paymentMethodSelector" style="width: 100%; height: 60px;">
+						<div style="width: 120px; height: 60px; margin: auto; text-align: center;">
+							<img src="/i/pricing/stripe.png" style="max-width: 50px; padding: 5px" onclick="slideToStripe()">
+							<img src="/i/pricing/paypal.png" style="max-width: 50px; padding: 5px" onclick="slideToPaypal()">
+						</div>
 					</div>
-				</div>
-		        <div id="paymentMethodCaroussel" style="width: 100%; height: 520px;">
-		        	<div style="width: 100%; height: 520px;">
-		        		<iframe id="stripeIframe" src="/pricing/stripe/index.html" scrolling="no" style="width: 100%; height: 100%; border: 0px"></iframe>
-		        	</div>
-					<div id="paypalIframe" style="width: 100%; height: 520px;">
-		        		<iframe src="/pricing/paypal/index.html" scrolling="no" style="width: 100%; height: 100%; border: 0px"></iframe>
-					</div>
-		        </div>
+			        <div id="paymentMethodCaroussel" style="width: 100%; height: 450px;">
+			        	<div style="width: 100%; height: 450px;">
+			        		<iframe id="stripeIframe" src="/pricing/stripe/index.html" scrolling="no" style="width: 100%; height: 100%; border: 0px"></iframe>
+			        	</div>
+						<div id="paypalIframe" style="width: 100%; height: 450px;">
+			        		<iframe src="/pricing/paypal/index.html" scrolling="no" style="width: 100%; height: 100%; border: 0px"></iframe>
+						</div>
+			        </div>
+		      </div>
+		      <div id="sharingLayer" style="display: none; width: 100%; height: 400px; padding: 20px">
+
+				<h5>Your account has been created! You should be getting an email to verify your address momentarily!</h5>
+				<p>Prior to making any sale, you need to verify your email address!</p>		      	
+
+		      	<h5>Sharing is caring! Would you mind helping us a bit by following and spreading the word?</h5>
+		      	  
+		      	  <!-- Facebook -->
+				  <div class="fb-share-button" 
+				    data-href="https://8bcf5976.ngrok.io" 
+				    data-layout="button_count">
+				  </div>
+
+				  <!-- Twitter -->
+				  <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
 		      </div>
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -319,10 +354,7 @@
 		$('.modal')
 		.on('shown.bs.modal', function(e) {
 	    	$('#paymentMethodCaroussel').slick('setPosition');
-	    });
-
-	   
-
+	    });  
 
 
 		$(document).ready(function() {
@@ -340,6 +372,23 @@
 
 		function slideToPaypal() {
 			$('#paymentMethodCaroussel').slick('slickGoTo', 1, false);
+		}
+
+		function showSuccessfulSubscription() {
+			console.log('showSuccessfulSubscription(): the subscription completed successfully!');
+			$('#modalTitle').text('Thanks a ton for signing up with us!!!');
+			$('#paymentMethodContainer').slideUp();
+			$('#sharingLayer').slideDown();
+		}
+
+		function showErrorInSubscription() {
+			console.log('showErrorInSubscription(): there was an error while completing the subscription!');
+			Swal.fire({
+			  title: 'Something happenned!',
+			  text: 'Could not provision your account right now, we have been notified and we will get in touch with you momentarily!',
+			  type: 'warning',
+			  confirmButtonText: 'Ok'
+			});
 		}
 		
 	</script>

@@ -1,5 +1,8 @@
 'use strict';
 
+const PLATFORM_ENDPOINT = 'https://296ba338.ngrok.io/';
+const DASHBOARD_ENDPOINT = 'https://a00c2f79.ngrok.io/';
+
 var phoneInstanceFields = {};
 var phoneInstanceUtils = null;
 var passwordValidityVeredicts = {}
@@ -36,8 +39,10 @@ function formIsFilled(paymentProviderPrefix) {
     var form = document.getElementById(paymentProviderPrefix + 'Form');
     var plainInputsValid = true;
     Array.prototype.forEach.call(form.querySelectorAll('input'), function(input) {
-      if (input.checkValidity && !input.checkValidity()) {
-        plainInputsValid = false;
+      // if (input.checkValidity && !input.checkValidity()) {
+      if (!input.value) {
+        console.log('formIsFilled(): there are missing fields!');
+        plainInputsValid = false;  
         return false;
       }
     });
@@ -47,42 +52,80 @@ function formIsFilled(paymentProviderPrefix) {
       console.log('formIsFilled(): there are missing fields!');
       return false;
     }
+
+    console.log('formIsFilled(): all fields are filled!');
     return plainInputsValid;
 }
 
 
-function isEmailValid(email) {
+async function isEmailValid(email) {
+
+  if(!email) {
+    return false;
+  }
+
   var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  return re.test(email);
+  var wellFormed = re.test(email);
+  try {
+
+      // var dummyPromise = await new Promise(resolve => setTimeout(resolve, 5000));
+      // console.log('Dummy promise resolved!');
+
+      var response = await request
+           .post(DASHBOARD_ENDPOINT + 'provision/check/email')
+           .send('email=' + email);
+      var accountAvailable = !response.body.accountExists;
+      console.log('isEmailValid(): is the account available ' + accountAvailable);
+      return { wellFormed: wellFormed, available: accountAvailable };
+
+  } catch (e) {
+    console.log('isEmailValid(): error happened, details ' + e);
+    return { wellFormed: wellFormed, available: false };
+  }
 }
 
 
-function fieldsAreValid(paymentProviderPrefix) {
+async function fieldsAreValid(paymentProviderPrefix) {
+
+    console.log('Checking fields validity!');
 
 	var subscriberName = document.getElementById(paymentProviderPrefix + 'SubscriberName').value;
 	var subscriberEmail = document.getElementById(paymentProviderPrefix + 'SubscriberEmail').value;
 
 	var validName = (subscriberName && (subscriberName.length > 0));
-	var validEmail = isEmailValid(subscriberEmail);
+	var validEmail = await isEmailValid(subscriberEmail);
 
 	if (!validName) {
 		showErrorAlert('Invalid name', 'Name cannot be empty!');
 		return false;
 	}
 
-	if (!validEmail) {
-		showErrorAlert('Invalid email', 'Email has to be like xxxx@yyyy.zzz!');
-		return false;
-	}
+    console.log('fieldsAreValid(): validity of the email is ' + JSON.stringify(validEmail, null, 2));        
+
+	if (!validEmail.wellFormed) {
+        showErrorAlert('Invalid email', 'Email has to be like xxxx@yyyy.zzz!');
+        return false;
+    }
+
+    if (!validEmail.available) {
+        showErrorAlert('Email already exists', 'There is already an account registered with that email address.');
+        return false;
+    }
+
+    console.log('fieldsAreValid(): email is valid!');
 
 	if (!phoneInstanceFields[paymentProviderPrefix + 'SubscriberPhone'].isValidNumber()) {
 		showErrorAlert('Invalid phone', 'Please double check your phone, perhaps missing trailing 0 or wrong country?');
 		return false;
 	}
 
-    if (!passwordValidityVeredicts[paymentProviderPrefix]) {
-        return false;
-    }
+    console.log('fieldsAreValid(): phone is valid!');
+
+    // if (!passwordValidityVeredicts[paymentProviderPrefix]) {
+    //     return false;
+    // }
+
+    console.log('fieldsAreValid(): all fields are valid!');
 
 	return true;
 
@@ -90,9 +133,14 @@ function fieldsAreValid(paymentProviderPrefix) {
 
 
 // Listen on the form's 'submit' handler...
-function formIsValid(paymentProviderPrefix) {
+async function formIsValid(paymentProviderPrefix) {
 
-	if(!formIsFilled(paymentProviderPrefix) || !fieldsAreValid(paymentProviderPrefix)) {
+    var filled = formIsFilled(paymentProviderPrefix);
+    var valid = await fieldsAreValid(paymentProviderPrefix);
+
+    console.log('formIsValid(): filled ' + filled + ' valid ' + valid);
+
+	if(!filled || !valid) {
 		return false;
 	}
 
@@ -129,7 +177,7 @@ function initializeTelInputField(paymentProviderPrefix) {
         separateDialCode: true,
         initialCountry: "auto",
         geoIpLookup: function(callback) {
-            request.get('https://b2cb1b00.ngrok.io/beta/customer/location?customerIp=188.76.20.47' /*+ customerIp*/)
+            request.get(PLATFORM_ENDPOINT + 'beta/customer/location?customerIp=188.76.20.47' /*+ customerIp*/)
             .then((successResponse) => {
                 console.log('initializeTelInputField(): located client as in country ' + JSON.stringify(successResponse.body));
                 callback(successResponse.body.countryCode);

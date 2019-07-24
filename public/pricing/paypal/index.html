@@ -52,7 +52,7 @@
             <div class="row">
               <div class="field">
                 <label for="paypalSubscriberName" data-tid="elements_examples.form.name_label" style="font-family: Nunito">Full name</label>
-                <input id="paypalSubscriberName" data-tid="elements_examples.form.name_placeholder" class="input" type="text" placeholder="Jane Merchant" required="true" autocomplete="name" style="font-family: Nunito">
+                <input id="paypalSubscriberName" data-tid="elements_examples.form.name_placeholder" class="input" type="text" placeholder="Jane Merchant" name="name" required="true" autocomplete="name" style="font-family: Nunito">
               </div>
             </div>
             <div class="row">
@@ -67,91 +67,18 @@
                 <input id="paypalSubscriberPhone" data-tid="elements_examples.form.phone_placeholder" class="input" type="tel" placeholder="(941) 555-0123" required="true" autocomplete="tel" style="font-family: Nunito;">
               </div>
             </div>
-            <div class="row">
+            <!-- <div class="row">
               <div class="field">
                 <label for="paypalSubscriberPassword" data-tid="elements_examples.form.password_label" style="font-family: Nunito">Choose a password for your account</label>
                 <input id="paypalSubscriberPassword" data-tid="elements_examples.form.password_placeholder" class="input" type="password" placeholder="" required="true" autocomplete="password">
               </div>
-            </div>
+            </div> -->
             <div class="row">
             <div class="field">
 
             <div id="paypal-button-container"></div>
 
-            <script src="/libs/validation/pricingFormValidation.js"></script>
 
-					  <script>
-
-					  	var buttonEnabled = false;
-
-					    paypal.Buttons({
-
-					      onInit: function(data, actions) {
-					      	// Disable the buttons
-						      actions.disable();
-
-						      // Listen for changes to the checkbox
-						      document.querySelector('#paypalForm')
-						        .addEventListener('change', function(event) {
-
-						          // Enable or disable the button when it is checked or unchecked
-						          if (formIsValid('paypal')) {
-						            actions.enable();
-                        console.log('All fields valid!');
-						            buttonEnabled = true;
-						          } else {
-						            actions.disable();
-						            buttonEnabled = false;
-						          }
-						        });
-					      },
-
-					      onClick: function(data, actions) {
-					      	if (!formIsValid('paypal')) {
-					      		// alert('The form is incomplete!');
-					      		return;
-					      	}
-					      },
-
-  						  createSubscription: function(data, actions) {
-
-  						    return actions.subscription.create({
-
-  						      'plan_id': 'P-9RY47778LJ029032ELUPDCNA'
-
-  						    });
-
-  						  },
-
-  						  onApprove: function(data, actions) {
-
-  						    // alert('You have successfully created subscription ' + JSON.stringify(data) + ' and actions ' + JSON.stringify(actions));
-
-                  // 1) Inform user about the success.
-                  // 2) Trigger account creation (DNS?) on the dashboard.
-                  // 3) Redirection to the newly created account.
-                  // 4) Alert saying that the email needs to be verified.
-
-  						  }
-
-						}).render('#paypal-button-container');
-
-            $('#paypalSubscriberPassword').pwstrength({
-                ui: { 
-                  showVerdictsInsideProgressBar: true,
-                },
-                common: {
-                  onScore: function (options, word, totalScoreCalculated) {
-                    // >= 40, Strong
-                    // >= 50, Very strong
-                    // console.log('Now options ' + options + ' with word ' + word + ' and total score ' + totalScoreCalculated);
-                    passwordValidityVeredicts['paypal'] = (totalScoreCalculated >= 40);
-                    return totalScoreCalculated;
-                  }
-                }
-            });
-
-					  </script>
 				</div>
             </div>
           </div>
@@ -163,10 +90,102 @@
   </div>
 
   <script src="/libs/IntlInputTel/js/intlTelInput.js"></script>
+  <script src="/libs/validation/pricingFormValidation.js"></script>
+
   <script>
-    // var input = document.querySelector("#paypalSubscriberPhone");
-    // window.intlTelInput(input);
+
     initializeTelInputField('paypal');
+
+    var buttonEnabled = false;
+
+    paypal.Buttons({
+
+      onInit: function(data, actions) {
+        // Disable the buttons
+        actions.disable();
+
+        // Listen for changes to the checkbox
+        document.querySelector('#paypalForm')
+          .addEventListener('change', async function(event) {
+
+            // Enable or disable the button when it is checked or unchecked
+            if (await formIsValid('paypal')) {
+              actions.enable();
+              console.log('The form is valid!');
+              buttonEnabled = true;
+            } else {
+              actions.disable();
+              console.log('The form is invalid!');
+              buttonEnabled = false;
+            }
+          });
+      },
+
+      onClick: function(data, actions) {
+        if (!formIsValid('paypal')) {
+          // alert('The form is incomplete!');
+          return;
+        }
+      },
+
+      createSubscription: function(data, actions) {
+
+        return actions.subscription.create({
+
+          'plan_id': 'P-9RY47778LJ029032ELUPDCNA'
+
+        });
+
+      },
+
+      onApprove: function(data, actions) {
+
+        // alert('You have successfully created subscription ' + JSON.stringify(data) + ' and actions ' + JSON.stringify(actions));
+        // Gather additional customer data we may have collected in our form.
+        var form = document.getElementById('paypalForm');
+        var name = form.querySelector('#paypalSubscriberName');
+        var email = form.querySelector('#paypalSubscriberEmail');
+        var phone = form.querySelector('#paypalSubscriberPhone');
+        var additionalData = {
+          name: name ? name.value : undefined,
+          email: email ? email.value : undefined,
+          phone: phone ? phone.value : undefined,
+        };
+
+        // 1) Trigger account creation (DNS?) on the dashboard.
+        window.parent.provisionMSAccount(additionalData.name, additionalData.email, additionalData.phone)
+        .then(res => {
+          console.log('provisionMSAccount(): User correctly provisioned!' + JSON.stringify(res.body, null, 2));
+          // 3) Redirection to the newly created account.
+          // 4) Alert saying that the email needs to be verified.
+          window.parent.showSuccessfulSubscription();
+        })
+        .catch(err => {
+          // err.message, err.response
+          console.log('provisionMSAccount(): Some error happened while provisioning the account' + err);
+          window.parent.showErrorInSubscription();
+        });
+        // 2) Inform user about the success and the need to verify email account and set a password.
+
+      }
+
+  }).render('#paypal-button-container');
+
+  // $('#paypalSubscriberPassword').pwstrength({
+  //     ui: { 
+  //       showVerdictsInsideProgressBar: true,
+  //     },
+  //     common: {
+  //       onScore: function (options, word, totalScoreCalculated) {
+  //         // >= 40, Strong
+  //         // >= 50, Very strong
+  //         // console.log('Now options ' + options + ' with word ' + word + ' and total score ' + totalScoreCalculated);
+  //         passwordValidityVeredicts['paypal'] = (totalScoreCalculated >= 40);
+  //         return totalScoreCalculated;
+  //       }
+  //     }
+  // });
+
   </script>
 
 </body>

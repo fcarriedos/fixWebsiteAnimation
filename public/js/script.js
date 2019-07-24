@@ -1,8 +1,23 @@
 // Scroll.js
 
 const WEBSITE_URL_ENDPOINT = 'https://www.messengersell.com/';
+const DASHBOARD_ENDPOINT = 'http://localhost:3000/';
 const TESTIMONIAL_BLINK_INTERVAL = 5000;
 const FADE_TIME = 800;
+
+const request = window.superagent;
+
+
+function provisionMSAccount(fullname, email, phone) {
+
+	return request
+	   .post(DASHBOARD_ENDPOINT + 'provision/')
+	   .send('fullname=' + fullname)
+	   .send('email=' + email)
+	   .send('phone=' + phone);
+
+}
+
 
 $(window).on('popstate',function(e){
 	e.preventDefault();
