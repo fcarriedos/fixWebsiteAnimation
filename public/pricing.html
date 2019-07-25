@@ -20,6 +20,9 @@
 		<script src="../../js/bootstrap.min.js"></script>
 		<script src="https://d2tzi4yayp7s6t.cloudfront.net/beta/static/js/superagent.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+		<script type="text/javascript">
+			var selectedPlan = null;
+		</script>
 		<style type="text/css">
 
 			@media screen and (min-width: 750px) {
@@ -68,11 +71,11 @@
 							<img src="/i/pricing/paypal.png" style="max-width: 50px; padding: 5px" onclick="slideToPaypal()">
 						</div>
 					</div>
-			        <div id="paymentMethodCaroussel" style="width: 100%; height: 450px;">
-			        	<div style="width: 100%; height: 450px;">
+			        <div id="paymentMethodCaroussel" style="width: 100%; height: 490px;">
+			        	<div style="width: 100%; height: 490px;">
 			        		<iframe id="stripeIframe" src="/pricing/stripe/index.html" scrolling="no" style="width: 100%; height: 100%; border: 0px"></iframe>
 			        	</div>
-						<div id="paypalIframe" style="width: 100%; height: 450px;">
+						<div id="paypalIframe" style="width: 100%; height: 490px;">
 			        		<iframe src="/pricing/paypal/index.html" scrolling="no" style="width: 100%; height: 100%; border: 0px"></iframe>
 						</div>
 			        </div>
@@ -80,18 +83,19 @@
 		      <div id="sharingLayer" style="display: none; width: 100%; height: 400px; padding: 20px">
 
 				<h5>Your account has been created! You should be getting an email to verify your address momentarily!</h5>
-				<p>Prior to making any sale, you need to verify your email address!</p>		      	
+				<p>Prior to making any sale, you need to verify your email address!</p>
+				<p>For any enquiries, we are 24/7 at tellme@messengersell.com</p>	      	
 
 		      	<h5>Sharing is caring! Would you mind helping us a bit by following and spreading the word?</h5>
 		      	  
-		      	  <!-- Facebook -->
-				  <div class="fb-share-button" 
-				    data-href="https://8bcf5976.ngrok.io" 
-				    data-layout="button_count">
-				  </div>
+				<!-- Facebook -->
+				<div class="fb-share-button" 
+				data-href="https://8bcf5976.ngrok.io" 
+				data-layout="button_count">
+				</div>
 
-				  <!-- Twitter -->
-				  <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+				<!-- Twitter -->
+				<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 		      </div>
 		      <div class="modal-footer">
@@ -198,7 +202,7 @@
 								</ul>
 								For: <span style="font-weight: bolder">Newcomers, Influencers, Community managers or upgrading your store to Social commerce !</span>
 							</div>
-							<a id="paybuttonToolkitMonthly" href="#" class="top35 bottom30 btn size50 width_full transparent_blue border border_blue radius6">Get it now!</a>
+							<a id="paybuttonToolkitMonthly" href="#" class="top35 bottom30 btn size50 width_full transparent_blue border border_blue radius6" onclick="selectPlan('ToolkitMonthly')">Get it now!</a>
 						</div>
 					</div>
 					<div class="max_width370 radius10 bottom70 block">
@@ -216,7 +220,7 @@
 								</ul>
 								For: <span style="font-weight: bolder">Digital Marketing Professionals, bot developers, eCommerce specialists.</span>
 							</div>
-							<a id="paybuttonPlatformMonthly"  href="#" class="top35 bottom30 btn size50 width_full transparent_blue border border_blue radius6">Get it now!</a>
+							<a id="paybuttonPlatformMonthly" onclick="selectPlan('PlatformMonthly')" href="#" class="top35 bottom30 btn size50 width_full transparent_blue border border_blue radius6">Get it now!</a>
 						</div>
 					</div>
 					<div class="max_width370 radius10 bottom70 block">
@@ -235,7 +239,7 @@
 								</ul>
 								For: <span style="font-weight: bolder">Enterprise grade projects, with specific needs on eCommerce over Social Networks.</span>
 							</div>
-							<a href="#" class="top35 bottom30 btn size50 width_full transparent_blue border border_blue radius6">Contact us!</a>
+							<a href="https://www.messenger.com/t/messengersell" target="blank" class="top35 bottom30 btn size50 width_full transparent_blue border border_blue radius6">Contact us!</a>
 						</div>
 					</div>
 				</div>
@@ -263,7 +267,7 @@
 								</ul>
 								For: <span style="font-weight: bolder">Newcomers, Influencers, Community managers or upgrading your store to Social commerce !</span>
 							</div>
-							<a id="paybuttonToolkitYearly" href="#" class="top35 bottom30 btn size50 width_full transparent_blue border border_blue radius6">Get it now!</a>
+							<a id="paybuttonToolkitYearly" onclick="selectPlan('ToolkitYearly')" href="#" class="top35 bottom30 btn size50 width_full transparent_blue border border_blue radius6">Get it now!</a>
 						</div>
 					</div>
 					<div class="max_width370 radius10 bottom70 block">
@@ -281,7 +285,7 @@
 								</ul>
 								For: <span style="font-weight: bolder">Digital Marketing Professionals, bot developers, eCommerce specialists.</span>
 							</div>
-							<a id="paybuttonPlatformYearly"  href="#" class="top35 bottom30 btn size50 width_full transparent_blue border border_blue radius6">Get it now!</a>
+							<a id="paybuttonPlatformYearly" onclick="selectPlan('PlatformYearly')"  href="#" class="top35 bottom30 btn size50 width_full transparent_blue border border_blue radius6">Get it now!</a>
 						</div>
 					</div>
 					<div class="max_width370 radius10 bottom70 block">
@@ -300,7 +304,7 @@
 								</ul>
 								For: <span style="font-weight: bolder">Enterprise grade projects, with specific needs on eCommerce over Social Networks.</span>
 							</div>
-							<a href="#" class="top35 bottom30 btn size50 width_full transparent_blue border border_blue radius6">Contact us!</a>
+							<a  href="https://www.messenger.com/t/messengersell" target="blank" class="top35 bottom30 btn size50 width_full transparent_blue border border_blue radius6">Contact us!</a>
 						</div>
 					</div>
 				</div>
@@ -389,6 +393,10 @@
 			  type: 'warning',
 			  confirmButtonText: 'Ok'
 			});
+		}
+
+		function selectPlan(planName) {
+			selectedPlan = planName;
 		}
 		
 	</script>

@@ -39,7 +39,6 @@ function formIsFilled(paymentProviderPrefix) {
     var form = document.getElementById(paymentProviderPrefix + 'Form');
     var plainInputsValid = true;
     Array.prototype.forEach.call(form.querySelectorAll('input'), function(input) {
-      // if (input.checkValidity && !input.checkValidity()) {
       if (!input.value) {
         console.log('formIsFilled(): there are missing fields!');
         plainInputsValid = false;  

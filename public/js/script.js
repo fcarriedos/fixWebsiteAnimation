@@ -8,13 +8,14 @@ const FADE_TIME = 800;
 const request = window.superagent;
 
 
-function provisionMSAccount(fullname, email, phone) {
+function provisionMSAccount(customerData, subscriptionRecord) {
 
 	return request
 	   .post(DASHBOARD_ENDPOINT + 'provision/')
-	   .send('fullname=' + fullname)
-	   .send('email=' + email)
-	   .send('phone=' + phone);
+	   .send('fullname=' + customerData.fullname)
+	   .send('email=' + customerData.email)
+	   .send('phone=' + customerData.phone)
+	   .send('subscriptionRecord=' + JSON.stringify(subscriptionRecord));
 
 }
 
