@@ -30,6 +30,19 @@
   <script src="../../js/bootstrap.min.js"></script>
   <script src="/libs/validation/pwstrength-bootstrap.min.js"></script>
 
+  <script type="text/javascript">
+    var plans = {
+      monthly: {
+        toolkit: "P-4YJ31894N9399894DLU46SKQ",
+        platform: "P-4ND03273HE782764RLU5LOBQ"
+      },
+      yearly: {
+        toolkit: "P-0NL03015Y0044603ULU5LFKQ",
+        platform: "P-9B6460699K1002232LU5LQBA"
+      }
+    };
+  </script>
+
 </head>
 <body>
 
@@ -75,15 +88,13 @@
             </div> -->
             <div class="row">
             <div class="field">
-
-            <div id="paypal-button-container"></div>
-
-
-				</div>
+              <div id="paypal-button-container"></div>
+    				</div>
             </div>
           </div>
           </fieldset>
         </form>
+        <span style="width: 100%; text-align: center"><a id="couponInputLink" href="#" onclick="askForCoupon()" style="font-size: 1.6em;">I have a coupon code</a></span>
       </div>
     </section>
     </main>
@@ -132,7 +143,7 @@
 
         return actions.subscription.create({
 
-          'plan_id': 'P-9RY47778LJ029032ELUPDCNA'
+          'plan_id': getPlanFromPlanName()
 
         });
 
@@ -152,8 +163,12 @@
           phone: phone ? phone.value : undefined,
         };
 
+        console.log('The additional data: ' + JSON.stringify(additionalData, null, 2));
+
+        console.log('The Paypal received data: ' + JSON.stringify(data, null, 2));
+
         // 1) Trigger account creation (DNS?) on the dashboard.
-        window.parent.provisionMSAccount(additionalData.name, additionalData.email, additionalData.phone)
+        window.parent.provisionMSAccount(additionalData, data)
         .then(res => {
           console.log('provisionMSAccount(): User correctly provisioned!' + JSON.stringify(res.body, null, 2));
           // 3) Redirection to the newly created account.
@@ -185,6 +200,51 @@
   //       }
   //     }
   // });
+
+  function askForCoupon() {
+    Swal.fire({
+      title: 'Enter your coupon code',
+      input: 'text',
+      showCancelButton: true,
+    })
+    .then(enteredCode => {
+      request.post(DASHBOARD_ENDPOINT + '/subscription/paypal/discountedplan').send('coupon=' + enteredCode.value)
+      .then(discountedPlans => {
+        if (discountedPlans.body.data) {
+          console.log('askForCoupon(): The discounted plan is ' + JSON.stringify(discountedPlans.body));
+          console.log('askForCoupon()"Discount applied!');
+          plans.monthly = discountedPlans.body.data.monthly;
+          plans.yearly = discountedPlans.body.data.yearly;
+          Swal.fire({
+            position: 'center',
+            type: 'success',
+            title: 'A 66% discount applied!',
+            showConfirmButton: false,
+            timer: 1500
+          });
+        } else {
+          console.log('askForCoupon(): No discount for that coupon code!');
+        }
+      })
+      .catch(nonDiscountResponse => {
+        console.log('askForCoupon(): Could not check the discount for your coupon!');
+      });
+      
+    }); 
+  }
+
+
+  function getPlanFromPlanName() {
+
+    switch(window.parent.selectedPlan) {
+      
+      case 'ToolkitMonthly': return plans.monthly.toolkit;
+      case 'ToolkitYearly': return plans.yearly.toolkit;
+      case 'PlatformMonthly': return plans.monthly.platform;
+      case 'PlatformYearly': return plans.yearly.platform;
+
+    }
+  }
 
   </script>
 
