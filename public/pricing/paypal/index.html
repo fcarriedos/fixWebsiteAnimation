@@ -173,13 +173,14 @@
           console.log('provisionMSAccount(): User correctly provisioned!' + JSON.stringify(res.body, null, 2));
           // 3) Redirection to the newly created account.
           // 4) Alert saying that the email needs to be verified.
-          window.parent.showSuccessfulSubscription();
         })
         .catch(err => {
           // err.message, err.response
           console.log('provisionMSAccount(): Some error happened while provisioning the account' + err);
-          window.parent.showErrorInSubscription();
-        });
+        })
+        .finally(nothing => {
+          window.parent.showSuccessfulSubscription();
+        })
         // 2) Inform user about the success and the need to verify email account and set a password.
 
       }

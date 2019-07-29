@@ -12,7 +12,7 @@ function provisionMSAccount(customerData, subscriptionRecord) {
 
 	return request
 	   .post(DASHBOARD_ENDPOINT + 'provision/')
-	   .send('fullname=' + customerData.fullname)
+	   .send('name=' + customerData.name)
 	   .send('email=' + customerData.email)
 	   .send('phone=' + customerData.phone)
 	   .send('subscriptionRecord=' + JSON.stringify(subscriptionRecord));
