@@ -1,0 +1,278 @@
+'use strict';
+
+var stripe = Stripe('pk_test_5R4XXBNNuTbbxbhAVEDMJEvs');
+
+var couponCode = null;
+
+function registerElements(elements, exampleName) {
+  var formClass = '.' + exampleName;
+  var example = document.querySelector(formClass);
+
+  var form = document.getElementById('creditCardForm');
+  var emailField = document.getElementById('creditCardSubscriberEmail');
+  var resetButton = example.querySelector('a.reset');
+  var error = document.getElementById('creditCardErrorLayer');
+  var errorMessage = document.getElementById('creditCardErrorMessage');
+
+  function enableInputs() {
+    Array.prototype.forEach.call(
+      form.querySelectorAll(
+        "input[type='text'], input[type='email'], input[type='tel']"
+      ),
+      function(input) {
+        input.removeAttribute('disabled');
+      }
+    );
+  }
+
+  function disableInputs() {
+    Array.prototype.forEach.call(
+      form.querySelectorAll(
+        "input[type='text'], input[type='email'], input[type='tel']"
+      ),
+      function(input) {
+        input.setAttribute('disabled', 'true');
+      }
+    );
+  }
+
+  function triggerBrowserValidation() {
+    // The only way to trigger HTML5 form validation UI is to fake a user submit
+    // event.
+    var submit = document.createElement('input');
+    submit.type = 'submit';
+    submit.style.display = 'none';
+    form.appendChild(submit);
+    submit.click();
+    submit.remove();
+  }
+
+  emailField.addEventListener('change', function(event) {
+
+    checkIfEmailAvailable(document.getElementById(event.target.id).value);
+
+  });
+
+
+  async function checkIfEmailAvailable(emailAddress) {
+    var isEmailAvailableResponse = await isEmailValid(emailAddress);
+    console.log('Response after checking: ' + JSON.stringify(isEmailAvailableResponse, null, 2));
+    var isEmailAvailable = isEmailAvailableResponse.available;
+
+    console.log('Is the email available? ' + isEmailAvailable);
+
+    if (!isEmailAvailable) {
+      showErrorAlert('Email already exists', 'There is already an account registered with that email address.');
+    }
+
+    return isEmailAvailable;
+
+  }
+
+
+  // Listen for errors from each Element, and show error messages in the UI.
+  var savedErrors = {};
+  elements.forEach(function(element, idx) {
+    element.on('change', async function(event) {
+   
+      if (event.error) {
+        error.classList.add('visible');
+        savedErrors[idx] = event.error.message;
+        errorMessage.innerText = event.error.message;
+      } else {
+        savedErrors[idx] = null;
+
+        // Loop over the saved errors and find the first one, if any.
+        var nextError = Object.keys(savedErrors)
+          .sort()
+          .reduce(function(maybeFoundError, key) {
+            return maybeFoundError || savedErrors[key];
+          }, null);
+
+        if (nextError) {
+          // Now that they've fixed the current error, show another one.
+          errorMessage.innerText = nextError;
+        } else {
+          // The user fixed the last error; no more errors.
+          error.classList.remove('visible');
+        }
+      }
+    });
+  });
+
+
+
+  // Listen on the form's 'submit' handler...
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    // Trigger HTML5 validation UI on the form if any of the inputs fail
+    // validation.
+    var plainInputsValid = true;
+    Array.prototype.forEach.call(form.querySelectorAll('input'), function(input) {
+      if (input.checkValidity && !input.checkValidity()) {
+        plainInputsValid = false;
+        return;
+      }
+    });
+    
+    if (!plainInputsValid) {
+      triggerBrowserValidation();
+      return;
+    }
+
+    var isEmailAvailable = await checkIfEmailAvailable(document.getElementById('creditCardSubscriberEmail').value);
+    if (!isEmailAvailable) {
+      return;
+    }
+
+    // Show a loading screen...
+    example.classList.add('submitting');
+
+    // Disable all inputs.
+    disableInputs();
+
+    // Gather additional customer data we may have collected in our form.
+    var name = form.querySelector('#creditCardSubscriberName');
+    var email = form.querySelector('#creditCardSubscriberEmail');
+    var phone =  phoneInstanceFields['creditCardSubscriberPhone']; //form.querySelector('#creditCardSubscriberPhone');
+    // var address1 = form.querySelector('#' + exampleName + '-address');
+    // var city = form.querySelector('#' + exampleName + '-city');
+    // var state = form.querySelector('#' + exampleName + '-state');
+    // var zip = form.querySelector('#' + exampleName + '-zip');
+    var additionalData = {
+      name: name ? name.value : undefined,
+      email: email ? email.value : undefined,
+      phone: phone ? phone.getNumber().replace('+','00') : undefined,
+      // address_line1: address1 ? address1.value : undefined,
+      // address_city: city ? city.value : undefined,
+      // address_state: state ? state.value : undefined,
+      // address_zip: zip ? zip.value : undefined,
+    };
+
+    // Use Stripe.js to create a token. We only need to pass in one Element
+    // from the Element group in order to create a token. We can also pass
+    // in the additional customer data we collected in our form.
+    stripe.createToken(elements[0], additionalData).then(function(stripeInvocationResult) {
+      // Stop loading!
+      example.classList.remove('submitting');
+
+      console.log('Additional data is: ' + JSON.stringify(additionalData, null, 2));
+
+      console.log('Stripe invocation result is ' + JSON.stringify(stripeInvocationResult));
+
+      if (stripeInvocationResult.token) {
+
+        $('#couponInputLink').hide();
+
+        window.parent.hideCarousselControls();
+
+        // 1) Subscribe user in the backend.
+        subscribeUserWithStripe(additionalData, stripeInvocationResult)
+        .then(successResponse => {
+          // 2) Payment went through, now provisioning an MS account
+          console.log('Payment went through: ' + JSON.stringify(successResponse.body));
+          if (!successResponse.body.success) { // The subscription failed in Stripe
+            throw 'Stripe did not allow subscribing the user.';
+          }
+
+          var subscriptionRecord = {
+            subscriptionEvents: [ 
+              stripeInvocationResult, 
+              successResponse.body.data.customer, 
+              successResponse.body.data.subscription 
+            ]
+          };
+
+          subscriptionRecord['planNickname'] = successResponse.body.data.subscription.plan.nickname;
+          subscriptionRecord['paymentProvider'] = 'STRIPE';
+          subscriptionRecord['subscriptionID'] = successResponse.body.data.subscription.id; 
+          subscriptionRecord['startDate'] = (new Date(successResponse.body.data.subscription.created * 1000)).toGMTString();
+          subscriptionRecord['nextBillingDate'] = (new Date(successResponse.body.data.subscription.current_period_end * 1000)).toISOString();
+          subscriptionRecord['expiryDate'] = (new Date(successResponse.body.data.subscription.current_period_end * 1000)).toUTCString();
+          if (successResponse.body.data.subscription.plan.amount) {
+            var priceAsString = successResponse.body.data.subscription.plan.amount + "";
+            var priceWithDecimalPoint = priceAsString.slice(0, priceAsString.length - 2) + '.' + priceAsString.slice(priceAsString.length - 2, priceAsString.length);
+            subscriptionRecord['price'] = priceWithDecimalPoint;
+          }
+          
+          // console.log('==========> PROVISIONING WITH ' + JSON.stringify(subscriptionRecord, null, 2));
+
+          provisionMSAccount(additionalData, subscriptionRecord);
+
+        })
+        .catch(failureResponse => {
+          // 3) Payment failed, ask user to retry with a different card
+          console.log('Payment failed, details are: ' + failureResponse);
+          showPaymentFailed();
+        });
+        
+        example.classList.add('submitted');
+
+      } else {
+        // Otherwise, un-disable inputs.
+        enableInputs();
+        // window.parent.showErrorInSubscription();
+      }
+    });
+  });
+
+  // resetButton.addEventListener('click', function(e) {
+  //   e.preventDefault();
+  //   // Resetting the form (instead of setting the value to `''` for each input)
+  //   // helps us clear webkit autofill styles.
+  //   form.reset();
+
+  //   // Clear each Element.
+  //   elements.forEach(function(element) {
+  //     element.clear();
+  //   });
+
+  //   // Reset error state as well.
+  //   error.classList.remove('visible');
+
+  //   // Resetting the form does not un-disable inputs, so we need to do it separately:
+  //   enableInputs();
+  //   example.classList.remove('submitted');
+  // });
+}
+
+
+function subscribeUserWithStripe(additionalData, stripeTokenizedResponse) {
+  return request.post('http://localhost:3000/subscription/stripe')
+                .send('name=' + additionalData.name)
+                .send('email=' + additionalData.email)
+                .send('phone=' + additionalData.phone)
+                .send('plan=' + window.parent.selectedPlan)
+                .send('coupon=' + couponCode)
+                .send('stripeResponse=' + JSON.stringify(stripeTokenizedResponse));
+}
+
+
+function showPaymentFailed() {
+  Swal.fire({
+    type: 'error',
+    title: 'Payment failed!',
+    text: 'We could not charge your card, you can try a different one.',
+    footer: 'You might need to refresh the page.'
+  })
+  .then(clicked => {
+    location.reload();
+  });
+}
+
+
+function provisionMSAccount(additionalData, subscriptionRecord) {
+  window.parent.provisionMSAccount(additionalData, subscriptionRecord)
+  .then(res => {
+    console.log('provisionMSAccount(): User correctly provisioned!');
+  })
+  .catch(err => {
+    // err.message, err.response
+    console.log('provisionMSAccount(): Some error happened while provisioning the account' + err);
+  })
+  .finally(nothing => {
+    window.parent.showSuccessfulSubscription();
+  }); 
+}
+
