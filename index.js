@@ -316,6 +316,17 @@ webapp.post('/subscribe/', (req, res) => {
 });
 
 
+webapp.get('/pricing/stripe/js/index.js', (req, res) => {
+
+	console.log('/pricing/stripe/js/index.js: servicing Stripe script with params DASHBOARD_ENDPOINT ' + CONSTANTS.DASHBOARD_ENDPOINT + ' and Stripe PK key ' + CONSTANTS.STRIPE_PUBLISHABLE_KEY);
+	res.render('pages/pricing/stripe/js/index.ejs', {
+		DASHBOARD_ENDPOINT: CONSTANTS.DASHBOARD_ENDPOINT,
+		STRIPE_PUBLISHABLE_KEY: CONSTANTS.STRIPE_PUBLISHABLE_KEY
+	});
+
+});
+
+
 webapp.get('/pricing/:provider', (req, res) => {
 
 	var ipAddress = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
@@ -333,6 +344,17 @@ webapp.get('/libs/validation/pricingFormValidation.js', (req, res) => {
 	res.render('pages/libs/validation/pricingFormValidation.ejs', {
 		DASHBOARD_ENDPOINT: CONSTANTS.DASHBOARD_ENDPOINT,
 		PLATFORM_ENDPOINT: CONSTANTS.PLATFORM_ENDPOINT
+	});
+
+});
+
+
+webapp.get('/js/script.js', (req, res) => {
+
+	console.log('/js/script.js: servicing general purpose script');
+	res.render('pages/js/script.js.ejs', {
+		DASHBOARD_ENDPOINT: CONSTANTS.DASHBOARD_ENDPOINT,
+		WEBSITE_URL_ENDPOINT: CONSTANTS.WEBSITE_URL_ENDPOINT
 	});
 
 });

@@ -1,6 +1,6 @@
 'use strict';
 
-var stripe = Stripe('pk_test_5R4XXBNNuTbbxbhAVEDMJEvs');
+var stripe = Stripe('<%= STRIPE_PUBLISHABLE_KEY %>');
 
 var couponCode = null;
 
@@ -239,7 +239,7 @@ function registerElements(elements, exampleName) {
 
 
 function subscribeUserWithStripe(additionalData, stripeTokenizedResponse) {
-  return request.post('http://localhost:3000/subscription/stripe')
+  return request.post('<%= DASHBOARD_ENDPOINT %>subscription/stripe')
                 .send('name=' + additionalData.name)
                 .send('email=' + additionalData.email)
                 .send('phone=' + additionalData.phone)
