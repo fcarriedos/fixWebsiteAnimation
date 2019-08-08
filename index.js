@@ -362,7 +362,8 @@ webapp.get('/js/script.js', (req, res) => {
 
 webapp.get('/caca', (req, res) => {
 
-	console.log('/caca: servicing general purpose script');
+	console.log('/caca: TESTING REMOTE ADDRESS ');
+	getClientIPAddress(req);
 	res.send();
 
 });
