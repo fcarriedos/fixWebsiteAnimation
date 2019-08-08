@@ -360,8 +360,18 @@ webapp.get('/js/script.js', (req, res) => {
 });
 
 
+webapp.get('/caca', (req, res) => {
+
+	console.log('/caca: servicing general purpose script');
+	res.send();
+
+});
+
+
 function getClientIPAddress(req) {
   var ipAddr = req.headers["x-forwarded-for"];
+  console.log('Headers: ' + JSON.stringify(req.headers, null, 2));
+  console.log('x-forwarded-for: ' + ipAddr);
   if (ipAddr){
     var list = ipAddr.split(",");
     ipAddr = list[list.length - 1];
