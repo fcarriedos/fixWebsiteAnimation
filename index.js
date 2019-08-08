@@ -282,18 +282,6 @@ webapp.get('/privacyAndTerms', (req, res) => {
 });
 
 
-function getDBPool() {
-	dbclient.connect(CONSTANTS.MONGODB_URL, function(err, db) {
-		if(!err) {
-			CONSTANTS.DB = db;
-			console.log('app.getDBPool(): database initialized.');
-		} else {
-			console.log('app.getDBPool(FATAL): could not connect with the database.');
-		}
-	});
-}
-
-
 webapp.get('/.well-known/acme-challenge/QaFQvY2oakMh3-bhP1F3XOL1-iNy1oCwR8VULWFclcQ', (req, res) => {
 	var contents = 'QaFQvY2oakMh3-bhP1F3XOL1-iNy1oCwR8VULWFclcQ.M_wNT8lKySZW-DN9uhVuijy2OZZ36FQNlqvgPoN_M3I';
     res.status(200);
@@ -348,6 +336,18 @@ webapp.get('/libs/validation/pricingFormValidation.js', (req, res) => {
 	});
 
 });
+
+
+function getDBPool() {
+	dbclient.connect(CONSTANTS.MONGODB_URL, function(err, db) {
+		if(!err) {
+			CONSTANTS.DB = db;
+			console.log('app.getDBPool(): database initialized.');
+		} else {
+			console.log('app.getDBPool(FATAL): could not connect with the database.');
+		}
+	});
+}
 
 
 // And starting!
