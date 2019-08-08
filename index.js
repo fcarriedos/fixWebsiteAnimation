@@ -331,7 +331,7 @@ webapp.get('/libs/validation/pricingFormValidation.js', (req, res) => {
 
 	console.log('/libs/validation/: servicing form validation script');
 	res.render('pages/libs/validation/pricingFormValidation.ejs', {
-		DASHBOARD_ENDPOINT: CONSTANTS.WEBSITE_URL_ENDPOINT,
+		DASHBOARD_ENDPOINT: CONSTANTS.DASHBOARD_ENDPOINT,
 		PLATFORM_ENDPOINT: CONSTANTS.PLATFORM_ENDPOINT
 	});
 

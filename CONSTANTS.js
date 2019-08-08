@@ -2,8 +2,9 @@ var exports = module.exports = {};
 
 const fs = require('fs');
 
-exports.WEBSITE_URL_ENDPOINT = WEBSITE_URL_ENDPOINT = process.env.WEBSITE_URL_ENDPOINT || 'http://cb3094d2.ngrok.io'; 
-exports.PLATFORM_ENDPOINT = PLATFORM_ENDPOINT = process.env.PLATFORM_ENDPOINT || 'http://cb3094d2.ngrok.io'; 
+exports.DASHBOARD_ENDPOINT = DASHBOARD_ENDPOINT = process.env.DASHBOARD_ENDPOINT; 
+exports.WEBSITE_URL_ENDPOINT = WEBSITE_URL_ENDPOINT = process.env.WEBSITE_URL_ENDPOINT; 
+exports.PLATFORM_ENDPOINT = PLATFORM_ENDPOINT = process.env.PLATFORM_ENDPOINT; 
 
 // Email constants
 exports.NAME_PLACEHOLDER = NAME_PLACEHOLDER = 'NAME_PLACEHOLDER';
