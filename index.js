@@ -352,7 +352,7 @@ webapp.get('/libs/validation/pricingFormValidation.js', (req, res) => {
 webapp.get('/js/script.js', (req, res) => {
 
 	console.log('/js/script.js: servicing general purpose script');
-	res.render('pages/js/script.js.ejs', {
+	res.render('pages/js/script.ejs', {
 		DASHBOARD_ENDPOINT: CONSTANTS.DASHBOARD_ENDPOINT,
 		WEBSITE_URL_ENDPOINT: CONSTANTS.WEBSITE_URL_ENDPOINT
 	});
