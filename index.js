@@ -329,7 +329,7 @@ webapp.get('/pricing/stripe/js/index.js', (req, res) => {
 
 webapp.get('/pricing/:provider', (req, res) => {
 
-	var ipAddress = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+	var ipAddress = getClientIPAddress(req);
 	console.log('/pricing/: servicing request for provider ' + req.params.provider + ' from client address ' + ipAddress);
 	res.render('pages/pricing/' + req.params.provider + '/index.ejs', {
 		ipAddress: ipAddress
@@ -358,6 +358,18 @@ webapp.get('/js/script.js', (req, res) => {
 	});
 
 });
+
+
+function getClientIPAddress(req) {
+  var ipAddr = req.headers["x-forwarded-for"];
+  if (ipAddr){
+    var list = ipAddr.split(",");
+    ipAddr = list[list.length - 1];
+  } else {
+    ipAddr = req.connection.remoteAddress;
+  }
+  return ipAddr;
+}
 
 
 function getDBPool() {
