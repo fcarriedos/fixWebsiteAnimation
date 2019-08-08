@@ -31,6 +31,7 @@
   <script src="/libs/validation/pwstrength-bootstrap.min.js"></script>
 
   <script type="text/javascript">
+    var customerIp = '<%= ipAddress %>';
     var plans = {
       monthly: {
         toolkit: "P-4YJ31894N9399894DLU46SKQ",
@@ -52,8 +53,10 @@
     <main>
     <section class="container-lg" style="padding: 0px">
 
+      <div id="processingPaymentLayer" style="display: none; width: 100%; height: 400px; z-index: 200; background-color: white; position: absolute;"><div style="text-align: center; position: relative; top: 48%; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400;">Processing your payment...</div></div>
+
       <!--Example 5-->
-      <div class="cell example example5" id="example-5" style="padding: 10px; overflow: hidden;">
+      <div id="paypalPaymentLayer" class="cell example example5" id="example-5" style="padding: 10px; overflow: hidden;">
         <form id="paypalForm">
           <div>
             <div id="example5-paymentRequest" style="max-width: 300px; position: relative; left: calc(50% - 150px)">
@@ -129,6 +132,7 @@
               console.log('The form is invalid!');
               buttonEnabled = false;
             }
+
           });
       },
 
@@ -143,7 +147,8 @@
 
         return actions.subscription.create({
 
-          'plan_id': getPlanFromPlanName()
+          'plan_id': getPlanFromPlanName(),
+          'auto_renewal': true
 
         });
 
@@ -156,12 +161,21 @@
         var form = document.getElementById('paypalForm');
         var name = form.querySelector('#paypalSubscriberName');
         var email = form.querySelector('#paypalSubscriberEmail');
-        var phone = form.querySelector('#paypalSubscriberPhone');
+        var phone = phoneInstanceFields['paypalSubscriberPhone'];
         var additionalData = {
           name: name ? name.value : undefined,
           email: email ? email.value : undefined,
-          phone: phone ? phone.value : undefined,
+          phone: phone ? phone.getNumber().replace('+','00') : undefined,
         };
+
+        // $('#paypalPaymentLayer').slideDown();
+        // $('#processingPaymentLayer').slideUp();
+        $('#paypalPaymentLayer').hide();
+        $('#processingPaymentLayer').show();
+
+        window.parent.hideCarousselControls();
+              
+        data['paymentProvider'] = 'PAYPAL';
 
         console.log('The additional data: ' + JSON.stringify(additionalData, null, 2));
 

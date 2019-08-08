@@ -1,7 +1,7 @@
 'use strict';
 
-const PLATFORM_ENDPOINT = 'https://296ba338.ngrok.io/';
-const DASHBOARD_ENDPOINT = 'https://a00c2f79.ngrok.io/';
+const PLATFORM_ENDPOINT = '<%= PLATFORM_ENDPOINT %>';
+const DASHBOARD_ENDPOINT = '<%= DASHBOARD_ENDPOINT %>';
 
 var phoneInstanceFields = {};
 var phoneInstanceUtils = null;
@@ -135,6 +135,11 @@ async function fieldsAreValid(paymentProviderPrefix) {
 async function formIsValid(paymentProviderPrefix) {
 
     var filled = formIsFilled(paymentProviderPrefix);
+
+    if (!filled) {
+        return false;
+    }
+
     var valid = await fieldsAreValid(paymentProviderPrefix);
 
     console.log('formIsValid(): filled ' + filled + ' valid ' + valid);
@@ -176,7 +181,8 @@ function initializeTelInputField(paymentProviderPrefix) {
         separateDialCode: true,
         initialCountry: "auto",
         geoIpLookup: function(callback) {
-            request.get(PLATFORM_ENDPOINT + 'beta/customer/location?customerIp=188.76.20.47' /*+ customerIp*/)
+            console.log('Locating customer at ' + customerIp);
+            request.get(PLATFORM_ENDPOINT + 'beta/customer/location?customerIp=' + customerIp)
             .then((successResponse) => {
                 console.log('initializeTelInputField(): located client as in country ' + JSON.stringify(successResponse.body));
                 callback(successResponse.body.countryCode);

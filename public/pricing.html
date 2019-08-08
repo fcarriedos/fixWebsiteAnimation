@@ -4,11 +4,11 @@
 		<meta charset="utf-8" >
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>MessengerSell &mdash; Pricing</title>
-		<meta property="og:url"           content="https://8bcf5976.ngrok.io" />
+		<meta property="og:url"           content="https://www.messengersell.com" />
 		<meta property="og:type"          content="website" />
 		<meta property="og:title"         content="MessengerSell - The Shopify for the social media era!" />
 		<meta property="og:description"   content="Instant Social Commerce platform." />
-		<meta property="og:image"         content="https://8bcf5976.ngrok.io" />
+		<meta property="og:image"         content="https://www.messengersell.com" />
 		
 		<link rel="icon" href="../../i/favicon.ico" type="image/x-icon">
 		<link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700,800,900|Nunito+Sans:200,300,400,600,700,800,900" rel="stylesheet">
@@ -73,10 +73,10 @@
 					</div>
 			        <div id="paymentMethodCaroussel" style="width: 100%; height: 490px;">
 			        	<div style="width: 100%; height: 490px;">
-			        		<iframe id="stripeIframe" src="/pricing/stripe/index.html" scrolling="no" style="width: 100%; height: 100%; border: 0px"></iframe>
+			        		<iframe id="stripeIframe" src="/pricing/stripe/" scrolling="no" style="width: 100%; height: 100%; border: 0px"></iframe>
 			        	</div>
 						<div id="paypalIframe" style="width: 100%; height: 490px;">
-			        		<iframe src="/pricing/paypal/index.html" scrolling="no" style="width: 100%; height: 100%; border: 0px"></iframe>
+			        		<iframe src="/pricing/paypal/" scrolling="no" style="width: 100%; height: 100%; border: 0px"></iframe>
 						</div>
 			        </div>
 		      </div>
@@ -90,7 +90,7 @@
 		      	  
 				<!-- Facebook -->
 				<div class="fb-share-button" 
-				data-href="https://8bcf5976.ngrok.io" 
+				data-href="https://www.messengersell.com" 
 				data-layout="button_count">
 				</div>
 
@@ -168,7 +168,7 @@
 
 <section class="pricing_table_6 bg_light_blue padding_top90 padding_bottom50">
 	<div class="container nopadding dark_blue">
-		<h2 class="font42 font_second light dark_gray text-center">Promotional pricing plans</h2>
+		<h2 class="font42 font_second light dark_gray text-center">Pricing plans</h2>
 		<div class="max_width740 margin_auto top15 font18 light text-center">
 			Our pricing is simple: paid plans unlock everything at once, you just focus on selling away!!!
 		</div>
@@ -296,6 +296,7 @@
 								Do you need perhaps:
 								<ul style="margin-top: 10px">
 									<li>Custom integrations?</li>
+									<li>Massive optimized retargeting?</li>
 									<li>Dedicated server instances?</li>
 									<li>24/7 high priority support?</li>
 									<li>Enterprise deals?</li>
@@ -393,6 +394,11 @@
 			  type: 'warning',
 			  confirmButtonText: 'Ok'
 			});
+		}
+
+		function hideCarousselControls() {
+			$('.slick-prev').hide();
+      		$('.slick-next').hide();
 		}
 
 		function selectPlan(planName) {

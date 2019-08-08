@@ -328,5 +328,27 @@ webapp.post('/subscribe/', (req, res) => {
 });
 
 
+webapp.get('/pricing/:provider', (req, res) => {
+
+	var ipAddress = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+	console.log('/pricing/: servicing request for provider ' + req.params.provider + ' from client address ' + ipAddress);
+	res.render('pages/pricing/' + req.params.provider + '/index.ejs', {
+		ipAddress: ipAddress
+	});
+
+});
+
+
+webapp.get('/libs/validation/pricingFormValidation.js', (req, res) => {
+
+	console.log('/libs/validation/: servicing form validation script');
+	res.render('pages/libs/validation/pricingFormValidation.ejs', {
+		DASHBOARD_ENDPOINT: CONSTANTS.WEBSITE_URL_ENDPOINT,
+		PLATFORM_ENDPOINT: CONSTANTS.PLATFORM_ENDPOINT
+	});
+
+});
+
+
 // And starting!
 webapp.listen(PORT, () => console.log(`Listening on ${ PORT }`));
