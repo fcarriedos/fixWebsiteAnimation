@@ -223,6 +223,7 @@
       showCancelButton: true,
     })
     .then(enteredCode => {
+      
       request.post(DASHBOARD_ENDPOINT + 'subscription/paypal/discountedplan').send('coupon=' + enteredCode.value)
       .then(discountedPlans => {
         if (discountedPlans.body.data) {

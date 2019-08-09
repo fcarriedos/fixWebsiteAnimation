@@ -332,7 +332,8 @@ webapp.get('/pricing/:provider', (req, res) => {
 	var ipAddress = getClientIPAddress(req);
 	console.log('/pricing/: servicing request for provider ' + req.params.provider + ' from client address ' + ipAddress);
 	res.render('pages/pricing/' + req.params.provider + '/index.ejs', {
-		ipAddress: ipAddress
+		ipAddress: ipAddress,
+		DASHBOARD_ENDPOINT: CONSTANTS.DASHBOARD_ENDPOINT
 	});
 
 });

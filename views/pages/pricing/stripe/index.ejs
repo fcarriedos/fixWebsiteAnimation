@@ -181,8 +181,28 @@
         showCancelButton: true,
       })
       .then(enteredCode => {
-        couponCode = enteredCode.value;
-        console.log('The coupon is ' + JSON.stringify(couponCode));
+
+        request.post(DASHBOARD_ENDPOINT + 'subscription/paypal/discountedplan').send('coupon=' + enteredCode.value)
+        .then(discountedPlans => {
+          if (discountedPlans.body.data) {
+            couponCode = enteredCode.value;
+            console.log('The coupon is ' + JSON.stringify(couponCode));
+            Swal.fire({
+              position: 'center',
+              type: 'success',
+              title: 'A 66% discount applied!',
+              showConfirmButton: false,
+              timer: 1500
+            });
+          } else {
+            console.log('askForCoupon(): No discount for that coupon code!');
+          }
+        })
+        .catch(nonDiscountResponse => {
+          console.log('askForCoupon(): Could not check the discount for your coupon!');
+        });
+
+        
       });
     }
 
