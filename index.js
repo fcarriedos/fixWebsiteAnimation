@@ -333,6 +333,8 @@ webapp.get('/pricing/:provider', (req, res) => {
 	console.log('/pricing/: servicing request for provider ' + req.params.provider + ' from client address ' + ipAddress);
 	res.render('pages/pricing/' + req.params.provider + '/index.ejs', {
 		ipAddress: ipAddress,
+		paypalClientId: process.env.PAYPAL_SUBSCRIPTION_CLIENT_ID,
+		paypalPlans: process.env.PAYPAL_PLANS,
 		DASHBOARD_ENDPOINT: CONSTANTS.DASHBOARD_ENDPOINT
 	});
 

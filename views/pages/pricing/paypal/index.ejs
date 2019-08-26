@@ -32,22 +32,13 @@
 
   <script type="text/javascript">
     var customerIp = '<%= ipAddress %>';
-    var plans = {
-      monthly: {
-        toolkit: "P-4YJ31894N9399894DLU46SKQ",
-        platform: "P-4ND03273HE782764RLU5LOBQ"
-      },
-      yearly: {
-        toolkit: "P-0NL03015Y0044603ULU5LFKQ",
-        platform: "P-9B6460699K1002232LU5LQBA"
-      }
-    };
+    var plans = <%- paypalPlans %>;
   </script>
 
 </head>
 <body>
 
-  <script src="https://www.paypal.com/sdk/js?client-id=AV0Q2Kcp_Ix1YZblCTVg7TAQJjdVTGqok0AVQaxMdo1ensH5xiVqqAJtYydUPDSjVzfMav9f_By_aKum&vault=true"></script>
+  <script src="https://www.paypal.com/sdk/js?client-id=<%= paypalClientId %>&vault=true"></script>
 
   <div class="globalContent">
     <main>
@@ -253,11 +244,14 @@
   function getPlanFromPlanName() {
 
     switch(window.parent.selectedPlan) {
-      
+
       case 'ToolkitMonthly': return plans.monthly.toolkit;
       case 'ToolkitYearly': return plans.yearly.toolkit;
       case 'PlatformMonthly': return plans.monthly.platform;
       case 'PlatformYearly': return plans.yearly.platform;
+
+      case 'instantstore-monthly': return plans.monthly.instantstore;
+      case 'instantstore-yearly': return plans.yearly.instantstore;
 
     }
   }

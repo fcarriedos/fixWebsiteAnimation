@@ -39,6 +39,10 @@
 				 	font-size: 70px;
 				}
 
+				.salesHeroCard {
+					height: 370px;
+				}
+
 			}
 
 		</style>
@@ -116,15 +120,16 @@
 		<div class="padding_sides40 padding_top60 padding_bottom60 inner">
 			
 			<div><a href="/" class="font18 link white bottom15">Home</a></div>
-			<div><a href="/appointments.html" class="font18 link white bottom15">Appointments flows</a></div>
-			<div><a href="/products.html" class="font18 link white bottom15">Product flows</a></div>
+			<div><a href="/saas.html" class="font18 link white bottom15">InstantStore</a></div>
+			<div><a href="/pricing.html" class="font18 link white bottom15">Pricing</a></div>
 			<!-- <div><a href="/products.html" class="font18 link white bottom15">Livesell flows</a></div> -->
 			<div><a href="/referral.html" class="font18 link white bottom15">Referrals</a></div>
-			<div><a href="/labs.html" class="font18 link white bottom15">Labs</a></div>
+<!-- 			<div><a href="/labs.html" class="font18 link white bottom15">Labs</a></div>
 
-			<div><a href="/testimonials.html" class="font18 link white bottom15">Testimonials</a></div>
+			<div><a href="/testimonials.html" class="font18 link white bottom15">Testimonials</a></div> -->
 			<div><a href="/about.html" class="font18 link white bottom15">About</a></div>
 			<div><a href="/contact.html" class="font18 link white bottom15">Contact</a></div>
+			
 		</div>
 	</div>
 
@@ -138,9 +143,9 @@
 						<div class="right35 inline_block dropdown" style="margin-top: 10px; margin-right: 15px">
 							<a href="#" class="link white" id="navigation_15_dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-bars white"></i></a>
 							<div class="bg_dark_gray dropdown-menu" aria-labelledby="navigation_15_dropdown">
-								<div><a href="/" class="link white extrabold">Home</a></div>
-								<div><a href="/saas.html" class="link white extrabold">Social Commerce toolkit</a></div>
-								<div><a href="/paas.html" class="link white extrabold">Instant Commerce platform</a></div>
+<div><a href="/" class="link white extrabold">Home</a></div>
+								<div><a href="/saas.html" class="link white extrabold">InstantStore</a></div>
+								<!-- <div><a href="/paas.html" class="link white extrabold">Instant Commerce platform</a></div> -->
 								<div><a href="/pricing.html" class="link white extrabold">Pricing</a></div>
 								<div><a href="/referral.html" class="link white extrabold">Referrals</a></div>
 								<!-- <div><a href="/labs.html" class="link white">Labs</a></div> -->
@@ -183,33 +188,35 @@
 
 			<!-- Monthly -->
 			<div>
-				<div class="flex justify_between">
-					<div class="max_width370 radius10 bottom70 block">
+				<div class="flex justify_center">
+					<div class="max_width370 radius10 bottom70 block" style="margin: 10px">
 						<img src="../../i/pricing/saas_pricing_icon.jpg" class="width_full" alt="" />
 						<div class="top40 padding_sides45 inner">
-							<div class="font28 light dark_gray title"><span class="font_second">Toolkit</span> <span class="float_right">$29</span></div>
-							<div class="top15 text" style="height: 300px">
+							<div class="font28 light dark_gray title"><span class="font_second">Instant Store</span> <span class="float_right">$29</span></div>
+							<div class="top15 text salesHeroCard">
 								Social Commerce to go on business:
 								<ul style="margin-top: 10px">
+									<li>Social media ready frontend.</li>
+									<li>Backend ready to service orders.</li>
 									<li><a href="#">Optimized checkout flow [+]</a>.</li>
 									<li><a href="#">Social notifications [+]</a>.</li>
-									<li><a href="#">Social auto-responder [+]</a>.</li>
-									<li>Lightweight online store.</li>
-									<li>Backend ready to service orders.</li>
+									<!-- <li><a href="#">Social auto-responder [+]</a>.</li> -->
 									<li>Visual analytics + realtime KPIs.</li>
 									<li>Lead and customer database.</li>
-									<li>Email support.</li>
+									<li>Simple yet powerful dashboard!</li>
+									<li>Support.</li>
 								</ul>
-								For: <span style="font-weight: bolder">Newcomers, Influencers, Community managers or upgrading your store to Social commerce !</span>
+								For: <span style="font-weight: bolder">E-commerce newbies, Influencers, Digital Marketing Professionals, Chatbot developers, Community managers or just upgrading your store to Social commerce!</span>
 							</div>
-							<a id="paybuttonToolkitMonthly" href="#" class="top35 bottom30 btn size50 width_full transparent_blue border border_blue radius6" onclick="selectPlan('ToolkitMonthly')">Get it now!</a>
+							<a id="paybuttonToolkitMonthly" href="#" class="top35 bottom30 btn size50 width_full transparent_blue border border_blue radius6" onclick="selectPlan('instantstore-monthly')">Get it now!</a>
+							<!-- <a id="paybuttonToolkitMonthly" href="#" class="top35 bottom30 btn size50 width_full transparent_blue border border_blue radius6" onclick="selectPlan('ToolkitMonthly')">Get it now!</a> -->
 						</div>
 					</div>
-					<div class="max_width370 radius10 bottom70 block">
+					<!-- <div class="max_width370 radius10 bottom70 block">
 						<img src="../../i/pricing/paas_pricing_icon.jpg" class="width_full" alt="" />
 						<div class="top40 padding_sides45 inner">
 							<div class="font28 light dark_gray title"><span class="font_second">Platform</span> <span class="float_right">$49</span></div>
-							<div class="top15 text" style="height: 300px">
+							<div class="top15 text">
 								Social Commerce for your projects: 
 								<ul style="margin-top: 10px">
 									<li>Up to 5 Toolkit accounts to use on your projects.</li>
@@ -218,16 +225,16 @@
 									<li>Reach out to tech guys.</li>
 									<li>Access to support community.</li>
 								</ul>
-								For: <span style="font-weight: bolder">Digital Marketing Professionals, bot developers, eCommerce specialists.</span>
+								For: <span style="font-weight: bolder">Digital Marketing Professionals, Chatbot developers, eCommerce specialists.</span>
 							</div>
 							<a id="paybuttonPlatformMonthly" onclick="selectPlan('PlatformMonthly')" href="#" class="top35 bottom30 btn size50 width_full transparent_blue border border_blue radius6">Get it now!</a>
 						</div>
-					</div>
-					<div class="max_width370 radius10 bottom70 block">
+					</div> -->
+					<div class="max_width370 radius10 bottom70 block" style="margin: 10px">
 						<img src="../../i/pricing/entreprise_pricing_icon.jpg" class="width_full" alt="" />
 						<div class="top40 padding_sides45 inner">
 							<div class="font28 light dark_gray title"><span class="font_second">Enterprise</span> <span class="float_right"></span></div>
-							<div class="top15 text" style="height: 300px">
+							<div class="top15 text salesHeroCard">
 								Do you need perhaps:
 								<ul style="margin-top: 10px">
 									<li>Custom integrations?</li>
@@ -249,33 +256,35 @@
 
 			<!-- Yearly -->
 			<div>
-				<div class="flex justify_between">
-					<div class="max_width370 radius10 bottom70 block">
+				<div class="flex justify_center">
+					<div class="max_width370 radius10 bottom70 block" style="margin: 10px">
 						<img src="../../i/pricing/saas_pricing_icon.jpg" class="width_full" alt="" />
 						<div class="top40 padding_sides45 inner">
-							<div class="font28 light dark_gray title"><span class="font_second">Toolkit</span> <span class="float_right">$290</span></div>
-							<div class="top15 text" style="height: 300px">
+							<div class="font28 light dark_gray title"><span class="font_second">Instant Store</span> <span class="float_right">$290</span></div>
+							<div class="top15 text salesHeroCard">
 								Social Commerce to go on business: 
 								<ul style="margin-top: 10px">
+									<li>Social media ready frontend.</li>
+									<li>Backend ready to service orders.</li>
 									<li><a href="#">Optimized checkout flow [+]</a>.</li>
 									<li><a href="#">Social notifications [+]</a>.</li>
-									<li><a href="#">Social auto-responder [+]</a>.</li>
-									<li>Lightweight online store.</li>
-									<li>Backend ready to service orders.</li>
+									<!-- <li><a href="#">Social auto-responder [+]</a>.</li> -->
 									<li>Visual analytics + realtime KPIs.</li>
 									<li>Lead and customer database.</li>
-									<li>Email support.</li>
+									<li>Simple yet powerful dashboard!</li>
+									<li>Support.</li>
 								</ul>
-								For: <span style="font-weight: bolder">Newcomers, Influencers, Community managers or upgrading your store to Social commerce !</span>
+								For: <span style="font-weight: bolder">E-commerce newbies, Influencers, Digital Marketing Professionals, Chatbot developers, Community managers or just upgrading your store to Social commerce!</span>
 							</div>
-							<a id="paybuttonToolkitYearly" onclick="selectPlan('ToolkitYearly')" href="#" class="top35 bottom30 btn size50 width_full transparent_blue border border_blue radius6">Get it now!</a>
+							<a id="paybuttonToolkitYearly" onclick="selectPlan('instantstore-yearly')" href="#" class="top35 bottom30 btn size50 width_full transparent_blue border border_blue radius6">Get it now!</a>
+							<!-- <a id="paybuttonToolkitYearly" onclick="selectPlan('ToolkitYearly')" href="#" class="top35 bottom30 btn size50 width_full transparent_blue border border_blue radius6">Get it now!</a> -->
 						</div>
 					</div>
-					<div class="max_width370 radius10 bottom70 block">
+					<!-- <div class="max_width370 radius10 bottom70 block">
 						<img src="../../i/pricing/paas_pricing_icon.jpg" class="width_full" alt="" />
 						<div class="top40 padding_sides45 inner">
 							<div class="font28 light dark_gray title"><span class="font_second">Platform</span> <span class="float_right">$490</span></div>
-							<div class="top15 text" style="height: 300px">
+							<div class="top15 text">
 								Social Commerce for your projects: 
 								<ul style="margin-top: 10px">
 									<li>Up to 5 Toolkit accounts to use on your projects.</li>
@@ -284,16 +293,16 @@
 									<li>Reach out to tech guys.</li>
 									<li>Access to support community.</li>
 								</ul>
-								For: <span style="font-weight: bolder">Digital Marketing Professionals, bot developers, eCommerce specialists.</span>
+								For: <span style="font-weight: bolder">Digital Marketing Professionals, Chatbot developers, eCommerce specialists.</span>
 							</div>
 							<a id="paybuttonPlatformYearly" onclick="selectPlan('PlatformYearly')"  href="#" class="top35 bottom30 btn size50 width_full transparent_blue border border_blue radius6">Get it now!</a>
 						</div>
-					</div>
-					<div class="max_width370 radius10 bottom70 block">
+					</div> -->
+					<div class="max_width370 radius10 bottom70 block" style="margin: 10px">
 						<img src="../../i/pricing/entreprise_pricing_icon.jpg" class="width_full" alt="" />
 						<div class="top40 padding_sides45 inner">
 							<div class="font28 light dark_gray title"><span class="font_second">Enterprise</span> <span class="float_right"></span></div>
-							<div class="top15 text" style="height: 300px">
+							<div class="top15 text salesHeroCard">
 								Do you need perhaps:
 								<ul style="margin-top: 10px">
 									<li>Custom integrations?</li>
@@ -312,9 +321,9 @@
 				</div>
 			</div>
 		</div>
-		<div class="max_width740 margin_auto top15 font18 light text-center">
+		<!-- <div class="max_width740 margin_auto top15 font18 light text-center">
 			<h2>Want to earn money? Learn about our <a href="referral.html">referral program!</a></h2>
-		</div>
+		</div> -->
 	</div>
 </section>
 <!-- forms alerts -->
