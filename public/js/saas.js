@@ -1,6 +1,6 @@
 const SLIDES_TO_APPEND = '<div id="animation_container" style="position: absolute; left: 273px; top: -50px">' +
 						'<div>' +
-							'<img id="headerAnimation_0" src="../i/saas/animations/header/GIF1-1.gif" style="width: 600px">' +
+							'<img id="headerAnimation_0" src="../i/saas/animations/header/Mobilel1-1.gifinstagram.gif" style="width: 600px">' +
 						'</div>' +
 						'<div>' +
 							'<img id="headerAnimation_1" src="../i/saas/animations/header/whatsapp.gif" style="width: 600px">' +

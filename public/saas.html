@@ -3,554 +3,12 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8" >
-		<title>MessengerSell &mdash; Instant Commerce Toolkit</title>
+		<title>MessengerSell</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="icon" href="i/favicon.ico" type="image/x-icon">
 		<link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700,800,900|Nunito+Sans:200,300,400,600,700,800,900" rel="stylesheet">
 		<link href="css/style.css" rel="stylesheet" />
-		<link href="css/ei-icon.css" rel="stylesheet">
-    	<link href="css/themify-icons.css" rel="stylesheet">
 		<script src="js/jquery.min.js"></script>
-		<script src="js/saas.js"></script>
-		<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-		<style type="text/css">
-			.slick-dots {
-				position: relative;
-				/*left: 100px;*/
-				text-align: left;
-				bottom: 15px;
-			}
-			.slick-dots li {
-				margin: 25px;
-			}
-			.controllerIcon {
-				 opacity: 0.35; 
-				 filter: alpha(opacity=35);
-			}
-			.controllerIcon:hover {
-				opacity: 1.0; 
-				filter: alpha(opacity=100);
-			}
-
-			/* Main animation */
-
-			@media only screen and (min-width: 1201px) {
-
-/*				.header_12 {
-					min-height: 800px;
-				}*/
-
-				#main_marquee_text {
-					font-size: 40px;
-				}
-
-
-				#seller_layer {
-					position: relative;
-					width: 550px;
-					left: -200px;
-					top: 11px;
-				}
-
-				#animation_container {
-					position: absolute;
-					left: 273px;
-					top: 117px;
-				}
-
-				#buyer_layer {
-					width: 344px;
-					position: relative;
-					left: 280px;
-					top: 11px;
-				}
-			}
-
-			@media only screen and (max-width: 1200px) {
-
-/*				.header_12 {
-					min-height: 800px;
-				}*/
-
-				#seller_layer {
-					position: relative;
-					width: 442px;
-					top: 105px;
-					left: -130px;
-				}
-
-				#animation_container {
-					position: absolute;
-					width: 60%;
-					top: 225px;
-					left: 267px;
-				}
-
-				#buyer_layer {
-					width: 330px;
-					position: relative;
-					left: 300px;
-					top: 91px;
-				}
-
-				.slick-dots {
-					position: relative;
-					/*left: 100px;*/
-					text-align: left;
-					bottom: 25px;
-					margin-left: 10px;
-				}
-
-				.slick-dots li {
-					margin: 20px;
-				}
-
-				.controllerIcon {
-					 max-width: 40px;
-					 opacity: 0.35; 
-					 filter: alpha(opacity=35);
-				}
-				.controllerIcon:hover {
-					max-width: 40px;
-					opacity: 1.0; 
-					filter: alpha(opacity=100);
-				}
-
-				#white_header_spacer {
-					display: none;
-				}
-
-			}
-
-
-		@media only screen and (max-width: 900px) {
-
-			.header_12 {
-				height: 500px;
-			}
-
-			#seller_layer {
-				position: relative;
-				width: 276px;
-				top: 148px;
-				left: 0px;
-			}
-
-			#animation_container {
-				position: absolute;
-				width: 40%;
-				top: 90px;
-				left: 235px;
-			}
-
-			#buyer_layer {
-				width: 193px;
-				position: relative;
-				left: 290px;
-				top: 161px;
-			}
-
-			.slick-dots {
-				position: relative;
-				/*left: 100px;*/
-				text-align: left;
-				bottom: 35px;
-				margin-left: 10px;
-			}
-
-			.slick-dots li {
-				margin: 15px;
-			}
-
-			.controllerIcon {
-				 max-width: 32px;
-				 opacity: 0.35; 
-				 filter: alpha(opacity=35);
-			}
-			.controllerIcon:hover {
-				max-width: 32px;
-				opacity: 1.0; 
-				filter: alpha(opacity=100);
-			}
-
-			#white_header_spacer {
-				display: none;
-			}
-
-			#headerContainer {
-				position: relative;
-				top: -200px;
-			}
-		}
-
-
-		@media only screen and (width: 768px) {
-
-			.header_12 {
-				height: 500px;
-			}
-
-			#seller_layer {
-				position: relative;
-				width: 276px;
-				top: 148px;
-				left: -32px;
-			}
-
-			#animation_container {
-				position: absolute;
-				width: 40%;
-				top: 90px;
-				left: 202px;
-			}
-
-			#buyer_layer {
-				width: 193px;
-				position: relative;
-				left: 256px;
-				top: 161px;
-			}
-
-			.slick-dots {
-				position: relative;
-				/*left: 100px;*/
-				text-align: left;
-				bottom: 35px;
-				margin-left: 10px;
-			}
-
-			.slick-dots li {
-				margin: 15px;
-			}
-
-			.controllerIcon {
-				 max-width: 32px;
-				 opacity: 0.35; 
-				 filter: alpha(opacity=35);
-			}
-			.controllerIcon:hover {
-				max-width: 32px;
-				opacity: 1.0; 
-				filter: alpha(opacity=100);
-			}
-
-			#white_header_spacer {
-				display: none;
-			}
-
-			#headerContainer {
-				position: relative;
-				top: -200px;
-			}
-		}
-
-
-		@media only screen and (max-width: 767px) {
-
-			.header_12 {
-				height: 500px;
-			}
-
-			#seller_layer {
-				position: relative;
-				width: 276px;
-				top: 148px;
-				left: -50px;
-			}
-
-			#animation_container {
-				position: absolute;
-				width: 40%;
-				top: 90px;
-				left: 194px;
-			}
-
-			#buyer_layer {
-				width: 193px;
-				position: relative;
-				left: 255px;
-				top: 161px;
-			}
-
-			.slick-dots {
-				position: relative;
-				/*left: 100px;*/
-				text-align: left;
-				bottom: 35px;
-				margin-left: 10px;
-			}
-
-			.slick-dots li {
-				margin: 15px;
-			}
-
-			.controllerIcon {
-				 max-width: 32px;
-				 opacity: 0.35; 
-				 filter: alpha(opacity=35);
-			}
-			.controllerIcon:hover {
-				max-width: 32px;
-				opacity: 1.0; 
-				filter: alpha(opacity=100);
-			}
-
-			#white_header_spacer {
-				display: none;
-			}
-
-			#headerContainer {
-				position: relative;
-				top: -200px;
-			}
-		}
-
-		@media only screen and (width: 736px) {
-
-			.header_12 {
-				height: 445px;
-			}
-
-			#main_marquee {
-				top: -64px;
-			}
-
-			#main_marquee_text {
-				font-size: 48px;
-			}
-
-			#sub_marquee {
-				font-size: 24px;
-			}
-
-			#seller_layer {
-				left: -40px;
-			}
-
-			#animation_container {
-				left: 204px;
-			}
-
-			.slick-dots {
-				margin-left: 0px;
-			}
-
-		}
-
-
-		@media only screen and (width: 731px) {
-
-			.header_12 {
-				height: 445px;
-			}
-
-			#main_marquee {
-				top: -64px;
-			}
-
-			#main_marquee_text {
-				font-size: 48px;
-			}
-
-			#sub_marquee {
-				font-size: 24px;
-			}
-
-		}
-
-
-		@media only screen and (max-width: 667px) {
-
-			.header_12 {
-				height: 438px;
-			}
-
-			#main_marquee {
-				top: -64px;
-			}
-
-			#main_marquee_text {
-				font-size: 44px;
-			}
-
-			#sub_marquee {
-				font-size: 24px;
-			}
-
-			#seller_layer {
-				position: relative;
-				width: 25%;
-				top: 185px;
-				left: -40px;
-			}
-
-			#animation_container {
-				position: absolute;
-				width: 40%;
-				top: 101px;
-				left: 154px;
-			}
-
-			#buyer_layer {
-				width: 163px;
-				position: relative;
-				left: 255px;
-				top: 171px;
-			}
-
-			.slick-dots {
-				position: relative;
-				/*left: 100px;*/
-				text-align: left;
-				bottom: 35px;
-				margin-left: 10px;
-			}
-
-			.slick-dots li {
-				margin: 15px;
-			}
-
-			.controllerIcon {
-				 max-width: 32px;
-				 opacity: 0.35; 
-				 filter: alpha(opacity=35);
-			}
-			.controllerIcon:hover {
-				max-width: 32px;
-				opacity: 1.0; 
-				filter: alpha(opacity=100);
-			}
-
-			#white_header_spacer {
-				display: none;
-			}
-
-			#headerContainer {
-				position: relative;
-				top: -200px;
-			}
-		}
-
-
-		@media only screen and (max-width: 640px) {
-
-			.header_12 {
-				height: 360px;
-			}
-
-			#main_marquee {
-				top: -64px;
-			}
-
-			#main_marquee_text {
-				font-size: 36px;
-			}
-
-			#sub_marquee {
-				font-size: 20px;
-				position: relative;
-				top: -20px;
-			}
-
-			#seller_layer {
-				left: -33px;
-				width: 28%;
-				top: 84px;
-			}
-
-			#animation_container {
-				width: 35%;
-				top: 39px;
-				left: 184px;
-			}
-
-			#buyer_layer {
-				width: 20%;
-				top: 89px;
-				left: 205px;
-			}
-
-			.slick-dots {
-				margin-left: 0px;
-				bottom: 25px;
-			}
-
-			.slick-dots li {
-				margin: 12px;
-			}
-
-			.controllerIcon {
-				 max-width: 24px;
-				 
-			}
-			.controllerIcon:hover {
-				max-width: 24px;
-			}
-
-		}
-
-		@media only screen and (max-width: 568px) {
-
-			#main_marquee {
-				top: -64px;
-			}
-
-			#main_marquee_text {
-				font-size: 34px;
-			}
-
-			#sub_marquee {
-				font-size: 16px;
-				top: -20px;
-				position: relative;
-			}
-
-			#seller_layer {
-				left: -25px;
-				top: 186px;
-			}
-
-			#animation_container {
-				width: 35%;
-				left: 131px;
-				top: 105px;
-			}
-
-			#buyer_layer {
-				left: 215px;
-			}
-
-			.slick-dots {
-				margin-left: 5px;
-				bottom: 35px;
-			}
-
-			.slick-dots li {
-				margin: 15px;
-			}
-
-			.slick-dots {
-				margin-left: 1px;
-			}
-
-			.slick-dots li {
-				margin: 10px;
-			}
-
-			.controllerIcon {
-				 max-width: 20px;
-				 opacity: 0.35; 
-				 filter: alpha(opacity=35);
-			}
-			.controllerIcon:hover {
-				max-width: 20px;
-				opacity: 1.0; 
-				filter: alpha(opacity=100);
-			}
-
-		}
-
-		</style>
 		<script src="js/bootstrap.min.js"></script>
 		<!-- Facebook Pixel Code -->
 		<script>
@@ -574,9 +32,9 @@
 	<script>
 	  fbq('track', 'Search');
 	</script>
-<script>
-  fbq('track', 'ViewContent');
-</script>
+	<script>
+	  fbq('track', 'ViewContent');
+	</script>
 
 <!-- Load Facebook SDK for JavaScript -->
 <div id="fb-root"></div>
@@ -593,10 +51,13 @@
   attribution=setup_tool
   page_id="178191642990959"
   logged_in_greeting="Hi! 👋 Want to talk with someone?"
-  logged_out_greeting="Hi! 👋 Want to talk with someone?">
+  logged_out_greeting="Hi! 👋 Log in to Facebook to talk with us! :)"
+  greeting_dialog_display="show"
+  greeting_dialog_delay="5"
+  >
 </div>
 
-<!-- Navigation Mobile type 3 -->
+	<!-- Navigation Mobile type 3 -->
 
 	<a class="open_menu blue">
 		<img src="i/logos/open_menu_logo.png" style="max-width: 24px">
@@ -619,8 +80,8 @@
 	</div>
 
 	<!-- Header 12 -->
-	<header class="header_12" style="background: #0f0f10 url(../i/saas/background.jpg) 50% 95%;
-  background-size: cover;">
+	<header class="header_12">
+
 		<!-- Navigation 15 -->
 		<nav class="navigation_15 transparent padding_top30 padding_bottom30 top30" style="position: fixed; background-color: rgba(0, 0, 0, 0.35); color: rgba(0, 0, 0, 0.35); padding-top: 0px; padding-bottom: 0px; margin-top: 0px">
 			<div class="container nopadding line_height40">
@@ -654,179 +115,400 @@
 			</div>
 		</nav>
 
-		<!-- Content 27 -->
-		<section class="content_27 padding_top100 padding_bottom110" style="background-color: rgba(240,248,255, 0.15); height: 800px">
+		<div class="small_animation_container">
+			<img src="i/home/1_smaller_screen.png" class="small_animation" alt="" />
+		</div>
 
-			<div class="container nopadding max_width970">
-                <!-- <div style="background: url(../i/saas/connect_social.png) 88% 42%;width: 42%;height: 58%;/* background-color:  grey; */position: absolute;top: 217px;left: -390px;background-size: cover;opacity: 0.3;"></div> -->
-			<div id="main_marquee" class="container nopadding max_width970">
-				<h1 id="main_marquee_text" class="white font_second light font62" style="text-shadow: 1px 1px 10px black, 1px 1px 10px black; text-align: center"><b>Make your first sale today!</b></h1>
-				<div id="sub_marquee" class="white font22 light top25 bottom80 text" style="text-shadow: 1px 1px 5px black, 1px 1px 5px black, 1px 1px 5px black; text-align: center">
-					Instant Social Commerce gets you smoothly into e-commerce for social networks.
+		<div class="container nopadding padding_bottom305">
+			<img src="i/home/1.png" class="big_animation top180 bg" alt="" />
+			<div class="max_width570 padding_top500 inner">
+				<h1 class="white font_second light font62" style="text-shadow: 1px 1px 10px black, 1px 1px 10px black;">Hello, <b>Instant Social Commerce!</b></h1>
+				<div class="white font22 light top25 bottom80 text" style="text-shadow: 1px 1px 5px black, 1px 1px 5px black, 1px 1px 5px black;">
+					Sell more, simpler and better with our innovative customer journey - from approach to after-sales service, including checkout flow.
 				</div>
-				<!-- <h2 class="max_width570 margin_auto text-center font28 font_second light white">We've created the product that will help your startup look better.</h2> -->
-				<div id="white_header_spacer" class="hr white width_full height1 opacity1 top80"></div>
-				<!-- <div id="animation_container" style="position: absolute; left: 275px; top: 180px"> -->
-				
-				<div id="headerContainer" class="animation_full_size" style="display: inline-flex; width: 900px">
-					<div id="seller_layer">
-						<img id="seller_image" style="max-width: 100%" src="../i/saas/seller_ready.png">
-					</div>
-
-					<div id="animation_container" style="z-index: 2">
-						<div>
-							<img id="headerAnimation_0" src="../i/saas/animations/header/instagram.gif" style="max-width: 100%">
-						</div>
-						<div>
-							<img id="headerAnimation_1" src="../i/saas/animations/header/whatsapp.gif" style="max-width: 100%">
-						</div>
-						<div>
-							<img id="headerAnimation_2" src="../i/saas/animations/header/snapchat.gif" style="max-width: 100%">
-						</div>
-						<div>
-							<img id="headerAnimation_3" src="../i/saas/animations/header/facebook.gif" style="max-width: 100%">
-						</div>
-						<div>
-							<img id="headerAnimation_4" src="../i/saas/animations/header/linkedin.gif" style="max-width: 100%">
-						</div>
-						<div>
-							<img id="headerAnimation_5" src="../i/saas/animations/header/pinterest.gif" style="max-width: 100%">
-						</div>
-						<div>
-							<img id="headerAnimation_6" src="../i/saas/animations/header/telegram.gif" style="max-width: 100%">
-						</div>
-						<div>
-							<img id="headerAnimation_7" src="../i/saas/animations/header/twitter.gif" style="max-width: 100%">
-						</div>
-					</div>
-
-					<div id="buyer_layer">
-						<img id="buyer_image" src="../i/saas/buyers/instagram.png" style="max-width: 100%; z-index: 1">
-					</div>
-				</div>
-
+				<a href="#" onclick="scrollToBottom()" class="btn size60 blue padding_sides35 right20">Try it now!</a>
 			</div>
-		</section>
-
-		<!-- Content 26
-		<section class="content_26 padding_top100 padding_bottom100">
-			<div class="container nopadding max_width970">
-				<div class="row flex-row-reverse justify-content-between">
-					<div class="col-md-7">
-						<div class="width570 height320 radius8 video" data-ratio="16/9">
-							<div class="radius8 poster">
-								<div class="play red"><i class="fa fa-play"></i></div>
-							</div>
-							<video controls>
-								<source src="../../video/video1.mp4" type="video/mp4">
-							</video>
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="max_width270 top10 inner">
-							<h2 class="font28 font_second light dark_gray">Spotless social shopping experience, ready for you to make money!</h2>
-							<div class="top20 font18 light dark_blue text">
-								Make your first sale in minutes! MessengerSell is specially designed to get you smoothly into e-commerce for social networks. 
-							</div>
-							<a href="#" class="top40 padding_sides30 btn blue size50 font16 radius6">How does it help? <i class="fa fa-angle-right font18 left10"></i></a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>  -->
-
+		</div>
 	</header>
-	
 
-	<!-- Feature 1 -->
-	<section class="feature_1 bg_white padding_top100 padding_bottom85">
+	<!-- /content_31.html -->
+	<!-- Header 4 -->
+	<div id="slider" class="margin_auto top80 slider arrows0">
+		<div>
+			<!-- Feature 15 -->
+			<section class="feature_15 bg_white padding_top140">
+				<div class="container nopadding">
+					<div class="row">
+						<div class="col-xl-5 col-lg-6">
+							<div class="top20 max_width470 block_left">
+								<h2 class="font42 font_second light dark_gray">Goodbye, clunky checkout flows! <img class="embedded_emoji_image_highlighted" src="/i/home/emojis/goodbye.png"></h2>
+								<div class="top30 bottom70 font18 light dark_blue text">
+									Hello, <b>Instant Social Commerce!</b> Make archaic and slow checkout flows a thing of the past! MessengerSell was created for customers of tomorrow &mdash; people who want simple, friendly, 1-click purchases.<img class="embedded_emoji_image" src="/i/home/emojis/spotless.png">
+								</div>
+								<div class="max_width370 bottom55 block">
+									<div class="font22 light title"><i class="fa fa-check blue right15"></i>Sell more</div>
+									<div class="top20 font18 dark_blue light text">
+										Close more deals with our minimized checkout flow!
+									</div>
+								</div>
+								<div class="max_width370 bottom55 block">
+									<div class="font22 light title"><i class="fa fa-check blue right15"></i>Sell simpler</div>
+									<div class="top20 font18 dark_blue light text">
+										Enable Amazon-like 1-click purchases with existing payment methods!
+									</div>
+								</div>
+								<div class="max_width370 bottom5 block">
+									<div class="font22 light title"><i class="fa fa-check blue right15"></i>Sell better</div>
+									<div class="top20 font18 dark_blue light text">
+										Optimized to be used within social apps.
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-xl-7 col-lg-6 text-right">
+							<img src="i/home/2.png" class="max_width_full bg" alt="" />
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+
+		<div>
+			<!-- Feature 15 -->
+			<section class="feature_15 bg_white padding_top140">
+				<div class="container nopadding">
+					<div class="row">
+						<div class="col-xl-5 col-lg-6">
+							<div class="top20 max_width470 block_left">
+								<h2 class="font42 font_second light dark_gray">Goodbye sloppy customer journeys! <img class="embedded_emoji_image_highlighted" src="/i/home/emojis/goodbye.png"></h2>
+								<div class="top30 bottom70 font18 light dark_blue text">
+									Hello <b>Instant Social Commerce!</b> Our platform allows keeping the whole customer journey within your customers' social network, with elegant smart notifications!
+								</div>
+								<div class="max_width370 bottom55 block">
+									<div class="font22 light title"><i class="fa fa-check blue right15"></i>Customers prefer texting!</div>
+									<div class="top20 font18 dark_blue light text">
+										Keep your customers posted conveniently through cool text messages within their favorite social app!<br/>
+										<img class="embedded_emoji_image" src="/i/home/external/whatsapp.png">
+										<img class="embedded_emoji_image" src="/i/home/external/messenger.png">
+										<img class="embedded_emoji_image" src="/i/home/external/instagram.png">
+										<img class="embedded_emoji_image" src="/i/home/external/SMS.png">
+										<img class="embedded_emoji_image" src="/i/home/external/email.png">
+									</div>
+								</div>
+								<div class="max_width370 bottom55 block">
+									<div class="font22 light title"><i class="fa fa-check blue right15"></i>Personalization, made easy!</div>
+									<div class="top20 font18 dark_blue light text">
+										Personalize your customers' shopping experience easily!
+									</div>
+								</div>
+								<div class="max_width370 bottom5 block">
+									<div class="font22 light title"><i class="fa fa-check blue right15"></i>Be less intrusive, yet more effective!</div>
+									<div class="top20 font18 dark_blue light text">
+										Emoji-based rating, then turned into popularity for your business' social accounts! 
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-xl-7 col-lg-6 text-right" style="margin: auto">
+							<img src="i/home/customer_journey.gif" class="max_width_full bg" alt="" />
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+
+		<div>
+			<!-- Feature 15 -->
+			<section class="feature_15 bg_white padding_top140">
+				<div class="container nopadding">
+					<div class="row">
+						<div class="col-xl-5 col-lg-6">
+							<div class="top20 max_width470 block_left">
+								<h2 class="font42 font_second light dark_gray">Goodbye, complex platforms! <img class="embedded_emoji_image_highlighted" src="/i/home/emojis/goodbye.png"></h2>
+								<div class="top30 bottom70 font18 light dark_blue text">
+									Hello <b>Instant Social Commerce!</b> Go simpler on business, with a visual tool, <span style="text-decoration: underline;">at a fraction of the cost</span> of existing solutions and focusing on what matters: selling!
+								</div>
+								<div class="max_width370 bottom55 block">
+									<div class="font22 light title"><i class="fa fa-check blue right15"></i>E-commerce for non experts</div>
+									<div class="top20 font18 dark_blue light text">
+										E-commerce for non-experts, our platform will take you by the hand and guide you to your first sale!
+									</div>
+								</div>
+								<div class="max_width370 bottom55 block">
+									<div class="font22 light title"><i class="fa fa-check blue right15"></i>Create unique shopping experiences!</div>
+									<div class="top20 font18 dark_blue light text">
+										See exactly what your customer will see and thank them for their purchase with a cool message after the purchase!
+									</div>
+								</div>
+								<div class="max_width370 bottom55 block">
+									<div class="font22 light title"><i class="fa fa-check blue right15"></i>MessengerSell integrates with your solution</div>
+									<div class="top20 font18 dark_blue light text">
+										Already own a business? MessengerSell integrates your existing solution!
+										<img class="embedded_emoji_image" src="/i/home/external/woocommerce_icon.png">
+										<img class="embedded_emoji_image" src="/i/home/external/prestashop_icon.png">
+										<img class="embedded_emoji_image" src="/i/home/external/shopify_icon.png">
+										<img class="embedded_emoji_image" src="/i/home/external/magento_icon.png">
+									</div>
+									
+								</div>
+							</div>
+						</div>
+						<div class="col-xl-7 col-lg-6 text-right" style="margin: auto">
+							<img src="i/home/composer_home_page.gif" class="max_width_full bg" alt="" style="-webkit-box-shadow: 0px 0px 31px -1px rgba(0,0,0,0.55); -moz-box-shadow: 0px 0px 31px -1px rgba(0,0,0,0.55); box-shadow: 0px 0px 31px -1px rgba(0,0,0,0.55); border-radius: 10px"/>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+
+	</div>
+
+
+	<!-- Testimonials -->
+	<!-- Feature 8 -->
+		<!-- Content 11 -->
+	<section class="content_11 bg_grey padding_top80 padding_bottom50">
 		<div class="container nopadding max_width970">
-			<h2 class="font42 font_second light dark_gray text-center">Welcome to Instant Social Commerce!</h2>
-			<div class="width770 margin_auto top60 radius8 video" data-ratio="16/9">
-					<div class="radius8 poster">
-						<div class="play red"><i class="fa fa-play"></i></div>
+			<div class="dark_blue light font18 text">
+
+				<div class="top5 bottom100 hr height1 black opacity1"></div>
+								
+				<h2 class="font_second light font42 bottom50 text-center" style="padding-top: 10px">What our early adopters think of us... <img src="i/testimonials/chat/slightSmile.png" style="width: 64px; position: relative; top: -10px"></h2>
+
+				<div id="testimonialContainer" style="height: auto; display: flex; flex-direction: column;">
+
+					<!-- Alto agency -->
+					<div class='max_width600 margin_auto' style="margin-top: 20px;">
+						<div class="testimonialContainer">
+							<img id="testimonialBubbleFabio" class="testimonialBubble" src="i/testimonials/chat/blue_bubble_custom.png">
+							<div class="testimonialCenteredLeft">Seamlessly integrated, customizable, smart features and excellent support... MessengerSell rocks! <img src="i/testimonials/chat/theHorns.png" style="max-width: 24px; width: auto; position: relative;"></div>
+						</div>
+						<div style="padding-top: 10px; text-align: right;">
+							<div style="float: left; width: 50%"><a href="http://altoagency.com" target="_blank"><img src="i/testimonials/people/Fabio.jpg" style="border-radius: 50%; height: 160px"></a></div>
+							<div style="float: right; width: 50%; height: 200px">
+								<div style="text-align: left; padding: 15px; top: 50px; position: relative;">
+									<a href="http://altoagency.com" target="_blank">Fabio Alessi - Alto Agency</a>
+								</div>
+							</div>
+						</div>
 					</div>
-					<video controls>
-						<source src="../../video/video1.mp4" type="video/mp4">
-					</video>
-				</div>
-			<div class="top65 row inner">
-				<div class="col-md-4 text-center bottom50 block">
-					<!-- <i class="fa fa-briefcase font60 light_gray"></i> -->
-					<i class="fa fa-gears font60 light_gray"></i>
-					<div style="display: inline-block; left: -50px; position: relative;top: -5px;"><i class="fa fa-ban font60 light_gray" style="color: #0057ff; font-size: 40px;"></i></div>
-					<div class="top30 font28 light dark_gray title">Good bye complex<br /> online stores!</div>
-					<div class="top30 font18 light dark_blue text">
-						Start making money today and forget about setting up online stores!
+
+					<!-- Verolina Business Mom Box -->
+					<div class='max_width600 margin_auto' style="margin-top: 20px;">
+						<div class="testimonialContainer">
+							<img id="testimonialBubbleVerolina" class="testimonialBubble" src="i/testimonials/chat/grey_bubble_custom.png">
+							<div id="testimonialCenteredRightVerolina" class="testimonialCenteredRight">Appointments through Messenger made eeeeeeasy: customization options, payment methods, awesome support... Key for my coaching agency! Thank you MessengerSell! <img src="i/testimonials/chat/loveEyes.png" style="max-width: 24px; width: auto; position: relative;"></div>
+						</div>
+						<div style="padding-top: 10px; text-align: right;">
+							<div style="float: left; width: 50%"><div style="text-align: right; padding: 15px; top: 50px; position: relative;">
+									<a href="https://facebook.com/businessmombox" target="_blank">Verolina Kintop - BusinessMomBox</a>
+								</div></div>
+							<div style="float: right; width: 50%; height: 200px; text-align: left;">
+								<a href="https://facebook.com/businessmombox" target="_blank"><img src="i/testimonials/people/Verolina.jpg" style="border-radius: 50%; height: 160px"></a>
+							</div>
+						</div>
 					</div>
-				</div>
-				<div class="col-md-4 text-center bottom50 block" style="padding-top: 10px">
-					<!-- <i class="fa fa-compress font60 light_gray"></i> -->
-					<div class="ei ei-diagonal-arrow-3 font60 light_gray" style="display: inline-block;left: -15px;position: relative;bottom: 40px;font-size:  32px;color:  #0057ff;"></div>
-					<div class="ei ei-growth font60 light_gray" style="font-size: 60px; display: inline-block; left: -50px; position: relative;top: -5px;"></div>
-					<div class="top30 font28 light dark_gray title">Stop leaking sales, get returning customers!</div>
-					<div class="top30 font18 light dark_blue text">
-						Unparalleled effective shopping experience your customers will just love!
+
+					<!-- Salome English coaching -->
+					<div class='max_width600 margin_auto' style="margin-top: 20px;">
+						<div class="testimonialContainer">
+							<img id="testimonialBubbleSalome" class="testimonialBubble" src="i/testimonials/chat/blue_bubble_custom.png">
+							<div class="testimonialCenteredLeft">I just want to sell my coaching within Messenger, that simple. MessengerSell enabled that in a couple of clicks! <img src="i/testimonials/chat/fineHand.png" style="max-width: 24px; width: auto; position: relative;"></div>
+						</div>
+						<div style="padding-top: 10px; text-align: right;">
+							<div style="float: left; width: 50%"><a href="https://www.facebook.com/Salome.Hacquard.English.Business.Coach/&si=7000000002135963&pi=e6f4cde3-323c-4bd3-b31b-29eb33c24dbc" target="_blank"><img src="i/testimonials/people/Salome.jpg" style="border-radius: 50%; height: 160px"></a></div>
+							<div style="float: right; width: 50%; height: 200px">
+								<div style="text-align: left; padding: 15px; top: 50px; position: relative;">
+									<a href="https://www.facebook.com/Salome.Hacquard.English.Business.Coach/&si=7000000002135963&pi=e6f4cde3-323c-4bd3-b31b-29eb33c24dbc" target="_blank">Salomé Hacquard - Freelance coach, business and languages</a>
+								</div>
+							</div>
+						</div>
 					</div>
-				</div>
-				<div class="col-md-4 text-center bottom50 block">
-					<!-- <i class="fa fa-desktop font60 light_gray"></i> -->
-					<!-- <i class="fa fa-plug font60 light_gray" style="color: #999999"></i> -->
-					<div><img src="../../i/saas/integrate.png"></div>
-					<div class="top30 font28 light dark_gray title">Integrate with your current online store!</div>
-					<div class="top30 font18 light dark_blue text">
-						Shopify, WooCommerce, Prestashop, Magento... Optimize your existing online store for social networks transparently!
+
+					<!-- Sandy Sanaz Sourcing -->
+					<div class='max_width600 margin_auto' style="margin-top: 10px;">
+						<div class="testimonialContainer">
+							<img id="testimonialBubbleSandy" id="testimonialBubbleSandy" class="testimonialBubble" src="i/testimonials/chat/grey_bubble_custom.png">
+							<div id="testimonialCenteredRightSandy" class="testimonialCenteredRight">MessengerSell glues e-commerce and social messaging platforms, just clicking, in minutes. <img src="i/testimonials/chat/biceps.png" style="max-width: 24px; width: auto; position: relative;"></div>
+						</div>
+						<div style="padding-top: 10px; text-align: right;">
+							<div style="float: left; width: 50%"><div style="text-align: right; padding: 15px; top: 50px; position: relative;">
+									<a href="https://www.linkedin.com/in/sandip-dixit-59a27115/&si=7000000002135963&pi=31b2b220-d82d-4d7c-8669-6d21204c6e10" target="_blank">Sandy Dixit - Sanaz Sourcing</a>
+								</div></div>
+							<div style="float: right; width: 50%; height: 200px; text-align: left;">
+								<a href="https://www.linkedin.com/in/sandip-dixit-59a27115/&si=7000000002135963&pi=31b2b220-d82d-4d7c-8669-6d21204c6e10" target="_blank"><img src="i/testimonials/people/Sandy.jpg" style="border-radius: 50%; height: 160px"></a>
+							</div>
+						</div>
 					</div>
+
+					<!-- Benito BRTrials -->
+					<div class='max_width600 margin_auto' style="margin-top: 20px;">
+						<div class="testimonialContainer">
+							<img id="testimonialBubbleBenito" class="testimonialBubble" src="i/testimonials/chat/blue_bubble_custom.png">
+							<div class="testimonialCenteredLeft">My customers like to contact me through WhatsApp and Messenger, I missed a way to close deals as we chat, live. MessengerSell enabled me to do that! <img src="i/testimonials/chat/raisingHands.png" style="max-width: 24px; width: auto; position: relative;"></div>
+						</div>
+						<div style="padding-top: 10px; text-align: right;">
+							<div style="float: left; width: 50%"><a href="https://www.facebook.com/brtrials" target="_blank"><img src="i/testimonials/people/Benito.jpg" style="border-radius: 50%; height: 160px"></a></div>
+							<div style="float: right; width: 50%; height: 200px">
+								<div style="text-align: left; padding: 15px; top: 50px; position: relative;">
+									<a href="https://www.facebook.com/brtrials" target="_blank">Benito Ros - Biketrial parts dealer</a>
+								</div>
+							</div>
+						</div>
+					</div>
+
 				</div>
 			</div>
 		</div>
 	</section>
 
+	<!-- Feature 8 -->
+	<section class="feature_8 bg_white padding_top110 padding_bottom110">
+		<div class="container nopadding">
 
-	<!-- Feature 13 -->
-	<section class="feature_13 bg_white padding_top110 padding_bottom75">
-		<div class="container nopadding max_width970">
 			<div class="top5 bottom100 hr height1 black opacity1"></div>
-			<h2 class="max_width770 margin_auto font28 light dark_gray text-center">
-				Selling social, made easy as you see it here <img src="i/saas/emojis/point_down.png" style="width: 32px; display: inline-block;">
-			</h2>
-			<img srcset="../../i/feature_13_img.jpg 1x, ../../i/feature_13_img_2x.jpg 2x" src="../../i/feature_13_img.jpg" class="top70 max_height_full max_width_full bg" alt="" />
-			<div class="row top55 inner">
-				<div class="col-md-6 bottom50 block">
-					<div class="font26 semibold font_second dark_gray title">What's in it for my business?</div>
-					<div class="top20 font18 light dark_blue text" style="padding-left: 20px">
-						<ul class="top40 nopadding">
-     						<li class="bottom10">Simpler checkout: get more sales to complete!</li>
-     						<li class="bottom10">Smoother shopping flow: make happier returning customers!</li>
-     						<li class="bottom10">Simplified online store: a fraction of costs and time!</li>
-   						</ul>
+						
+			<div class="row">
+
+				<div class="col-md-6 col-lg-4 bottom60 block">
+					<div class="font22 light title"><i class="fa fa-check blue right15"></i>Sell products <img class="embedded_emoji_image_highlighted" src="/i/home/emojis/package.png"></div>
+					<div class="top20 font18 dark_blue light text">
+					Sell merchandise or digital goods from your existing online store or create new promotions directly in MessengerSell.
 					</div>
-					<a href="#" class="top35 btn size40 transparent_blue border border_blue font16 padding_sides25">View Tutorials</a>
 				</div>
-				<div class="col-md-6 bottom50 block">
-					<div class="font26 semibold font_second dark_gray title">What's in it for my customers?</div>
-					<div class="top20 font18 light dark_blue text" style="padding-left: 20px">
-						<ul class="top40 nopadding">
-     						<li class="bottom10">No more cumbersome checkouts! Want it? Get it before your bus stop!</li>
-     						<li class="bottom10">Keep posted through texts, not unfindable emails!</li>
-     						<li class="bottom10">Just forget about SPAM!</li>
-   						</ul>
+
+				<div class="col-md-6 col-lg-4 bottom60 block">
+					<div class="font22 light title"><i class="fa fa-check blue right15"></i>Sell appointments <img class="embedded_emoji_image_highlighted" src="/i/home/emojis/calendar.png"></div>
+					<div class="top20 font18 dark_blue light text">
+						Appointment based business? Reduce the no-shows and get your schedule automated!
 					</div>
-					<a href="#" class="top35 btn size40 transparent_blue border border_blue font16 padding_sides25">Learn More</a>
 				</div>
+
+				<div class="col-md-6 col-lg-4 bottom60 block">
+					<div class="font22 light title"><i class="fa fa-check blue right15"></i>Boost your store! <img class="embedded_emoji_image_highlighted" src="/i/home/integrate.png"></div>
+					<div class="top20 font18 dark_blue light text">
+						MessengerSell integrates with your existing online store, optimizing it to sell within social networks!
+					</div>
+				</div>
+
 			</div>
+
+			<div class="top5 bottom100 hr height1 black opacity1"></div>
+
+			<div class="row padding_top100">
+
+				<div class="col-md-6 col-lg-4 bottom60 block">
+					<i class="fa fa-mouse-pointer blue font32 float_left"></i>
+					<div class="left60 top10 inner">
+						<div class="font14 semibold uppercase spacing15 title">No experts required</div>
+						<div class="top20 font18 light dark_blue hyphens text">
+							You want to sell, not to setup, we know. Start selling in minutes, we mean it!
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-6 col-lg-4 bottom60 block">
+					<i class="fa fa-bullhorn blue font32 float_left"></i>
+					<div class="left60 top10 inner">
+						<div class="font14 semibold uppercase spacing15 title">Instant promotions</div>
+						<div class="top20 font18 light dark_blue hyphens text">
+							MessengerSell provides you with everything you need to create your catalogs and promotions.
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-6 col-lg-4 bottom60 block">
+					<i class="fa fa-puzzle-piece blue font32 float_left"></i>
+					<div class="left60 top10 inner">
+						<div class="font14 semibold uppercase spacing15 title">Related products</div>
+						<div class="top20 font18 light dark_blue hyphens text">
+							If you sell a bike, it makes sense to offer a helmet or to schedule its maintenance. MessengerSell makes that easier than ever before! 
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-6 col-lg-4 bottom60 block">
+					<i class="fa fa-hand-pointer-o blue font32 float_left"></i>
+					<div class="left60 top10 inner">
+						<div class="font14 semibold uppercase spacing15 title">1-click checkout</div>
+						<div class="top20 font18 light dark_blue hyphens text">
+							Remove friction from checkout, make paying waaaay easier for your customers directly asking just what is needed!
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-6 col-lg-4 bottom60 block">
+					<i class="fa fa-thumbs-o-up blue font32 float_left"></i>
+					<div class="left60 top10 inner">
+						<div class="font14 semibold uppercase spacing15 title">Ratings &amp; reviews</div>
+						<div class="top20 font18 light dark_blue hyphens text">
+							Make it eeeeeeeasy for your customers to rate their shopping experience through their social apps! 
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-6 col-lg-4 bottom60 block">
+					<i class="fa fa-refresh blue font32 float_left"></i>
+					<div class="left60 top10 inner">
+						<div class="font14 semibold uppercase spacing15 title">Cart recovery</div>
+						<div class="top20 font18 light dark_blue hyphens text">
+							Follow up on incomplete checkouts in a less intrusive way, be elegant!
+						</div>
+					</div>
+				</div>
 		</div>
 	</section>
 
-	<!-- Call to Action 2 -->
-	<section class="call_to_action_2 bg_white padding_top40 padding_bottom40">
-		<div class="container nopadding text-center">
-			<div class="padding_sides100 padding_top85 padding_bottom65 radius10 inner">
-				<h2 class="font42 font_second light dark_gray">Upgrade to Instant Social Commerce now!</h2>
-				<a href="#" class="top50 btn size60 blue padding_sides30">Try it now for free!</a>
-			</div>
+
+	<!-- Form 12 -->
+	<section class="form_12 bg_blue padding_top100 padding_bottom100">
+		<div class="container nopadding text-center white">
+			<form action="/api/lead" method="post">
+				<div class="margin_auto top50 inner">
+					<div class="row">
+						<div class="col-sm-3">
+							<i class="fa fa-envelope-o line_height60 absolute left20"></i>
+							<input type="text" required name="name" placeholder="First name" class="bottom30 width_full input size60 border border_transparent_white focus_white radius6 padding_left55 padding_right20" />
+						</div>
+						<div class="col-sm-6">
+							<i class="fa fa-envelope-o line_height60 absolute left20"></i>
+							<input type="email" required name="email" placeholder="Email" class="bottom30 width_full input size60 border border_transparent_white focus_white radius6 padding_left55 padding_right20" />
+						</div>
+						<div class="col-sm-3">
+							<button class="width_full btn size60 white radius6">Drop us a line!</button>
+						</div>
+					</div>
+				</div>
+			</form>
 		</div>
 	</section>
+
+	<!-- Footer 8 -->
+
+	<footer class="footer_8 bg_blue padding_top10 padding_bottom20">
+		<div class="container nopadding">
+			<div class="top5 bottom45 hr height1 white opacity1"></div>
+			<div class="flex justify_between inner">
+				<div class="bottom30 block block_left text-center text-lg-left">
+					<div class="top10 font20 font_second white"><a href="https://messengersell.com" style="color: #2b48e7"><img src="i/logos/logo_white.png"></a></div>
+				</div>
+				<div class="top10 bottom30 block block_center text-center">
+					<a href="/" class="font14 spacing15 link white sides15">Home</a>
+					<a href="/about.html" class="font14 spacing15 link white sides15">About</a>
+					<a href="/contact.html" class="font14 spacing15 link white sides15">Contact</a>
+					<a href="/privacy.html" class="font14 spacing15 link white sides15">Privacy policy</a>
+					<a href="/terms.html" class="font14 spacing15 link white sides15">Terms of use</a>
+				</div>
+				<div class="block block_right text-center text-lg-right">
+					<a href="https://www.facebook.com/groups/messengersell" target="_blank" class="inline_block width50 height50 radius_full link white text-center left10"><i class="fa fa-facebook line_height50"></i></a>
+					<a href="https://www.instagram.com/messengersell/" target="_blank" class="inline_block width50 height50 radius_full link white text-center left10"><i class="fa fa-instagram line_height50"></i></a>
+					<a href="https://twitter.com/messengersell" target="_blank" class="inline_block width50 height50 radius_full link white text-center left10"><i class="fa fa-twitter line_height50"></i></a>
+					<a href="https://www.linkedin.com/company/messengersell/" target="_blank" class="inline_block width50 height50 radius_full link white text-center left10"><i class="fa fa-linkedin line_height50"></i></a>
+				</div>
+			</div>
+		</div>
+	</footer>
+
 
 
 	<!-- forms alerts -->
@@ -842,59 +524,28 @@
 		<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 		An error occurred while sending data :(
 	</div>
-	<!-- popup with video -->
-	<div class="overlay"></div>
-
-	<div class="video_popup">
-		<a class="close">
-			<img srcset="i/close_white.png 1x, i/close_white_2x.png 2x" src="i/close_white.png" alt="" />
-		</a>
-		<div class="flex align_center justify_center width_full height_full iframe_container"></div>
-	</div>
-	
-
 	<script src="js/slick.min.js"></script>
 	<script src="js/aos.min.js"></script>
 	<script src="js/jquery.maskedinput.min.js"></script>
 	<script src="js/script.js"></script>
-
-	<!-- Twitter universal website tag code -->
-	<script>
-	!function(e,t,n,s,u,a){e.twq||(s=e.twq=function(){s.exe?s.exe.apply(s,arguments):s.queue.push(arguments);
-	},s.version='1.1',s.queue=[],u=t.createElement(n),u.async=!0,u.src='//static.ads-twitter.com/uwt.js',
-	a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(u,a))}(window,document,'script');
-	// Insert Twitter Pixel ID and Standard Event data below
-	twq('init','o2bba');
-	twq('track','PageView');
-	</script>
-	<!-- End Twitter universal website tag code -->
-
 	<script type="text/javascript">
-		$(document).ready(function(){
+		
+		if($("#slider").length>0){
+			$("#slider").slick({
+				dots: true,
+				arrows: true,
+				infinite: true,
+				speed: 800,
+				slidesToShow: 1,
+				slidesToScroll: 1,
+				autoplay: true,
+				autoplaySpeed: 3000,
+			});
+		}
 
-			// Set as a listener
-			// window.onresize = screenSizeListener;
-			// Do first initialization
-			setupSlider();
-			
-		});
+		startupTestimonials();
+
 	</script>
 
 	</body>
 </html>
-
-
-<!-- 
-
-content_26.html
-content_27.html
-feature_1.html
-feature_6.html
-feature_8.html
-feature_10.html (header + icons)
-feature_13.html
-feature_14.html
-feature_15.html
-call_to_action_2.html
-
--->
