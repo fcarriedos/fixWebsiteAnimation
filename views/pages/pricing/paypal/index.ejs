@@ -88,8 +88,8 @@
           </div>
           </fieldset>
         </form>
-        <span style="width: 100%; text-align: center"><a id="couponInputLink" href="#" onclick="askForCoupon()" style="font-size: 1.6em;">I have a coupon code</a></span>
-      </div>
+        <!-- <span style="width: 100%; text-align: center"><a id="couponInputLink" href="#" onclick="askForCoupon()" style="font-size: 1.6em;">I have a coupon code</a></span> -->
+        <p style="width: 100%; text-align: center; font-size: 16px; font-weight: bold">Paypal account required for security reasons, no charge will be issued!</p>      </div>
     </section>
     </main>
   </div>
@@ -252,9 +252,16 @@
 
       case 'instantstore-monthly': return plans.monthly.instantstore;
       case 'instantstore-yearly': return plans.yearly.instantstore;
+      case 'instantstore-waitlist': return plans.instantstoreWaitlist;
 
     }
   }
+
+
+  $(document).ready(function() {
+
+
+  });
 
   </script>
 
