@@ -1,6 +1,6 @@
 const SLIDES_TO_APPEND = '<div id="animation_container" style="position: absolute; left: 273px; top: -50px">' +
 						'<div>' +
-							'<img id="headerAnimation_0" src="../i/saas/animations/header/mobile/instagram.gif" style="width: 600px">' +
+							'<img id="headerAnimation_0" src="../i/saas/animations/header/mobile/instagrammobile.gif" style="width: 600px">' +
 						'</div>' +
 						'<div>' +
 							'<img id="headerAnimation_1" src="../i/saas/animations/header/mobile/whatsapp.gif" style="width: 600px">' +
@@ -48,7 +48,7 @@ var buyerImages = [ '../i/saas/buyers/instagram.png',
 					'../i/saas/buyers/twitter.png' 
 					];
 
-var animations = [ '../i/saas/animations/header/mobile/instagram.gif',
+var animations = [ '../i/saas/animations/header/mobile/instagrammobile.gif',
 				   '../i/saas/animations/header/mobile/whatsapp.gif',
 				   '../i/saas/animations/header/mobile/snapchat.gif',
 				   '../i/saas/animations/header/mobile/facebook.gif',
@@ -87,8 +87,8 @@ function setupSlider() {
 
 	const SLIDER_SETTINGS = {
 		// lazyLoad: 'progressive',
-		infinite: true,
-		autoplay: true,
+		// infinite: true,
+		// autoplay: true,
 		autoplaySpeed: 10000,
 		arrows: false,
 		dots: true,
@@ -108,9 +108,9 @@ function setupSlider() {
 
 	$('#animation_container').slick({
 		// lazyLoad: 'progressive',
-		infinite: true,
+		/*infinite: true,
 		autoplay: true,
-		autoplaySpeed: 10000,
+		autoplaySpeed: 10000,*/
 		arrows: false,
 		dots: true,
 		useTransforms: true,
