@@ -1,27 +1,27 @@
 const SLIDES_TO_APPEND = '<div id="animation_container" style="position: absolute; left: 273px; top: -50px">' +
 						'<div>' +
-							'<img id="headerAnimation_0" src="../i/saas/animations/header/Mobilel1-1.gifinstagram.gif" style="width: 600px">' +
+							'<img id="headerAnimation_0" src="../i/saas/animations/header/mobile/instagram.gif" style="width: 600px">' +
 						'</div>' +
 						'<div>' +
-							'<img id="headerAnimation_1" src="../i/saas/animations/header/whatsapp.gif" style="width: 600px">' +
+							'<img id="headerAnimation_1" src="../i/saas/animations/header/mobile/whatsapp.gif" style="width: 600px">' +
 						'</div>' +
 						'<div>' +
-							'<img id="headerAnimation_2" src="../i/saas/animations/header/snapchat.gif" style="width: 600px">' +
+							'<img id="headerAnimation_2" src="../i/saas/animations/header/mobile/snapchat.gif" style="width: 600px">' +
 						'</div>' +
 						'<div>' +
-							'<img id="headerAnimation_3" src="../i/saas/animations/header/facebook.gif" style="width: 600px">' +
+							'<img id="headerAnimation_3" src="../i/saas/animations/header/mobile/facebook.gif" style="width: 600px">' +
 						'</div>' +
 						'<div>' +
-							'<img id="headerAnimation_4" src="../i/saas/animations/header/linkedin.gif" style="width: 600px">' +
+							'<img id="headerAnimation_4" src="../i/saas/animations/header/mobile/linkedin.gif" style="width: 600px">' +
 						'</div>' +
 						'<div>' +
-							'<img id="headerAnimation_5" src="../i/saas/animations/header/pinterest.gif" style="width: 600px">' +
+							'<img id="headerAnimation_5" src="../i/saas/animations/header/mobile/pinterest.gif" style="width: 600px">' +
 						'</div>' +
 						'<div>' +
-							'<img id="headerAnimation_6" src="../i/saas/animations/header/telegram.gif" style="width: 600px">' +
+							'<img id="headerAnimation_6" src="../i/saas/animations/header/mobile/telegram.gif" style="width: 600px">' +
 						'</div>' +
 						'<div>' +
-							'<img id="headerAnimation_7" src="../i/saas/animations/header/twitter.gif" style="width: 600px">' +
+							'<img id="headerAnimation_7" src="../i/saas/animations/header/mobile/twitter.gif" style="width: 600px">' +
 						'</div>' +
 					'</div>';
 
@@ -48,14 +48,14 @@ var buyerImages = [ '../i/saas/buyers/instagram.png',
 					'../i/saas/buyers/twitter.png' 
 					];
 
-var animations = [ '../i/saas/animations/header/instagram.gif',
-				   '../i/saas/animations/header/whatsapp.gif',
-				   '../i/saas/animations/header/snapchat.gif',
-				   '../i/saas/animations/header/facebook.gif',
-				   '../i/saas/animations/header/linkedin.gif',
-				   '../i/saas/animations/header/pinterest.gif',
-				   '../i/saas/animations/header/telegram.gif',
-				   '../i/saas/animations/header/twitter.gif',
+var animations = [ '../i/saas/animations/header/mobile/instagram.gif',
+				   '../i/saas/animations/header/mobile/whatsapp.gif',
+				   '../i/saas/animations/header/mobile/snapchat.gif',
+				   '../i/saas/animations/header/mobile/facebook.gif',
+				   '../i/saas/animations/header/mobile/linkedin.gif',
+				   '../i/saas/animations/header/mobile/pinterest.gif',
+				   '../i/saas/animations/header/mobile/telegram.gif',
+				   '../i/saas/animations/header/mobile/twitter.gif',
 	];
 
 
