@@ -86,20 +86,10 @@
 		      </div>
 		      <div id="sharingLayer" style="display: none; width: 100%; height: 400px; padding: 20px">
 
-				<h5>Your account has been created! You should be getting an email to verify your address momentarily!</h5>
-				<p>Prior to making any sale, you need to verify your email address!</p>
-				<p>For any enquiries, we are 24/7 at tellme@messengersell.com</p>	      	
-
-		      	<h5>Sharing is caring! Would you mind helping us a bit by following and spreading the word?</h5>
-		      	  
-				<!-- Facebook -->
-				<div class="fb-share-button" 
-				data-href="https://www.messengersell.com" 
-				data-layout="button_count">
-				</div>
-
-				<!-- Twitter -->
-				<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+				<h4>You will get a verification email momentarily! 📧</h4>
+				<p></p>
+				<p></p>
+				<h4>☝️ Please <b>don't forget this last step</b>, we will only let in verified email addresses!</h4>   	
 
 		      </div>
 		      <div class="modal-footer">
@@ -383,7 +373,14 @@
 		.on('shown.bs.modal', function(e) {
 	    	$('#paymentMethodCaroussel').slick('setPosition');
 	    	ccWarningPopup();
+	    }); 
+
+	    $('.modal')
+		.on('hidden.bs.modal', function(e) {
+	    	setTimeout(() => { $('#followUsPointer').fadeOut(1000); }, 5000);
 	    });  
+
+	    
 
 
 		$(document).ready(function() {
@@ -405,9 +402,10 @@
 
 		function showSuccessfulSubscription() {
 			console.log('showSuccessfulSubscription(): the subscription completed successfully!');
-			$('#modalTitle').text('Thanks a ton for signing up with us!!!');
+			$('#modalTitle').text('You are in!');
 			$('#paymentMethodContainer').slideUp();
 			$('#sharingLayer').slideDown();
+			askForSharing();
 		}
 
 		function showErrorInSubscription() {
@@ -428,6 +426,13 @@
 		function selectPlan(planName) {
 			selectedPlan = planName;
 		}
+
+		function askForSharing() {
+			$('#followUsPointer').show();
+			$.getScript("//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5d762c94335d48fc", function(data, textStatus, jqxhr) {
+			  console.log("Script loaded!");
+			});
+		}
 		
 	</script>
 
@@ -435,6 +440,11 @@
 	<script src="../../js/aos.min.js"></script>
 	<script src="../../js/jquery.maskedinput.min.js"></script>
 	<script src="../../js/script.js"></script>
+
+	<!-- Go to www.addthis.com/dashboard to customize your tools 
+	<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5d762c94335d48fc"></script> -->
+
+	<div id="followUsPointer" style="width: 100px;height: 100px; position: fixed;top: 50px;right: 10px; display: none"><img style="width: 100%" src="/i/saas/socialnetworks/instagramSnapchatFollowusPointer.gif"></div>
 
 	</body>
 </html>
