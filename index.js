@@ -6,6 +6,7 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const fs = require('fs');
+const requestPromise = require("request-promise");
 const encryptionUtility = require('./encryptionUtility.js');
 const sendgridMailer = require('./sendgridMailer.js');
 const { check, validationResult } = require('express-validator/check');
@@ -396,6 +397,95 @@ function getDBPool() {
 		}
 	});
 }
+
+
+// dfdcc39f-73e0-414f-b2a5-8c614ae9f8ef
+webapp.get('/pushContactToCRM', (req, res) => {
+
+	console.log('/pushContactToCRM: pusing contact to CRM ' + JSON.stringify(req.query, null, 2));
+
+	if (!req.query.email) {
+		console.log('/pushContactToCRM: Tried to save contact with no email...');
+		res.status(412).send();
+		return;
+	}
+
+	var options = { method: 'POST',
+					url: 'https://api.hubapi.com/contacts/v1/contact/?hapikey=' + CONSTANTS.HUBSPOT_API_KEY,
+					qs: { hapikey: CONSTANTS.HUBSPOT_API_KEY },
+					headers: { 'Content-Type': 'application/json' },
+					body: 
+					{ properties: 
+					  [ { property: 'email', value: req.query.email },
+					    { property: 'firstname', value: req.query.fullname },
+					    // { property: 'lastname', value: lastname },
+					    // { property: 'website', value: 'http://updated.example.com' },
+					    { property: 'phone', value: req.query.phone } ] },
+					json: true 
+				};
+
+	requestPromise(options).then(result => {
+		console.log('Contact created! Details ' + JSON.stringify(result, null, 2));
+	}).catch(error => {
+		console.log('Error happened! Details ' + JSON.stringify(error, null, 2));
+	});
+
+// 	Example POST URL:
+// https://api.hubapi.com/contacts/v1/contact/?hapikey=demo
+
+// Example POST body:
+// The code sample below represents some example JSON with 
+// standard fields to pass in the body of your request in 
+// order to create a new contact:
+// {
+//   "properties": [
+//     {
+//       "property": "email",
+//       "value": "testingapis@hubspot.com"
+//     },
+//     {
+//       "property": "firstname",
+//       "value": "Adrian"
+//     },
+//     {
+//       "property": "lastname",
+//       "value": "Mott"
+//     },
+//     {
+//       "property": "website",
+//       "value": "http://hubspot.com"
+//     },
+//     {
+//       "property": "company",
+//       "value": "HubSpot"
+//     },
+//     {
+//       "property": "phone",
+//       "value": "555-122-2323"
+//     },
+//     {
+//       "property": "address",
+//       "value": "25 First Street"
+//     },
+//     {
+//       "property": "city",
+//       "value": "Cambridge"
+//     },
+//     {
+//       "property": "state",
+//       "value": "MA"
+//     },
+//     {
+//       "property": "zip",
+//       "value": "02139"
+//     }
+//   ]
+// }
+
+	
+	res.send();
+
+});
 
 
 // And starting!

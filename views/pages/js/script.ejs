@@ -10,6 +10,8 @@ const request = window.superagent;
 
 function provisionMSAccount(customerData, subscriptionRecord) {
 
+	saveCustomerToCRM(customerData.name, customerData.email, customerData.phone);
+
 	return request
 	   .post(DASHBOARD_ENDPOINT + 'provision/')
 	   .send('name=' + customerData.name)
@@ -17,6 +19,18 @@ function provisionMSAccount(customerData, subscriptionRecord) {
 	   .send('phone=' + customerData.phone)
 	   .send('subscriptionRecord=' + JSON.stringify(subscriptionRecord));
 
+}
+
+
+function saveCustomerToCRM(fullname, email, phone) {
+	try {
+		$.get(encodeURI('/pushContactToCRM?fullname=' + fullname + '&email=' + email + '&phone=' + phone), function(data) {
+			console.log('saveCustomerToCRM(): lead saved to CRM, with result ' + data);
+		});
+	} catch(error) {
+		console.log('saveCustomerToCRM(): could not save the lead to CRM due to ' + JSON.stringify(error, null, 2));
+	}
+	
 }
 
 
