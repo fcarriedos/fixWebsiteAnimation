@@ -3,12 +3,19 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8" >
-		<title>MessengerSell &mdash; Selling online from now on</title>
+		<title>MessengerSell &mdash; e-commerce past, present and future!</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="icon" href="i/favicon.ico" type="image/x-icon">
-		<link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700,800,900|Nunito+Sans:200,300,400,600,700,800,900" rel="stylesheet">
-		<link href="css/style.css" rel="stylesheet" />
+		<link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700,800,900|Nunito+Sans:200,300,400,600,700,800,900" rel="stylesheet">	
+		<link href="css/ei-icon.css" rel="stylesheet">
+    	<link href="css/themify-icons.css" rel="stylesheet">
+    	<link href="https://fonts.googleapis.com/css?family=Roboto:100i,300,400,500,700" rel="stylesheet">
+    	<link href="https://fonts.googleapis.com/css?family=Allura" rel="stylesheet">
+	    <!-- <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'> -->
+    	<link rel="stylesheet" href="about/css/style.css">
+    	<link href="css/style.css" rel="stylesheet" />
 		<script src="js/jquery.min.js"></script>
+		<script src="js/saas.js"></script>
 		<script src="js/bootstrap.min.js"></script>
 		<!-- Facebook Pixel Code -->
 		<script>
@@ -56,8 +63,10 @@
 
 <!-- Navigation Mobile type 3 -->
 
-	<a class="open_menu white"><i class="fa fa-bars"></i></a>
-	<div class="navigation_mobile type3">
+	<a class="open_menu blue">
+		<img src="i/logos/open_menu_logo.png" style="max-width: 24px">
+	</a>
+	<div class="navigation_mobile type3" style="background-color: rgba(0, 0, 0, 0.75)">
 		<a class="close_menu white"><i class="fa fa-close"></i></a>
 		<div class="padding_sides40 padding_top60 padding_bottom60 inner">
 			
@@ -74,121 +83,320 @@
 		</div>
 	</div>
 
-	<!-- Navigation 15 -->
-	<nav class="transparent padding_top30 padding_bottom30 top30">
-		<div class="container nopadding line_height40">
-			<div class="row justify-content-between">
-				<div class="col-lg-4 col-md-5 col-sm-6 left_block">
-					<div class="right35 inline_block dropdown">
-						<a href="#" class="link" id="navigation_15_dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-bars"></i></a>
-						<div class="bg_dark_gray dropdown-menu" aria-labelledby="navigation_15_dropdown">
-								<div><a href="/" class="link white">Home</a></div>
-								<div><a href="/appointments.html" class="link white">Appointment flows</a></div>
-								<div><a href="/products.html" class="link white">Product flows</a></div>
-								<!-- <div><a href="/livesell.html" class="link white">Live sell flows</a></div> -->
-								<div><a href="/referral.html" class="link white">Referrals</a></div>
-<div><a href="/labs.html" class="link white">Labs</a></div>
-								<div><a href="/testimonials.html" class="link white">Testimonials</a></div>
-								<div><a href="/about.html" class="link white">About</a></div>
-								<div><a href="/contact.html" class="link white">Contact</a></div>
+	<!-- Header 12 -->
+	<header class="header_12" style="background: #0f0f10 url(../i/about/girl_setting_up_store.jpg) 50% 95%;
+  background-size: cover; padding: 0px">
+		<!-- Navigation 15 -->
+		<nav class="navigation_15 transparent padding_top30 padding_bottom30 top30" style="position: fixed; background-color: rgba(0, 0, 0, 0.35); color: rgba(0, 0, 0, 0.35); padding-top: 0px; padding-bottom: 0px; margin-top: 0px">
+			<div class="container nopadding line_height40">
+				<div class="row justify-content-between">
+					<div class="col-lg-4 col-md-5 col-sm-6 left_block">
+						<div class="right35 inline_block dropdown" style="margin-top: 10px; margin-right: 15px">
+							<a href="#" class="link white" id="navigation_15_dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-bars white"></i></a>
+							<div class="bg_dark_gray dropdown-menu" aria-labelledby="navigation_15_dropdown">
+								<div><a href="/" class="link white extrabold">Home</a></div>
+								<div><a href="/saas.html" class="link white extrabold">InstantStore</a></div>
+								<!-- <div><a href="/paas.html" class="link white extrabold">Instant Commerce platform</a></div> -->
+								<div><a href="/pricing.html" class="link white extrabold">Pricing</a></div>
+								<div><a href="/referral.html" class="link white extrabold">Referrals</a></div>
+								<!-- <div><a href="/labs.html" class="link white">Labs</a></div> -->
+								<!-- <div><a href="/testimonials.html" class="link white">Testimonials</a></div> -->
+								<div><a href="/about.html" class="link white extrabold">About</a></div>
+								<div><a href="/contact.html" class="link white extrabold">Contact</a></div>
+							</div>
+						</div>
+						<div class="nav_logo inline_block white">
+							<a href="https://messengersell.com" style="color: #2b48e7"><img src="i/logos/logo.png"></a>
 						</div>
 					</div>
-					<div class="nav_logo inline_block"><b>Messenger</b>sell</div>
+					<div style="float: right;">
+						<a href="https://www.facebook.com/groups/messengersell" target="_blank" class="inline_block width20 height10 radius_full link white text-center left10"><i class="fa fa-facebook line_height50"></i></a>
+						<a href="https://www.instagram.com/messengersell/" target="_blank" class="inline_block width20 height10 radius_full link white text-center left10"><i class="fa fa-instagram line_height50"></i></a>
+						<a href="https://twitter.com/messengersell" target="_blank" class="inline_block width20 height10 radius_full link white text-center left10"><i class="fa fa-twitter line_height50"></i></a>
+						<a href="https://www.linkedin.com/company/messengersell/" target="_blank" class="inline_block width20 height10 radius_full link white text-center left10"><i class="fa fa-linkedin line_height50"></i></a>
+					</div>
 				</div>
 			</div>
-		</div>
-	</nav>
+		</nav>
 
-	<!-- Content 11 -->
+		<!-- Content 27 -->
+		<section class="content_27 padding_top100 padding_bottom110" style="height: 800px">
 
-<!-- feature_20.html -->
+			<div class="container nopadding max_width970">
+            
+				<h2 class="font30 font_second light text-left" style="color: #999999;">About MessengerSell</h2>
+				<h2 class="font42 font_second light dark_gray text-center">A story of e-commerce and the future of online shopping!</h2>
 
-	<section class="content_11 bg_grey padding_top80 padding_bottom50">
+			</div>
+		</section>
+
+		
+
+	</header>
+
+	<div class="container max_width970 padding_top100">
+		<h2 class="font_second light dark_gray text-center">Let's take it from the beginning...</h2>
+	</div>
+
+	<!-- Feature 1 -->
+	<section class="feature_1 bg_white padding_top100 padding_bottom85" style="padding: 0px">
 		<div class="container nopadding max_width970">
-			<div class="dark_blue light font18 text">
-				<h1 class="font_second light font62 text-center bottom50">About</h1>
-				<img src="i/fv/francisco.jpg" class="radius8 max_width_full width_full bottom50 image" alt="" />
-				<!-- <div>					
-					<div><img src="i/fv/francisco.jpg" alt="" /></div>
-					<div><img src="i/fv/vlad.jpg" alt="" /></div>
-				</div> -->
-				
-				<h2 class="font_second light font42 bottom50 text-center">MessengerSell was created as a fun side-project</h2>
+			
+			<div class="top65 row inner">
+				<section class="timeline">
+    				<div class="container">
 
-				<div class='max_width600 margin_auto'>
-					<h3>Hey there! Francisco, nice to meet you! 👋</h3>
-					<p class='bottom30'>
-						 I am an entrepreneur who combines a technical background with a wide industry vision and who is driven by the achievement of commercial targets.
-					</p>
-					<p class='bottom30'>
-Before full-time software engineering, in 2000 I built one of the most popular websites world-wide about biketrial (important sponsorships, world-wide travel), organized sports international competitions and events for marketing actions, being trusted by brands like Braun or Powerade.
-					</p>
-					<p class='bottom30'>
-As a software engineer my professional background is diverse, ranging from freelancing to support my studies, <strong><a href="https://www.gsma.com/futurenetworks/wp-content/uploads/2016/02/Lists-of-current-accreditations-for-API-based-RCS-products_v1-1.pdf" target="blank">successfully leading accreditation</a></strong> efforts for an <strong><a href="https://www.crunchbase.com/acquisition/comverse-inc-acquires-solaiemes--457a300e" target="blank">acquired startup</a></strong> to engineering solutions for <strong><a href="https://www.att.com/" target="blank">big names</a></strong> in the communications industry like AT&T or Fox.
-					</p>
-					<p class='bottom30'>
-My area of expertise is Messaging as a Platform, developed while working for the past years developing <strong><a href="http://black-capital.com/news/2010/12/solaiemes-named-a-finalist-in-the-innovation-category-for-the-gsm-association%E2%80%99s-rcs-developer-challenge/?lang=engineering" target="blank">state of the art</a></strong> messaging platforms for telecoms. These concepts are nowadays being introduced by <strong><a href="https://developers.facebook.com/docs/messenger-platform/getting-started" target="blank">social media companies</a></strong> for the Internet sector to leverage them in creating new and more effective communication experiences.
-					</p>
-					<p class='bottom30'>
-My particular vision is to help businesses leverage the immediacy chat provides for e-commerce use cases. The wide adoption, the personal context and the simpler experience chat enables will help online stores closing more deals in the next years.
-					</p>
-					<p class='bottom30'>
-My mission is to be at the forefront in the creation of those new tools and to do it based on my personal and professional principles: learn from mistakes, keep a crystal clear vision, move forward checkpoint after checkpoint and just focus on building useful tools.
-					</p>
-				</div>
-			</div>
-		</div>
-	</section>
+				      <div class="timeline-item">
+				        <div class="timeline-img"></div>
 
-	<!-- Form 12 -->
+				        <div class="timeline-content js--fadeInLeft">
+				          <h2>You're getting into...</h2>
+				       		<div class="date">Today!</div>
+				         	<p>... this because you want to make some money selling something online: your amazing product, your consultancy services, XYZ... But before, get ready to learn about web programming, web design, server programming, search engine optimization, marketing strategies, ad spent, ROI...</p>
+				          <a class="bnt-more timelinelink" href="javascript:void(0)">More</a>
+				        </div>
+				      </div> 
+				      
+				      <div class="timeline-item">
 
-	<section class="form_12 bg_blue padding_top100 padding_bottom100">
-		<div class="container nopadding text-center white">
-			<form action="/api/lead" method="post">
-				<div class="margin_auto top50 inner">
-					<div class="row">
-						<div class="col-sm-3">
-							<i class="fa fa-envelope-o line_height60 absolute left20"></i>
-							<input type="text" required name="name" placeholder="First name" class="bottom30 width_full input size60 border border_transparent_white focus_white radius6 padding_left55 padding_right20" />
-						</div>
-						<div class="col-sm-6">
-							<i class="fa fa-envelope-o line_height60 absolute left20"></i>
-							<input type="email" required name="email" placeholder="Email" class="bottom30 width_full input size60 border border_transparent_white focus_white radius6 padding_left55 padding_right20" />
-						</div>
-						<div class="col-sm-3">
-							<button class="width_full btn size60 white radius6">Request demo</button>
-						</div>
+				        <div class="timeline-img"></div>
+
+				        <div class="timeline-content timeline-card js--fadeInRight">
+				        	<div class="timeline-img-header">
+				          	<h2>Come on...</h2>
+				        	</div>
+				        	<div class="date">Today + 6 months</div>
+				          <p><i>...it won't be that much! I just want to sell XYZ!</i> Well, you can always hire someone to deal with it for you, but you will need different consultants for so many different things and you can imagine: it won't be cheap! Prepare money, time, patience and luck finding the right people that will get the job done right!</p>
+				          <a class="bnt-more timelinelink" href="javascript:void(0)">More</a>
+				        </div>
+
+				      </div>   
+				      
+				      <div class="timeline-item">
+
+				        <div class="timeline-img"></div>
+
+				        <div class="timeline-content js--fadeInLeft">
+				          <div class="date">Today + 1 year</div>
+				          <h2>Feeling lucky?</h2>
+				          <blockquote>Sure! If you find the right consultants, you guys truly understand each other, you have the money to pay them and the time and patience to keep the project alive (that's a big if)... Hopefully you will get an online store similar to what you expected! Cool uh? Well, not so fast? Do you know how to use it on your own? Most probably not! But hey, you can always go back to your friendly consultants, happy to hear from you for a reasonable fee! Meanwhile you still did not sell a single item through your online store!</blockquote>
+				        </div>
+				      </div>   
+				      
+				      <div class="timeline-item">
+
+				        <div class="timeline-img"></div>
+
+				        <div class="timeline-content js--fadeInRight">
+			        	  <div class="date">Back today</div>
+				          <h2 style="padding-top: 10px; padding-bottom: 10px">I don't need this!</h2>				        	
+				          <p>You are 100% right, you don't! You just wanted to start up a little business selling XYZ!</p>     	
+				          <p>You just wanted to start up a little business selling XYZ! We are in <script>document.write((new Date()).getFullYear());</script>, isn't there a better way to do just that than a time wasting money pit?</p>
+				          <p>Yes! There is, that is why we built MessengerSell, but to solve the mistery we have to travel back in time!</p>
+				          <a class="bnt-more timelinelink" href="javascript:void(0)">More</a>
+				        </div>
+				      </div>   
+				      
+				      <div class="timeline-item">
+
+				        <div class="timeline-img"></div>
+
+				        <div class="timeline-content timeline-card js--fadeInLeft">
+				        	<div class="timeline-img-header">
+				          	<h2>Internet: that new thing!</h2>
+				        	</div>
+				        	<div class="date">Mid '90s</div>
+				          <p>Domestic Internet was getting into people's life and email was a new big thing: fast, personal, cost-free...</p>
+   				          <p>Had you told someone you could purchase stuff over the Internet or giving credit card details into it and they would have been deemed crazy for such a reckless thing!</p>
+				          <a class="bnt-more timelinelink" href="javascript:void(0)">More</a>
+				        </div>
+				      </div>   
+
+				      <div class="timeline-item">
+
+				        <div class="timeline-img"></div>
+
+				        <div class="timeline-content timeline-card js--fadeInRight">
+				        	<div class="timeline-img-header">
+				          	<h2>Why not selling there?</h2>
+				        	</div>
+				        	<div class="date">End '90s</div>
+				          <p>It was a matter of time! Shiny web catalogs, showcasing colorful products gathered more and more visitors to brand's websites! Where better to try and sell than where you can find your customers?</p>
+				          <p>It was not a crazy idea anymore to give your credit card details and receive your products some days after that at a discounted price, since a website saved the need for a physical location!</p>
+				          <a class="bnt-more timelinelink" href="javascript:void(0)">More</a>
+				        </div>
+				      </div>  
+				      
+				      <div class="timeline-item">
+
+				        <div class="timeline-img"></div>
+
+				        <div class="timeline-content js--fadeInLeft">
+				        	<div class="date">Beginning '2000s</div>
+				          <h2>The .com bubble!</h2>
+				          <p>Big companies (PizzaHut, Amazon...) were already exploiting Internet as a new powerful distribution channel and SMBs began to do so too!</p>
+				          <p>Just like that? Well, no, that is the up side!</p>
+				          <p>The downside was that, to get built, online stores required back then  all the things (plus paperwork) mentioned at the beginning of this story and it tools were more complex to use.</p>
+				          <p>Online stores had to be built <i>ad hoc</i> from scratch! I built a couple of them on my own! (Feeling a bit of a grandpa now... lol)</p>
+				        </div>
+				        
+				      </div>   
+
+				      <div class="timeline-item">
+
+				        <div class="timeline-img"></div>
+
+				        <div class="timeline-content timeline-card js--fadeInRight">
+				        	<div class="timeline-img-header">
+				          	<h2>Facebook!</h2>
+				        	</div>
+				        	<div class="date">2004</div>
+				          <p>A social network made the difference by hitting an addictive recipe to keep people online! From then on, people who probably were not that interested on the Internet, knew where to begin in the virtual world.</p>
+				          <p>It's popularity just exploded!</p>
+				          <a class="bnt-more timelinelink" href="javascript:void(0)">More</a>
+				        </div>
+				      </div>  
+				      
+				      <div class="timeline-item">
+
+				        <div class="timeline-img"></div>
+
+				        <div class="timeline-content js--fadeInLeft">
+				          <div class="date">Still 2004</div>
+				          <h2>E-commerce gets simpler!</h2>
+   				          <p>E-commerce bloomed since '2000s and so did software for it!</p>
+				          <p>Remember the complex task two boxes up? It got simpler!</p>
+   				          <p>Well, kind of... Now instead of programming, you just needed to get web hosting, install software on a server, with a database, configure it, point your Internet domain to it, configure email service, mess around with templates...</p>
+   				          <p>Kind of... You get it.</p>
+				          <a class="bnt-more timelinelink" href="javascript:void(0)">More</a>
+				        </div>
+				      </div>   
+
+				       <div class="timeline-item">
+
+				        <div class="timeline-img"></div>
+
+				        <div class="timeline-content timeline-card js--fadeInRight">
+				        	<div class="timeline-img-header">
+				          	<h2>Shopify!</h2>
+				        	</div>
+				        	<div class="date">And still 2004!</div>
+				          <p><i>There has to be a better way to have an online store!</i> is probably what<a href="https://twitter.com/tobi" target="_blank">Tobi Lütke</a> thought when he and his buddies began working on Shopify!</p>
+				          <p>The idea was simple: we deal with complexities, focus on selling your products!</p>
+				          <p>It worked back then, web and email were well established and if you wanted to get a cool t-shirt from "Cool tshirts", you just typed into your browser: "cooltshirts.com". Odds were you would hit it at first try!</p>
+				          <a class="bnt-more timelinelink" href="javascript:void(0)">More</a>
+				        </div>
+				      </div>  
+
+				      <div class="timeline-item">
+
+				        <div class="timeline-img"></div>
+
+				        <div class="timeline-content timeline-card js--fadeInLeft">
+				        	<div class="timeline-img-header">
+				          	<h2>iPhone!</h2>
+				        	</div>
+				        	<div class="date">2007</div>
+				          <p>... when Apple gave birth to the first smartphone in the world and a new period of change just began!</p>
+				          <p>Overnight, things that required a computer before, <b>like shopping</b>, could be done sitting on the bus or while waiting for your friends in a bar!</p>
+   				          <p>People began <a href="https://www.youtube.com/watch?v=Odkv4aE3pTI" target="_blank">wanting things and wanting them now!</a></p>
+				          <a class="bnt-more timelinelink" href="javascript:void(0)">More</a>
+				        </div>
+				      </div>
+
+				      <div class="timeline-item">
+
+				        <div class="timeline-img"></div>
+
+				        <div class="timeline-content timeline-card js--fadeInRight">
+				        	<div class="timeline-img-header">
+				          	<h2>Hey, WhatsApp?</h2>
+				        	</div>
+				        	<div class="date">2009</div>
+				          <p>Two guys made telecom companies shake by re-inventing the SMS the way it should have been for years then...</p>
+				          <p>The idea was simple: an app that allowed text messaging for free!</p>
+				          <p>In 2014, <a href="https://www.forbes.com/sites/parmyolson/2014/10/06/facebook-closes-19-billion-whatsapp-deal/#256e18cf5c66" target="_blank">1.5 billion users and ~20 billion dollar</a>, said that texting was what people preferred to communicate in an agile and ellegant way!</p>
+				          <a class="bnt-more timelinelink" href="javascript:void(0)">More</a>
+				        </div>
+				      </div> 
+
+				      <div class="timeline-item">
+
+				        <div class="timeline-img"></div>
+
+				        <div class="timeline-content js--fadeInLeft">
+				          <div class="date">Last years</div>
+				          <h2>Paying and getting paid...</h2>
+				          	<p>... has really evolved during the last years and today getting paid for something is just a breeze!</p>
+				          	<p>The bad news is that payments are a sensitive topic, we all know that, so getting hands on is still a bit scary...</p>
+				          	<p>The good news is that you don't have to worry about it, we already did for you! 🙂</p>
+				        </div>
+				      </div> 
+
+				      <div class="timeline-item">
+
+				        <div class="timeline-img"></div>
+
+				        <div class="timeline-content timeline-card js--fadeInRight">
+				        	<div class="timeline-img-header">
+				          	<h2>You already have...</h2>
+				        	</div>
+				        	<div class="date">2018</div>
+				          <p>... all you need to make online, today!</p>
+				          <p>You know where to find your customers: on social networks.</p>
+				          <p>You can get paid: credit card? Debit card? Paypal account? Bank account? Cash on delivery?</p>
+				          <p>You can communicate the way your customers love, texting! WhatsApp? Facebook Messenger? SMS? Telegram? Twitter? You name it!</p>
+				          <a class="bnt-more timelinelink" href="javascript:void(0)">More</a>
+				        </div>
+				      </div>  
+
+				      <div class="timeline-item">
+
+				        <div class="timeline-img"></div>
+
+				        <div class="timeline-content js--fadeInLeft">
+				          <div class="date">Today</div>
+				          <h2>This is where...</h2>
+				          	<p>... MessengerSell kicks in!</p>
+				          	<p>How? Wiring up social networks, payment methods and text messaging for you to make a sale TODAY!</p>
+				          	<p>Forget about lots of money, months to get to market, expensive dependencies, patience and lucky bets...</p>
+				          	<p>Choose your social networks, choose how to get paid and choose how you will keep your customers posted about their orders!</p>
+				          	<p>Done!</p>
+				        </div>
+				      </div>   
+
+				      <div class="timeline-item">
+
+				        <div class="timeline-img"></div>
+
+				        <div class="timeline-content js--fadeInLeft">
+				          <div class="date">The near future!</div>
+				          <h2>Hopefully...</h2>
+				          	<p>... you've gotten a good sense of why MessengerSell got built!</p>
+				          	<p>Doing things in a new way, even when better, is not always easy!</p>
+				          	<p>We need early adopters like you to start a movement.</p>
+				          	<p>Write in! We would love hearing your thoughts about us!</p>
+				          	<p>See you soon!</p>
+				        </div>
+				      </div>
+
 					</div>
-				</div>
-			</form>
+
+				</section>
+	
+			</div>
 		</div>
 	</section>
 
-	<!-- Footer 8 -->
-
-	<footer class="footer_8 bg_blue padding_top10 padding_bottom20">
-		<div class="container nopadding">
-			<div class="top5 bottom45 hr height1 white opacity1"></div>
-			<div class="flex justify_between inner">
-				<div class="bottom30 block block_left text-center text-lg-left">
-					<div class="top10 font20 font_second white"><b>Messenger</b>sell</div>
-				</div>
-				<div class="top10 bottom30 block block_center text-center">
-					<a href="/" class="font14 spacing15 link white sides15">Home</a>
-					<a href="/about.html" class="font14 spacing15 link white sides15">About</a>
-					<a href="/contact.html" class="font14 spacing15 link white sides15">Contact</a>
-					<a href="/privacy.html" class="font14 spacing15 link white sides15">Privacy policy</a>
-					<a href="/terms.html" class="font14 spacing15 link white sides15">Terms of use</a>
-				</div>
-				<div class="block block_right text-center text-lg-right">
-					<a href="https://twitter.com/messengersell" target="_blank" class="inline_block width50 height50 radius_full link white text-center left10"><i class="fa fa-twitter line_height50"></i></a>
-					<a href="https://www.facebook.com/groups/messengersell" target="_blank" class="inline_block width50 height50 radius_full link white text-center left10"><i class="fa fa-facebook line_height50"></i></a>
-					<!--<a href="https://www.linkedin.com/company/messengersell/" target="_blank" class="inline_block width50 height50 radius_full link white text-center left10"><i class="fa fa-linkedin line_height50"></i></a>-->
-				</div>
+	<!-- Call to Action 2 -->
+	<section class="call_to_action_2 bg_white padding_top40 padding_bottom40">
+		<div class="container nopadding text-center">
+			<div class="padding_sides100 padding_top85 padding_bottom65 radius10 inner">
+				<h2 class="font42 font_second light dark_gray">Upgrade to Instant Social Commerce now!</h2>
+				<a href="#" class="top50 btn size60 blue padding_sides30">Try it now for free!</a>
 			</div>
 		</div>
-	</footer>
-
+	</section>
 
 
 	<!-- forms alerts -->
@@ -204,11 +412,54 @@ My mission is to be at the forefront in the creation of those new tools and to d
 		<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 		An error occurred while sending data :(
 	</div>
+	<!-- popup with video -->
+	<div class="overlay"></div>
+
+	<div class="video_popup">
+		<a class="close">
+			<img srcset="i/close_white.png 1x, i/close_white_2x.png 2x" src="i/close_white.png" alt="" />
+		</a>
+		<div class="flex align_center justify_center width_full height_full iframe_container"></div>
+	</div>
+	
 
 	<script src="js/slick.min.js"></script>
 	<script src="js/aos.min.js"></script>
 	<script src="js/jquery.maskedinput.min.js"></script>
 	<script src="js/script.js"></script>
 
+	<!-- Twitter universal website tag code -->
+	<script>
+	!function(e,t,n,s,u,a){e.twq||(s=e.twq=function(){s.exe?s.exe.apply(s,arguments):s.queue.push(arguments);
+	},s.version='1.1',s.queue=[],u=t.createElement(n),u.async=!0,u.src='//static.ads-twitter.com/uwt.js',
+	a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(u,a))}(window,document,'script');
+	// Insert Twitter Pixel ID and Standard Event data below
+	twq('init','o2bba');
+	twq('track','PageView');
+	</script>
+	<!-- End Twitter universal website tag code -->
+
+	<!-- Go to www.addthis.com/dashboard to customize your tools -->
+	<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5d762c94335d48fc"></script>
+	<script src='https://cdn.jsdelivr.net/scrollreveal.js/3.3.1/scrollreveal.min.js'></script>
+
+    <script src="about/js/index.js"></script>
+
 	</body>
 </html>
+
+
+<!-- 
+
+content_26.html
+content_27.html
+feature_1.html
+feature_6.html
+feature_8.html
+feature_10.html (header + icons)
+feature_13.html
+feature_14.html
+feature_15.html
+call_to_action_2.html
+
+-->
