@@ -1,6 +1,6 @@
 const SLIDES_TO_APPEND = '<div id="animation_container" style="position: absolute; left: 273px; top: -50px">' +
 						'<div>' +
-							'<img id="headerAnimation_0" src="../i/saas/animations/header/mobile/instagrammobile.gif" style="width: 600px">' +
+							'<img id="headerAnimation_0" src="../i/saas/animations/header/mobile/instagram.gif" style="width: 600px">' +
 						'</div>' +
 						'<div>' +
 							'<img id="headerAnimation_1" src="../i/saas/animations/header/mobile/whatsapp.gif" style="width: 600px">' +
@@ -48,7 +48,17 @@ var buyerImages = [ '../i/saas/buyers/instagram.png',
 					'../i/saas/buyers/twitter.png' 
 					];
 
-var animations = [ '../i/saas/animations/header/mobile/instagrammobile.gif',
+var animations = [ '../i/saas/animations/header/instagram.gif',
+				   '../i/saas/animations/header/whatsapp.gif',
+				   '../i/saas/animations/header/snapchat.gif',
+				   '../i/saas/animations/header/facebook.gif',
+				   '../i/saas/animations/header/linkedin.gif',
+				   '../i/saas/animations/header/pinterest.gif',
+				   '../i/saas/animations/header/telegram.gif',
+				   '../i/saas/animations/header/twitter.gif',
+	];
+
+var animationsMobile = [ '../i/saas/animations/header/mobile/instagram.gif',
 				   '../i/saas/animations/header/mobile/whatsapp.gif',
 				   '../i/saas/animations/header/mobile/snapchat.gif',
 				   '../i/saas/animations/header/mobile/facebook.gif',
@@ -83,8 +93,9 @@ function screenSizeListener() {
 }
 
 
-function setupSlider() {
+function setupSliders() {
 
+	// Desktop slider
 	const SLIDER_SETTINGS = {
 		// lazyLoad: 'progressive',
 		// infinite: true,
@@ -100,8 +111,7 @@ function setupSlider() {
 	    },
 	};
 
-	// appendSlides();
-
+	
 	$('#animation_container').on('init', function(event, slick) {
 		document.getElementById('controllerIcon_0').style.opacity = '1.00';
 	});
@@ -164,13 +174,96 @@ function setupSlider() {
 
 	});
 
+
+	// Mobile slider
+	const SLIDER_SETTINGS_MOBILE = {
+		// lazyLoad: 'progressive',
+		// infinite: true,
+		// autoplay: true,
+		autoplaySpeed: 10000,
+		arrows: false,
+		dots: true,
+		touchMove: false,
+		useTransforms: true,
+		vertical: false,
+		lazyLoad: 'ondemand',
+	    customPaging: function(slider, i) { 
+	        return '<img id="controllerIcon_' + i + '" class="controllerIcon" src="../i/saas/socialnetworks/' + controllerImages[i] + '">';
+	    },
+	};
+
+	
+	$('#animation_container_mobile').on('init', function(event, slick) {
+		document.getElementById('controllerIcon_0').style.opacity = '1.00';
+	});
+
+	$('#animation_container_mobile').slick({
+		// lazyLoad: 'progressive',
+		/*infinite: true,
+		autoplay: true,
+		autoplaySpeed: 10000,*/
+		arrows: false,
+		dots: true,
+		useTransforms: true,
+		vertical: true,
+		lazyLoad: 'ondemand',
+	    customPaging: function(slider, i) { 
+	        return '<img id="controllerIcon_' + i + '" class="controllerIcon" src="../i/saas/socialnetworks/' + controllerImages[i] + '">';
+	    },
+		responsive: [
+		{
+			breakpoint: 1200,
+			settings: SLIDER_SETTINGS_MOBILE
+		},
+		{
+			breakpoint: 1024,
+			settings: SLIDER_SETTINGS_MOBILE
+		},
+		{
+			breakpoint: 900,
+			settings: SLIDER_SETTINGS_MOBILE
+		}
+		]
+	});
+
+  	$('#animation_container_mobile').on('beforeChange', function(event, slick, currentSlide, nextSlide) {
+
+  		console.log('Slick: ' + slick + ' currentSlide ' + currentSlide + ' nextSlide ' + nextSlide);
+
+	    // Plain swap
+	    // document.getElementById('buyer_image').src = buyerImages[(++i % buyerImages.length)];
+
+	    // Stylish swap
+	    $('#buyer_image').fadeOut(200, function() {
+		    
+   			document.getElementById('buyer_image').src = buyerImages[nextSlide];
+		 //    setTimeout(() => { $('#buyer_image').fadeIn(200, function() {
+		    	
+			// });	}, 500);
+			$('#buyer_image').fadeIn(500, function() {
+		    	
+			});
+			
+		});
+	
+		// Highlight only the right icon
+		document.getElementById('controllerIcon_' + currentSlide).style.opacity = '0.75';
+	    document.getElementById('controllerIcon_' + nextSlide).style.opacity = '1.00';
+	    console.log('The next slide is ' + nextSlide);
+	    // Load the next animation
+		document.getElementById('headerAnimation_' + nextSlide).src = animations[nextSlide];	
+		document.getElementById('headerAnimationMobile_' + nextSlide).src = animationsMobile[nextSlide];			    	
+
+	});
+
 }
 
 
 function restartSlider() {
 	$('#animation_container').slick('unslick');
+	$('#animation_container_mobile').slick('unslick');
 	removeSlides();
-	setTimeout(() => { setupSlider(); }, 2000);
+	setTimeout(() => { setupSliders(); }, 2000);
 	console.log('removeSlides(): animation restarted!');
 }
 
@@ -185,9 +278,14 @@ function restartSlider() {
 
 
 function removeSlides() {
+
 	var headerContainer = document.getElementById('headerContainer');
 	var animationContainer = document.getElementById('animation_container');
 	headerContainer.removeChild(animationContainer);
+
+	var animationContainerMobile = document.getElementById('animation_container_mobile');
+	headerContainer.removeChild(animationContainerMobile);
+	
 	console.log('removeSlides(): slides removed!');
 }
 
