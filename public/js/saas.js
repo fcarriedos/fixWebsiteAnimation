@@ -143,6 +143,10 @@ function setupSliders() {
 			settings: SLIDER_SETTINGS
 		},
 		{
+			breakpoint: 823,
+			settings: SLIDER_SETTINGS
+		},
+		{
 			breakpoint: 812,
 			settings: SLIDER_SETTINGS
 		},
