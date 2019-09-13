@@ -397,7 +397,7 @@
 		@media only screen and (width: 812px) and (height: 375px) {
 
 			.header_12 {
-				min-height: 409px;
+				height: 409px;
 			}
 
 			.header_section {
@@ -988,6 +988,118 @@
 
 		}
 
+
+		/* Mobile vertical: Samsung S5 */
+		@media only screen and (width: 360px) and (height: 640px) {
+
+			.header_12 {
+				min-height: 778px;
+			}
+
+			.header_section {
+				height: 778px;
+			}
+
+			#main_marquee {
+				top: -64px;
+			}
+
+			#main_marquee_text {
+				font-size: 33px;
+				margin-left: 26px;
+			}
+
+			#sub_marquee {
+				font-size: 20px;
+			}
+
+			#animation_container {
+				display: none;
+			}
+
+			#animation_container_mobile {
+				display: block;
+				width: 29%;
+				left: 0px;
+				top: 188px;
+				position: absolute;
+			}
+
+			#seller_layer {
+				width: 34%;
+				left: -35px;
+				top: 534px;
+				position: relative;
+			}
+
+			#buyer_layer {
+				position: relative;
+				width: 28%;
+				top: 165px;
+				left: -190px;
+			}
+
+			.slick-dots {
+				width: 43px;
+				position: absolute;
+				left: -52px;
+				top: 200px;
+			}
+
+		}
+
+		/* Mobile horizontal: Samsung S5 */
+		@media only screen and (width: 640px) and (height: 360px) {
+
+			.header_12 {
+				height: 355px;
+			}
+
+			.header_section {
+				height: 355px;
+			}
+
+			#main_marquee {
+				top: -75px;
+			}
+
+			#main_marquee_text {
+				font-size: 45px;
+				margin-left: 36px;
+			}
+
+			#sub_marquee {
+				font-size: 24px;
+			}
+
+			#seller_layer {
+				left: -79px;
+				width: 28%;
+				top: 166px;
+			}
+
+			#animation_container {
+				width: 45%;
+				top: 70px;
+				left: 137px;
+			}
+
+			#animation_container_mobile {
+				display: none;
+			}
+
+			#buyer_layer {
+				width: 24%;
+				top: 168px;
+				left: 215px;
+			}
+
+			.slick-dots {
+				margin-left: 0px;
+				top: -46px;
+			}
+
+		}
 
 		</style>
 		<script src="js/bootstrap.min.js"></script>
