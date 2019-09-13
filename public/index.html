@@ -233,24 +233,39 @@
 		}
 
 
-		/* iPad horizontal */
+		/* Specific devices ****************************************************/
+
+		/* iPad Pro vertical */
+		@media only screen and (width: 1024px) and (height: 1366px) {
+
+			#main_marquee_text {
+				font-size: 75px;
+			}
+
+		}
+
+		/* iPad vertical */
 		@media only screen and (width: 768px) and (height: 1024px) {
 
 			.header_12 {
 				height: 500px;
 			}
 
+			#main_marquee_text {
+				font-size: 59px;
+			}
+
 			#seller_layer {
 				position: relative;
 				width: 276px;
-				top: 266px;
+				top: 191px;
 				left: -68px;
 			}
 
 			#animation_container {
 				position: absolute;
 				width: 55%;
-				top: 134px;
+				top: 61px;
 				left: 170px;
 			}
 
@@ -262,7 +277,7 @@
 				width: 210px;
 				position: relative;
 				left: 316px;
-				top: 251px;
+				top: 180px;
 			}
 
 			.slick-dots {
@@ -298,6 +313,21 @@
 			}
 		}
 
+
+		/* iPad horizontal */
+		@media only screen and (width: 1024px) and (height: 768px) {
+			
+			#main_marquee_text {
+				font-size: 76px;
+			}
+
+			#animation_container {
+				top: 242px;
+			}
+
+		}
+
+
 		/* Mobile vertical: iPhoneX */
 		@media only screen and (max-width: 568px) {
 
@@ -314,7 +344,7 @@
 			}
 
 			#main_marquee_text {
-				font-size: 30px;
+				font-size: 42px;
 				margin-left: 30px;
 			}
 
@@ -384,12 +414,12 @@
 			.header_section {
 				height: 409px;
 			}
-
+/*
 			#animation_container {
 				position: absolute;
 				left: 273px;
 				top: 117px;
-			}
+			}*/
 
 			.container {
 				position: relative;
@@ -406,6 +436,7 @@
 				width: 50%;
 				top: 50px;
 				left: 184px;
+				display: block;
 			}
 
 			#animation_container_mobile {
@@ -413,7 +444,7 @@
 			}
 
 			#buyer_layer {
-				width: 40%;
+				width: 32%;
 				top: 130px;
 				left: 280px;
 			}
@@ -421,12 +452,15 @@
 		}
 
 
-
 		/* Mobile vertical: iPhone6/7/8Plus */
-		@media only screen and (width: 414px) {
+		@media only screen and (width: 414px) and (height: 736px) {
 
 			.header_12 {
-				height: 800px;
+				min-height: 842px;
+			}
+
+			.header_section {
+				height: 842px;
 			}
 
 			#animation_container {
@@ -435,6 +469,23 @@
 
 			#animation_container_mobile {
 				display: block;
+				left: 34px;
+			}
+
+			#seller_layer {
+				width: 35%;
+				left: 6px;
+				top: 576px;
+			}
+
+			#buyer_layer {
+				width: 28%;
+				top: 197px;
+				left: -164px;
+			}
+
+			.slick-dots {
+				left: -82px;
 			}
 
 		}
@@ -468,11 +519,17 @@
 			#animation_container {
 				width: 50%;
 				top: 50px;
-				left: 204px;
+				left: 155px;
 			}
 
 			#animation_container_mobile {
 				display: none;
+			}
+
+			#buyer_layer {
+				width: 28%;
+				top: 147px;
+				left: 264px;
 			}
 
 			.slick-dots {
