@@ -6262,8 +6262,35 @@ b, strong {
 }
 
 
+.embedded_emoji_image_highlighted_64 {
+  max-width: 64px; 
+  position: relative; 
+  top: -5px;
+  display: inline-block !important;
+  display: -webkit-inline-box !important;
+}
+
+
 .embedded_emoji_image_highlighted {
   max-width: 48px; 
+  position: relative; 
+  top: -5px;
+  display: inline-block !important;
+  display: -webkit-inline-box !important;
+}
+
+
+.embedded_emoji_image_highlighted_32 {
+  max-width: 32px; 
+  position: relative; 
+  top: -5px;
+  display: inline-block !important;
+  display: -webkit-inline-box !important;
+}
+
+
+.embedded_emoji_image_highlighted_24 {
+  max-width: 24px; 
   position: relative; 
   top: -5px;
   display: inline-block !important;
