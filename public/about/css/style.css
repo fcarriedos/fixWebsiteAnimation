@@ -148,10 +148,10 @@ header p {
 .timeline-item:nth-child(7) .timeline-img-header {
   background: linear-gradient(transparent, rgba(0, 0, 0, 0.4)), url("/i/about/emojis/shopping_cart.png") center center no-repeat; background-size: 30%; background-blend-mode: overlay;
 }
-.timeline-item:nth-child(9) .timeline-img-header {
+.timeline-item:nth-child(8) .timeline-img-header {
   background: linear-gradient(transparent, rgba(0, 0, 0, 0.4)), url("/i/about/facebook_old.png") center center no-repeat; background-size: 30%;  background-blend-mode: overlay;
 }
-.timeline-item:nth-child(10) .timeline-img-header {
+/*.timeline-item:nth-child(9) .timeline-img-header {
   background: linear-gradient(transparent, rgba(0, 0, 0, 0.4)), url("https://hd.unsplash.com/photo-1447639703758-f525f36456bf") center center no-repeat;
   background-size: cover;
 }
@@ -161,17 +161,15 @@ header p {
 .timeline-item:nth-child(12) .timeline-img-header {
   background: url("/i/about/iphone_presentation.jpg") center center no-repeat; 
   background-size: cover;
-}
-.timeline-item:nth-child(13) .timeline-img-header {
+}*/
+.timeline-item:nth-child(9) .timeline-img-header {
   background: linear-gradient(transparent, rgba(0, 0, 0, 0.4)), url("/i/about/whatsapp.png") center center no-repeat; background-size: 30%;  background-blend-mode: overlay;
 }
-.timeline-item:nth-child(14) .timeline-img-header {
-  background: linear-gradient(transparent, rgba(0, 0, 0, 0.4)), url("https://hd.unsplash.com/photo-1469429978400-082eec725ad5") center center no-repeat;
-  background-size: cover;
+.timeline-item:nth-child(10) .timeline-img-header {
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.4)), url("/i/about/cash_on_delivery.svg") center center no-repeat; background-size: 30%;  background-blend-mode: overlay;
 }
-.timeline-item:nth-child(15) .timeline-img-header {
-  background: linear-gradient(transparent, rgba(0, 0, 0, 0.4)), url("https://hd.unsplash.com/photo-1469429978400-082eec725ad5") center center no-repeat;
-  background-size: cover;
+.timeline-item:nth-child(11) .timeline-img-header {
+  background: url("/i/about/messengersell.png") center center no-repeat; background-blend-mode: overlay;
 }
 
 .timeline-img-header {
