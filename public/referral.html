@@ -1,63 +1,77 @@
-
 <!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="utf-8" >
-		<title>MessengerSell &mdash; Referrals</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="icon" href="i/favicon.ico" type="image/x-icon">
+		<title>MessengerSell &mdash; Pricing</title>
+		<meta property="og:url"           content="https://www.messengersell.com" />
+		<meta property="og:type"          content="website" />
+		<meta property="og:title"         content="MessengerSell - The Shopify for the social media era!" />
+		<meta property="og:description"   content="Instant Social Commerce platform." />
+		<meta property="og:image"         content="https://www.messengersell.com" />
+		
+		<link rel="icon" href="../../i/favicon.ico" type="image/x-icon">
 		<link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700,800,900|Nunito+Sans:200,300,400,600,700,800,900" rel="stylesheet">
-		<link href="css/style.css" rel="stylesheet" />
-		<script src="js/jquery.min.js"></script>
-		<script src="js/bootstrap.min.js"></script>
-		<!-- Facebook Pixel Code -->
-		<script>
-		  !function(f,b,e,v,n,t,s)
-		  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-		  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-		  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-		  n.queue=[];t=b.createElement(e);t.async=!0;
-		  t.src=v;s=b.getElementsByTagName(e)[0];
-		  s.parentNode.insertBefore(t,s)}(window, document,'script',
-		  'https://connect.facebook.net/en_US/fbevents.js');
-		  fbq('init', '192280034776852');
-		  fbq('track', 'PageView');
+		<link href="../../css/style.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/base.css" data-rel-css="" />
+		<link href="../../css/pricing/stripe.css" rel="stylesheet" />
+		<script src="../../js/jquery.min.js"></script>
+		<script src="../../js/bootstrap.min.js"></script>
+
+		<script type="text/javascript">
+			var selectedPlan = null;
 		</script>
-		<noscript><img height="1" width="1" style="display:none"
-		  src="https://www.facebook.com/tr?id=192280034776852&ev=PageView&noscript=1"
-		/></noscript>
-		<!-- End Facebook Pixel Code -->
+		<style type="text/css">
+
+			@media screen and (min-width: 750px) {
+
+				.slick-prev {
+					padding-left: 100px;
+				}
+
+				.slick-next {
+					padding-right: 100px;
+				}
+
+				.slick-prev:before, .slick-next:before {
+				 	font-size: 70px;
+				}
+
+				.salesHeroCard {
+					/*height: 370px;*/
+				}
+
+				.grsf-form-control {
+					background-color: white;
+				}
+
+			}
+
+		</style>
+
+		<!-- Growsurf referrals -->
+		<script type="text/javascript">
+		  (function(g,r,s,f){g.growsurf={};g.grsfSettings={campaignId:"k1qyij",version:"2.0.0"};s=r.getElementsByTagName("head")[0];f=r.createElement("script");f.async=1;f.src="https://growsurf.com/growsurf.js"+"?v="+g.grsfSettings.version;f.setAttribute("grsf-campaign", g.grsfSettings.campaignId);!g.grsfInit?s.appendChild(f):"";})(window,document);
+		</script>
+
 	</head> 
-	<body>
-<script>
-  fbq('track', 'Search');
-</script>
-<script>
-  fbq('track', 'ViewContent');
-</script>
+	<body class="bg_light_blue">
 
-<!-- Load Facebook SDK for JavaScript -->
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js#xfbml=1&version=v2.12&autoLogAppEvents=1';
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+	<div id="fb-root"></div>
+	  <script>(function(d, s, id) {
+	    var js, fjs = d.getElementsByTagName(s)[0];
+	    if (d.getElementById(id)) return;
+	    js = d.createElement(s); js.id = id;
+	    js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+	    fjs.parentNode.insertBefore(js, fjs);
+	  }(document, 'script', 'facebook-jssdk'));</script>
 
-<!-- Your customer chat code -->
-<div class="fb-customerchat"
-  attribution=setup_tool
-  page_id="178191642990959"
-  logged_in_greeting="Hi! 👋 Want to talk with someone?"
-  logged_out_greeting="Hi! 👋 Want to talk with someone?">
-</div>
 
-	<!-- Navigation Mobile type 3 -->
-
-	<a class="open_menu white"><i class="fa fa-bars"></i></a>
-	<div class="navigation_mobile type3">
+<!-- Navigation Mobile type 3 -->
+	<a class="open_menu blue">
+		<img src="i/logos/open_menu_logo.png" style="max-width: 24px">
+	</a>
+	<div class="navigation_mobile type3" style="background-color: rgba(0, 0, 0, 0.75)">
 		<a class="close_menu white"><i class="fa fa-close"></i></a>
 		<div class="padding_sides40 padding_top60 padding_bottom60 inner">
 			
@@ -71,177 +85,103 @@
 			<div><a href="/testimonials.html" class="font18 link white bottom15">Testimonials</a></div> -->
 			<div><a href="/about.html" class="font18 link white bottom15">About</a></div>
 			<div><a href="/contact.html" class="font18 link white bottom15">Contact</a></div>
+			
 		</div>
 	</div>
 
-	<nav class="navigation_15 bg_white padding_top60 padding_bottom30">
-		<div class="container nopadding line_height40">
-			<div class="row justify-content-between">
-				<div class="col-lg-4 col-md-5 col-sm-6 left_block">
-					<div class="right35 inline_block dropdown">
-						<a href="#" class="link" id="navigation_15_dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-bars"></i></a>
-						<div class="bg_dark_gray dropdown-menu" aria-labelledby="navigation_15_dropdown">
-								<div><a href="/" class="link white">Home</a></div>
-								<div><a href="/appointments.html" class="link white">Appointment flows</a></div>
-								<div><a href="/products.html" class="link white">Product flows</a></div>
-								<!-- <div><a href="/livesell.html" class="link white">Live sell flows</a></div> -->
-								<div><a href="/referral.html" class="link white">Referrals</a></div>
-<div><a href="/labs.html" class="link white">Labs</a></div>
-								<div><a href="/testimonials.html" class="link white">Testimonials</a></div>
-								<div><a href="/about.html" class="link white">About</a></div>
-								<div><a href="/contact.html" class="link white">Contact</a></div>
-						</div>
-					</div>
-					<div class="nav_logo inline_block"><b>Messenger</b>sell</div>
-				</div>
-			</div>
-		</div>
-	</nav>
-
-	<!-- Contact 4 -->
-
-	<section class="padding_top80 padding_bottom145 bg_white">
-		<div class="container nopadding max_width970">
-
-			<h1 class="font_second light font62 text-center bottom50">Referral program <img src="/i/referral/whisper_clean.png" style="width: 64px; height: 64px"></h1>
-			
-			<div class='margin_auto'>
-				<form action="/api/lead" method="post" class="max_width470 bg_white padding_sides50 padding_top55 padding_bottom35 radius10 dark_blue boxshadow" style="margin:auto">
-					<div class="row">
-						<div class="col-sm-12">
-							<div class="bottom35 input_block">
-								<div class="bottom10 font14 semibold uppercase spacing15">Your Name</div>
-								<input required type="text" id="name" name="name" placeholder="Name" class="input width_full size50 border border_light_gray focus_green radius6 padding_sides20" />
+	<!-- Header 12 -->
+	<header class="header_12">
+		<!-- Navigation 15 -->
+		<nav class="navigation_15 transparent padding_top30 padding_bottom30 top30" style="position: fixed; background-color: rgba(0, 0, 0, 0.35); color: rgba(0, 0, 0, 0.35); padding-top: 0px; padding-bottom: 0px; margin-top: 0px">
+			<div class="container nopadding line_height40">
+				<div class="row justify-content-between">
+					<div class="col-lg-4 col-md-5 col-sm-6 left_block">
+						<div class="right35 inline_block dropdown" style="margin-top: 10px; margin-right: 15px">
+							<a href="#" class="link white" id="navigation_15_dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-bars white"></i></a>
+							<div class="bg_dark_gray dropdown-menu" aria-labelledby="navigation_15_dropdown">
+								<div><a href="/" class="link white extrabold">Home</a></div>
+								<!-- <div><a href="/saas.html" class="link white extrabold">InstantStore</a></div> -->
+								<!-- <div><a href="/paas.html" class="link white extrabold">Instant Commerce platform</a></div> -->
+								<div><a href="/pricing.html" class="link white extrabold">Pricing</a></div>
+								<div><a href="/referral.html" class="link white extrabold">Referrals</a></div>
+								<!-- <div><a href="/labs.html" class="link white">Labs</a></div> -->
+								<!-- <div><a href="/testimonials.html" class="link white">Testimonials</a></div> -->
+								<div><a href="/about.html" class="link white extrabold">About</a></div>
+								<div><a href="/contact.html" class="link white extrabold">Contact</a></div>
 							</div>
 						</div>
-					</div>
-					<div class="bottom10 font14 semibold uppercase spacing15">Email</div>
-					<input required type="email" name="email" placeholder="name@mail.com" class="bottom35 input width_full size50 border border_light_gray focus_green radius6 padding_sides20" />					
-					<div class="row">
-						<div class="col-sm-7">
-							<!--<input type="checkbox" name="send_copy" class="hidden" id="contact_4_checkbox" />
-							<label for="contact_4_checkbox" class="top15 bottom30 checkbox check_green border_light_gray radius4 font14">Send me a copy</label>-->
-						</div>
-						<div class="col-sm-5">
-							<button class="btn size50 blue radius6 width_full padding_sides25">Send<i class="fa fa-angle-right left10"></i></button>
+						<div class="nav_logo inline_block white">
+							<a href="https://messengersell.com" style="color: #2b48e7"><img src="i/logos/logo.png"></a>
 						</div>
 					</div>
-					<input type="hidden" id="referer_token" name="referer_token" value="" />
-				</form>
-
-			</div>
-		</div>
-	</section>
-
-
-	<!-- Form 12 -->
-
-	<section class="form_12 bg_blue padding_top100 padding_bottom100">
-		<div class="container nopadding text-center white">
-			<form action="/api/lead" method="post">
-				<div class="margin_auto top50 inner">
-					<div class="row">
-						<div class="col-sm-3">
-							<i class="fa fa-envelope-o line_height60 absolute left20"></i>
-							<input type="text" required name="name" placeholder="First name" class="bottom30 width_full input size60 border border_transparent_white focus_white radius6 padding_left55 padding_right20" />
-						</div>
-						<div class="col-sm-6">
-							<i class="fa fa-envelope-o line_height60 absolute left20"></i>
-							<input type="email" required name="email" placeholder="Email" class="bottom30 width_full input size60 border border_transparent_white focus_white radius6 padding_left55 padding_right20" />
-						</div>
-						<div class="col-sm-3">
-							<button class="width_full btn size60 white radius6">Request demo</button>
-						</div>
+					<div style="float: right;">
+						<a href="https://www.facebook.com/groups/messengersell" target="_blank" class="inline_block width20 height10 radius_full link white text-center left10"><i class="fa fa-facebook line_height50"></i></a>
+						<a href="https://www.instagram.com/messengersell/" target="_blank" class="inline_block width20 height10 radius_full link white text-center left10"><i class="fa fa-instagram line_height50"></i></a>
+						<a href="https://twitter.com/messengersell" target="_blank" class="inline_block width20 height10 radius_full link white text-center left10"><i class="fa fa-twitter line_height50"></i></a>
+						<a href="https://www.linkedin.com/company/messengersell/" target="_blank" class="inline_block width20 height10 radius_full link white text-center left10"><i class="fa fa-linkedin line_height50"></i></a>
 					</div>
-				</div>
-			</form>
-		</div>
-	</section>
-
-
-	<!-- Footer 8 -->
-
-	<footer class="footer_8 bg_blue padding_top10 padding_bottom20">
-		<div class="container nopadding">
-			<div class="top5 bottom45 hr height1 white opacity1"></div>
-			<div class="flex justify_between inner">
-				<div class="bottom30 block block_left text-center text-lg-left">
-					<div class="top10 font20 font_second white"><b>Messenger</b>sell</div>
-				</div>
-				<div class="top10 bottom30 block block_center text-center">
-					<a href="/" class="font14 spacing15 link white sides15">Home</a>
-					<a href="/about.html" class="font14 spacing15 link white sides15">About</a>
-					<a href="/contact.html" class="font14 spacing15 link white sides15">Contact</a>
-					<a href="/privacy.html" class="font14 spacing15 link white sides15">Privacy policy</a>
-					<a href="/terms.html" class="font14 spacing15 link white sides15">Terms of use</a>
-				</div>
-				<div class="block block_right text-center text-lg-right">
-					<a href="https://twitter.com/messengersell" target="_blank" class="inline_block width50 height50 radius_full link white text-center left10"><i class="fa fa-twitter line_height50"></i></a>
-					<a href="https://www.facebook.com/groups/messengersell" target="_blank" class="inline_block width50 height50 radius_full link white text-center left10"><i class="fa fa-facebook line_height50"></i></a>
-					<!--<a href="https://www.linkedin.com/company/messengersell/" target="_blank" class="inline_block width50 height50 radius_full link white text-center left10"><i class="fa fa-linkedin line_height50"></i></a>-->
 				</div>
 			</div>
+		</nav>
+	</header>
+
+<!-- Growsurf form -->
+<section class="pricing_table_6 bg_light_blue padding_top90 padding_bottom50">
+	<div class="container nopadding dark_blue">
+		<h2 class="font60 font_second light dark_gray text-center">Earn money referring users!</h2>
+		<div class="max_width740 margin_auto top15 font36 light text-center">
+			You will get 50% sign up fee!
 		</div>
-	</footer>
-
-
-
-	<!-- forms alerts -->
-	<div class="alert alert-success alert-dismissible alert-form-success" role="alert">
-		<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-		You are in the waiting list!
+		<div style="min-height: 450px; height: 40%; border-radius: 10px; background-color: rgb(255,255,255,0.5); padding: 20px; margin: 20px">
+			<div data-grsf-block-form></div>
+		</div>
+		<div style="border-radius: 10px; background-color: rgb(255,255,255,0.5); padding: 20px; margin: 20px">
+			<div data-grsf-block-rewards></div>
+			<div data-grsf-block-leaderboard></div>
+		</div>
 	</div>
-	<div class="alert alert-warning alert-dismissible alert-form-check-fields" role="alert">
-		<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-		Please, fill in required fields.
-	</div>
-	<div class="alert alert-danger alert-dismissible alert-form-error" role="alert">
-		<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-		An error occurred while sending data :(
-	</div>
+</section>
+<!-- forms alerts -->
+<div class="alert alert-success alert-dismissible alert-form-success" role="alert">
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	Thanks for your message!
+</div>
+<div class="alert alert-warning alert-dismissible alert-form-check-fields" role="alert">
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	Please, fill in required fields.
+</div>
+<div class="alert alert-danger alert-dismissible alert-form-error" role="alert">
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	An error occurred while sending data :(
+</div>
+<!-- popup with video -->
+<div class="overlay"></div>
 
-	<input type="hidden" id="emailingPage" value="waitList">
+<div class="video_popup">
+	<a class="close">
+		<img srcset="i/close_white.png 1x, i/close_white_2x.png 2x" src="i/close_white.png" alt="" />
+	</a>
+	<div class="flex align_center justify_center width_full height_full iframe_container"></div>
+</div>
 
-	<script src="js/slick.min.js"></script>
-	<script src="js/aos.min.js"></script>
-	<script src="js/jquery.maskedinput.min.js"></script>
-	<script src="js/script.js"></script>
+	<script src="../../js/script.js"></script>
+
+	<!-- Go to www.addthis.com/dashboard to customize your tools 
+	<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5d762c94335d48fc"></script> -->
+
+	<div id="followUsPointer" style="width: 100px;height: 100px; position: fixed;top: 50px;right: 10px; display: none"><img style="width: 100%" src="/i/saas/socialnetworks/instagramSnapchatFollowusPointer.gif"></div>
+
 	<script type="text/javascript">
+		$(document).ready(function() {
+			
+			setTimeout(() => { $('.grsf-leaderboard-header').css('background-color', 'transparent'); }, 2000);
 
-        var getUrlParameter = function getUrlParameter(sParam) {
-            var sPageURL = decodeURIComponent(window.location.search.substring(1)),
-                sURLVariables = sPageURL.split('&'),
-                sParameterName,
-                i;
+		});
 
-            for (i = 0; i < sURLVariables.length; i++) {
-                sParameterName = sURLVariables[i].split('=');
-
-                if (sParameterName[0] === sParam) {
-                    return sParameterName[1] === undefined ? true : sParameterName[1];
-                }
-            }
-        };
-
-        $( document ).ready(function() {
-
-                var email = getUrlParameter('email');
-                var referer_token = getUrlParameter('referer_token');
-                if (email != undefined) {
-                        $('#email').val(email); 
-                        $('#email').prop('readonly', true);
-                        $('#theForm').prop('action', '/api/lead/confirmreferral');
-                } else if (referer_token != undefined) {
-                        $('#referer_token').val(referer_token); 
-                }
-
-
-        
-                console.log('Form updated');
-
-        });
 	</script>
 
+	<!-- Go to www.addthis.com/dashboard to customize your tools -->
+	<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5d762c94335d48fc"></script>
 
 	</body>
 </html>
