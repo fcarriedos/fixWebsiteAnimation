@@ -82,7 +82,6 @@ if(typeof(AOS) !== 'undefined'){
 }
 
 // AJAX send form
-	
 $("form").submit(function(event){
 	event.preventDefault();
  
@@ -97,25 +96,61 @@ $("form").submit(function(event){
 		}
 	});
 
+	if (!grecaptcha.getResponse()) {
+		showWarningAlert();
+		return false;
+	}
+
 	if(required_fields_filled){
 		var posting = $.post(url, term);
 		posting
 		.done(function(data){
 			var messageToDisplay = getMessageFromResponse(data);
 			$(".alert-form-success").html(messageToDisplay);
-			// setupReferralCopyPaste('referralLink');
 			$(".alert-form-success").fadeIn(200); //.delay(5000).fadeOut(200);
-			redirectToThankyou(data);
+			showSuccessAlert();
 		})
 		.fail(function(error){
 			var messageToDisplay = getMessageFromResponse(error.responseJSON);
 			$(".alert-form-error").html(messageToDisplay);
 			$(".alert-form-error").fadeIn(200).delay(5000).fadeOut(200);
+			showErrorAlert(messageToDisplay);
 		});
 	}else{
 		$(".alert-form-check-fields").fadeIn(200).delay(5000).fadeOut(200);
 	}
 });
+
+
+function showSuccessAlert() {
+	Swal.fire({
+	  title: 'Sent!',
+	  text: 'Your email has been sent!',
+	  type: 'success',
+	  confirmButtonText: 'Ok!'
+	});
+}
+
+
+function showWarningAlert() {
+	Swal.fire({
+	  title: 'Verify you are human!',
+	  text: 'Please check the CAPTCHA control!',
+	  type: 'warning',
+	  confirmButtonText: 'Ok!'
+	});
+}
+
+
+function showErrorAlert(errorMessage) {
+	Swal.fire({
+	  title: 'Error!',
+	  text: errorMessage,
+	  type: 'error',
+	  confirmButtonText: 'Ok!'
+	});
+}
+
 
 function getMessageFromResponse(data) {
 	console.log(JSON.stringify(data, null, 2));
@@ -126,13 +161,15 @@ function getMessageFromResponse(data) {
 			break;
 		case 422: 
 			var messageToReturn = '😲 ';
+			console.log('The data is: ' + JSON.stringify(data, null, 2));
 			for (error in data.messages) {
 				messageToReturn += data.messages[error].msg + ' ';
 			}
 			return messageToReturn;
+			// return '😲 There are some missing details in your form, please check them out!';
 			break;
 		case 404: 
-		case 500: return '😰 Is not you, is us... An error happened on our end.';
+		case 500: return '😰 Is not you, it is us... An error happened on our end.';
 			break;
 	}
 }

@@ -209,22 +209,52 @@ webapp.post('/api/contact',
 
 	check('contactemail').isEmail().withMessage('Is not a valid email.'),
 	check('name').exists().custom((value) => value.length > 0).withMessage('The name is empty.'),
-	check('message').escape()
+	check('message').escape(),
+	check('g-recaptcha-response').exists()
 
 	],
 	// Request processing
 	(req, res) => {
 
-		errors = validationResult(req);
-		if (!errors.isEmpty()) {
-			return res.status(422).json({ code: 422, messages: errors.mapped() });
-		} else {
-			var contactemail = req.body.contactemail;
-			var name = req.body.name;
-			var message = req.body.message;
-			console.log('index.post(/api/contact): servicing contact request with name ' + name + ' (' + contactemail + '), saying: ' + message);
-			sendgridMailer.sendContactEmail(name, contactemail, message, res);
-		}
+		// Captcha validation
+		console.log('The captcha is: ' + req.body['g-recaptcha-response']);
+		var captchaResponse = req.body['g-recaptcha-response'];
+		var options = { method: 'POST',
+					url: 'https://www.google.com/recaptcha/api/siteverify',
+					// qs: { hapikey: CONSTANTS.HUBSPOT_API_KEY },
+					headers: { 'Content-Type': 'application/json' },
+					form: 
+					{
+						secret: CONSTANTS.CAPTCHA_SECRET,
+						response: captchaResponse
+					},
+					json: true 
+				};
+
+		console.log('The options are ' + JSON.stringify(options, null, 2));
+
+		requestPromise(options).then(captchaVerification => {
+			console.log('Verification response: ' + JSON.stringify(captchaVerification, null, 2));
+			errors = validationResult(req);
+
+			if ((!errors.isEmpty()) || (!captchaVerification.success)) {
+				var errorMessages = errors.mapped();
+				errorMessages['captchaVerification'] = captchaVerification.success;
+				return res.status(422).json({ code: 422, messages: errorMessages });
+			} else {
+				var contactemail = req.body.contactemail;
+				var name = req.body.name;
+				var message = req.body.message;
+				console.log('index.post(/api/contact): servicing contact request with name ' + name + ' (' + contactemail + '), saying: ' + message);
+				sendgridMailer.sendContactEmail(name, contactemail, message, res);
+			}
+		}).catch(error => {
+			return res.status(500).json({ code: 500 });
+			console.log('Error happened on verification: ' + JSON.stringify(error, null, 2));
+		});
+			
+
+		
 	}
 );
 
