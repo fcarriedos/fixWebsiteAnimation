@@ -141,11 +141,11 @@ var sendEmail = function sendEmail(outgoingEmail, name, res, refererId) {
         if (err) {
             console.log("sendgridMailer.sendEmail()[ERROR]: Error sending mail " + outgoingEmail.type + " to " + outgoingEmail.message.to + " the waiting list " + err);
         } else {
-            console.log("sendgridMailer.sendEmail(): Email " + outgoingEmail.message.to + " successfully sent to the waiting list");
+            console.log("sendgridMailer.sendEmail(): Email " + outgoingEmail.message.to + " successfully sent!");
         }
 
         // Email can fail to be sent, but we can still register it
-        console.log('sendgridMailer.sendEmail(): registering email ' + outgoingEmail.type + ' to ' + outgoingEmail.to);
+        console.log('sendgridMailer.sendEmail(): registering email ' + outgoingEmail.type + ' to ' + outgoingEmail.message.to);
         switch(outgoingEmail.type) {
             case CONSTANTS.EMAIL_WAITINGLIST_TYPE:
                 console.log('sendgridMailer.sendEmail(): registering ' + CONSTANTS.EMAIL_WAITINGLIST_TYPE + ' email');

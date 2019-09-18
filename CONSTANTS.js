@@ -34,10 +34,11 @@ exports.EMAIL_ACTIVATION_ERROR_HTML_BODY = EMAIL_ACTIVATION_ERROR_HTML_BODY = '<
 exports.EMAIL_CONTACT_TYPE = EMAIL_CONTACT_TYPE = 'CONTACT_EMAIL_TYPE';
 exports.EMAIL_CONTACT_SUBJECT = EMAIL_CONTACT_SUBJECT = '💳 MessengerSell - Message received';
 exports.EMAIL_CONTACT_TEXT_BODY = EMAIL_CONTACT_TEXT_BODY = 'Message from ' + NAME_PLACEHOLDER + '(' + EMAIL_PLACEHOLDER + '): ' + MESSAGE_PLACEHOLDER;
+exports.CAPTCHA_SECRET = CAPTCHA_SECRET = process.env.CAPTCHA_SECRET;
 
 // Database
 // Heroku Mongo URL: "mongodb://heroku_vhf8lww8:qdat1khaevi73ltfatniio4208@ds259250.mlab.com:59250/heroku_vhf8lww8";
-exports.MONGODB_URL = MONGODB_URL = process.env.MONGODB_URI || 'mongodb://localhost:27017/website';
+exports.MONGODB_URL = MONGODB_URL = process.env.MONGODB_URI || 'mongodb://localhost:3001/website';
 exports.WEBSITE_DATABASE_NAME = WEBSITE_DATABASE_NAME = MONGODB_URL.split('/')[3];
 exports.DB = DB = null;
 
