@@ -38,15 +38,7 @@ var controllerImages = [ 'instagram.png',
 						 'twitter.png',									 
 ];
 
-var buyerImages = [ '../i/saas/buyers/instagram.png',
-					'../i/saas/buyers/whatsapp.png', 
-					'../i/saas/buyers/snapchat.png', 
-					'../i/saas/buyers/facebook.png', 
-					'../i/saas/buyers/linkedin.png', 
-					'../i/saas/buyers/pinterest.png', 
-					'../i/saas/buyers/telegram.png', 
-					'../i/saas/buyers/twitter.png' 
-					];
+var buyerImages = [];
 
 var animations = [ '../i/saas/animations/header/instagram.gif',
 				   '../i/saas/animations/header/whatsapp.gif',
@@ -179,7 +171,9 @@ function setupSliders() {
 	    // Stylish swap
 	    $('#buyer_image').fadeOut(200, function() {
 		    
-   			document.getElementById('buyer_image').src = buyerImages[nextSlide];
+		    var currentBuyerImage = document.getElementById('buyer_image');
+   			document.getElementById('buyer_layer').replaceChild(buyerImages[nextSlide], currentBuyerImage);
+
 			$('#buyer_image').fadeIn(500, function() {
 		    	
 			});
@@ -249,7 +243,8 @@ function setupSliders() {
 	    // Stylish swap
 	    $('#buyer_image').fadeOut(200, function() {
 		    
-   			document.getElementById('buyer_image').src = buyerImages[nextSlide];
+   			var currentBuyerImage = document.getElementById('buyer_image');
+   			document.getElementById('buyer_layer').replaceChild(buyerImages[nextSlide], currentBuyerImage);
 
 			$('#buyer_image').fadeIn(500, function() {
 		    	
@@ -270,33 +265,27 @@ function setupSliders() {
 }
 
 
-// function restartSlider() {
-// 	$('#animation_container').slick('unslick');
-// 	$('#animation_container_mobile').slick('unslick');
-// 	removeSlides();
-// 	setTimeout(() => { setupSliders(); }, 2000);
-// 	console.log('removeSlides(): animation restarted!');
-// }
+function preloadBuyerImages(url) {
+	var buyerImageURLs = [ '../i/saas/buyers/instagram.png',
+					'../i/saas/buyers/whatsapp.png', 
+					'../i/saas/buyers/snapchat.png', 
+					'../i/saas/buyers/facebook.png', 
+					'../i/saas/buyers/linkedin.png', 
+					'../i/saas/buyers/pinterest.png', 
+					'../i/saas/buyers/telegram.png', 
+					'../i/saas/buyers/twitter.png' 
+					];
 
+	for (buyerImage of buyerImageURLs) {
+	    var img = new Image();
+		img.src = buyerImage;
+		img.setAttribute('id', 'buyer_image');
+		img.style.maxWidth = '100%';
+		img.style.zIndex = 1;
+		buyerImages.push(img);
+	}
 
-// function appendSlides() {
-// 	var slidesAsDOMObjects = $(SLIDES_TO_APPEND).get(0); // String -> jQuery -> Vanilla Javascript Node
-// 	console.log('DOM: ' + slidesAsDOMObjects);
-// 	var headerContainer = document.getElementById('headerContainer');
-// 	headerContainer.insertBefore(slidesAsDOMObjects, headerContainer.children[2]);
-// 	console.log('removeSlides(): slides appended!');
-// }
+}
 
-
-// function removeSlides() {
-
-// 	var headerContainer = document.getElementById('headerContainer');
-// 	var animationContainer = document.getElementById('animation_container');
-// 	headerContainer.removeChild(animationContainer);
-
-// 	var animationContainerMobile = document.getElementById('animation_container_mobile');
-// 	headerContainer.removeChild(animationContainerMobile);
-	
-// 	console.log('removeSlides(): slides removed!');
-// }
+preloadBuyerImages();
 
