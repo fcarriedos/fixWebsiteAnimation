@@ -6418,3 +6418,25 @@ b, strong {
   color: #2b48e7;
   border-color: #2b48e7;
 }
+
+.upperMenuLink {
+  font-weight: bold; 
+  text-shadow: 1px 1px 10px black, 1px 1px 10px black;
+  word-spacing: 10px; 
+  text-align: center;
+}
+
+.upperMenuLink:hover {
+  color: white;
+  text-shadow: 1px 1px 30px black, 1px 1px 30px black;
+  text-decoration: none;
+  outline: none;
+}
+
+.upperMenuLink:focus {
+  color: white;
+  text-shadow: 1px 1px 30px black, 1px 1px 30px black;
+  text-decoration: none;
+  outline: none;
+}
+
