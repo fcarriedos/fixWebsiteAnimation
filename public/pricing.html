@@ -22,6 +22,14 @@
 		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 		<script type="text/javascript">
 			var selectedPlan = null;
+			var selectedPlanPrices = {
+				instantstore_yearly_peryear: 599.90,
+				instantstore_yearly_permonth: 49.90,
+				instantstore_quarterly_perquarter: 179.70,
+				instantstore_quarterly_permonth: 59.90,
+				instantstore_monthly_peryear: 59.90,
+				instantstore_monthly_permonth: 59.90,
+			};
 		</script>
 		<style type="text/css">
 
@@ -54,8 +62,8 @@
 
 		<script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="06b4ce2b-4062-476b-99a1-945e4dcc4969";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
 
-	</head> 
-	<body>
+</head> 
+<body>
 
 	<div id="fb-root"></div>
 	  <script>(function(d, s, id) {
@@ -87,7 +95,7 @@
 			        	<div style="width: 100%; height: 490px;">
 			        		<iframe id="stripeIframe" src="/pricing/stripe/" scrolling="no" style="width: 100%; height: 100%; border: 0px"></iframe>
 			        	</div>
-						<div id="paypalIframe" style="width: 100%; height: 490px;">
+						<div style="width: 100%; height: 490px;">
 			        		<iframe id="paypalIframe" src="/pricing/paypal/" scrolling="no" style="width: 100%; height: 100%; border: 0px"></iframe>
 						</div>
 			        </div>
@@ -179,17 +187,18 @@
 
 <section class="pricing_table_6 bg_light_blue padding_top90 padding_bottom50">
 	<div class="container nopadding dark_blue">
-		<h2 class="font60 font_second light dark_gray text-center">Get early access!</h2>
-		<div class="max_width740 margin_auto top15 font36 light text-center">
-			Be among the first ones making a sell today! 
+<!-- 		<h2 class="font60 font_second light dark_gray text-center">Your first sale is one step away!</h2> -->
+		<h2 class="font60 font_second light dark_gray text-center">Simple tool, simple pricing: you get it all!</h2>
+		<div class=" margin_auto top15 font36 light text-center">
+			1st month is on us! Just cancel if you don't like it!
 		</div>
-		<!-- <div class="top50 font16 dark_gray text-center slider_menu">
-			Monthly
+		<div class="top20 bottom20 font16 dark_gray text-center slider_menu">
+			Bill monthly
 			<a class="inline_block height40 width70 radius20 relative sides20 change_slide">
 				<i class="bg_white radius_full width30 height30 top5 left5 absolute"></i>
 			</a>
-			Yearly
-		</div> -->
+			Bill annually (17% off)
+		</div>
 		<div class="margin_auto slider">
 
 			<!-- Monthly -->
@@ -197,10 +206,10 @@
 				<div class="flex justify_center">
 					<div class="max_width370 radius10 bottom70 block" style="margin: 10px">
 						<img src="../../i/pricing/saas_pricing_icon.jpg" class="width_full" alt="" />
-						<div class="top40 padding_sides45 inner">
-							<div class="font28 light dark_gray title"><span class="font_second">Instant Shop</span> <span class="float_right"><u>free!</u></span></div>
+						<div class="top40 padding_sides30 inner">
+							<div class="font28 light dark_gray title"><span class="font_second">InstantShop</span> <span class="float_right">$59.90/mo</span></div>
 							<div class="top15 text salesHeroCard">
-								Instant Shop to go on business:
+								InstantShop to go on business:
 								<ul style="margin-top: 10px">
 									<!-- <li>Social media ready frontend.</li>
 									<li>Backend ready to service orders.</li>
@@ -213,18 +222,19 @@
 									<li>Support.</li> -->
 									<li>Choose social network.</li>
 									<li>Choose payment method.</li>
-									<li>Write a cool thank you message with emojis!</li>
+									<li>Write a thank you text message!</li>
 									<li>You are on business!</li>
 								</ul>
 								For: <span style="font-weight: bolder">E-commerce newbies, Influencers, Digital Marketing Professionals, Chatbot developers, Community managers or just upgrading your existing store to a more Instant Social Commerce!</span>
 							</div>
-							<a id="paybuttonToolkitMonthly" href="#" class="top35 bottom30 btn size50 width_full transparent_blue border border_blue radius6" onclick="selectPlan('instantstore-waitlist')">Get early access now!</a>
+							<a id="paybuttonToolkitMonthly" href="#" class="top35 bottom30 btn size50 width_full transparent_blue border border_blue radius6" onclick="selectPlan('instantstore-monthly')">Pay $59.90/month</a>
+
 							<!-- <a id="paybuttonToolkitMonthly" href="#" class="top35 bottom30 btn size50 width_full transparent_blue border border_blue radius6" onclick="selectPlan('ToolkitMonthly')">Get it now!</a> -->
 						</div>
 					</div>
 					<!-- <div class="max_width370 radius10 bottom70 block">
 						<img src="../../i/pricing/paas_pricing_icon.jpg" class="width_full" alt="" />
-						<div class="top40 padding_sides45 inner">
+						<div class="top40 padding_sides30 inner">
 							<div class="font28 light dark_gray title"><span class="font_second">Platform</span> <span class="float_right">$49</span></div>
 							<div class="top15 text">
 								Social Commerce for your projects: 
@@ -242,18 +252,17 @@
 					</div> -->
 					<div class="max_width370 radius10 bottom70 block" style="margin: 10px">
 						<img src="../../i/pricing/entreprise_pricing_icon.jpg" class="width_full" alt="" />
-						<div class="top40 padding_sides45 inner">
+						<div class="top40 padding_sides30 inner">
 							<div class="font28 light dark_gray title"><span class="font_second">Enterprise</span> <span class="float_right"></span></div>
 							<div class="top15 text salesHeroCard">
-								Do you need perhaps:
+								Does your business need perhaps:
 								<ul style="margin-top: 10px">
 									<li>Custom integrations?</li>
-									<li>Massive optimized retargeting?</li>
+									<li>Optimize checkout flows?</li>
+									<li>Enable texting for retargeting?</li>
+									<li>E-commerce tool for influencers?</li>
 									<li>Dedicated server instances?</li>
 									<li>24/7 high priority support?</li>
-									<li>Enterprise deals?</li>
-									<li>Volume discounts?</li>
-									<li>Something else?</li>
 								</ul>
 								For: <span style="font-weight: bolder">Enterprise grade projects, with specific needs on eCommerce over Social Networks.</span>
 							</div>
@@ -269,30 +278,34 @@
 				<div class="flex justify_center">
 					<div class="max_width370 radius10 bottom70 block" style="margin: 10px">
 						<img src="../../i/pricing/saas_pricing_icon.jpg" class="width_full" alt="" />
-						<div class="top40 padding_sides45 inner">
-							<div class="font28 light dark_gray title"><span class="font_second">Instant Store</span> <span class="float_right">$290</span></div>
+						<div class="top40 padding_sides30 inner">
+							<div class="font28 light dark_gray title"><span class="font_second">InstantShop</span> <span class="float_right">$49.90/mo</span></div>
 							<div class="top15 text salesHeroCard">
-								Social Commerce to go on business: 
+								InstantShop to go on business:
 								<ul style="margin-top: 10px">
-									<li>Social media ready frontend.</li>
+									<!-- <li>Social media ready frontend.</li>
 									<li>Backend ready to service orders.</li>
 									<li><a href="#">Optimized checkout flow [+]</a>.</li>
 									<li><a href="#">Social notifications [+]</a>.</li>
-									<!-- <li><a href="#">Social auto-responder [+]</a>.</li> -->
+									<li><a href="#">Social auto-responder [+]</a>.</li>
 									<li>Visual analytics + realtime KPIs.</li>
 									<li>Lead and customer database.</li>
 									<li>Simple yet powerful dashboard!</li>
-									<li>Support.</li>
+									<li>Support.</li> -->
+									<li>Choose social network.</li>
+									<li>Choose payment method.</li>
+									<li>Write a thank you text message!</li>
+									<li>You are on business!</li>
 								</ul>
-								For: <span style="font-weight: bolder">E-commerce newbies, Influencers, Digital Marketing Professionals, Chatbot developers, Community managers or just upgrading your store to Social commerce!</span>
+								For: <span style="font-weight: bolder">E-commerce newbies, Influencers, Digital Marketing Professionals, Chatbot developers, Community managers or just upgrading your existing store to a more Instant Social Commerce!</span>
 							</div>
-							<a id="paybuttonToolkitYearly" onclick="selectPlan('instantstore-yearly')" href="#" class="top35 bottom30 btn size50 width_full transparent_blue border border_blue radius6">Get it now!</a>
+							<a id="paybuttonToolkitYearly" onclick="selectPlan('instantstore-yearly')" href="#" class="top35 bottom30 btn size50 width_full transparent_blue border border_blue radius6">Pay $49.90/month</a>
 							<!-- <a id="paybuttonToolkitYearly" onclick="selectPlan('ToolkitYearly')" href="#" class="top35 bottom30 btn size50 width_full transparent_blue border border_blue radius6">Get it now!</a> -->
 						</div>
 					</div>
 					<!-- <div class="max_width370 radius10 bottom70 block">
 						<img src="../../i/pricing/paas_pricing_icon.jpg" class="width_full" alt="" />
-						<div class="top40 padding_sides45 inner">
+						<div class="top40 padding_sides30 inner">
 							<div class="font28 light dark_gray title"><span class="font_second">Platform</span> <span class="float_right">$490</span></div>
 							<div class="top15 text">
 								Social Commerce for your projects: 
@@ -310,18 +323,17 @@
 					</div> -->
 					<div class="max_width370 radius10 bottom70 block" style="margin: 10px">
 						<img src="../../i/pricing/entreprise_pricing_icon.jpg" class="width_full" alt="" />
-						<div class="top40 padding_sides45 inner">
+						<div class="top40 padding_sides30 inner">
 							<div class="font28 light dark_gray title"><span class="font_second">Enterprise</span> <span class="float_right"></span></div>
 							<div class="top15 text salesHeroCard">
-								Do you need perhaps:
+								Does your business need perhaps:
 								<ul style="margin-top: 10px">
 									<li>Custom integrations?</li>
-									<li>Massive optimized retargeting?</li>
+									<li>Optimize checkout flows?</li>
+									<li>Enable texting for retargeting?</li>
+									<li>E-commerce tool for influencers?</li>
 									<li>Dedicated server instances?</li>
 									<li>24/7 high priority support?</li>
-									<li>Enterprise deals?</li>
-									<li>Volume discounts?</li>
-									<li>Something else?</li>
 								</ul>
 								For: <span style="font-weight: bolder">Enterprise grade projects, with specific needs on eCommerce over Social Networks.</span>
 							</div>
@@ -361,6 +373,30 @@
 
 	<script type="text/javascript">
 
+		function setPriceOnStripeButton() {
+			// console.log('SP: ' + (selectedPlan.slice('-')[0] + '_' + frequency + '_peryear') + ', selectedPlanPrices, ' + JSON.stringify(selectedPlanPrices, null, 2) + ' ');
+			var frequency = selectedPlan.split('-')[1];
+			var amountPerFrequency = null;
+			switch(frequency) {
+				case 'monthly': amountPerFrequency = '_permonth'; 
+					break;
+				case 'quarterly': amountPerFrequency = '_perquarter'; 
+					break;
+				case 'yearly': amountPerFrequency = '_peryear'; 
+					break;
+			}
+			console.log('setPriceOnStripeButton(): ' + selectedPlan.split('-')[0]);
+			var stripeIframeElement = document.getElementById('stripeIframe');
+			var paypalIframeElement = document.getElementById('paypalIframe');
+			var stripeIframe = stripeIframeElement.contentDocument || stripeIframeElement.contentWindow.document;
+			var paypalIframe = paypalIframeElement.contentDocument || paypalIframeElement.contentWindow.document;
+			var pricePerPeriod = selectedPlanPrices[selectedPlan.split('-')[0] + '_' + frequency + amountPerFrequency];
+			stripeIframe.getElementById('payButton').innerText = 'Pay $' + pricePerPeriod + ' ' + frequency;
+			stripeIframe.getElementById('payButton').dataset.initialPrice = pricePerPeriod;
+			stripeIframe.getElementById('couponInputLink').style.display = 'block';
+			paypalIframe.getElementById('couponInputLink').style.display = 'block';
+		}
+
 	    function ccWarningPopup() {
 	      Swal.fire({
 	            title: 'Are you going to charge me for this? 🤔',
@@ -388,7 +424,8 @@
 		$('.modal')
 		.on('shown.bs.modal', function(e) {
 	    	$('#paymentMethodCaroussel').slick('setPosition');
-	    	ccWarningPopup();
+	    	// ccWarningPopup();
+	    	setPriceOnStripeButton();
 	    }); 
 
 	    $('.modal')

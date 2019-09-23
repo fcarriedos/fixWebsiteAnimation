@@ -88,8 +88,8 @@
           </div>
           </fieldset>
         </form>
-        <!-- <span style="width: 100%; text-align: center"><a id="couponInputLink" href="#" onclick="askForCoupon()" style="font-size: 1.6em;">I have a coupon code</a></span> -->
-        <p style="width: 100%; text-align: center; font-size: 16px; font-weight: bold">Paypal account required for security reasons, no charge will be issued!</p>      </div>
+        <span style="width: 100%; text-align: center"><a id="couponInputLink" href="#" onclick="askForCoupon()" style="font-size: 1.6em;">I have a coupon code</a></span>
+        <!--<p style="width: 100%; text-align: center; font-size: 16px; font-weight: bold">Paypal account required for security reasons, no charge will be issued!</p></div>-->
     </section>
     </main>
   </div>
@@ -218,17 +218,19 @@
       request.post(DASHBOARD_ENDPOINT + 'subscription/paypal/discountedplan').send('coupon=' + enteredCode.value)
       .then(discountedPlans => {
         if (discountedPlans.body.data) {
-          console.log('askForCoupon(): The discounted plan is ' + JSON.stringify(discountedPlans.body));
-          console.log('askForCoupon()"Discount applied!');
+          console.log('askForCoupon(): the coupon info is ' + JSON.stringify(discountedPlans.body.data));
+          var percentOff = discountedPlans.body.data.percent_off;
           plans.monthly = discountedPlans.body.data.monthly;
+          plans.quarterly = discountedPlans.body.data.quarterly;
           plans.yearly = discountedPlans.body.data.yearly;
           Swal.fire({
             position: 'center',
             type: 'success',
-            title: 'A 66% discount applied!',
+            title: 'A ' + percentOff + '% discount applied!',
             showConfirmButton: false,
             timer: 1500
           });
+          document.getElementById('couponInputLink').style.display = 'none';
         } else {
           console.log('askForCoupon(): No discount for that coupon code!');
         }
