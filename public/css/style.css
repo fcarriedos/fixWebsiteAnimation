@@ -6440,3 +6440,35 @@ b, strong {
   outline: none;
 }
 
+.conditionsList {
+  padding-left: 0px;
+}
+
+.conditionsList > li {
+    display: inline-block;
+    /* You can also add some margins here to make it look prettier */
+    zoom:1;
+    *display:inline;
+    margin: 10px;
+    /* this fix is needed for IE7- */
+}
+
+@media only screen and (max-width: 450px) and (orientation: portrait) {
+  .hideIfVerySmallMobile {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 530px) and (orientation: portrait) {
+  .smallerIfSmallMobile {
+    font-size: 50px;
+    line-height: 60px;
+  }
+}
+
+@media only screen and (max-width: 374px) and (orientation: portrait) {
+  .smallerIfVerySmallMobile {
+    font-size: 45px;
+    line-height: 60px;
+  }
+}

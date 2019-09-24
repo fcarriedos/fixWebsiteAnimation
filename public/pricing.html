@@ -53,6 +53,12 @@
 
 			}
 
+			@media only screen and (max-width: 530px) and (orientation: portrait) {
+			  .smallerSubHeader {
+			    font-size: 24px;
+			  }
+			}
+
 		</style>
 
 		 <!-- Growsurf referrals --> 
@@ -81,7 +87,7 @@
 		  <div class="modal-dialog" style="max-width: 800px">
 		    <div class="modal-content">
 		      	<div class="modal-header">
-			      	<h4 id="modalTitle" class="modal-title">Personal information</h4>
+			      	<h4 id="modalTitle" class="modal-title">Sign up information</h4>
 			        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
 	      	   	</div>
 		      	<div id="paymentMethodContainer" class="modal-body">
@@ -102,10 +108,17 @@
 		      </div>
 		      <div id="sharingLayer" style="display: none; width: 100%; height: 400px; padding: 20px">
 
-				<h2 style="text-align: center">You will get a verification email momentarily, don't forget to verify your address! 📧</h2>
-				<p></p>
-				<p></p>
-				<h3 style="text-align: center">Want money in your pocket? <a href="/referral.html" target="_blank">Click here to join our referral program!</a></h3>
+		      	<div style="padding-top: 10%"> 
+
+					<h2 style="text-align: center">Last step: please verify your email address! <img src="/i/pricing/email.png" style="max-width: 48px"></h2>
+
+					<br>
+
+					<h3 style="text-align: center">Want money in your pocket? <img src="/i/pricing/loudspeaker.png" style="max-width: 48px"><br>
+					<a href="/referral.html" style="color: #2b48e7" target="_blank">Click here to join our referral program!</a></h3>
+
+				</div>
+
 		      </div>
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -125,7 +138,7 @@
 		<div class="padding_sides40 padding_top60 padding_bottom60 inner">
 			
 			<div><a href="/" class="font18 link white bottom15">Home</a></div>
-			<div><a href="/saas.html" class="font18 link white bottom15">InstantStore</a></div>
+			<!--<div><a href="/saas.html" class="font18 link white bottom15">InstantStore</a></div>-->
 			<div><a href="/pricing.html" class="font18 link white bottom15">Pricing</a></div>
 			<!-- <div><a href="/products.html" class="font18 link white bottom15">Livesell flows</a></div> -->
 			<div><a href="/referral.html" class="font18 link white bottom15">Referrals</a></div>
@@ -188,8 +201,8 @@
 <section class="pricing_table_6 bg_light_blue padding_top90 padding_bottom50">
 	<div class="container nopadding dark_blue">
 <!-- 		<h2 class="font60 font_second light dark_gray text-center">Your first sale is one step away!</h2> -->
-		<h2 class="font60 font_second light dark_gray text-center">Simple tool, simple pricing: you get it all!</h2>
-		<div class=" margin_auto top15 font36 light text-center">
+		<div class="font50 font_second light dark_gray text-center">Simple tool, simple pricing: you get it all!</div>
+		<div class="margin_auto top15 font36 light text-center smallerSubHeader">
 			1st month is on us! Just cancel if you don't like it!
 		</div>
 		<div class="top20 bottom20 font16 dark_gray text-center slider_menu">
