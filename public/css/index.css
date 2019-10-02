@@ -1300,18 +1300,78 @@
 ================================================================================ */
 
 @media only screen and (min-width: 412px) 
-    and (max-width: 768px) and (orientation: portrait) { 
+    and (max-width: 768px)  and (max-height:736px) and (orientation: portrait) { 
 .slick-slide.slick-current.slick-active img{
 	max-width: 90%!important;
 }
+	    .header_12 {
+				min-height: 778px;
+			}
+
+			.header_section {
+				height: 778px;
+			}
+
+			#main_marquee {
+				top: -64px;
+			}
+
+			#headerContainer {
+				top: -170px;
+			}
+
+			#main_marquee_text {
+				font-size: 33px;
+				margin-left: 26px;
+			}
+
+			.sub_marquee {
+				font-size: 22px;
+				line-height: 22px;
+				padding-top: 5px;
+				padding-bottom: 5px;
+			}
+
+			#animation_container {
+				display: none;
+			}
+
+			#animation_container_mobile {
+				display: block;
+				width: 29%;
+				left: 0px;
+				top: 188px;
+				position: absolute;
+			}
+
+			#seller_layer {
+				width: 34%;
+				left: -35px;
+				top: 534px;
+				position: relative;
+			}
+
+			#buyer_layer {
+				position: relative;
+				width: 28%;
+				top: 165px;
+				left: -190px;
+			}
+
+			.slick-dots {
+				width: 43px;
+				position: absolute;
+				left: -52px;
+				top: 200px;
+			}
 }
 @media only screen and (min-width: 412px) 
-    and (max-width: 768px) and (orientation: landscape) { 
+    and (max-width: 768px)  and (orientation: landscape) { 
 	    #seller_layer {
     left: -64px;
     width: 30%;
     top: 153px;
-}
+	 }
 #buyer_layer {
     width: 28%;
     top: 118px;
