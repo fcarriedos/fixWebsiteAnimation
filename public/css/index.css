@@ -236,8 +236,9 @@
 			}
 
 			#buyer_layer {
-				width: 360px;
-				top: 100px;
+				width: 345px;
+			    top: 60px;
+			    left: 245px;
 			}
 
 		}
@@ -260,9 +261,9 @@
 
 			#seller_layer {
 				position: relative;
-				width: 276px;
-				top: 266px;
-				left: -68px;
+			    width: 268px;
+			    top: 266px;
+			    left: -58px;
 			}
 
 			#animation_container {
@@ -277,10 +278,10 @@
 			}
 
 			#buyer_layer {
-				width: 210px;
-				position: relative;
-				left: 316px;
-				top: 269px;
+				    width: 22%;
+				    position: relative;
+				    left: 315px;
+				    top: 251px;
 			}
 
 			.slick-dots {
@@ -499,9 +500,9 @@
 			}
 
 			#buyer_layer {
-				width: 28%;
-				top: 197px;
-				left: -183px;
+				    width: 26%;
+				    top: 188px;
+				    left: -183px;
 			}
 
 			.slick-dots {
@@ -616,17 +617,19 @@
 			}
 
 			#seller_layer {
-				width: 35%;
-				left: 6px;
-				top: 576px;
+			    width: 30%;
+			    top: 165px;
+			    left: -145px;
 			}
 
 			#buyer_layer {
-				width: 28%;
-				top: 197px;
-				left: -140px;
+				width: 30%;
+			    top: 165px;
+			    left: -150px;
 			}
-
+			.slick-slide img{
+			max-width: 90%;
+			}
 			.slick-dots {
 				width: 43px;
 				position: absolute;
@@ -662,9 +665,9 @@
 			}
 
 			#seller_layer {
-				left: -74px;
-				width: 30%;
-				top: 153px;
+				    left: -58px;
+				    width: 28%;
+				    top: 168px;
 			}
 
 			#animation_container {
@@ -678,9 +681,9 @@
 			}
 
 			#buyer_layer {
-				width: 28%;
-				top: 147px;
-				left: 264px;
+				    width: 28%;
+				    top: 115px;
+				    left: 260px;
 			}
 
 			.slick-dots {
@@ -782,9 +785,9 @@
 			}
 
 			#seller_layer {
-				left: -74px;
-				width: 30%;
-				top: 153px;
+				    left: -48px;
+			    width: 25%;
+			    top: 182px;
 			}
 
 			#animation_container {
@@ -798,9 +801,9 @@
 			}
 
 			#buyer_layer {
-				width: 28%;
-				top: 147px;
-				left: 195px;
+				    width: 21%;
+				    top: 150px;
+				    left: 250px;
 			}
 
 			.slick-dots {
@@ -908,9 +911,9 @@
 			}
 
 			#seller_layer {
-				left: -79px;
-				width: 25%;
-				top: 220px;
+			left: -54px;
+			    width: 23%;
+			    top: 235px;
 			}
 
 			#animation_container {
@@ -924,9 +927,9 @@
 			}
 
 			#buyer_layer {
-				width: 24%;
-				top: 210px;
-				left: 173px;
+				width: 20%;
+			    top: 200px;
+			    left: 185px;
 			}
 
 			.slick-dots {
@@ -981,9 +984,9 @@
 
 			#buyer_layer {
 				position: relative;
-				width: 28%;
-				top: 197px;
-				left: -164px;
+				width: 25%;
+			    top: 179px;
+			    left: -145px;
 			}
 
 			.slick-dots {
@@ -1157,9 +1160,9 @@
 			}
 
 			#buyer_layer {
-				width: 28%;
-				top: 167px;
-				left: 254px;
+				width: 24%;
+			    top: 152px;
+			    left: 265px;
 			}
 
 			.slick-dots {
@@ -1177,7 +1180,7 @@
 			}
 
 			.header_section {
-				height: 778px;
+				    height: 835px;
 			}
 
 			#main_marquee {
@@ -1219,9 +1222,9 @@
 
 			#buyer_layer {
 				position: relative;
-				width: 28%;
-				top: 165px;
-				left: -190px;
+				    width: 24%;
+    top: 165px;
+    left: -200px;
 			}
 
 			.slick-dots {
@@ -1264,15 +1267,15 @@
 			}
 
 			#seller_layer {
-				left: -79px;
-				width: 28%;
-				top: 166px;
+				left: -56px;
+			    width: 25%;
+			    top: 189px;
 			}
 
 			#animation_container {
-				width: 45%;
-				top: 70px;
-				left: 137px;
+				width: 47%;
+			    top: 84px;
+			    left: 132px;
 			}
 
 			#animation_container_mobile {
@@ -1291,4 +1294,5 @@
 			}
 
 		}
+
 
