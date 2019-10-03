@@ -1364,21 +1364,7 @@
 				top: 200px;
 			}
 }
-@media only screen (max-width: 812px)  and (orientation: landscape) { 
-#main_marquee {
-   top: -72px;
-}
-	#seller_layer {
-    left: -62px;
-    width: 33%;
-    top: 138px;
-}
-	#buyer_layer {
-    width: 32%;
-    top: 130px;
-    left: 250px;
-}
-} 
+
 @media only screen (max-width: 896px)  and (orientation: landscape) { 
 #main_marquee {
     top: 0px;
@@ -1451,3 +1437,18 @@
 }
 
 
+@media only screen (max-width: 812px)  and (orientation: landscape) { 
+#main_marquee {
+   top: -72px;
+}
+	#seller_layer {
+    left: -62px;
+    width: 33%;
+    top: 138px;
+}
+	#buyer_layer {
+    width: 32%;
+    top: 130px;
+    left: 250px;
+}
+} 
