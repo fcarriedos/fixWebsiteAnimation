@@ -104,7 +104,7 @@
 				#buyer_layer {
 					width: 330px;
 					position: relative;
-					left: 300px;
+					left: 275px;
 					top: 91px;
 				}
 
@@ -149,7 +149,7 @@
 			}
 
 			#main_marquee {
-				top: -72px;
+				top: 0px;
 			}
 
 			#main_marquee_text {
@@ -1347,7 +1347,7 @@
 			#seller_layer {
 				width: 34%;
 				left: -35px;
-				top: 490px;
+				top: 500px;
 				position: relative;
 			}
 
@@ -1443,14 +1443,14 @@
    top: -72px;
 }
 	#seller_layer {
-    left: -62px;
+    left: -64px;
     width: 33%;
     top: 138px;
 }
 	#buyer_layer {
     width: 32%;
     top: 130px;
-    left: 250px;
+    left: 240px;
 }
 	#main_marquee_text {
     font-size: 48px;
