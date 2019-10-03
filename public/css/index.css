@@ -1346,7 +1346,7 @@
 
 			#seller_layer {
 				width: 34%;
-				left: -35px;
+				left: -55px;
 				top: 500px;
 				position: relative;
 			}
@@ -1436,8 +1436,40 @@
 			}
 
 }
-
-
+@media only screen  and (max-width: 414px)  { 
+#main_marquee {
+    top: -45px;
+}
+	.slick-slide.slick-current.slick-active img {
+    max-width: 100%!important;
+}
+	.header_section {
+    height: 840px;
+}
+	#seller_layer {
+    width: 34%;
+    left: -30px;
+    top: 520px;
+    position: relative;
+}
+	#buyer_layer {
+    position: relative;
+    width: 28%;
+    top: 165px;
+    left: -130px;
+}
+}
+@media only screen  and (max-width: 375px)  { 
+.slick-slide.slick-current.slick-active img {
+    max-width: 90%!important;
+}
+	#seller_layer {
+    width: 30%;
+    left: -32px;
+    top: 512px;
+    position: relative;
+}
+}
 @media only screen (max-width: 812px)  and (orientation: landscape) { 
 #main_marquee {
    top: -72px;
