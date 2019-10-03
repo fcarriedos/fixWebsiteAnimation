@@ -1322,6 +1322,7 @@
 			#main_marquee_text {
 				font-size: 33px;
 				margin-left: 26px;
+				padding-top: 30px;
 			}
 
 			.sub_marquee {
@@ -1346,7 +1347,7 @@
 			#seller_layer {
 				width: 34%;
 				left: -35px;
-				top: 534px;
+				top: 490px;
 				position: relative;
 			}
 
@@ -1450,5 +1451,10 @@
     width: 32%;
     top: 130px;
     left: 250px;
+}
+	#main_marquee_text {
+    font-size: 48px;
+    margin-left: 30px;
+    padding-top: 35px;
 }
 } 
