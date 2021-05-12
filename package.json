@@ -27,7 +27,7 @@
     "http": "0.0.0",
     "intl-tel-input": "^16.0.2",
     "mongodb": "^3.0.10",
-    "nodemailer": "^4.6.5",
+    "nodemailer": "^6.4.16",
     "owl.carousel": "^2.3.4",
     "pwstrength-bootstrap": "^3.0.4",
     "raw-body": "^2.3.2",
