@@ -33,7 +33,7 @@
     "raw-body": "^2.3.2",
     "request-promise": "^4.2.4",
     "restify": "^7.0.0",
-    "soap": "^0.23.0",
+    "soap": "^0.45.0",
     "watson-developer-cloud": "^3.2.1",
     "xoauth2": "^1.2.0"
   },
